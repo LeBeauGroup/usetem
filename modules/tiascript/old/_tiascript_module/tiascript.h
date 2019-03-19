@@ -18,7 +18,7 @@
 //#include "stdscript.tlh"
 
 // Use this statement, if the namespace of your TEM scripting interface is still called "Tecnai"
-using namespace ESVision;
+// using namespace ESVision;
 
 // Enable debug output
 //#define DEBUGF(...) printf(__VA_ARGS__)

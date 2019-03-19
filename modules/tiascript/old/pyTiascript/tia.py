@@ -2,6 +2,17 @@ from __future__ import division, print_function
 from .enums import *
 import math
 
+from comtypes.client import CreateObject, Constants
+from comtypes.gen import ESVision
+from comtypes.gen import TEMScripting
+from comtypes.gen import TecnaiPortal
+# p = TEMScripting.Vector()
+# v = ESVision.IVector()
+
+# acq2 = ESVision.AcquisitionManager()
+# v.X = 5
+
+
 # Get imports from library
 try:
     # Python 3.X
@@ -19,7 +30,7 @@ def _parse_enum(type, item):
         return type(item)
 
 
-class Microscope(object):
+class Tia(object):
     """
     A more pythonic interface to the microscope.
 
@@ -30,19 +41,14 @@ class Microscope(object):
         "TITAN"
     """
 
-    # Allowed stage axes
-    STAGE_AXES = frozenset(('x', 'y', 'z', 'a', 'b'))
-
     def __init__(self):
-        from .instrument import GetInstrument
-        tem = GetInstrument()
-        self._tem_instrument = tem
-        self._tem_gun = tem.Gun
-        self._tem_illumination = tem.Illumination
-        self._tem_projection = tem.Projection
-        self._tem_stage = tem.Stage
-        self._tem_acquisition = tem.Acquisition
-        self._tem_vacuum = tem.Vacuum
+        from .application import GetApplication
+        tia = GetApplication()
+        self._ccdServer = tia.CcdServer
+        self._acqManager = tia.AcquisitionManager
+        self._beamControl = tia.BeamControl
+        self._microscope = tia.Microscope
+
         self._family = tem.Configuration.ProductFamily
 
     def get_family(self):
@@ -372,7 +378,7 @@ class Microscope(object):
 
         The units this is returned in are meters. The accuracy of ths value depends on the accuracy of the
         calibration within the microscope and thus is better not to be trusted blindly.
-        
+
         On FEI microscopes this corresponds to the state of "User Image Shift" (in different units though).
         """
         return self._tem_projection.ImageShift
@@ -389,7 +395,7 @@ class Microscope(object):
 
         The units this is returned in are meters. The accuracy of ths value depends on the accuracy of the
         calibration within the microscope and thus is better not to be trusted blindly.
-       
+
         On FEI microscopes this corresponds to the state of "User Beam Shift" (in different units though).
         """
         return self._tem_illumination.Shift
@@ -417,11 +423,11 @@ class Microscope(object):
             return tilt
         else:
             return 0.0, 0.0     # Microscope might return nonsense if DFMode is OFF
-            
+
     def set_beam_tilt(self, tilt):
         """
         Set beam tilt to position `tilt`, which should be an (x, y) tuple, as returned for instance by :meth:`get_image_shift`.
-        
+
         On FEI microscopes:
         * this will turn on dark field mode, unless (0, 0) is set, which will also turn off the dark field mode.
         """

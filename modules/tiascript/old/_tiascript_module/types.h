@@ -2,9 +2,10 @@
 #define TYPES_INC
 
 #include "tiascript.h"
-// #include "defines.h"
+#include "defines.h"
 
-DECLARE_WRAPPER(Application, ESVision::IApplication)
+DECLARE_WRAPPER(App, ESVision::IApplication)
+// DECLARE_WRAPPER(AcquisitionManager, ESVision::IAcquisitionManager)
 // DECLARE_WRAPPER(Gauge, TEMScripting::Gauge)
 // DECLARE_WRAPPER(Vacuum, TEMScripting::Vacuum)
 // DECLARE_WRAPPER(AcqImage, TEMScripting::AcqImage)

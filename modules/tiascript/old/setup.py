@@ -10,6 +10,7 @@ import sys
 with open("pyTiascript/version.py") as fp:
     exec(fp.read())
 
+
 # Only build _temscript c++ adapter on windows platforms
 if sys.platform == 'win32':
     py_includes = [os.path.join(get_python_inc(), '../Lib/site-packages/numpy/core/include/')]
@@ -19,7 +20,7 @@ else:
 
 # Based on setup script from tore.niermann@tu-berlin.de
 
-setup(name='temscript',
+setup(name='tiascript',
       version=__version__,
       description='TIA Scripting adapter for FEI microscopes',
       author='James LeBeau',
@@ -33,11 +34,10 @@ setup(name='temscript',
                    'Operating System :: OS Independent',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 3',
-                   'Programming Language :: Python :: 2',
                    'Topic :: Scientific/Engineering',
                    'Topic :: Software Development :: Libraries'
                    'License :: OSI Approved :: BSD License'],
       install_requires=['numpy', 'enum34;python_version<"3.4"'],
-      entry_points={'console_scripts': ['temscript-server = temscript.server:run_server']},
-      project_urls={"Source Code": "https://github.com/niermann/temscript"}
+      entry_points={'console_scripts': ['tiascript-server = tiascript.server:run_server']},
+      project_urls={"Source Code": ""}
       )

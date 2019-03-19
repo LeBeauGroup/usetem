@@ -16,7 +16,7 @@ except ImportError:
     from cStringIO import StringIO as BytesIO
 
 
-class RemoteMicroscope(object):
+class RemoteTIA(object):
     """
     Microscope-like class, which connects to a remote microscope server.
 
