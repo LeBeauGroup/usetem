@@ -1,13 +1,15 @@
 from comtypes.gen import ESVision
 from comtypes.client import CreateObject, Constants
+
+from xmlrpc.client import Binary
+import xmlrpc.client
 import acquisitionservers
 import beamcontrol
 import logging
 import enums
-
+import pickle
 
 logging.basicConfig(level=logging.INFO)
-
 
 
 class AcquisitionManager():
@@ -84,7 +86,7 @@ class AcquisitionManager():
         self.acqm.SelectSetup(setupName)
 
 
-    def SetAcquireAnnnotation(self, start, end=None):
+    def SetAcquireAnnotation(self, start, end=None):
 
         startLength = len(start)
 
@@ -158,11 +160,22 @@ class Microscope():
 
 class Application():
     app = CreateObject("ESVision.Application")
+
     AcquisitionManager = AcquisitionManager(app)
     ScanningServer = acquisitionservers.ScanningServer(app)
     BeamControl = beamcontrol.BeamControl(app)
     Microscope = Microscope(app)
     CcdServer = acquisitionservers.CcdServer(app)
+
+    def ActiveDisplayWindow(self):
+
+        activeWindow = self.app.ActiveDisplayWindow()
+        window = DisplayWindow(activeWindow)
+
+        return Binary(pickle.dumps(window))
+
+    def FindDisplayObject(self, path):
+        self.app.FindDisplayObject(path)
 
     def DisplayWindowNames(self):
         displayWindows = self.app.DisplayWindowNames()
@@ -173,8 +186,6 @@ class Application():
 
         return displayNames
 
-
-
     def CloseDisplayWindow(self, windowName):
         self.app.CloseDisplayWindow(windowName)
 
@@ -183,9 +194,51 @@ class Application():
 
 app = Application().app
 
+class EsvObject():
+    name = 'none'
+    type  = 0
+
+    def __init__(self, obj):
+
+        self.name = obj.name
+        self.type = obj.type
+    #    self.path= obj.Path()
+
+class DisplayObject(EsvObject):
+
+    path = 'none'
+
+    def __init__(self, display):
+        super(DisplayObject, self).__init__(display)
+        self.path = display.Path
+
+class DisplayWindow():
+
+    def __init__(self, window):
+        self.name = window.name
+
+        #super(DisplayWindow, self).__init__(window)
+
+        self.selectedDisplay = DisplayObject(window.SelectedDisplay)
+        self.selectedObject = EsvObject(window.SelectedObject)
+
+        # self.SelectedObject = EsvObject(window.SelectedObject)
+
+    def SelectedObject(self):
+        pass
+
+    def AddDisplay(name, type, subtype, splitdirection, newsplitportion,splitDisplay=None):
+        pass
+
+
+
 def Range2D(range):
 
     return app.Range2D(range[0], range[1], range[2], range[3])
+
+def Position2D(pos):
+
+    return app.Position2D(pos[0], pos[1])
 
 def FindDisplayInWindow(app, windowName, displayName):
     displayWindow = app.FindDisplayWindow(windowName)

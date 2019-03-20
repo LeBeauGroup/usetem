@@ -1,7 +1,7 @@
 from comtypes.client import CreateObject, Constants
-from comtypes.gen import ESVision
+#from comtypes.gen import ESVision as
 
-import ESVision
+import esvision
 
 import logging
 from xmlrpc.server import SimpleXMLRPCServer
@@ -11,12 +11,11 @@ logging.basicConfig(level=logging.INFO)
 
 # Restrict to a particular path.
 
-# class TiaService():
-#     Application = CreateObject("ESVision.Application")
-#
-#     AcquisitionManager = Application.AcquisitionManager()
-#     PEELSServer = Application.PEELSServer()
-#     ScanningServer = Application.ScanningServer()
+class TiaService():
+    Application = CreateObject("ESVision.Application")
+    AcquisitionManager = Application.AcquisitionManager()
+    PEELSServer = Application.PEELSServer()
+    ScanningServer = Application.ScanningServer()
 
 class RequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ('/tia',)
@@ -28,7 +27,7 @@ if __name__ == "__main__":
     with SimpleXMLRPCServer(('172.16.181.144', 8001),
                             requestHandler=RequestHandler, allow_none=True) as server:
         server.register_introspection_functions()
-        server.register_instance(ESVision.Application(), allow_dotted_names=True)
+        server.register_instance(esvision.Application(), allow_dotted_names=True)
         server.register_multicall_functions()
 
         logging.info('Server registered')

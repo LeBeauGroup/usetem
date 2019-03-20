@@ -1,5 +1,6 @@
 import esvision
 import logging
+import pickle
 
 logging.basicConfig(level=logging.INFO)
 
@@ -11,8 +12,15 @@ esv = esvision.Application()
 #logging.info(esv.AcquisitionManager.SignalNames())
 bc = esv.BeamControl
 
+window = pickle.loads(esv.ActiveDisplayWindow().data)
+
+print(window)
+
 ss = esv.ScanningServer
 names = ss.MagnificationNames('Imaging')
+
+
+ss.ReferencePosition((0,1))
 print(ss.MagnificationName(1, 'Imaging'))
 
 ss.CreateMagnification(800, (0, 0, 1, 1),  'Imaging')

@@ -25,7 +25,6 @@ class AcquisitionServer():
             self.server.SeriesSize = size
             logging.info(f'Series size set as {size}')
 
-
 class ImageServer(AcquisitionServer):
 
     def __init__(self,app):
@@ -88,10 +87,16 @@ class ImageServer(AcquisitionServer):
 
         return namesList
 
-    def ReferencePosition(self):
-        pass
+    def ReferencePosition(self, position=None):
 
-    def SetBiasImage(self):
+        if position is None:
+            return self.server.ReferencePosition
+        else:
+            ref = esvision.Position2D(position)
+            self.server.ReferencePosition = ref
+            logging.debug(f'Reference Position moved to {position}')
+
+    def SetBiasImage(self, imageData):
         pass
 
     def SetDriftRate(self, driftX, driftY):
