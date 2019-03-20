@@ -1,29 +1,12 @@
 from comtypes.gen import ESVision
 from comtypes.client import CreateObject, Constants
-import AcquisitionServers
+import acquisitionservers
+import beamcontrol
 import logging
+import enums
+
 
 logging.basicConfig(level=logging.INFO)
-
-
-from enum import Enum
-
-class Hardware(Enum):
-    CCD = 0
-    Video = 1
-    Scanning = 2
-    Edx = 3
-    Peels = 4
-
-class Signals(Enum):
-    AnalogImageSignal = 0
-    PulseImageSignal = 1
-    PeelsSignal = 2
-    PeelsMappingSignal = 3
-    EdxSignal = 4
-    EdxMappingSignal = 5
-    CCDSignal = 6
-    VideoSignal = 7
 
 
 
@@ -176,9 +159,10 @@ class Microscope():
 class Application():
     app = CreateObject("ESVision.Application")
     AcquisitionManager = AcquisitionManager(app)
-    ScanningServer = AcquisitionServers.ScanningServer(app)
+    ScanningServer = acquisitionservers.ScanningServer(app)
+    BeamControl = beamcontrol.BeamControl(app)
     Microscope = Microscope(app)
-    CcdServer = AcquisitionServers.CcdServer(app)
+    CcdServer = acquisitionservers.CcdServer(app)
 
     def DisplayWindowNames(self):
         displayWindows = self.app.DisplayWindowNames()
@@ -196,6 +180,12 @@ class Application():
 
 
 # Helper functions
+
+app = Application().app
+
+def Range2D(range):
+
+    return app.Range2D(range[0], range[1], range[2], range[3])
 
 def FindDisplayInWindow(app, windowName, displayName):
     displayWindow = app.FindDisplayWindow(windowName)

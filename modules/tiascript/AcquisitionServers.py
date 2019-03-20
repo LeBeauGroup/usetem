@@ -1,12 +1,9 @@
 import logging
+from enums import *
+import esvision
 
-from enum import Enum
 
 logging.basicConfig(level=logging.INFO)
-
-class AcquireModes(Enum):
-    ContinuousAcquire = 0
-    SingleAcquire = 1
 
 class AcquisitionServer():
 
@@ -51,11 +48,14 @@ class ImageServer(AcquisitionServer):
             self.server.AcquireMode = AcquireModes[mode].value
             logging.info(f'Acquire mode is now {AcquireModes[mode].name}')
 
-    def CreateMagnification(self, magnification, imageRange, microscopeMode):
-        pass
+    def CreateMagnification(self, mag, imageRange, modeString):
 
-    def DeleteMagnification(self):
-        pass
+        mMode = MicroscopeModes[modeString].value
+        self.server.CreateMagnification(mag, esvision.Range2D(imageRange),mMode)
+
+    def DeleteMagnification(self, name, modeString):
+        mMode = MicroscopeModes[modeString].value
+        self.server.DeleteMagnification(name, mMode)
 
 
     def DriftRateX(self, value=None):
@@ -75,11 +75,18 @@ class ImageServer(AcquisitionServer):
             logging.debug(f'DwellTime set as {value}')
 
 
-    def MagnificationName(self):
-        pass
+    def MagnificationName(self, mag, microscopeModeString):
+        return self.server.MagnificationName(mag, MicroscopeModes[microscopeModeString].value)
 
-    def MagnificationNames(self):
-        pass
+    def MagnificationNames(self, microscopeModeString):
+
+        names = self.server.MagnificationNames(MicroscopeModes[microscopeModeString].value)
+
+        namesList = list()
+        for name in names:
+            namesList.append(name)
+
+        return namesList
 
     def ReferencePosition(self):
         pass
@@ -87,10 +94,11 @@ class ImageServer(AcquisitionServer):
     def SetBiasImage(self):
         pass
 
-    def SetDriftRate(self):
-        pass
+    def SetDriftRate(self, driftX, driftY):
+        self.server.SetDriftRate(driftX, driftY)
+        logging.debug(f'Drift rate set to ({driftX}, {driftY})')
 
-    def SetGainImage(self):
+    def SetGainImage(self, imageData):
         pass
 
 

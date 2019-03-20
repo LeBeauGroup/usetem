@@ -34,6 +34,9 @@ from ESVision import Hardware
 if __name__ == "__main__":
     import ESVision
     from AcquisitionServers import AcquireModes
+
+    from enums import *
+
     import logging
     import numpy as np
 
