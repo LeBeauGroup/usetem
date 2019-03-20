@@ -175,7 +175,12 @@ class Application():
         return Binary(pickle.dumps(window))
 
     def FindDisplayObject(self, path):
-        self.app.FindDisplayObject(path)
+        foundObject = self.app.FindDisplayObject(path)
+
+
+        #dispObject = EsvObject(foundObject)
+
+        return  None#Binary(pickle.dumps(dispObject))
 
     def DisplayWindowNames(self):
         displayWindows = self.app.DisplayWindowNames()
@@ -239,6 +244,10 @@ def Range2D(range):
 def Position2D(pos):
 
     return app.Position2D(pos[0], pos[1])
+
+def FindDisplayObject(self, path):
+    return  self.app.FindDisplayObject(path)
+
 
 def FindDisplayInWindow(app, windowName, displayName):
     displayWindow = app.FindDisplayWindow(windowName)

@@ -11,10 +11,11 @@ esv = esvision.Application()
 
 #logging.info(esv.AcquisitionManager.SignalNames())
 bc = esv.BeamControl
+path = 'Scanning Search/Search HAADF Scanning Display1/Selection 1'
 
-window = pickle.loads(esv.ActiveDisplayWindow().data)
+esv.FindDisplayObject(path)
+#window = pickle.loads(.data)
 
-print(window)
 
 ss = esv.ScanningServer
 names = ss.MagnificationNames('Imaging')
