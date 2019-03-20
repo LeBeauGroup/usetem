@@ -24,7 +24,7 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 if __name__ == "__main__":
 
-    with SimpleXMLRPCServer(('172.16.181.144', 8001),
+    with SimpleXMLRPCServer(('172.16.208.147', 8001),
                             requestHandler=RequestHandler, allow_none=True) as server:
         server.register_introspection_functions()
         server.register_instance(esvision.Application(), allow_dotted_names=True)
