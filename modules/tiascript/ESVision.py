@@ -1,6 +1,7 @@
 from comtypes.gen import ESVision
+import comtypes
 from comtypes.client import CreateObject, Constants
-
+from comtypes.safearray import safearray_as_ndarray
 from xmlrpc.client import Binary
 import xmlrpc.client
 import acquisitionservers
@@ -8,6 +9,13 @@ import beamcontrol
 import logging
 import enums
 import pickle
+import numpy as np
+import ctypes
+import array
+
+"""
+Requires numpy 1.15
+"""
 
 logging.basicConfig(level=logging.INFO)
 
@@ -166,6 +174,7 @@ class Application():
     BeamControl = beamcontrol.BeamControl(app)
     Microscope = Microscope(app)
     CcdServer = acquisitionservers.CcdServer(app)
+    DisplayObject = None
 
     def ActiveDisplayWindow(self):
 
@@ -175,18 +184,21 @@ class Application():
         return Binary(pickle.dumps(window))
 
     def FindDisplayObject(self, path):
-        foundObject = self.app.FindDisplayObject(path)
 
+        comps = path.split('/')
 
-        #dispObject = EsvObject(foundObject)
+        window = self.app.FindDisplayWindow(comps[0])
+        display = window.FindDisplay(comps[1])
+        object = display.FindObject(comps[2])
 
-        return  None#Binary(pickle.dumps(dispObject))
+        dispObject = DisplayObject(object)
+        return Binary(pickle.dumps(dispObject))
 
     def DisplayWindowNames(self):
         displayWindows = self.app.DisplayWindowNames()
         displayNames = list()
-        for display in enumerate(displayWindows):
 
+        for display in enumerate(displayWindows):
             displayNames.append(display)
 
         return displayNames
@@ -205,17 +217,74 @@ class EsvObject():
 
     def __init__(self, obj):
 
-        self.name = obj.name
-        self.type = obj.type
+        self.name = obj.Name
+        self.type = obj.Type
     #    self.path= obj.Path()
 
 class DisplayObject(EsvObject):
 
     path = 'none'
+    types = (ESVision.IData1D, ESVision.IData2D, ESVision.IMatrix)
+    calibration = None
+
+    def __init__(self, object):
+        super(DisplayObject, self).__init__(object)
+
+        #ESVision.Image
+        #self.path = object.Path
+
+        dataPointer = object.Data
+
+        while True:
+            for type in self.types:
+
+                try:
+                    data = dataPointer.QueryInterface(type)
+                    self.type = type
+                except:
+                    continue
+                break
+            break
+
+        #print(data.Points)
+        if self.type == ESVision.IData2D:
+
+            ps = app.ProcessingSystem()
+            object.Data = ps.FFT(object.Data)
+            newData = object.Data
+            #newData.PixelIntensity(141,227, app.ComplexNumber(int(20),0))
+            #newData.SetSize(512,512)
+
+            new =  np.zeros((512,512)).astype(np.uint16)
+
+            with safearray_as_ndarray:
+                a = object.Data.Imag
+
+            a[100][400] = 1
+            #new = new.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16))
+
+            newData.Array = a
+
+            #print(newData.PixelIntensity(2,2).Real)
+            object.Data = newData
+            #object.SetIntegerData(512)
+            #object.Data.Array = np.array(oldDatra).ctypes.data
+            # p = oldDatra.PixelIntensity(0,0)
+            # p.Real = 5
+            # print(oldDatra.PixelIntensity(0,0).Real)
+
+            #with safearray_as_ndarray:
+            #print(object.Data)
+
+
+class ObjectDisplay(EsvObject):
+
+    path = 'none'
 
     def __init__(self, display):
-        super(DisplayObject, self).__init__(display)
+        super(ObjectDisplay, self).__init__(ObjectDisplay)
         self.path = display.Path
+
 
 class DisplayWindow():
 

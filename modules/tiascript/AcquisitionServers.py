@@ -106,8 +106,6 @@ class ImageServer(AcquisitionServer):
     def SetGainImage(self, imageData):
         pass
 
-
-
 class ScanningServer(ImageServer):
 
     def __init__(self,app):
