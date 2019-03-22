@@ -1,6 +1,6 @@
 import logging
 from enums import *
-import esvision
+import application
 
 
 logging.basicConfig(level=logging.INFO)

@@ -1,5 +1,0 @@
-graft _temscript
-graft docs
-include *.txt
-prune docs/_build
-exclude stdscript.dll
