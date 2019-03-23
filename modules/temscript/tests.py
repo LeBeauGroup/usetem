@@ -19,8 +19,10 @@ if __name__ == "__main__":
     print(instrument.acquisition.stemDetectors.dwellTime())
 
     #print(instrument.vacuum.runBufferCycle())
-
-    print(instrument.camera.mainScreenPosition(0))
+    instrument.projection.mode(ProjMode.Imaging.value)
+    instrument.projection.lensProgram(ProjLensProg.Regular.value)
+    print(instrument.projection.normalize(ProjNormalization.All.value))
+    #print(instrument.camera.mainScreenPosition(0))
 
 
 
