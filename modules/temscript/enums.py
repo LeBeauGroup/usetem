@@ -46,6 +46,10 @@ class GaugePressureLevel(Enum):
     HighMedium = 3
     High = 4
 
+class InstrumentMode(Enum):
+    TEM = 0
+    STEM = 1
+
 class ProjNormalization(Enum):
 
     Objective = 10

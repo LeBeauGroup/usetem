@@ -21,7 +21,10 @@ if __name__ == "__main__":
     #print(instrument.vacuum.runBufferCycle())
     instrument.projection.mode(ProjMode.Imaging.value)
     instrument.projection.lensProgram(ProjLensProg.Regular.value)
-    print(instrument.projection.normalize(ProjNormalization.All.value))
+    b = instrument._vector()
+
+    print(instrument.mode(InstrumentMode.TEM.value))
+    #print(instrument.projection.normalize(ProjNormalization.All.value))
     #print(instrument.camera.mainScreenPosition(0))
 
 
