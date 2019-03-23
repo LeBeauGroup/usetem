@@ -20,7 +20,7 @@ class Stage():
 
     def position(self):
 
-        return positionDict(self._stage.Position)
+        return positionDictFromTem(self._stage.Position)
 
     def holder(self):
         pass
@@ -28,9 +28,10 @@ class Stage():
     def axisData():
         pass
 
-    def goto(self, newPos):
+    def goto(self, newPos,axesToUSe):
 
-        self._stage.GoTo(temPosition(self._instrument,newPos))
+        temPos = temPositionFromDict(self._instrument,newPos)
+        self._stage.GoTo(temPos,axesToUSe)
 
     def gotoWithSpeed():
         pass

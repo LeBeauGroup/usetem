@@ -5,6 +5,7 @@ if __name__ == "__main__":
     from  enums import *
     import logging
     import pickle
+    import utilities
     import matplotlib.pyplot as plt
 
     logging.basicConfig(level=logging.INFO)
@@ -14,7 +15,9 @@ if __name__ == "__main__":
     # instrument.acquisition.stemDetectors.dwellTime(1e-7)
     # instrument.acquisition.stemDetectors.setFrameSize(AcqFrameSize.Full)
     # instrument.acquisition.stemDetectors.setMaxFrameSize(AcqMaxFrame.Full)
-    print(instrument.stage.goto())
+
+    pos = utilities.positionDict(1e-6,1e-5,1e-5, 0, 0)
+    print(instrument.stage.goto(pos, 1|2|3))
 
     print(instrument.acquisition.stemDetectors.dwellTime())
 

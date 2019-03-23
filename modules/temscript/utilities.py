@@ -9,7 +9,7 @@ def vector(instr, vec=(0,0)):
 
     return newVec
 
-def temPosition(instr,positionDict):
+def temPositionFromDict(instr,posDict):
 
     pos = instr.Stage.Position
 
@@ -30,7 +30,7 @@ def positionDict(x,y,z,A,B):
     posDict['A'] = A
     posDict['B'] = B
 
-    return positionDict
+    return posDict
 
 def positionDictFromTem(position):
 
