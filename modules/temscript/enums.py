@@ -53,6 +53,36 @@ class HightensionState(Enum):
     Off = 2
     On = 3
 
+class IllumNormalization(Enum):
+
+    Spotsize = 1
+    Intensity = 2
+    Condenser = 3
+    MiniCondenser = 4
+    ObjectivePole = 5
+    All = 6
+
+
+class IllumMode(Enum):
+
+    NanoProbe = 0
+    MicroProbe = 1
+
+
+
+class DarkFieldMode(Enum):
+
+    Off = 1
+    Cartesian = 2
+    Conical = 3
+
+
+class CondenserMode(Enum):
+
+    ParallelIllumination = 0
+    ProbeIllumination = 1
+
+
 class InstrumentMode(Enum):
     TEM = 0
     STEM = 1

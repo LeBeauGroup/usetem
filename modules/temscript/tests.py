@@ -14,12 +14,13 @@ if __name__ == "__main__":
     # instrument.acquisition.stemDetectors.dwellTime(1e-7)
     # instrument.acquisition.stemDetectors.setFrameSize(AcqFrameSize.Full)
     # instrument.acquisition.stemDetectors.setMaxFrameSize(AcqMaxFrame.Full)
-    instrument.illumination.stemMagnification(5343)
+    print(instrument.illumination.illuminatedArea(1.6e-7))
 
     print(instrument.acquisition.stemDetectors.dwellTime())
 
     #print(instrument.vacuum.runBufferCycle())
     instrument.projection.mode(ProjMode.Imaging.value)
+    #instrument.projection.defocus(1e-8)
     instrument.projection.lensProgram(ProjLensProg.Regular.value)
 
     print(instrument.gun.htValue(216230))
