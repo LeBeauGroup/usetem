@@ -28,8 +28,19 @@ class Stage():
     def axisData():
         pass
 
-    def goto(self, newPos,axesToUSe):
+    def stepByAlong(self, delta,axis):
+        """
+        TODO: Automatically determine which axes to use based on which positions have changed
+        """
 
+        temPos = temPositionFromDict(self._instrument,newPos)
+        self._stage.GoTo(temPos,axesToUSe)
+
+    def goto(self, newPos,axesToUSe):
+        """
+        TODO: Automatically determine which axes to use based on which positions have changed
+
+        """
         temPos = temPositionFromDict(self._instrument,newPos)
         self._stage.GoTo(temPos,axesToUSe)
 
