@@ -18,5 +18,12 @@ if __name__ == "__main__":
 
     print(instrument.acquisition.stemDetectors.dwellTime())
 
+    #print(instrument.vacuum.runBufferCycle())
+
+    print(instrument.camera.mainScreenPosition(0))
+
+
+
+
     # plt.imshow(instrument.acquisition.acquireImages()[0])
     # plt.show()

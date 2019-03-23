@@ -31,3 +31,41 @@ class AcqFrameSize(Enum):
     Half = 2
     Quarter = 4
     Eighth = 8
+
+class RefrigerantLevel(Enum):
+    AutoLoader = 0
+    Column = 1
+    Helium = 2
+
+class VacuumStatus(Enum):
+
+    Unknown = 0
+    Off = 1
+    CameraAir = 2
+    Busy = 3
+    Ready = 4
+    Else = 5
+
+class VacuumGauge(Enum):
+    CCGp = 0
+    IGPa = 1
+    ICPcl = 2
+
+class GaugeStatus(Enum):
+    Undefined = 0
+    Underflow = 1
+    Overflow = 2
+    Valid = 3
+    Invalid = 4
+
+class GaugePressureLevel(Enum):
+    Undefined = 0
+    Low = 1
+    LowMedium = 2
+    HighMedium = 3
+    High = 4
+
+class ScreenPosition(Enum):
+    Unknown = 0
+    Up = 2
+    Down = 3
