@@ -11,6 +11,7 @@ from temperatureControl import TemperatureControl
 from vacuum import Vacuum
 from camera import Camera
 from projection import Projection
+from gun import Gun
 
 class Instrument():
     instrument = CreateObject("TEMScripting.Instrument.1")
@@ -18,24 +19,13 @@ class Instrument():
     acquisition = Acquisition(instrument)
     autoloader = AutoLoader(instrument)
     camera = Camera(instrument)
-
+    gun = Gun(instrument)
     illumination = Illumination(instrument)
     projection = Projection(instrument)
     temperatureControl = TemperatureControl(instrument)
     vacuum = Vacuum(instrument)
 
     buttons  = instrument.UserButtons
-
-    def _vector(self):
-        """
-        For some reason, vectors cannot be created with instrument object
-        Using a preallocated one instead and setting to zero
-        """
-        newVec = self.instrument.projection.DiffractionShift
-        newVec.X = 0
-        newVec.Y = 0
-
-        return newVec
 
     def isSTEMAvailable(self):
         return self.instrument.InstrumentModeControl.StemAvailable
