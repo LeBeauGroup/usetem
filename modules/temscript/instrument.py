@@ -12,6 +12,7 @@ from vacuum import Vacuum
 from camera import Camera
 from projection import Projection
 from gun import Gun
+from stage import Stage
 
 class Instrument():
     instrument = CreateObject("TEMScripting.Instrument.1")
@@ -22,6 +23,7 @@ class Instrument():
     gun = Gun(instrument)
     illumination = Illumination(instrument)
     projection = Projection(instrument)
+    stage = Stage(instrument)
     temperatureControl = TemperatureControl(instrument)
     vacuum = Vacuum(instrument)
 

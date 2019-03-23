@@ -21,9 +21,6 @@ class Illumination():
         else:
             self._illum.RotationCenter = vector(self._instrument, value)
 
-
-
-
     def mode(self, value=None):
         if value is None:
             return self._illum.mode
@@ -74,7 +71,6 @@ class Illumination():
             return self._illum.IntensityZoomEnabled
         elif type(value) is bool:
             self._illum.IntensityZoomEnabled = value
-        pass
 
     def isIntensityLimitEnabled(self, value=None):
         if value is None:

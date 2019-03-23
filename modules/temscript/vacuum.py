@@ -52,6 +52,7 @@ class Vacuum():
             newGauge['status'] = gaugeObj.Status
             newGauge['pressure'] = gaugeObj.Pressure
             newGauge['pressureLevel'] = gaugeObj.PressureLevel
+
             return newGauge
 
 
