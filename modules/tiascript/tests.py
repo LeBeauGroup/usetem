@@ -5,6 +5,7 @@ if __name__ == "__main__":
     import application
     import logging
     import pickle
+    import numpy as np
     import matplotlib.pyplot as plt
     logging.basicConfig(level=logging.INFO)
 
@@ -15,16 +16,75 @@ if __name__ == "__main__":
 
     #logging.info(esv.AcquisitionManager.SignalNames())
     bc = esv.BeamControl
+#    bc.Stop()
+    #print(esv.createNewImageDisplay((512,512)))
 
-    print(esv.createNewImageDisplay((256,24)))
+    activeName = esv.activeDisplayWindow()
 
-    esv.activeDisplayWindow()
-    #path = 'Scanning Search/Search HAADF Scanning Display1/Search HAADF'
-    path = 'Display Window 52/display/display'
-    obj = esv.findDisplayObject(path)
+    #objectPath = f'{activeName}/real/real'
+    objectPath = 'Scanning Search/Search DF4 Scanning Display1/Search DF4'
 
 
-    foundObject = pickle.loads(obj.data)['data']
+    newDisplay = esv.createNewImageDisplay((512,512))
+
+    esv.findDisplayObject(f'{newDisplay}/real/real')
+
+    acq = esv.AcquisitionManager
+
+
+    acq.AddSetup('Full')
+
+
+
+    acq.AddSetup('Focus')
+    #ss = esv.ScanningServer
+    #bc.PositionCalibrated(False)
+
+    #bc.SetFrameScan((0,0, 0.5, 0.5), 100,100)
+
+    #acq.SelectSetup('testing')
+    acq.LinkSignal('Analog3', objectPath)
+
+
+    #acq.SelectSetup('testing')
+
+    # positions = list()
+    # numPos = 100
+    # radius = 0.25
+
+    # for index in range(0,numPos):
+    #     x = radius *  np.cos(2 * np.pi * index / numPos)
+    #     y = radius *  np.sin(2 * np.pi * index / numPos)
+    #
+    #     positions.append((x,y))
+    #
+    #     print(positions)
+
+#     bc.LoadPositions(positions)
+#     bc.DwellTime(5e-6)
+#     bc.SetContinuousScan()
+#
+# #    print(acq.SignalNames())
+#
+#     print(bc.IsScanning())
+#
+#     if bc.IsScanning():
+#         bc.Stop()
+#         bc.MoveBeam(0,0)
+#         bc.Start()
+#     else:
+#         bc.Start()
+
+    #bc.Stop()
+    # print(bc.IsScanning())
+    #esv.activeDisplayWindow()
+
+
+
+
+
+
+    #foundObject = pickle.loads(obj.data)['data']
     #plt.imshow(foundObject)
     #plt.show()
 

@@ -31,3 +31,125 @@ class AcqFrameSize(Enum):
     Half = 2
     Quarter = 4
     Eighth = 8
+
+class GaugeStatus(Enum):
+    Undefined = 0
+    Underflow = 1
+    Overflow = 2
+    Valid = 3
+    Invalid = 4
+
+class GaugePressureLevel(Enum):
+    Undefined = 0
+    Low = 1
+    LowMedium = 2
+    HighMedium = 3
+    High = 4
+
+
+class HightensionState(Enum):
+
+    Disabled = 1
+    Off = 2
+    On = 3
+
+class IllumNormalization(Enum):
+
+    Spotsize = 1
+    Intensity = 2
+    Condenser = 3
+    MiniCondenser = 4
+    ObjectivePole = 5
+    All = 6
+
+
+class IllumMode(Enum):
+
+    NanoProbe = 0
+    MicroProbe = 1
+
+
+
+class DarkFieldMode(Enum):
+
+    Off = 1
+    Cartesian = 2
+    Conical = 3
+
+
+class CondenserMode(Enum):
+
+    ParallelIllumination = 0
+    ProbeIllumination = 1
+
+
+class InstrumentMode(Enum):
+    TEM = 0
+    STEM = 1
+
+class ProjNormalization(Enum):
+
+    Objective = 10
+    Projector = 11
+    All = 12
+
+
+class ProjMode(Enum):
+
+    Imaging = 1
+    Diffraction = 2
+
+
+class ProjSubMode(Enum):
+
+    LM = 1
+    Mi = 2
+    SA = 3
+    Mh = 4
+    LAD = 5
+    D = 6
+
+
+class ProjLensProg(Enum):
+    Regular = 1
+    EFTEM = 2
+
+
+class ProjDetectorShift(Enum):
+
+    OnAxis = 0
+    NearAxis = 1
+    OffAxis = 2
+
+
+class ProjDetectorShiftMode(Enum):
+
+    AutoIgnore = 1
+    Manual = 2
+    Alignment = 3
+
+
+class RefrigerantLevel(Enum):
+    AutoLoader = 0
+    Column = 1
+    Helium = 2
+
+
+class ScreenPosition(Enum):
+    Unknown = 1
+    Up = 2
+    Down = 3
+
+class VacuumStatus(Enum):
+
+    Unknown = 0
+    Off = 1
+    CameraAir = 2
+    Busy = 3
+    Ready = 4
+    Else = 5
+
+class VacuumGauge(Enum):
+    CCGp = 0
+    IGPa = 1
+    ICPcl = 2

@@ -48,20 +48,28 @@ class DisplayObject(EsvObject):
             break
 
         if self.type == ESVision.IImage:
+            data = object.Data
+
+            import time
+
+            start = time.time()
+
+
+
+            for i in range(0, 60):
+
+                array = np.random.randn(128,128)*65535
+                data.Array  = array
+                object.Data = data
+
+            end = time.time()
+            print(end - start)
+
+
             pass
 
-            # t = object.Data
-
-            # newData = ps.real(object.Data)
-            # print(newData.QueryInterface(ESVision.IData2D))
-            # new =  2*np.ones((512,512))*newData.Array #* 1+1j
-            # ps.Add(newData,newData)
-
-            # with safearray_as_ndarray:
-            #     a = object.Data.Array
             #
-            # #a[100][400] = 1
-            # #new = new.ctypes.data_as(ctypes.POINTER(ctypes.c_uint16))
+            #
             #
             # newData.Array = new
             # c = esvision.app.ComplexNumber(int(20),0)
@@ -69,11 +77,6 @@ class DisplayObject(EsvObject):
             #
             # newData.PixelIntensity(141,227, c)
             # object.Data = newData
-
-            #object.Data = ps.FFT(object.Data)
-            #newData = object.Data
-            #newData.PixelIntensity(141,227, app.ComplexNumber(int(20),0))
-            #newData.SetSize(512,512)
 
 
     @property
@@ -85,6 +88,20 @@ class DisplayObject(EsvObject):
             toSend['data'] = self.object.Data.Array
 
         return Binary(pickle.dumps(toSend))
+
+class ImageObject(DisplayObject):
+
+    def setImageDataWithArray(self, array):
+
+        """
+        Sends numpy data into the image
+
+        The array cannot be directly copied to object.
+        Instead we use an intermediary
+        """
+        data = object.Data
+        data.Array  = array
+        object.Data = data
 
 
 
