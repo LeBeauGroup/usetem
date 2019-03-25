@@ -25,8 +25,10 @@ Requires numpy 1.15, comtypes 1.17.1
 
 logging.basicConfig(level=logging.INFO)
 
+
 class Application():
     app = CreateObject("ESVision.Application")
+
 
     AcquisitionManager = AcquisitionManager(app)
     ScanningServer = acquisitionservers.ScanningServer(app)
@@ -66,15 +68,35 @@ class Application():
         """
         pass
 
-    def createNewImageDisplay(self, size, cal=(0,0,1e-9,1e-9, 0, 0)):
+    def createSubImageDisplay(self, subName,size, cal=(0,0,1e-9,1e-9, 0, 0)):
+
+        win = self.app.activeDisplayWindow()
+
+        
+        realDisp = win.AddDisplay(subName, ESVision.esImageDisplay, ESVision.esImageDisplayType, ESVision.esSplitRight, 0);
+
+        realDisp.Visible = False
+
+        numPixX = size[0]
+        numPixY = size[1]
+        calibration = calibration2D(cal)
+
+        realDisp.AddImage('real', numPixX, numPixY, calibration)
+
+        return win.name
+
+
+    def createNewImageDisplay(self,  size, cal=(0,0,1e-9,1e-9, 0, 0)):
 
         win = self.app.AddDisplayWindow()
-        realDisp = win.AddDisplay("real", ESVision.esImageDisplay, ESVision.esImageDisplayType, ESVision.esSplitRight, 0);
+        realDisp = win.AddDisplay('real', ESVision.esImageDisplay, ESVision.esImageDisplayType, ESVision.esSplitRight, 0);
 
         realDisp.Visible = True
 
         numPixX = size[0]
         numPixY = size[1]
+        print(cal)
+
         calibration = calibration2D(cal)
 
         realDisp.AddImage('real', numPixX, numPixY, calibration)

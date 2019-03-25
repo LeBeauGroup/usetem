@@ -68,8 +68,9 @@ class AcquisitionManager():
         pass
         #return self.acqm.IsSignalLinked(signalName,displayObject)
 
-    def LinkSignal(self, signalName, displayObject):
-        pass
+    def LinkSignal(self, signalName, imagePath):
+        displayObject = self.app.findDisplayObject(imagePath)
+        self.acqm.LinkSignal(signalName, displayObject)
 
     def SelectSetup(self, setupName):
         self.acqm.SelectSetup(setupName)

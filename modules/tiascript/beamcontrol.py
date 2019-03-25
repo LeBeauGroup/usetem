@@ -33,9 +33,8 @@ class BeamControl():
         collection = self.app.PositionCollection()
 
         for pos in positions:
-
-            esv_pos = self.app.Position2D(pos[0], pos[1])
-            collection.AddPosition(esv_pos)
+            #esv_pos = self.app.Position2D(pos[0], pos[1])
+            collection.AddPosition(pos[0], pos[1])
 
         self.beamcontrol.LoadPositions(collection)
 
@@ -45,7 +44,7 @@ class BeamControl():
     def PositionCalibrated(self, state=None):
         if state is None:
             return self.beamcontrol.PositionCalibrated
-        else:
+        elif type(state) is bool:
             self.beamcontrol.PositionCalibrated = state
 
     def Reset(self):
@@ -58,6 +57,7 @@ class BeamControl():
     def SetFrameScan(self, scanRange, numPointsX, numPointsY):
 
         range = self.app.Range2D(scanRange[0], scanRange[1],scanRange[2],scanRange[3])
+        print(range.EndY)
         self.beamcontrol.SetFrameScan(range, numPointsX, numPointsY)
 
     def SetLineScan(self, startPoint, endPoint, numPoints):

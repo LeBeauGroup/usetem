@@ -152,3 +152,7 @@ class CcdServer(ParallelImageServer):
 
     def Binning(self):
         self.acqserver.Binning = 2
+
+
+class EmpadServer(ScanningServer):
+    a =2
