@@ -1,5 +1,6 @@
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
+import sys
 
 server_address = 'this should be empad server adress'
 
@@ -12,7 +13,7 @@ if __name__ == "__main__":
 
     import logging
     import numpy as np
-
+    server_ip = sys.argv[1]
     logging.basicConfig(level=logging.INFO)
 
     with xmlrpc.client.ServerProxy(server_address) as prox:
