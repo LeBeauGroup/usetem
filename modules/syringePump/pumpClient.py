@@ -40,3 +40,30 @@ if __name__ == "__main__":
     #add_result, address = multicall()
 
     #proxy.Start()
+
+
+
+
+
+
+
+
+
+
+
+chain.write(b'crate\r')
+
+
+serialPort = '/dev/tty.usbmodemD304001'
+
+chain = Chain(serialPort)
+
+p1 = Pump(chain,address=0)
+
+p1.setVolume(10,'ml')
+
+p1.setflowrate(5,' ml/min')
+
+# chain.write(b'VER\r')
+#
+# t = chain.read(4).decode(
