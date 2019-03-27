@@ -20,11 +20,8 @@ class Pump:
 
     def __init__(self, chain, address=0, name='Pump 11'):
         self.name = name
-        self.serialcon = chain
+        self.serialcon = Chain(chain)
         self.address = '{0:02.0f}'.format(address)
-
-
-
 
     def write(self,command):
         self.serialcon.write(str.encode(command + '\r'))
@@ -38,13 +35,21 @@ class Pump:
     def stop(self):
         self.write('stop')
 
-    def setdiameter(self,diameter):
+    def setDiameter(self,diameter):
 
         self.write('diameter '+str(diameter))
 
-    def setflowrate(self,rate,unit):
+    def setFlowRate(self,rate,unit):
 
         self.write('irate '+str(rate)+' '+unit)
+
+    def time(self, value=None):
+
+        if value is None:
+            pass#return self.write('ttime')
+
+        else:
+            self.write('ttime '+str(value))
 
     def setTime(self,time):
 
