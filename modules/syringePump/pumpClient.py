@@ -1,29 +1,69 @@
-# @Author: abinashkumar
-# @Date:   2019-03-26T18:45:38-04:00
-# @Last modified by:   abinashkumar
-# @Last modified time: 2019-03-27T14:38:33-04:00
-
-
-
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
 
 
 
 if __name__ == "__main__":
-    import pumpy
+    import esvision
+    #from AcquisitionServers import AcquireModes
+
+    from enums import *
+    import pickle
 
     import logging
     import numpy as np
 
     logging.basicConfig(level=logging.INFO)
 
-    prox = xmlrpc.client.ServerProxy("http://10.154.7.25:8000/pump")
+    with xmlrpc.client.ServerProxy("http://172.16.181.144:8001/tia") as prox:
 
-    prox.setFlowRate(100,'ul/min')
-    prox.setVolume(1000,'ul')
-    prox.time(10)
-    prox.infuse()
-    #prox.oppInfuse()
+        #test = pickle.loads(prox.ActiveDisplayWindow(),  encoding='bytes')
+        data = prox.ActiveDisplayWindow().data
 
-    #p1.setVolume(10,'ml')
+        print(pickle.loads(data,encoding='ASCII').name)
+
+    #ESVision.Hardware(4)
+    #esv = ESVision.Application()
+        # esv.AcquisitionManager.SetAcquireAnnnotation((-800e-9,5e-6, 0, 0))
+        #
+        # logging.info(esv.AcquisitionManager.SignalNames())
+        # type = esv.AcquisitionManager.SignalType('EDX')
+
+        #logging.info(f'')
+
+        #esv.AcquisitionManager.UnlinkAllSignals()
+
+    #proxy.Stop()
+    #multicall = MultiCall(proxy)
+    #multicall.AcquisitionManager()
+    #ulticall.Start()
+    #add_result, address = multicall()
+
+    #proxy.Start()
+
+
+
+
+
+
+
+
+
+
+
+chain.write(b'crate\r')
+
+
+serialPort = '/dev/tty.usbmodemD304001'
+
+chain = Chain(serialPort)
+
+p1 = Pump(chain,address=0)
+
+p1.setVolume(10,'ml')
+
+p1.setflowrate(5,' ml/min')
+
+# chain.write(b'VER\r')
+#
+# t = chain.read(4).decode(
