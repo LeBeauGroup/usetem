@@ -2,21 +2,21 @@ import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
 import sys
 
-server_address = 'this should be empad server adress'
+
 
 if __name__ == "__main__":
     # import esvision
     #from AcquisitionServers import AcquireModes
 
-    from enums import *
+
     import pickle
 
     import logging
     import numpy as np
-    server_ip = sys.argv[1]
+
     logging.basicConfig(level=logging.INFO)
 
-    with xmlrpc.client.ServerProxy(server_address) as prox:
+    with xmlrpc.client.ServerProxy('http://172.16.208.147:8001/empad') as prox:
 
         #test = pickle.loads(prox.ActiveDisplayWindow(),  encoding='bytes')
         # data = prox.ActiveDisplayWindow().data
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     #ESVision.Hardware(4)
     #esv = ESVision.Application()
-        prox.AcquisitionManager.SetAcquireAnnotation((-800e-9,5e-6, 0, 0))
+        prox.test('connected')
         #
         # logging.info(esv.AcquisitionManager.SignalNames())
         # type = esv.AcquisitionManager.SignalType('EDX')
