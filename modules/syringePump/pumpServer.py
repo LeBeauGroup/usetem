@@ -16,9 +16,12 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ('/pump',)
 
 # Create server
+for add in pumpAdd:
+    print(add)
+
 
 if __name__ == "__main__":
-    server = SimpleXMLRPCServer(('10.154.7.25', 8000),requestHandler=RequestHandler, allow_none=True)
+    server = SimpleXMLRPCServer(('10.154.28.136', 8000),requestHandler=RequestHandler, allow_none=True)
 
     #with SimpleXMLRPCServer(('10.154.7.25', 8000),requestHandler=RequestHandler, allow_none=True) as server:
     server.register_introspection_functions()

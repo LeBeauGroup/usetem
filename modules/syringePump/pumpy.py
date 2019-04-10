@@ -21,9 +21,9 @@ class Pump:
     def __init__(self, chain, address=0, name='Pump 11'):
         self.name = name
 
-        self.serialcon = [None]*len(chain)
+        self.serialcon = []
         for add in chain:
-            self.serialcon[add] = Chain(chain[add])
+            self.serialcon.append(Chain(add))
 
         self.address = '{0:02.0f}'.format(address)
 
@@ -47,7 +47,7 @@ class Pump:
 
         self.write('irate '+str(rate)+' '+unit,num)
 
-    def time(self, value=None,num):
+    def time(self,value,num):
 
         if value is None:
             pass#return self.write('ttime')

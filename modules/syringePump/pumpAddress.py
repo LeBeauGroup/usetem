@@ -1,6 +1,6 @@
 
-pumpAdd = dict()
+pumpAdd = [None]*2
 
-pumpAdd['1'] = '/dev/tty.usbmodemD304001'
+pumpAdd[0] = '/dev/tty.usbmodemD304001'
 
-pumpAdd['2'] = '/dev/tty.usbmodemC300171'
+pumpAdd[1] = '/dev/tty.usbmodemC300171'
