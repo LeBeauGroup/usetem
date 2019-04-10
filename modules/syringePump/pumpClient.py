@@ -6,15 +6,17 @@
 
 
 import xmlrpc.client
-from xmlrpc.client import MultiCall, Boolean
+#from xmlrpc.client import MultiCall, Boolean
+
+import pumpy
+
+import logging
+import numpy as np
 
 
 
 if __name__ == "__main__":
-    import pumpy
 
-    import logging
-    import numpy as np
 
     logging.basicConfig(level=logging.INFO)
 

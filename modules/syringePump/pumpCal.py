@@ -19,21 +19,21 @@ def pumpCal(par,ratioReq,Rate,time):
 
     rateOH = (1-factor)*Rate
 
-    finalpH = 14-(-np.log10(volRatio*concFe*ratioReq-(3*concFe*rateFe*time)-(concH*rateFe*time)))
+    #finalpH = 14-(-np.log10(volRatio*concFe*ratioReq-(3*concFe*rateFe*time)-(concH*rateFe*time)))
 
-    return rateFe,rateOH,finalpH
-
-
-par = dict()
-par['Fe'] = 0.3 *10**-3
-
-par['OH'] = 4.53*10**-3
-
-par['initialpH'] = 2.25
+    return rateFe,rateOH
 
 
-rateFe,rateOH,finalpH = pumpCal(par,15.2,240,0.5)
-
-rateFe
-
-finalpH
+# par = dict()
+# par['Fe'] = 0.3 *10**-3
+#
+# par['OH'] = 4.53*10**-3
+#
+# par['initialpH'] = 2.25
+#
+#
+# rateFe,rateOH,finalpH = pumpCal(par,15.2,240,0.5)
+#
+# rateFe
+#
+# finalpH

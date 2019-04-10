@@ -20,43 +20,47 @@ class Pump:
 
     def __init__(self, chain, address=0, name='Pump 11'):
         self.name = name
-        self.serialcon = Chain(chain)
+
+        self.serialcon = [None]*len(chain)
+        for add in chain:
+            self.serialcon[add] = Chain(chain[add])
+
         self.address = '{0:02.0f}'.format(address)
 
-    def write(self,command):
-        self.serialcon.write(str.encode(command + '\r'))
+    def write(self,command,num):
+        self.serialcon[num].write(str.encode(command + '\r'))
 
-    def infuse(self):
-        self.write('irun')
+    def infuse(self,num):
+        self.write('irun',num)
 
-    def oppInfuse(self):
-        self.write('rrun')
+    def oppInfuse(self,num):
+        self.write('rrun',num)
 
-    def stop(self):
-        self.write('stop')
+    def stop(self,num):
+        self.write('stop',num)
 
-    def setDiameter(self,diameter):
+    def setDiameter(self,diameter,num):
 
-        self.write('diameter '+str(diameter))
+        self.write('diameter '+str(diameter),num)
 
-    def setFlowRate(self,rate,unit):
+    def setFlowRate(self,rate,unit,num):
 
-        self.write('irate '+str(rate)+' '+unit)
+        self.write('irate '+str(rate)+' '+unit,num)
 
-    def time(self, value=None):
+    def time(self, value=None,num):
 
         if value is None:
             pass#return self.write('ttime')
 
         else:
-            self.write('ttime '+str(value))
+            self.write('ttime '+str(value),num)
 
-    def setTime(self,time):
+    def setTime(self,time,num):
 
         ## here time is in seconds
 
-        self.write('ttime '+str(time))
+        self.write('ttime '+str(time),num)
 
-    def setVolume(self,volume,unit):
+    def setVolume(self,volume,unit,num):
 
-        self.write('tvolume '+str(volume)+' '+unit)
+        self.write('tvolume '+str(volume)+' '+unit,num)
