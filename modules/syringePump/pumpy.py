@@ -1,7 +1,7 @@
 # @Author: abinashkumar
 # @Date:   2019-04-10T17:49:52-04:00
 # @Last modified by:   abinashkumar
-# @Last modified time: 2019-04-10T18:00:00-04:00
+# @Last modified time: 2019-04-11T00:49:43-04:00
 
 
 
@@ -35,22 +35,26 @@ class Pump:
     def write(self,command,num):
         self.serialcon[num].write(str.encode(command + '\r'))
 
-    def infuse(self,num):
-        self.write('irun',num)
+    def syrManu(self,type,volume,unit,num):
 
-    def oppInfuse(self,num):
-        self.write('rrun',num)
+        self.write('syrm'+'['+type+' '+volume+' '+unit,num)
 
-    def stop(self,num):
-        self.write('stop',num)
-
-    def setDiameter(self,diameter,num):
+    def Diameter(self,diameter,num):
 
         self.write('diameter '+str(diameter),num)
 
-    def setFlowRate(self,rate,unit,num):
+    def FlowRate(self,rate,unit,num):
+
+        ### maximum flow rate is 13.2611 ml/min and minimum 12.7699 nl/min
 
         self.write('irate '+str(rate)+' '+unit,num)
+
+
+    def Volume(self,volume,unit,num):
+
+        ### maximum depending on the syringe type
+
+        self.write('tvolume '+str(volume)+' '+unit,num)
 
     def time(self,value,num):
 
@@ -60,12 +64,8 @@ class Pump:
         else:
             self.write('ttime '+str(value),num)
 
-    def setTime(self,time,num):
+    def infuse(self,num):
+        self.write('irun',num)
 
-        ## here time is in seconds
-
-        self.write('ttime '+str(time),num)
-
-    def setVolume(self,volume,unit,num):
-
-        self.write('tvolume '+str(volume)+' '+unit,num)
+    def stop(self,num):
+        self.write('stop',num)
