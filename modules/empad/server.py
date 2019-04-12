@@ -4,25 +4,25 @@ from xmlrpc.server import SimpleXMLRPCRequestHandler
 
 logging.basicConfig(level=logging.INFO)
 
-
 import socket
 
 # Function to display hostname and
 # IP address
-def get_Host_name_IP():
-    try:
-        host_name = socket.gethostname()
-        host_ip = socket.gethostbyname(host_name)
-        #print("IP : ",host_ip)
-    except:
-        print("Unable to get Hostname and IP")
-
-    return host_ip
+# def get_Host_name_IP():
+#     try:
+#         host_name = socket.gethostname()
+#         host_ip = socket.gethostbyname(host_name)
+#         #print("IP : ",host_ip)
+#     except:
+#         print("Unable to get Hostname and IP")
+#
+#     return host_ip
 
 # Driver code
- #Function call
+# Function call
 
 # Restrict to a particular path.
+host_ip = '192.168.6.6'
 
 class EmpadServer():
 
@@ -32,16 +32,16 @@ class EmpadServer():
 
         try:
             ser = serial.Serial(self.serial_address, timeout = 1)
-            ser.write('*RST\r')
-            ser.write(':SOUR:FUNC VOLT\r')
-            ser.write(':SOUR:VOLT:RANG:AUTO 1\r')
-            ser.write(':SOUR:VOLT:LEV 120\r')
-            ser.write(':SENS:CURR:PROT 200E-6\r')
-            ser.write(':SENS:FUNC "CURR"\r')
-            ser.write(':SENS:CURR:RANG:AUTO 1\r')
-            ser.write(':ARM:COUN INF\r')
-            ser.write(':OUTP ON\r')
-            ser.write(':INIT\r')
+            ser.write('*RST\r'.encode())
+            ser.write(':SOUR:FUNC VOLT\r'.encode())
+            ser.write(':SOUR:VOLT:RANG:AUTO 1\r'.encode())
+            ser.write(':SOUR:VOLT:LEV 120\r'.encode())
+            ser.write(':SENS:CURR:PROT 200E-6\r'.encode())
+            ser.write(':SENS:FUNC "CURR"\r'.encode())
+            ser.write(':SENS:CURR:RANG:AUTO 1\r'.encode())
+            ser.write(':ARM:COUN INF\r'.encode())
+            ser.write(':OUTP ON\r'.encode())
+            ser.write(':INIT\r'.encode())
 
             keithley_connected = True
         except:
@@ -49,7 +49,7 @@ class EmpadServer():
 
 
     def connect_to_server(self):
-        server_address = (self.serverpop.ip, int(self.serverpop.port))
+        server_address = ('localhost', int(41234))
         global sock
         global connected
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -65,7 +65,7 @@ class EmpadServer():
         else:
             try:
                 sock.connect(server_address)
-                self.serverpop.connected = True
+                # self.serverpop.connected = True
                 connected = True
                 Send_to_Cam(('ldcmndfile empadstart_p2_01_2017_06_07.cmd\n'))
 
@@ -103,7 +103,7 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 if __name__ == "__main__":
 
-    with SimpleXMLRPCServer(('172.16.208.147', 8001),
+    with SimpleXMLRPCServer((host_ip, 8000),
                             requestHandler=RequestHandler, allow_none=True) as server:
         server.register_introspection_functions()
 
