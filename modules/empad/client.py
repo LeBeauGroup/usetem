@@ -2,7 +2,7 @@ import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
 import sys
 
-server_address = '172.16.208.147'
+
 
 if __name__ == "__main__":
     # import esvision
@@ -13,10 +13,10 @@ if __name__ == "__main__":
 
     import logging
     import numpy as np
-    # server_ip = sys.argv[1]
+    
     logging.basicConfig(level=logging.INFO)
 
-    prox = xmlrpc.client.ServerProxy(server_address)
+    with xmlrpc.client.ServerProxy('http://172.16.208.147:8001/empad') as prox:
 
         #test = pickle.loads(prox.ActiveDisplayWindow(),  encoding='bytes')
         # data = prox.ActiveDisplayWindow().data
@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
     #ESVision.Hardware(4)
     #esv = ESVision.Application()
-    prox.test('connected')
+        prox.test('connected')
         #
         # logging.info(esv.AcquisitionManager.SignalNames())
         # type = esv.AcquisitionManager.SignalType('EDX')
