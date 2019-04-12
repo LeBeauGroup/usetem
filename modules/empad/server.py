@@ -1,8 +1,3 @@
-from comtypes.client import CreateObject, Constants
-#from comtypes.gen import ESVision as
-
-from application import Application
-
 import logging
 from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
@@ -86,31 +81,35 @@ class EmpadServer():
                 self.serverpop.connected = False #need to change to update related attributes
                 connected = False
 
-        def Send_to_Cam(self,msg, recvflag = True):
-            if not connected:
-                raise Exception('NOT CONNECTED')
-                return
-            msg = msg.encode()
+    def Send_to_Cam(self,msg, recvflag = True):
+        if not connected:
+            raise Exception('NOT CONNECTED')
+            return
+        msg = msg.encode()
 
-            sock.sendall(msg)
-            if recvflag:
-                print(sock.recv(4096).decode())
+        sock.sendall(msg)
+        if recvflag:
+            print(sock.recv(4096).decode())
 
-            time.sleep(0.010)
+        time.sleep(0.010)
+
+    def test(self,msg):
+        print(msg)
 
 class RequestHandler(SimpleXMLRPCRequestHandler):
-    rpc_paths = ('/tia',)
+    rpc_paths = ('/empad',)
 
 # Create server
 
 if __name__ == "__main__":
 
-    with SimpleXMLRPCServer((get_Host_name_IP(), 8001),
+    with SimpleXMLRPCServer(('172.16.208.147', 8001),
                             requestHandler=RequestHandler, allow_none=True) as server:
         server.register_introspection_functions()
 
-        camServer = EmpadServer()
-        server.register_instance(camServer, allow_dotted_names=True)
+        test = EmpadServer()
+        test.test('blash')
+        server.register_instance(EmpadServer(), allow_dotted_names=True)
         server.register_multicall_functions()
 
         logging.info('Server registered')
