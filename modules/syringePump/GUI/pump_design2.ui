@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>3</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="tabConnect">
     <attribute name="title">
@@ -1007,7 +1007,7 @@
     <attribute name="title">
      <string>Rate Calculator</string>
     </attribute>
-    <widget class="QPushButton" name="pushButton_7">
+    <widget class="QPushButton" name="pushButtonRatePut">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -1035,26 +1035,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_17">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>190</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_18">
-     <property name="geometry">
-      <rect>
-       <x>230</x>
-       <y>190</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
@@ -1075,11 +1055,11 @@
       <string>Unit</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_16">
+    <widget class="QLineEdit" name="lineEditRateTotal">
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>280</y>
+       <y>260</y>
        <width>113</width>
        <height>20</height>
       </rect>
@@ -1089,7 +1069,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>250</y>
+       <y>230</y>
        <width>81</width>
        <height>21</height>
       </rect>
@@ -1109,7 +1089,7 @@
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>280</y>
+       <y>260</y>
        <width>81</width>
        <height>21</height>
       </rect>
@@ -1128,8 +1108,8 @@
     <widget class="QLabel" name="label_24">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>260</y>
+       <x>20</x>
+       <y>290</y>
        <width>81</width>
        <height>21</height>
       </rect>
@@ -1162,7 +1142,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Pump 1</string>
+      <string>Pump OH</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_19">
@@ -1182,17 +1162,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Pump 0</string>
-     </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="doubleSpinBox">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>90</y>
-       <width>62</width>
-       <height>22</height>
-      </rect>
+      <string>Pump Fe</string>
      </property>
     </widget>
     <widget class="QComboBox" name="comboBox_14">
@@ -1205,7 +1175,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_5">
+    <widget class="QRadioButton" name="radioButtonUnitmMOH">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -1238,7 +1208,7 @@
       <string>Unit</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_2">
+    <widget class="QRadioButton" name="radioButtonUnituMFe">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -1271,7 +1241,7 @@
       <string>Concentration</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_3">
+    <widget class="QRadioButton" name="radioButtonUnitnMFe">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -1284,7 +1254,7 @@
       <string>nM</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_4">
+    <widget class="QRadioButton" name="radioButtonUnituMOH">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -1317,7 +1287,7 @@
       <string>Concentration</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton">
+    <widget class="QRadioButton" name="radioButtonUnitmMFe">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -1330,7 +1300,7 @@
       <string>mM</string>
      </property>
     </widget>
-    <widget class="QRadioButton" name="radioButton_6">
+    <widget class="QRadioButton" name="radioButtonUnitnMOH">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -1343,27 +1313,27 @@
       <string>nM</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_15">
+    <widget class="QLineEdit" name="lineEditPhInt">
      <property name="geometry">
       <rect>
        <x>90</x>
-       <y>250</y>
+       <y>230</y>
        <width>113</width>
        <height>20</height>
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_19">
+    <widget class="QLineEdit" name="lineEditRatioReq">
      <property name="geometry">
       <rect>
-       <x>350</x>
-       <y>260</y>
+       <x>90</x>
+       <y>290</y>
        <width>113</width>
        <height>20</height>
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_9">
+    <widget class="QPushButton" name="pushButtonRateCal">
      <property name="geometry">
       <rect>
        <x>440</x>
@@ -1401,11 +1371,101 @@
       <string>Rate Calculator</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_23">
+    <widget class="QLineEdit" name="lineEditFe">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>190</y>
+       <x>100</x>
+       <y>90</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditOH">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>90</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditRateFe">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>260</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditRateOH">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>260</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>240</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Rate Fe</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>240</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Rate OH</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEditPumpFe">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>290</y>
+       <width>51</width>
+       <height>21</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_33">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>290</y>
        <width>41</width>
        <height>21</height>
       </rect>
@@ -1418,17 +1478,37 @@
       </font>
      </property>
      <property name="text">
-      <string>Rate</string>
+      <string>Pump</string>
      </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+    <widget class="QLineEdit" name="lineEditPumpOH">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>90</y>
-       <width>62</width>
-       <height>22</height>
+       <x>470</x>
+       <y>290</y>
+       <width>51</width>
+       <height>21</height>
       </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_34">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>290</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Pump</string>
      </property>
     </widget>
    </widget>

@@ -11,6 +11,10 @@ from pumpFunctions.pumpAddress import pumpAdd
 from pumpFunctions.pumpClient import pumpConn
 
 from PyQt5.QtWidgets import QTabWidget
+
+from pumpFunctions import pumpCal
+
+import numpy as np
 # pumpMain = pumpConn("http://10.154.28.136:8000/pump")
 # class MyThread(QThread):
 #
@@ -92,6 +96,69 @@ class usePump(QDialog):
         self.pushButtonStopPump.clicked.connect(self.pumpStop)
 
 
+        ### Rate calculator ###
+
+        self.lineEditFe.setText('0.3')
+        self.lineEditOH.setText('4.35')
+
+        self.lineEditPhInt.setText('2.5')
+
+        self.lineEditRatioReq.setText('15.2')
+
+        self.lineEditRateTotal.setText('240')
+
+
+        self.lineEditPumpFe.setText('0')
+
+        self.lineEditPumpOH.setText('1')
+
+
+
+
+
+
+        self.pushButtonRateCal.clicked.connect(self.rateCalculation)
+        self.pushButtonRatePut.clicked.connect(self.putRateVal)
+
+
+
+    def rateCalculation(self):
+
+        param = dict()
+
+        param['Fe'] = np.float(self.lineEditFe.text())
+        param['OH'] = np.float(self.lineEditOH.text())
+
+        param['initialpH'] = np.float(self.lineEditPhInt.text())
+
+        rateFe,rateOH = pumpCal.pumpRate(param,np.float(self.lineEditRatioReq.text()),np.float(self.lineEditRateTotal.text()))
+
+        self.lineEditRateFe.setText(str(np.around(rateFe,2)))
+
+        self.lineEditRateOH.setText(str(np.around(rateOH,2)))
+
+    def putRateVal(self):
+
+        if self.lineEditPumpFe.text()=='0':
+
+            self.lineEditInRate0.setText(self.lineEditRateFe.text())
+
+        else:
+
+            self.lineEditInRate1.setText(self.lineEditRateFe.text())
+
+
+        if self.lineEditPumpOH.text()=='1':
+
+            self.lineEditInRate1.setText(self.lineEditRateOH.text())
+
+        else:
+
+            self.lineEditInRate0.setText(self.lineEditRateOH.text())
+
+
+
+
 
     def pumpRun(self):
 
@@ -167,5 +234,3 @@ app = QApplication(sys.argv)
 ex = usePump()
 ex.show()
 sys.exit(app.exec())
-
-print(PumpMain)

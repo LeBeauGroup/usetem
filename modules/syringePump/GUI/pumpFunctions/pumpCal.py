@@ -7,7 +7,7 @@
 
 import numpy as np
 
-def pumpRate(par,ratioReq,Rate,time):
+def pumpRate(par,ratioReq,Rate):
 
     concFe = par['Fe']
 
