@@ -11,8 +11,7 @@ from pumpFunctions.pumpAddress import pumpAdd
 from pumpFunctions.pumpClient import pumpConn
 
 from PyQt5.QtWidgets import QTabWidget
-pumpMain = pumpConn("http://10.154.28.136:8000/pump")
-
+# pumpMain = pumpConn("http://10.154.28.136:8000/pump")
 # class MyThread(QThread):
 #
 #     signal = pyqtSignal('PyQt_PyObject')
@@ -23,8 +22,7 @@ pumpMain = pumpConn("http://10.154.28.136:8000/pump")
 
     #def run(self):
 
-
-
+#pumpMain = pumpy.Pump(pumpAdd)
 
 class usePump(QDialog):
 
@@ -36,7 +34,8 @@ class usePump(QDialog):
 
         self.setWindowTitle('usePump')
 
-        #### For Tab Pump Connect
+################ For Tab Pump Connect #################
+
         self.radioButtonLocal.setChecked(True)
 
         self.lineEditIP.setText("http://10.154.28.136:8000/pump")
@@ -47,21 +46,23 @@ class usePump(QDialog):
 
     def pumpConnection(self):
 
-        if self.radioButtonLocal.isChecked == True:
+        if self.radioButtonLocal.isChecked() == True:
 
             pumpMain = pumpy.Pump(pumpAdd)
 
-            self.labelMessage.setText('Pump is connected through Server')
+            self.labelMessage.setText('Pump is connected Locally')
 
-        elif self.radioButtonServer.isChecked == True:
+        elif self.radioButtonServer.isChecked() == True:
 
             pumpMain = pumpConn(self.lineEditIP.text())
 
-            self.labelMessage.setText('Pump is connected Locally')
+            self.labelMessage.setText('Pump is connected through Server')
 
         else:
 
             self.labelMessage.setText('No Connection')
+
+#########
 
 
 
