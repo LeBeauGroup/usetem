@@ -56,13 +56,16 @@ class Pump:
 
         self.write('tvolume '+str(volume)+' '+unit,num)
 
-    def time(self,value,num):
+    def Time(self,value,num):
 
-        if value is None:
-            pass#return self.write('ttime')
 
-        else:
-            self.write('ttime '+str(value),num)
+        self.write('ttime '+str(value),num)
+
+        # if value is None:
+        #     pass#return self.write('ttime')
+        #
+        # else:
+
 
     def infuse(self,num):
         self.write('irun',num)

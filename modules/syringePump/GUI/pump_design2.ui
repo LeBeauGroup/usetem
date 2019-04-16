@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="tabConnect">
     <attribute name="title">
@@ -175,7 +175,7 @@
       <string>Infuse Flow Rate</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_5">
+    <widget class="QComboBox" name="comboBoxTimeSet1">
      <property name="geometry">
       <rect>
        <x>500</x>
@@ -185,7 +185,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_2">
+    <widget class="QCheckBox" name="checkBoxPump1">
      <property name="geometry">
       <rect>
        <x>430</x>
@@ -205,7 +205,7 @@
       <string>Pump 1</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_9">
+    <widget class="QLineEdit" name="lineEditVolume1">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -215,7 +215,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_3">
+    <widget class="QComboBox" name="comboBoxVolumeSetUnit0">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -275,7 +275,7 @@
       <string>Total Time</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_2">
+    <widget class="QComboBox" name="comboBoxInRate1">
      <property name="geometry">
       <rect>
        <x>500</x>
@@ -285,7 +285,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_6">
+    <widget class="QComboBox" name="comboBoxVolumeSetUnit1">
      <property name="geometry">
       <rect>
        <x>500</x>
@@ -315,7 +315,7 @@
       <string>Target Volume</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_8">
+    <widget class="QComboBox" name="comboBoxVolUnit0">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -335,7 +335,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="lineEditTimeSet0">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -345,7 +345,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="lineEditVolumeSet1">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -355,7 +355,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="lineEditTimeSet1">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -405,7 +405,7 @@
       <string>Volume</string>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_10">
+    <widget class="QComboBox" name="comboBoxVolUnit1">
      <property name="geometry">
       <rect>
        <x>500</x>
@@ -455,7 +455,7 @@
       <string>Diameter</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox">
+    <widget class="QCheckBox" name="checkBoxPump0">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -485,17 +485,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_10">
-     <property name="geometry">
-      <rect>
-       <x>370</x>
-       <y>110</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_8">
+    <widget class="QLineEdit" name="lineEditVolume0">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -505,7 +495,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox_4">
+    <widget class="QComboBox" name="comboBoxTimeSet0">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -515,7 +505,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="lineEditVolumeSet0">
      <property name="geometry">
       <rect>
        <x>130</x>
@@ -525,7 +515,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="comboBoxInRate0">
      <property name="geometry">
       <rect>
        <x>260</x>
@@ -535,7 +525,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="lineEditInRate1">
      <property name="geometry">
       <rect>
        <x>370</x>
@@ -545,13 +535,23 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="lineEditInRate0">
      <property name="geometry">
       <rect>
        <x>130</x>
        <y>180</y>
        <width>113</width>
        <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_17">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>110</y>
+       <width>111</width>
+       <height>21</height>
       </rect>
      </property>
     </widget>
@@ -831,7 +831,7 @@
       <string>Pump and Acquire</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_8">
+    <widget class="QCheckBox" name="checkBoxPumpState0">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -851,7 +851,7 @@
       <string>Pump 0</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="checkBox_9">
+    <widget class="QCheckBox" name="checkBoxPumpState1">
      <property name="geometry">
       <rect>
        <x>360</x>
@@ -871,7 +871,7 @@
       <string>Pump 1</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="pushButtonStartPump">
      <property name="geometry">
       <rect>
        <x>90</x>
@@ -884,7 +884,7 @@
       <string>Start</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="pushButtonStopPump">
      <property name="geometry">
       <rect>
        <x>250</x>
@@ -1478,9 +1478,9 @@
    <property name="geometry">
     <rect>
      <x>40</x>
-     <y>380</y>
+     <y>410</y>
      <width>181</width>
-     <height>81</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
