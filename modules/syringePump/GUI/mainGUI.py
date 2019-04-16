@@ -99,7 +99,7 @@ class usePump(QDialog):
         ### Rate calculator ###
 
         self.lineEditFe.setText('0.3')
-        self.lineEditOH.setText('4.35')
+        self.lineEditOH.setText('4.53')
 
         self.lineEditPhInt.setText('2.5')
 
@@ -111,6 +111,12 @@ class usePump(QDialog):
         self.lineEditPumpFe.setText('0')
 
         self.lineEditPumpOH.setText('1')
+
+        self.radioButtonUnitmMFe.setChecked(True)
+
+        self.radioButtonUnitmMOH.setChecked(True)
+
+        self.comboBoxRatetotalUnit.addItems(["ml/hr","ml/min","ml/sec","ul/hr","ul/min","ul/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
 
 
 
@@ -124,10 +130,27 @@ class usePump(QDialog):
 
     def rateCalculation(self):
 
+        if self.radioButtonUnitmMFe.isChecked() == True:
+            factorFe = 3
+        elif self.radioButtonUnituMFe.isChecked() == True:
+            factorFe  = 6
+        elif self.radioButtonUnitnMFe.isChecked() == True:
+            factorFe = 9
+
+
+        if self.radioButtonUnitmMOH.isChecked() == True:
+            factorOH = 3
+        elif self.radioButtonUnituMOH.isChecked() == True:
+            factorOH  = 6
+        elif self.radioButtonUnitnMOH.isChecked() == True:
+            factorOH = 9
+
+
+
         param = dict()
 
-        param['Fe'] = np.float(self.lineEditFe.text())
-        param['OH'] = np.float(self.lineEditOH.text())
+        param['Fe'] = np.float(self.lineEditFe.text())*10**(-1*factorFe)
+        param['OH'] = np.float(self.lineEditOH.text())*10**(-1*factorOH)
 
         param['initialpH'] = np.float(self.lineEditPhInt.text())
 
@@ -138,6 +161,9 @@ class usePump(QDialog):
         self.lineEditRateOH.setText(str(np.around(rateOH,2)))
 
     def putRateVal(self):
+
+        self.comboBoxInRate0.setCurrentIndex(self.comboBoxRatetotalUnit.currentIndex())
+        self.comboBoxInRate1.setCurrentIndex(self.comboBoxRatetotalUnit.currentIndex())
 
         if self.lineEditPumpFe.text()=='0':
 
@@ -155,6 +181,10 @@ class usePump(QDialog):
         else:
 
             self.lineEditInRate0.setText(self.lineEditRateOH.text())
+
+
+
+
 
 
 

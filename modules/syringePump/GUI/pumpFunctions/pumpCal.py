@@ -17,13 +17,20 @@ def pumpRate(par,ratioReq,Rate):
 
     concH = 10**(-pH)
 
-    volRatio = ((ratioReq*concFe)+concH)/concOH
+    if ratioReq >= 4:
 
-    factor = 1/(1+volRatio)
+        volRatio = ((ratioReq*concFe)+concH)/concOH
 
-    rateFe = factor*Rate
 
-    rateOH = (1-factor)*Rate
+
+        factor = 1/(1+volRatio)
+
+        rateFe = factor*Rate
+
+        rateOH = (1-factor)*Rate
+
+
+
 
     #finalpH = 14-(-np.log10(volRatio*concFe*ratioReq-(3*concFe*rateFe*time)-(concH*rateFe*time)))
 
