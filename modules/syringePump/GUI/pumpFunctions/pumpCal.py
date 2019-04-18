@@ -17,17 +17,18 @@ def pumpRate(par,ratioReq,Rate):
 
     concH = 10**(-pH)
 
-    if ratioReq >= 4:
+    # if ratioReq >= 4:
+    #
+    #     volRatio = ((ratioReq*concFe)+concH)/concOH
+    volRatio = (ratioReq*concFe)/concOH
 
-        volRatio = ((ratioReq*concFe)+concH)/concOH
 
 
+    factor = 1/(1+volRatio)
 
-        factor = 1/(1+volRatio)
+    rateFe = factor*Rate
 
-        rateFe = factor*Rate
-
-        rateOH = (1-factor)*Rate
+    rateOH = (1-factor)*Rate
 
 
 
