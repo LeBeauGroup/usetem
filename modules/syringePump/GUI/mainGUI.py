@@ -15,6 +15,14 @@ from PyQt5.QtWidgets import QTabWidget
 from pumpFunctions import pumpCal
 
 import numpy as np
+
+ratioOH_FE = np.load('titration/ratioOH_FE.npy')
+pHOH_FE = np.load('titration/pHOH_FE.npy')
+
+ratioOH_FEAS = np.load('titration/ratioOH_FEAS.npy')
+pHOH_FEAS = np.load('titration/pHOH_FEAS.npy')
+
+
 # pumpMain = pumpConn("http://10.154.28.136:8000/pump")
 # class MyThread(QThread):
 #
@@ -62,13 +70,13 @@ class usePump(QDialog):
         self.comboBoxVolUnit0.addItem("ml")
 
         self.lineEditInRate0.setText('5')
-        self.comboBoxInRate0.addItems(["ml/hr","ml/min","ml/sec","ul/hr","ul/min","ul/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
+        self.comboBoxInRate0.addItems(["ul/hr","ul/min","ul/sec","ml/hr","ml/min","ml/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
 
         self.lineEditVolumeSet0.setText('5')
         self.comboBoxVolumeSetUnit0.addItems(["ml","ul","nl","pl"])
 
         self.lineEditTimeSet0.setText('5')
-        self.comboBoxTimeSet0.addItems(["sec"])
+        self.comboBoxTimeSet0.addItems(["min","hr","sec"])
 
 
         ## for pump 1
@@ -77,13 +85,13 @@ class usePump(QDialog):
         self.comboBoxVolUnit1.addItem("ml")
 
         self.lineEditInRate1.setText('5')
-        self.comboBoxInRate1.addItems(["ml/hr","ml/min","ml/sec","ul/hr","ul/min","ul/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
+        self.comboBoxInRate1.addItems(["ul/hr","ul/min","ul/sec","ml/hr","ml/min","ml/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
 
         self.lineEditVolumeSet1.setText('5')
         self.comboBoxVolumeSetUnit1.addItems(["ml","ul","nl","pl"])
 
         self.lineEditTimeSet1.setText('5')
-        self.comboBoxTimeSet1.addItems(["sec"])
+        self.comboBoxTimeSet1.addItems(["min","hr","sec"])
 
 
 
@@ -116,7 +124,7 @@ class usePump(QDialog):
 
         self.radioButtonUnitmMOH.setChecked(True)
 
-        self.comboBoxRatetotalUnit.addItems(["ml/hr","ml/min","ml/sec","ul/hr","ul/min","ul/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
+        self.comboBoxRatetotalUnit.addItems(["ul/hr","ul/min","ul/sec","ml/hr","ml/min","ml/sec","nl/hr","nl/min","nl/sec","pl/hr","pl/min","pl/sec"])
 
 
 
@@ -155,6 +163,21 @@ class usePump(QDialog):
         param['initialpH'] = np.float(self.lineEditPhInt.text())
 
         rateFe,rateOH = pumpCal.pumpRate(param,np.float(self.lineEditRatioReq.text()),np.float(self.lineEditRateTotal.text()))
+
+        ratio = np.around(np.float(self.lineEditRatioReq.text()),2)
+
+        if self.checkBoxpHAsCal.isChecked() == True:
+
+            tempNum = np.where(np.array(ratioOH_FEAS)==ratio)
+
+            self.lineEditpHCal.setText(str(np.around(pHOH_FEAS[tempNum[0][0]],2)))
+
+        else:
+
+            tempNum = np.where(np.array(ratioOH_FE)==ratio)
+
+            self.lineEditpHCal.setText(str(np.around(pHOH_FE[tempNum[0][0]],2)))
+
 
         self.lineEditRateFe.setText(str(np.around(rateFe,2)))
 
@@ -198,7 +221,19 @@ class usePump(QDialog):
 
             self.pumpMain.FlowRate(self.lineEditInRate0.text(),self.comboBoxInRate0.currentText(),num)
             self.pumpMain.Volume(self.lineEditVolumeSet0.text(),self.comboBoxVolumeSetUnit0.currentText(),num)
-            self.pumpMain.Time(self.lineEditTimeSet0.text(),num)
+
+            if self.comboBoxTimeSet1.currentText() == "sec":
+                factorTime = 1
+            elif self.comboBoxTimeSet1.currentText() == "min":
+
+                factorTime = 60
+
+            elif  self.comboBoxTimeSet1.currentText() == "hr":
+
+                factorTime = 3600
+
+
+            self.pumpMain.Time(str(np.float(self.lineEditTimeSet0.text())*factorTime),num)
 
             self.pumpMain.infuse(num)
 
