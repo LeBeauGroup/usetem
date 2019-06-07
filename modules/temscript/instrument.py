@@ -15,6 +15,7 @@ from gun import Gun
 from stage import Stage
 
 class Instrument():
+    
     instrument = CreateObject("TEMScripting.Instrument.1")
 
     acquisition = Acquisition(instrument)

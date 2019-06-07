@@ -5,8 +5,8 @@ import PIL
 #import matplotlib.pyplot
 import temscript
 
-from pywinauto import mouse,keyboard
-from pywinauto.application import Application as app
+#from pywinauto import mouse,keyboard
+#from pywinauto.application import Application as app
 
 
 class UseTem:
