@@ -39,11 +39,24 @@ class STEMDetectors():
             self._detectors.AcqParams.Binning = value
 
     def item(self, index):
-        self._detectors.Item(index)
+        selectedDet = self._detectors.Item(index)
+
+        converted = dict()
+        converted['index'] = index
+        converted['name'] = selectedDet.Info.Name
+        converted['brightness'] = selectedDet.Info.Brightness
+        converted['contrast'] = selectedDet.Info.Contrast
+        with safearray_as_ndarray:
+            binnings = selectedDet.Info.Binnings
+
+        converted['binnings'] = binnings.tolist()
+
+        return converted
+
 
     # def acqParams():
     #
     #     return self._detectors.AcqParams
 
     def count(self):
-        return self._detectors.Count()
+        return self._detectors.Count

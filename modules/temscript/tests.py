@@ -17,9 +17,10 @@ if __name__ == "__main__":
     # instrument.acquisition.stemDetectors.setMaxFrameSize(AcqMaxFrame.Full)
 
     pos = utilities.positionDict(1e-6,1e-5,1e-5, 0, 0)
-    print(instrument.stage.goto(pos, 1|2|3))
+    #print(instrument.stage.goto(pos, 1|2|3))
 
-    print(instrument.acquisition.stemDetectors.dwellTime())
+
+    print(instrument.acquisition.stemDetectors())
 
     #print(instrument.vacuum.runBufferCycle())
     instrument.projection.mode(ProjMode.Imaging.value)
