@@ -30,6 +30,7 @@ class Acquisition():
         outImages = list()
 
         for image in images:
+            #print('converting')
             with safearray_as_ndarray:
                 converted = image.AsSafeArray
 
