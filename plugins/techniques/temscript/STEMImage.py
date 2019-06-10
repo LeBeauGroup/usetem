@@ -22,6 +22,11 @@ class ISTEMImage(ITechniquePlugin):
 		stem.dwellTime(detectorInfo['dwellTime'])
 		stem.imageSize(detectorInfo['imageSize'])
 
+	def scanRotation(self,value):
+
+		self.client.illumination.stemRotation(value)
+
+
 
 	def acquire(self):
 
