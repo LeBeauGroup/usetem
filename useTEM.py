@@ -65,4 +65,10 @@ if __name__ == '__main__':
 
 		plugins[pluginInfo.name] = plugin
 
-	plugins['temscript'].techniques['STEMImage'].acquire()
+
+	detectorInfo = {'dwellTime': 0.5e-6, 'binning':4, 'imageSize':0,'names':['HAADF']}
+	plugins['temscript'].techniques['STEMImage'].setupAcquisition(detectorInfo)
+
+	for _ in range(10):
+		plugins['temscript'].techniques['STEMImage'].acquire()
+
