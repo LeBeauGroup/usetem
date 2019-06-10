@@ -4,13 +4,14 @@ from xmlrpc.client import MultiCall, Boolean
 import os 
 from yapsy.PluginManager import PluginManager
 
-techniques_path = os.path.dirname(os.path.abspath(__file__))+'/techniques/temscript'
 
-class ITemscriptPlugin(IControlPlugin):
+class ITEMscriptPlugin(IControlPlugin):
 
-	client = None
+	client = None # server proxy or direct local comtypes
 
 	def	start_connection(self, address):
+
+		techniques_path = os.path.dirname(os.path.abspath(__file__))+'/techniques/temscript'
 
 		if address == 'local':
 			from useTEM.modules.temscript.instrument import Instrument
@@ -18,8 +19,14 @@ class ITemscriptPlugin(IControlPlugin):
 			self.client = Instrument()
 
 		else:
+			print(address)
 			self.client = xmlrpc.client.ServerProxy(address)
 
-		# for technique in self.techniques:
-		# 	print(technique)
-		# 	technique.client = self.client
+
+		for key, value in self.techniques.items():
+		 	#print(technique)
+
+		 	updated = self.techniques[key] 	
+		 	updated.client = self.client
+
+		 	value.client = self.client

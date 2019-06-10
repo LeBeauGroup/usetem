@@ -26,6 +26,7 @@ class IControlPlugin(IPlugin):
 			# Get the object and store in dictionary
 			self.techniques[pluginInfo.name] = pluginInfo.plugin_object
 			print(pluginInfo.name)
+			
 
 class IWorkflow(IPlugin):
 	pass
