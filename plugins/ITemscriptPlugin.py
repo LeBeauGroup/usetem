@@ -1,7 +1,7 @@
 from useTEM.pluginTypes import IControlPlugin
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
-import os 
+import os
 from yapsy.PluginManager import PluginManager
 
 
@@ -9,7 +9,7 @@ class ITEMscriptPlugin(IControlPlugin):
 
 	client = None # server proxy or direct local comtypes
 	name = None
-	moduleName = 'useTEM.modules.temscript.instrument.Instrument'
+	moduleName = 'useTEM.modules.temscript.instrument'
 
 	def activate(self):
 		print('activating')
@@ -21,8 +21,8 @@ class ITEMscriptPlugin(IControlPlugin):
 		if address == 'local':
 			import importlib
 
-			Instrument = importlib.import_module(self.moduleName)
-			self.client = Instrument()
+			module = importlib.import_module(self.moduleName)
+			self.client = module.Instrument()
 
 		else:
 			print(address)
@@ -32,7 +32,7 @@ class ITEMscriptPlugin(IControlPlugin):
 		for key, value in self.techniques.items():
 		 	#print(technique)
 
-		 	updated = self.techniques[key] 	
+		 	updated = self.techniques[key]
 		 	updated.client = self.client
 
 		 	value.client = self.client
