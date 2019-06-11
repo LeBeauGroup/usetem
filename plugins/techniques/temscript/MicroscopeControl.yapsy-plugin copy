@@ -1,0 +1,9 @@
+[Core]
+Name = MicroscopeControl
+Module = MicroscopeControl
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Microscope control with TEM Script

@@ -30,11 +30,9 @@ class ISTEMImage(ITechniquePlugin):
 
 	def acquire(self):
 
-		acq = self.client.acquisition
-				
-		capturedImage = pickle.loads(acq.acquireImages().data)[0]
-		
-		return capturedImage
+		acq = self.client.acquisition		
+		im = pickle.loads(acq.acquireImages().data)[0]
+		print('acquired')
 
 	def acquireSeries(self,numFrames):
 

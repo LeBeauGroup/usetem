@@ -8,14 +8,20 @@ from yapsy.PluginManager import PluginManager
 class ITEMscriptPlugin(IControlPlugin):
 
 	client = None # server proxy or direct local comtypes
+	name = None
+	moduleName = 'useTEM.modules.temscript.instrument.Instrument'
+
+	def activate(self):
+		print('activating')
 
 	def	start_connection(self, address):
 
-		techniques_path = os.path.dirname(os.path.abspath(__file__))+'/techniques/temscript'
+		techniques_path = os.path.dirname(os.path.abspath(__file__))+'/techniques/'+self.name
 
 		if address == 'local':
-			from useTEM.modules.temscript.instrument import Instrument
+			import importlib
 
+			Instrument = importlib.import_module(self.moduleName)
 			self.client = Instrument()
 
 		else:
