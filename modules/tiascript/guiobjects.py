@@ -1,4 +1,4 @@
-import application
+from .application import *
 from comtypes.gen import ESVision
 import numpy as np
 import ctypes

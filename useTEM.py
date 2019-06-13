@@ -17,7 +17,7 @@ path = os.path.dirname(os.path.abspath(__file__))
 # 	plugins = dict()
 
 # 	for pluginInfo in pluginManager.getPluginsOfCategory('Control'):
-				
+
 # 		pluginManager.activatePluginByName(pluginInfo.name)
 
 # 		address = pluginInfo.details['Documentation']['ServerAddress']
@@ -60,7 +60,7 @@ if __name__ == '__main__':
 	# ip = 'http://localhost:8001/'
 
 	# # setup for later calling from
-	
+
 
 	# # Activate all loaded plugins
 	# #pluginManager.locatePlugins()
@@ -73,16 +73,16 @@ if __name__ == '__main__':
 
 	plugins = plugm.availablePlugins()
 
-
+	#print(plugins['temscript'].techniques)
 	detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'imageSize':0,'names':['HAADF']}
 	plugins['temscript'].techniques['STEMImage'].setupAcquisition(detectorInfo)
 
+
 	im = [None]*10
 	for i in range(10):
-		
+
 		rot = i*90
 		plugins['temscript'].techniques['STEMImage'].scanRotation(rot)
-		im[i] = plugins['temscript'].techniques['STEMImage'].acquire()
+		im[i] = plugins['tiascript'].techniques['STEMImage'].acquire()
 
 	# save file here
-

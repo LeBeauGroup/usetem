@@ -1,6 +1,6 @@
 import logging
-from enums import *
-import application
+from .enums import *
+from .application import *
 
 
 logging.basicConfig(level=logging.INFO)

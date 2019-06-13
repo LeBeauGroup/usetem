@@ -1,32 +1,12 @@
-from yapsy.IPlugin import IPlugin
+import yapsy.IPlugin as plugin
+
 from yapsy.PluginManager import PluginManager
 
-
-class ITechniquePlugin(IPlugin):
+class ITechniquePlugin(plugin.IPlugin):
 	pass
 
-class IControlPlugin(IPlugin):
-	
-	techniques = dict()
-	
-	def loadTechniques(self,techniquesPath):
-		
-		categories = {'Control' : IControlPlugin,
-   		'Technique' : ITechniquePlugin}
-		# Build the manager, set load location, and then collect them
+class IControlPlugin(plugin.IPlugin):
+	pass
 
-		pluginManager = PluginManager(categories_filter=categories)
-		pluginManager.setPluginPlaces([techniquesPath])
-
-		pluginManager.locatePlugins()
-		pluginManager.loadPlugins()
-
-		for pluginInfo in pluginManager.getPluginsOfCategory('Technique'):	
-
-			# Get the object and store in dictionary
-			self.techniques[pluginInfo.name] = pluginInfo.plugin_object
-			print(pluginInfo.name)
-			
-
-class IWorkflow(IPlugin):
+class IWorkflow(plugin.IPlugin):
 	pass

@@ -1,6 +1,6 @@
 import logging
-import enums
-import application
+from .enums import *
+from .application import *
 import comtypes
 
 
@@ -9,7 +9,6 @@ logging.basicConfig(level=logging.INFO)
 class BeamControl():
 
     def __init__(self, app):
-
         self.app = app
         self.beamcontrol = self.app.BeamControl()
 

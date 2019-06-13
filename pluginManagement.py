@@ -1,6 +1,6 @@
 
 from yapsy.PluginManager import PluginManager
-import useTEM.pluginTypes as types
+import useTEM.pluginTypes as pluginTypes
 import os
 path = os.path.dirname(os.path.abspath(__file__))
 
@@ -10,7 +10,7 @@ def startupPlugins(pluginManager):
 	plugins = dict()
 
 	for pluginInfo in pluginManager.getPluginsOfCategory('Control'):
-				
+
 		pluginManager.activatePluginByName(pluginInfo.name)
 
 		address = pluginInfo.details['Documentation']['ServerAddress']
@@ -26,14 +26,11 @@ def startupPlugins(pluginManager):
 		else:
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
 
-		print(connectionAddress)
-
-		techniquesPath = path+'/plugins/techniques/'+pluginInfo.name
-		print(techniquesPath)
-
+		techniquesPath = path+'\\plugins\\techniques\\'+pluginInfo.name
 		plugin.loadTechniques(techniquesPath)
-		plugin.start_connection(connectionAddress)
 
+		plugin.start_connection(connectionAddress)
+		print('finished loading:' + pluginInfo.name)
 		plugins[pluginInfo.name] = plugin
 
 	return plugins
@@ -41,24 +38,17 @@ def startupPlugins(pluginManager):
 def availablePlugins():
 
 	# setup the categories
-	
-	categories = {'Control' : types.IControlPlugin,
-   		'Technique' : types.ITechniquePlugin}
+
+	categories = {'Control' : pluginTypes.IControlPlugin,
+   		'Technique' : pluginTypes.ITechniquePlugin}
 
 
 	# Build the manager, set load location, and then collect them
 
 	pluginManager = PluginManager(categories_filter=categories)
-	pluginManager.setPluginPlaces([path+'/plugins'])
-
-
-	#ip = 'http://172.16.181.144:8001/'
-	ip = 'http://localhost:8001/'
-
+	pluginManager.updatePluginPlaces([path+'\\plugins'])
 
 	pluginManager.locatePlugins()
 	pluginManager.loadPlugins()
 
 	return startupPlugins(pluginManager)
-
-

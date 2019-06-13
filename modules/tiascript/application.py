@@ -4,15 +4,15 @@ from comtypes.client import CreateObject, Constants
 from xmlrpc.client import Binary
 import xmlrpc.client
 
-import acquisitionservers
-import beamcontrol
-from guiobjects import *
-from acquistionManager import *
-from microscope import *
+from .acquisitionservers import *
+from .beamcontrol import *
+from .guiobjects import *
+from .acquistionManager import *
+from .microscope import *
 from comtypes.safearray import safearray_as_ndarray
 
 import logging
-import enums
+from .enums import *
 import pickle
 import numpy as np
 import ctypes
@@ -30,11 +30,11 @@ class Application():
     app = CreateObject("ESVision.Application")
 
 
-    AcquisitionManager = AcquisitionManager(app)
-    ScanningServer = acquisitionservers.ScanningServer(app)
-    BeamControl = beamcontrol.BeamControl(app)
-    Microscope = Microscope(app)
-    CcdServer = acquisitionservers.CcdServer(app)
+    acquisitionManager = AcquisitionManager(app)
+    scanningServer = ScanningServer(app)
+    beamControl = BeamControl(app)
+    microscope = Microscope(app)
+    ccdServer = CcdServer(app)
     objectDisplays = dict()
 
     _activeDisplayWindow = None
@@ -72,7 +72,7 @@ class Application():
 
         win = self.app.activeDisplayWindow()
 
-        
+
         realDisp = win.AddDisplay(subName, ESVision.esImageDisplay, ESVision.esImageDisplayType, ESVision.esSplitRight, 0);
 
         realDisp.Visible = False
