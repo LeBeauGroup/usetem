@@ -11,27 +11,6 @@ class ITIAscriptPlugin(pluginTypes.IControlPlugin):
 	name = None
 	moduleName = 'useTEM.modules.tiascript.application'
 
-	techniques = dict()
-
-	def loadTechniques(self,techniquesPath):
-
-		categories = {'Control' : pluginTypes.IControlPlugin,
-   		'Technique' : pluginTypes.ITechniquePlugin}
-		# Build the manager, set load location, and then collect them
-
-		pm = PluginManager()
-		pm.updatePluginPlaces([techniquesPath])
-		pm.collectPlugins()
-
-		#print(pm.getAllPlugins())
-		#getPluginsOfCategory('Technique')
-
-		for pluginInfo in pm.getAllPlugins():
-			print('loading '+ pluginInfo.name + ' for: ' + self.name)
-			# Get the object and store in dictionary
-
-			self.techniques[pluginInfo.name] = pluginInfo.plugin_object
-
 	def activate(self):
 		print('activating')
 
@@ -50,7 +29,6 @@ class ITIAscriptPlugin(pluginTypes.IControlPlugin):
 
 		for key, value in self.techniques.items():
 		 	#print(technique)
-			print('This is a key:' + key)
 
 			updated = self.techniques[key]
 			updated.client = self.client
