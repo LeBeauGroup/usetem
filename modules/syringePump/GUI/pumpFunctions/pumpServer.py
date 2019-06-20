@@ -5,8 +5,8 @@
 
 
 
-import pumpy
-from pumpAddress import pumpAdd
+from pumpFunctions import pumpy
+from pumpFunctions.pumpAddress import pumpAdd
 
 import logging
 from xmlrpc.server import SimpleXMLRPCServer
@@ -27,7 +27,7 @@ for add in pumpAdd:
 
 
 if __name__ == "__main__":
-    server = SimpleXMLRPCServer(('10.154.28.136', 8000),requestHandler=RequestHandler, allow_none=True)
+    server = SimpleXMLRPCServer(('10.154.50.6', 8000),requestHandler=RequestHandler, allow_none=True)
 
     #with SimpleXMLRPCServer(('10.154.7.25', 8000),requestHandler=RequestHandler, allow_none=True) as server:
     server.register_introspection_functions()

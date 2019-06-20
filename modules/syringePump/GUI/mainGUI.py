@@ -107,7 +107,7 @@ class usePump(QDialog):
         ### Rate calculator ###
 
         self.lineEditFe.setText('0.3')
-        self.lineEditOH.setText('4.53')
+        self.lineEditOH.setText('4.56')
 
         self.lineEditPhInt.setText('2.5')
 
@@ -166,17 +166,17 @@ class usePump(QDialog):
 
         ratio = np.around(np.float(self.lineEditRatioReq.text()),2)
 
-        if self.checkBoxpHAsCal.isChecked() == True:
-
-            tempNum = np.where(np.array(ratioOH_FEAS)==ratio)
-
-            self.lineEditpHCal.setText(str(np.around(pHOH_FEAS[tempNum[0][0]],2)))
-
-        else:
-
-            tempNum = np.where(np.array(ratioOH_FE)==ratio)
-
-            self.lineEditpHCal.setText(str(np.around(pHOH_FE[tempNum[0][0]],2)))
+        # if self.checkBoxpHAsCal.isChecked() == True:
+        #
+        #     tempNum = np.where(np.array(ratioOH_FEAS)==ratio)
+        #
+        #     self.lineEditpHCal.setText(str(np.around(pHOH_FEAS[tempNum[0][0]],2)))
+        #
+        # else:
+        #
+        #     tempNum = np.where(np.array(ratioOH_FE)==ratio)
+        #
+        #     self.lineEditpHCal.setText(str(np.around(pHOH_FE[tempNum[0][0]],2)))
 
 
         self.lineEditRateFe.setText(str(np.around(rateFe,2)))
@@ -222,13 +222,13 @@ class usePump(QDialog):
             self.pumpMain.FlowRate(self.lineEditInRate0.text(),self.comboBoxInRate0.currentText(),num)
             self.pumpMain.Volume(self.lineEditVolumeSet0.text(),self.comboBoxVolumeSetUnit0.currentText(),num)
 
-            if self.comboBoxTimeSet1.currentText() == "sec":
+            if self.comboBoxTimeSet0.currentText() == "sec":
                 factorTime = 1
-            elif self.comboBoxTimeSet1.currentText() == "min":
+            elif self.comboBoxTimeSet0.currentText() == "min":
 
                 factorTime = 60
 
-            elif  self.comboBoxTimeSet1.currentText() == "hr":
+            elif  self.comboBoxTimeSet0.currentText() == "hr":
 
                 factorTime = 3600
 
@@ -246,7 +246,18 @@ class usePump(QDialog):
 
             self.pumpMain.FlowRate(self.lineEditInRate1.text(),self.comboBoxInRate1.currentText(),num)
             self.pumpMain.Volume(self.lineEditVolumeSet1.text(),self.comboBoxVolumeSetUnit1.currentText(),num)
-            self.pumpMain.Time(self.lineEditTimeSet1.text(),num)
+            if self.comboBoxTimeSet1.currentText() == "sec":
+                factorTime = 1
+            elif self.comboBoxTimeSet1.currentText() == "min":
+
+                factorTime = 60
+
+            elif  self.comboBoxTimeSet1.currentText() == "hr":
+
+                factorTime = 3600
+
+
+            self.pumpMain.Time(str(np.float(self.lineEditTimeSet1.text())*factorTime),num)
             self.pumpMain.infuse(num)
 
     def pumpStop(self):
