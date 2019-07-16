@@ -1,0 +1,14 @@
+[Core]
+Name = temscript
+Module = ITemscriptPlugin
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Control interface for TEM Scripting
+Type = Control
+ServerPrefix = temscript
+ServerAddress = local
+Port = 8001
+Requires = Velox, Tia

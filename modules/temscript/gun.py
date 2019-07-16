@@ -1,10 +1,9 @@
 from comtypes.gen import TEMScripting
-from stemDetectors import STEMDetectors
-from enums import *
+from .enums import *
 from comtypes.safearray import safearray_as_ndarray
 import numpy as np
 import logging
-from utilities import *
+from .utilities import *
 
 class Gun():
 

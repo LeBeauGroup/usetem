@@ -1,0 +1,9 @@
+[Core]
+Name = STEMImage
+Module = STEMImage
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = STEM Image Acquisition with TEM Script

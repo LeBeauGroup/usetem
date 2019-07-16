@@ -6,7 +6,6 @@ class STEMDetector():
     def __init__(self,detObj):
         self.detector = detObj
 
-
     def name(self):
         return self.detector.Info.Name
 
