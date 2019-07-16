@@ -1,9 +1,9 @@
 from yapsy.PluginManager import PluginManager
 import numpy as np
-import useTEM.pluginManagement as plugm
+import pluginManagement as plugm
 
 import yapsy.IPlugin as IPlugin
-import useTEM.pluginTypes as types
+import pluginTypes as types
 
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
@@ -83,6 +83,6 @@ if __name__ == '__main__':
 
 		rot = i*90
 		plugins['temscript'].techniques['STEMImage'].scanRotation(rot)
-		im[i] = plugins['tiascript'].techniques['STEMImage'].acquire()
+		im[i] = plugins['temscript'].techniques['STEMImage'].acquire()
 
 	# save file here
