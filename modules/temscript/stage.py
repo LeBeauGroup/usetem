@@ -56,33 +56,42 @@ class Stage():
 
         return axisDataDict
 
-    def stepByAlong(self, delta):
-        """
-        A and B axes are in radians
-        """
+    def _axisMask(self, delta):
 
         axisMask = 0
+        delta = np.abs(delta)
+        cutoff = 5e-9
+        ABcutoff = 1e-5
 
         # X, Y axis
-        if delta[0] != 0 and delta[1] != 0:
+        if delta[0] >= cutoff and delta[1] >= cutoff:
             axisMask = axisMask | StageAxes.axisXY.value
-        elif  delta[0] != 0:
+        elif  delta[0] >= cutoff:
             axisMask = axisMask | StageAxes.axisX.value
-        elif delta[1] != 0:
+        elif delta[1] >= cutoff:
             axisMask = axisMask | StageAxes.axisY.value
 
         # Z axis
-        if delta[2] != 0:
+        if delta[2] >= cutoff:
             axisMask = axisMask | StageAxes.axisZ.value
 
         #A  axis
 
-        if delta[3] != 0:
+        if delta[3] >= ABcutoff:
             axisMask = axisMask | StageAxes.axisA.value
 
         # B axis
-        if delta[4] != 0:
+        if delta[4] >= ABcutoff:
             axisMask = axisMask | StageAxes.axisB.value
+
+        return axisMask
+
+    def stepBy(self, delta):
+        """
+        A and B axes are in radians
+        """
+
+        axisMask = self._axisMask(delta)
 
         position = self._stage.Position
         posArray = np.array([position.X+delta[0], position.Y+delta[1], position.Z+delta[2], position.A+delta[3], position.B+delta[4]])
@@ -94,16 +103,82 @@ class Stage():
         except COMError as e:
             print(e)
 
-    def goto(self, newPos,axesToUSe):
+    def _deltaCalc(self, newPos):
+
+        position = self._stage.Position
+
+        tempPos = np.array([0, 0, 0, 0, 0])
+        tempPos = tempPos.ctypes.data_as(ctypes.POINTER(ctypes.c_double))
+
+        position.GetAsArray(tempPos)
+
+        currentPos = np.ctypeslib.as_array(tempPos, shape=(1, 5)).flatten()
+        delta = currentPos - newPos
+
+        return delta
+
+    def goto(self, newPos):
         """
-        TODO: Automatically determine which axes to use based on which positions have changed
+        TODO: Need to check for single/double tilt
+        TODO: Validate parameters
 
+        :param newPos: [X,Y,Z,A,B] vector
+        :return:
         """
-        temPos = temPositionFromDict(self._instrument, newPos)
-        self._stage.GoTo(temPos, axesToUSe)
+        delta  = self._deltaCalc(newPos)
+        axisMask = self._axisMask(delta)
 
-    def gotoWithSpeed():
-        pass
+        # Check to make sure that we should actually move
 
-    def moveTo():
-        pass
+        if axisMask != 0:
+
+            print(f'Moving to {newPos} with axis mask {axisMask}')
+
+            posArray = np.array(newPos)
+            position = self._stage.Position
+
+            position.SetAsArray(posArray.ctypes.data_as(ctypes.POINTER(ctypes.c_double)))
+            self._stage.GoTo(position, axisMask)
+
+    def gotoWithSpeed(self, newPos, speed):
+        """
+        TODO: Need to check for single/double tilt
+        TODO: Validate parameters
+
+        :param newPos: [X,Y,Z,A,B] vector
+        :return:
+        """
+
+        delta = self._deltaCalc(newPos)
+        axisMask = self._axisMask(delta)
+
+        # Check to make sure that we should actually move
+
+        if axisMask != 0:
+            posArray = np.array(newPos)
+            position = self._stage.Position
+
+            position.SetAsArray(posArray.ctypes.data_as(ctypes.POINTER(ctypes.c_double)))
+            self._stage.GoToWithSpeed(position, axisMask, speed)
+
+    def moveTo(self, newPos):
+        """
+        TODO: Need to check for single/double tilt
+        TODO: Validate parameters
+
+        :param newPos: [X,Y,Z,A,B] vector
+        :return:
+        """
+        delta = self._deltaCalc(newPos)
+        axisMask = self._axisMask(delta)
+
+        # Check to make sure that we should actually move
+
+        if axisMask != 0:
+            print(f'Moving to {newPos} with axis mask {axisMask}')
+
+            posArray = np.array(newPos)
+            position = self._stage.Position
+
+            position.SetAsArray(posArray.ctypes.data_as(ctypes.POINTER(ctypes.c_double)))
+            self._stage.MoveTo(position, axisMask)

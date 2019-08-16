@@ -7,7 +7,7 @@ if __name__ == "__main__":
     from useTEM.modules.temscript import instrument as instrument
 
     #import instrument
-    from  enums import *
+    from useTEM.modules.temscript import enums
     import logging
     import pickle
     import utilities
@@ -31,8 +31,10 @@ if __name__ == "__main__":
     # instrument.projection.mode(ProjMode.Imaging.value)
     #instrument.projection.defocus(1e-8)
 
-    deltaArray = [-1e-6, 0, 1e-6, 2, 0]
-    instrument.stage.stepByAlong(deltaArray)
+
+    # need to chedk
+    deltaArray = [-1e-6, 1e-5, 5e-6, 4*np.pi/180, 0]
+    instrument.stage.goto(deltaArray, enums.StageAxes.axisA.value|enums.StageAxes.axisXY.value)
     # instrument.projection.lensProgram(ProjLensProg.Regular.value)
 
     # print(instrument.gun.htValue(216230))
