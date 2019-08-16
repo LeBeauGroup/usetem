@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
+import numpy as np
+
 if __name__ == "__main__":
-    import instrument
+
+    from useTEM.modules.temscript import instrument as instrument
+
+    #import instrument
     from  enums import *
     import logging
     import pickle
@@ -20,14 +25,17 @@ if __name__ == "__main__":
     #print(instrument.stage.goto(pos, 1|2|3))
 
 
-    print(instrument.acquisition.stemDetectors())
+    # print(instrument.acquisition.stemDetectors())
 
     #print(instrument.vacuum.runBufferCycle())
-    instrument.projection.mode(ProjMode.Imaging.value)
+    # instrument.projection.mode(ProjMode.Imaging.value)
     #instrument.projection.defocus(1e-8)
-    instrument.projection.lensProgram(ProjLensProg.Regular.value)
 
-    print(instrument.gun.htValue(216230))
+    deltaArray = [-1e-6, 0, 1e-6, 2, 0]
+    instrument.stage.stepByAlong(deltaArray)
+    # instrument.projection.lensProgram(ProjLensProg.Regular.value)
+
+    # print(instrument.gun.htValue(216230))
     #print(instrument.mode(InstrumentMode.TEM.value))
     #print(instrument.projection.normalize(ProjNormalization.All.value))
     #print(instrument.camera.mainScreenPosition(0))

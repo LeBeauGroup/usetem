@@ -1,7 +1,7 @@
 
 from comtypes.safearray import safearray_as_ndarray
 
-from .stemDetector import STEMDetector
+from stemDetector import STEMDetector
 
 class STEMDetectors():
 

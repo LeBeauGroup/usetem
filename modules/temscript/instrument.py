@@ -3,7 +3,7 @@ from comtypes.client import CreateObject, Constants
 from comtypes.gen import TEMScripting
 from comtypes.client import GetModule
 
-from .acquisition import Acquisition
+from acquisition import Acquisition
 from .autoloader import AutoLoader
 from .illumination import Illumination
 from .temperatureControl import TemperatureControl
