@@ -3,7 +3,7 @@ import numpy as np
 import useTEM.pluginManagement as plugm
 
 import yapsy.IPlugin as IPlugin
-import useTEM.pluginTypes as types
+#import useTEM.pluginTypes as types
 
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
@@ -74,15 +74,18 @@ if __name__ == '__main__':
 	plugins = plugm.availablePlugins()
 
 	#print(plugins['temscript'].techniques)
-	detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'imageSize':0,'names':['HAADF']}
-	plugins['temscript'].techniques['STEMImage'].setupAcquisition(detectorInfo)
+	detectorInfo = {'dwellTime': 10e-6, 'binning':4, 'frameHeight':1024,'names':['DF2','BF']}
+	tia = plugins['tiascript']
+	stem = tia.techniques['STEMImage']
+	stem.setupAcquisition(detectorInfo)
 
 
-	im = [None]*10
-	for i in range(10):
+	im = [None]*12
 
+	for i in range(4):
 		rot = i*90
-		plugins['temscript'].techniques['STEMImage'].scanRotation(rot)
-		im[i] = plugins['tiascript'].techniques['STEMImage'].acquire()
 
-	# save file here
+		plugins['tiascript'].techniques['STEMImage'].scanRotation(rot)
+		im[i] = stem.acquire()
+
+	#save file here

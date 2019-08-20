@@ -1,6 +1,7 @@
 from comtypes.gen import TEMScripting
-from stemDetectors import STEMDetectors
-from enums import *
+
+from .stemDetectors import STEMDetectors
+from .enums import *
 from comtypes.safearray import safearray_as_ndarray
 import pickle
 import numpy as np
@@ -19,10 +20,19 @@ class Acquisition():
         self._instrument = instrument
         self._acq = instrument.Acquisition
         self.stemDetectors = STEMDetectors(self._acq.Detectors)
+#        self.ccdDetectors = CCDCameras(self._acq.Cameras)
+
+    def addCameraByName(self, name):
+        self._acq.AddAcqDeviceByName(name)
 
     def addDetectorByName(self, name):
         self._acq.AddAcqDeviceByName(name)
 
+    def removeAcqDeviceByName(self, name):
+        self._acq.RemoveAcqDeviceByName(name)
+
+    def removeAllAcqDevices(self):
+        self._acq.RemoveAllAcqDevices()
 
     def acquireImages(self):
         images = self._acq.AcquireImages()
@@ -30,7 +40,7 @@ class Acquisition():
         outImages = list()
 
         for image in images:
-            #print('converting')
+
             with safearray_as_ndarray:
                 converted = image.AsSafeArray
 

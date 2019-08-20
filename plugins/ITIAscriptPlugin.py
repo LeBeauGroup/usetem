@@ -11,6 +11,7 @@ class ITIAscriptPlugin(pluginTypes.IControlPlugin):
 	name = None
 	moduleName = 'useTEM.modules.tiascript.application'
 
+
 	def activate(self):
 		print('activating')
 
@@ -21,14 +22,15 @@ class ITIAscriptPlugin(pluginTypes.IControlPlugin):
 			import importlib
 
 			module = importlib.import_module(self.moduleName)
-			self.client = module.Application()
+			client = module.Application()
 
 		else:
 			print(address)
-			self.client = xmlrpc.client.ServerProxy(address)
+			client = xmlrpc.client.ServerProxy(address)
+
+		self.client = client
 
 		for key, value in self.techniques.items():
-		 	#print(technique)
 
 			updated = self.techniques[key]
 			updated.client = self.client

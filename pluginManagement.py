@@ -27,9 +27,10 @@ def startupPlugins(pluginManager):
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
 
 		techniquesPath = path+'\\plugins\\techniques\\'+pluginInfo.name
-		plugin.loadTechniques(techniquesPath)
 
+		plugin.loadTechniques(techniquesPath, plugins)
 		plugin.start_connection(connectionAddress)
+
 		print('finished loading:' + pluginInfo.name)
 		plugins[pluginInfo.name] = plugin
 

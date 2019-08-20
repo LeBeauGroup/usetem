@@ -18,6 +18,8 @@ import numpy as np
 import ctypes
 import array
 
+import datetime
+
 """
 Requires numpy 1.15, comtypes 1.17.1
 
@@ -29,6 +31,7 @@ logging.basicConfig(level=logging.INFO)
 class Application():
     app = CreateObject("ESVision.Application")
 
+    imageDisplay = ImageDisplay(app)
 
     acquisitionManager = AcquisitionManager(app)
     scanningServer = ScanningServer(app)
@@ -40,15 +43,44 @@ class Application():
     _activeDisplayWindow = None
 
     def _timeStampName(self):
-        pass
+        return datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
+    def addDisplayWindow(self, name=None):
+        window = self.app.AddDisplayWindow()
+#        window  = self.app.ActiveDisplayWindow()
+        if name is None:
+            name = self._timeStampName()
+
+        window.Name = name
+
+        return name
+
+    def addDisplay(self, windowPath, displayName,type=DisplayType.Image.value, subType = SubType.Image.value,splitDirection=0,splitPortion=0.5, splitDisplay=None):
+
+        window  = self.app.FindDisplayWindow(windowPath)
+        newDisp = window.AddDisplay(displayName + ' Display', type, subType, splitDirection, splitPortion, splitDisplay)
+
+        #cal = self.app.Calibration2D(0, 0, 1e-9, 1e-9, 0, 0)
+        imageName = 'test'
+        #img = newDisp.addImage(imageName, 512, 512, cal)
+
+        return newDisp.Path#+f'/{imageName}'
+
+    def activateDisplayWindow(self, name):
+        app.ActivateDisplayWindow(name)
 
     def activeDisplayWindow(self):
 
         window  = self.app.ActiveDisplayWindow()
-        self._activeDisplayWindow = DisplayWindow(window)
+        # self._activeDisplayWindow = DisplayWindow(window)
 
-        return self._activeDisplayWindow.name
+        return window.Name
+
+    # def activeDisplayPath(self):
+    #
+    #     self._activeDisplayWindow = DisplayWindow(window)
+    #     print(self._activeDisplayWindow)
+    #     return self._activeDisplayWindow.path
 
 
     def findDisplayObject(self, path):
@@ -163,7 +195,7 @@ def findDisplayObject(self, path):
     return  self.app.FindDisplayObject(path)
 
 
-def findDisplayInWindow(app, windowName, displayName):
+def _findDisplayInWindow(app, windowName, displayName):
     displayWindow = app.FindDisplayWindow(windowName)
     display = displayWindow.FindDisplay(displayName)
 

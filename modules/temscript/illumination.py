@@ -91,7 +91,7 @@ class Illumination():
             self._illum.StemRotation = value * np.pi/180
 
     def stemMagnification(self, value=None):
-
+        print(value)
         if value is None:
             return self._illum.StemMagnification
         else:

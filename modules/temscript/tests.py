@@ -4,10 +4,10 @@ import numpy as np
 
 if __name__ == "__main__":
 
-    from useTEM.modules.temscript import instrument as instrument
+    from launch.modules.temscript import instrument as instrument
 
     #import instrument
-    from useTEM.modules.temscript import enums
+    from launch.modules.temscript import enums
     import logging
     import pickle
     import utilities

@@ -1,20 +1,20 @@
 
 from comtypes.safearray import safearray_as_ndarray
 
-from .stemDetector import STEMDetector
+from ccdCamera import CCDCameras
 
-class STEMDetectors():
+class CCDCameras():
 
-    def __init__(self, detectors):
+    def __init__(self, cameras):
 
-        self._detectors = detectors
+        self._cameras = cameras
 
     def imageSize(self, imgSize=None):
 
         if imgSize is None:
-            return self._detectors.AcqParams.ImageSize
+            return self._cameras.AcqParams.ImageSize
         else:
-            self._detectors.AcqParams.ImageSize = imgSize
+            self._cameras.AcqParams.ImageSize = imgSize
 
     def dwellTime(self, value=None):
 

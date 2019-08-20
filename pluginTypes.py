@@ -7,7 +7,7 @@ class ITechniquePlugin(plugin.IPlugin):
 
 class IControlPlugin(plugin.IPlugin):
 
-	def loadTechniques(self,techniquesPath):
+	def loadTechniques(self,techniquesPath, controls=None):
 
 		categories = {'Control' : IControlPlugin,
    		'Technique' : ITechniquePlugin}
@@ -27,6 +27,7 @@ class IControlPlugin(plugin.IPlugin):
 			# Get the object and store in dictionary
 
 			self.techniques[pluginInfo.name] = pluginInfo.plugin_object
+			self.techniques[pluginInfo.name].controlPlugins = controls
 
 
 class IWorkflow(plugin.IPlugin):
