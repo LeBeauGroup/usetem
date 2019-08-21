@@ -1,6 +1,6 @@
 
 from yapsy.PluginManager import PluginManager
-import useTEM.pluginTypes as pluginTypes
+import pluginTypes
 import os
 path = os.path.dirname(os.path.abspath(__file__))
 
@@ -47,9 +47,17 @@ def availablePlugins():
 	# Build the manager, set load location, and then collect them
 
 	pluginManager = PluginManager(categories_filter=categories)
-	pluginManager.updatePluginPlaces([path+'\\plugins'])
+	#pluginManager.setPluginPlaces()
+
+	loc = pluginManager.getPluginLocator()
+	loc.setPluginPlaces([path+'\\plugins'])
 
 	pluginManager.locatePlugins()
 	pluginManager.loadPlugins()
 
-	return startupPlugins(pluginManager)
+
+	plugins = startupPlugins(pluginManager)
+
+
+
+	return plugins
