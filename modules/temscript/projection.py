@@ -121,10 +121,15 @@ class Projection():
 
 
 
-    def cameraLength(self):
+    def cameraLength(self,value = None):
         """
 
         """
+
+        if value is None:
+            return self._proj.CameraLengthIndex
+        else:
+            self._proj.CameraLengthIndex = value
 
         return self._proj.CameraLength
 

@@ -18,55 +18,81 @@ class EsvObject():
     type  = 0
 
     def __init__(self, obj):
-        pass
-        #self.name = obj.Name
-        #self.type = obj.Type
+        self.name = obj.Name
+        self.type = obj.Type
 
     #    self.path= obj.Path()
 # class ImageDisplay(DisplayObject):
 #     pass
 
-class DisplayObject(EsvObject):
+class ObjectDisplay():
 
-    path = 'none'
-    calibration = None
-    type = None
-    object = None
-
-    def __init__(self, object):
-        super(DisplayObject, self).__init__(object)
-
-        while True:
-            for type in object_types:
-                try:
-                    object.QueryInterface(type)
-                    self.type = type
-                    self.object = object
-                except:
-                    continue
-                break
-            break
-
-        if self.type == ESVision.IImage:
-            data = object.Data
-
-            import time
-
-            start = time.time()
+    def __init__(self,app):
+        self.app = app
 
 
 
-            for i in range(0, 60):
 
-                array = np.random.randn(128,128)*65535
-                data.Array  = array
-                object.Data = data
+class DisplayObject():
 
-            end = time.time()
-            print(end - start)
+    def __init__(self, app):
+        self.app = app
+        # super(DisplayObject, self).__init__(object)
+
+    def _obj(self):
+        obj = self.app.FindDisplay(self.path)
+
+        return obj
+
+    def name(self,path):
+
+        self.path = path
+        return self._obj().Name
+
+    def path(self,path):
+        self.path = path
+        return self._obj().Path
+
+    def _path_comps(self,path):
+        comps = path.split('/')
+
+        window = (comps[0])
+        display = window.FindDisplay(comps[1])
+        object = display.FindObject(comps[2])
+
+        return (window.Name,display, object)
 
 
-            pass
+    # def typeTest(self):
+    #
+    #     while True:
+    #         for type in object_types:
+    #             try:
+    #                 object.QueryInterface(type)
+    #                 self.type = type
+    #                 self.object = object
+    #             except:
+    #                 continue
+    #             break
+    #         break
+    #
+    #     if self.type == ESVision.IImage:
+    #         data = object.Data
+    #
+    #         import time
+    #
+    #         start = time.time()
+    #
+    #
+    #
+    #         for i in range(0, 60):
+    #
+    #             array = np.random.randn(128,128)*65535
+    #             data.Array  = array
+    #             object.Data = data
+    #
+    #         end = time.time()
+    #         print(end - start)
 
             #
             #
@@ -88,6 +114,29 @@ class DisplayObject(EsvObject):
             toSend['data'] = self.object.Data.Array
 
         return Binary(pickle.dumps(toSend))
+
+class ImageDisplay(DisplayObject):
+
+
+    def addImage(self, path, imageName, sizeX, sizeY, calibration):
+        comps = path.split('/')
+
+        window = self.app.FindDisplayWindow(comps[0])
+        display = window.FindDisplay(comps[1])
+
+        cal = self.app.Calibration2D(calibration[0],
+                                     calibration[1],
+                                     calibration[2],
+                                     calibration[3],
+                                     calibration[4],
+                                     calibration[5])
+        display.AddImage(imageName, sizeX, sizeY, cal)
+        return path+f'/{imageName}'
+
+
+
+
+
 
 class ImageObject(DisplayObject):
 
@@ -125,6 +174,7 @@ class DisplayWindow():
         self.selectedDisplay = DisplayObject(window.SelectedDisplay)
         self.selectedObject = EsvObject(window.SelectedObject)
 
+
     def _displayWindows(self):
         displays = dict()
 
@@ -136,8 +186,8 @@ class DisplayWindow():
 
         # self.SelectedObject = EsvObject(window.SelectedObject)
 
-    def SelectedObject(self):
+    def selectedObject(self):
         pass
 
-    def AddDisplay(name, type, subtype, splitdirection, newsplitportion,splitDisplay=None):
+    def addDisplay(name, type, subtype, splitdirection, newsplitportion,splitDisplay=None):
         pass

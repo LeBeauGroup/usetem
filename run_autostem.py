@@ -40,3 +40,7 @@ stem.focus_box('off')
 stem.defocus(10,'current')
 stem.manual_video(5)
 stem.revstem(10,90)
+'this is a '
+
+
+

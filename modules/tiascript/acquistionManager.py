@@ -7,7 +7,7 @@ class AcquisitionManager():
         self.acqm = app.AcquisitionManager()
         self.app = app
 
-    def Acquire(self):
+    def acquire(self):
         self.acqm.Acquire()
 
     # acquires a set of points, positions in m, and time in s
@@ -21,7 +21,7 @@ class AcquisitionManager():
 
         self.acqm.AcquireSet(posCollection,dwelltime)
 
-    def AddSetup(self, setupName):
+    def addSetup(self, setupName):
         self.acqm.AddSetup(setupName)
 
     def CurrentSetup(self):
@@ -39,13 +39,13 @@ class AcquisitionManager():
     def ClearAcquireAnnotation(self):
         self.acqm.ClearAcquireAnnotation()
 
-    def DeleteSetup(self, name):
+    def deleteSetup(self, name):
         self.acqm.DeleteSetup(name)
 
-    def DoesSetupExist(self, setupName):
+    def doesSetupExist(self, setupName):
         return self.acqm.DoesSetupExist(setupName)
 
-    def EnabledSignalNames(self):
+    def enabledSignalNames(self):
         names = list()
 
         for name in enumerate(self.acqm.EnabledSignalNames):
@@ -53,13 +53,13 @@ class AcquisitionManager():
 
         return names
 
-    def IsAcquiring(self):
+    def isAcquiring(self):
         return self.acqm.IsAcquiring
 
-    def IsAcquisitionHardware(self,type):
+    def isAcquisitionHardware(self,type):
         return self.acqm.IsAcquisitionHardware(type)
 
-    def IsCurrentSetup(self):
+    def isCurrentSetup(self):
         return self.acqm.IsCurrentSetup()
 
 
@@ -68,11 +68,14 @@ class AcquisitionManager():
         pass
         #return self.acqm.IsSignalLinked(signalName,displayObject)
 
-    def LinkSignal(self, signalName, imagePath):
-        displayObject = self.app.findDisplayObject(imagePath)
+    def linkSignal(self, signalName, imagePath):
+        print(imagePath)
+        displayObject = self.app.FindDisplayObject(imagePath)
+        print(displayObject)
+
         self.acqm.LinkSignal(signalName, displayObject)
 
-    def SelectSetup(self, setupName):
+    def selectSetup(self, setupName):
         self.acqm.SelectSetup(setupName)
 
 
@@ -104,27 +107,27 @@ class AcquisitionManager():
     def SetAutoStart(self, setupName, state=True):
         self.acqm.SetAutoStart(setupName, state)
 
-    def SignalNames(self):
+    def signalNames(self):
         names = list()
         for name in enumerate(self.acqm.SignalNames):
             names.append(name)
 
         return names
 
-    def SignalType(self, signalName):
+    def signalType(self, signalName):
         return Signals(self.acqm.SignalType(signalName)).name
 
-    def Start(self):
+    def start(self):
         self.acqm.Start()
 
-    def Stop(self):
+    def stop(self):
         self.acqm.Stop()
 
 
-    def TimeRemaining(self):
+    def timeRemaining(self):
         self.acqm.TimeRemaining()
 
-    def TypedSignalNames(self,type):
+    def typedSignalNames(self, type):
 
         signals = self.acqm.TypedSignalNames(Signals[type].value)
 
@@ -135,8 +138,8 @@ class AcquisitionManager():
 
         return signalNames
 
-    def UnlinkAllSignals(self):
+    def unlinkAllSignals(self):
         self.acqm.UnlinkAllSignals()
 
-    def UnlinkSignal(self,signalName):
+    def unlinkSignal(self,signalName):
         self.acqm.UnlinkAllSignals(signalName)

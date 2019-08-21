@@ -11,15 +11,15 @@ class AcquisitionServer():
         self.app = app
         self.server = getattr(app, classType)
 
-    def BiasCorrection(self):
+    def biasCorrection(self):
         pass
 
-    def GainCorrection(self):
+    def gainCorrection(self):
         pass
 
-    def SeriesSize(self,size=0):
+    def seriesSize(self, size=None):
 
-        if size == 0:
+        if size is None:
             return self.server.SeriesSize
         else:
             self.server.SeriesSize = size
@@ -31,7 +31,7 @@ class ImageServer(AcquisitionServer):
             self.app = app
             self.server = app.ScanningServer()
 
-    def BeamPosition(self, pos=None):
+    def beamPosition(self, pos=None):
         if pos is None:
             pos2d = self.server.BeamPosition
             return (pos2d.X, pos2d.Y)
@@ -39,13 +39,13 @@ class ImageServer(AcquisitionServer):
             self.server.BeamPosition = self.app.Position2D(pos[0], pos[1])
             logging.debug(f'Beam Position moved to {pos}')
 
-    def AcquireMode(self, mode=None):
+    def acquireMode(self, mode=None):
 
         if mode is None:
             return AcquireModes(self.server.AcquireMode).name
         else:
-            self.server.AcquireMode = AcquireModes[mode].value
-            logging.info(f'Acquire mode is now {AcquireModes[mode].name}')
+            self.server.AcquireMode = mode
+            logging.info(f'Acquire mode is now {AcquireModes(mode).name}')
 
     def CreateMagnification(self, mag, imageRange, modeString):
 
@@ -112,7 +112,21 @@ class ScanningServer(ImageServer):
             self.app = app
             self.server = app.ScanningServer()
 
-    def FrameWidth(self, value=None):
+    def scanMode(self, mode=None):
+
+        if mode is None:
+            return ScanModes(self.server.ScanMode).name
+        else:
+            self.server.ScanMode = mode
+            logging.info(f'Acquire mode is now {ScanModes(mode).name}')
+
+    def getTotalScanRange(self):
+
+        range = self.server.GetTotalScanRange
+
+        return (range.StartX, range.StartY, range.EndX, range.EndY)
+
+    def frameWidth(self, value=None):
 
         if value is None:
             return self.server.FrameWidth
@@ -120,7 +134,7 @@ class ScanningServer(ImageServer):
             self.server.FrameWidth = value
             logging.debug(f'Frame Width set as {value}')
 
-    def DwellTime(self, value=None):
+    def dwellTime(self, value=None):
 
         if value is None:
             return self.server.DwellTime
@@ -128,7 +142,7 @@ class ScanningServer(ImageServer):
             self.server.DwellTime = value
             logging.debug(f'DwellTime set as {value}')
 
-    def FrameHeight(self, value=None):
+    def frameHeight(self, value=None):
 
         if value is None:
             return self.server.FrameHeight
@@ -136,6 +150,22 @@ class ScanningServer(ImageServer):
             self.server.FrameHeight = value
             logging.debug(f'Frame Height set as {value}')
 
+    def scanRange(self, value=None):
+
+        if value is None:
+            range = self.server.scanRange
+
+            return (range.StartX, range.StartY, range.EndX, range.EndY)
+        else:
+            self.server.scanRange = self.app.Range2D(value[0], value[1], value[2],value[3])
+
+    def scanResolution(self, value=None):
+
+        if value is None:
+            return self.server.ScanResolution
+
+        else:
+            self.server.ScanResolution = value
 
 
 class ParallelImageServer(AcquisitionServer):

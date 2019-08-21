@@ -153,3 +153,32 @@ class VacuumGauge(Enum):
     CCGp = 0
     IGPa = 1
     ICPcl = 2
+
+class StageAxes(Enum):
+    """
+    The ‘GoTo’ and ‘MoveTo’ methods require a parameter (of type long) that contains bitwise information about which 
+    axis is to be involved in the movement. The bit order is BAZYX , so bit 0 contains the information about whether the
+    X-axis is involved, bit 4 contains the information about the B axis. The members of the ‘StageAxes’ enumeration can
+    be used instead of calculating with bits. You can combine them by bitwise  ‘OR’s 
+    (i.e. in JScript: MyAxBits = (axisXY | axisA | axisB) to allow the X,Y,A,B axis to move, but leave the Z constant.
+    """
+    axisX = 1
+    axisY = 2
+    axisXY = 3
+    axisZ = 4
+    axisA = 8
+    axisB = 16
+
+
+class StageHolderType(Enum):
+    NoHolder = 0
+    SingleTilt = 1
+    DoubleTilt = 2
+    Invalid = 4
+    Polara = 5
+    DualAxis = 6
+
+class MeasurementUnitType(Enum):
+    Unknown = 0
+    Meters = 1
+    Radians = 2
