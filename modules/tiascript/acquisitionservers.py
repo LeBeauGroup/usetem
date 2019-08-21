@@ -11,15 +11,15 @@ class AcquisitionServer():
         self.app = app
         self.server = getattr(app, classType)
 
-    def BiasCorrection(self):
+    def biasCorrection(self):
         pass
 
-    def GainCorrection(self):
+    def gainCorrection(self):
         pass
 
-    def SeriesSize(self,size=0):
+    def seriesSize(self, size=None):
 
-        if size == 0:
+        if size is None:
             return self.server.SeriesSize
         else:
             self.server.SeriesSize = size

@@ -23,7 +23,7 @@ class ISTEMImage(ITechniquePlugin):
 		"""
 
 		:param detectorInfo: dictionary with following information:
-		detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'frameHeight':0,'names':['HAADF','BF']}
+		detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'numFrames':1,'names':['HAADF','BF']}
 
 		:return:
 		"""
@@ -88,11 +88,7 @@ class ISTEMImage(ITechniquePlugin):
 
 		print(scanning.scanResolution())
 		scanning.scanRange(scanRange)
-
-
-
-
-
+		scanning.seriesSize(detectorInfo['numFrames'])
 
 	def subscan(self,rect):
 		pass
@@ -111,30 +107,29 @@ class ISTEMImage(ITechniquePlugin):
 
 
 		#capturedImage = pickle.loads(acq.acquireImages().data)[0]
-		print('acquiring')
 		return None
 
-	def acquireSeries(self, numFrames):
-
-
-		acq = self.client.acquisition
-		stem = acq.stemDetectors
-
-		stem.binning(8)
-		stem.dwellTime(0.5e-6)
-
-		# for i in range(stem.count()):
-		# 	dets = stem.item(i)
-
-		acq.addDetectorByName('HAADF')
-		stem.imageSize(0)
-
-		for _ in range(numFrames):
-
-			print('start')
-			im = pickle.loads(acq.acquireImages().data)[0]
-			# plt.imshow(im)
-			# plt.show()
-			print('stop')
-
-		print('acquiring')
+	# def acquireSeries(self, numFrames):
+	#
+	#
+	# 	acq = self.client.acquisition
+	# 	stem = acq.stemDetectors
+	#
+	# 	stem.binning(8)
+	# 	stem.dwellTime(0.5e-6)
+	#
+	# 	# for i in range(stem.count()):
+	# 	# 	dets = stem.item(i)
+	#
+	# 	acq.addDetectorByName('HAADF')
+	# 	stem.imageSize(0)
+	#
+	# 	for _ in range(numFrames):
+	#
+	# 		print('start')
+	# 		im = pickle.loads(acq.acquireImages().data)[0]
+	# 		# plt.imshow(im)
+	# 		# plt.show()
+	# 		print('stop')
+	#
+	# 	print('acquiring')
