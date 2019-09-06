@@ -15,7 +15,10 @@ from .stage import Stage
 
 class Instrument():
 
-    instrument = CreateObject("TEMScripting.Instrument")
+    try:
+        instrument = CreateObject("TEMScripting.Instrument")
+    except:
+        print('Could not create instrument')
 
     acquisition = Acquisition(instrument)
     autoloader = AutoLoader(instrument)

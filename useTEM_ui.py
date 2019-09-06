@@ -6,22 +6,21 @@
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
-import test_plugin_ui
-import test_plugin_ui2
+from extensions.revSTEM import revSTEM
 
 
-class Ui_Dialog(object):
+class useTEMdialog(object):
 
-    def setupUi(self, Dialog):
+    def setupUi(self, Dialog, plugins):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
         self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
         self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+
+        #runButton = QtWidgets.QDialogButtonBox.Open
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Open)
         self.buttonBox.setObjectName("buttonBox")
         self.listWidget = QtWidgets.QTreeWidget(Dialog)
         self.listWidget.setColumnCount(1)
@@ -29,27 +28,24 @@ class Ui_Dialog(object):
         self.listWidget.setObjectName("listWidget")
 
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
         #self.listWidget.setExpanded(0,True);
 
-        for i in range(2):
-            print('setup widget')
-            item = QtWidgets.QTreeWidgetItem(self.listWidget)
-            item_widget = test_plugin_ui.Ui_Form('blash')
+        # setup plugin views
+        #for plugin in plugins:
+
+        print('setup widget')
+        item = QtWidgets.QTreeWidgetItem(self.listWidget)
+
+        item_widget = revSTEM('blash',plugins)
             #item.setSizeHint(QtCore.QSize(100,50))
-            self.listWidget.addTopLevelItem(item)
+        self.listWidget.addTopLevelItem(item)
+        self.listWidget.setItemWidget(item,0,item_widget)
 
-            item2 = QtWidgets.QTreeWidgetItem(item)
-            item_widget2 = test_plugin_ui2.Ui_Form('blash')
+        self.buttonBox.accepted.connect(item_widget.run)
+        self.buttonBox.rejected.connect(item_widget.reject)
 
-            # item.setSizeHint(QtCore.QSize(100,50))
+        #QtCore.QMetaObject.connectSlotsByName(revSTEM)
 
-            self.listWidget.setItemWidget(item,0,item_widget)
-            self.listWidget.setItemWidget(item2, 0, item_widget2)
-
-            item.addChild(item2)
 
 
        #  print('setup widget')
@@ -58,6 +54,9 @@ class Ui_Dialog(object):
        # # item.setSizeHint(QtCore.QSize(100,50))
        #  self.listWidget.addTopLevelItem(item)
        #  self.listWidget.setItemWidget(item,0,item_widget2)
+
+    def reject(self):
+        print('rejected!')
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate

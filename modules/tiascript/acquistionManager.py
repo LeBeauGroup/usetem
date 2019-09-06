@@ -11,7 +11,7 @@ class AcquisitionManager():
         self.acqm.Acquire()
 
     # acquires a set of points, positions in m, and time in s
-    def AcquireSet(self,positions,dwelltime):
+    def acquireSet(self,positions,dwelltime):
 
         posCollection = self.app.PositionCollection()
 
@@ -22,7 +22,11 @@ class AcquisitionManager():
         self.acqm.AcquireSet(posCollection,dwelltime)
 
     def addSetup(self, setupName):
-        self.acqm.AddSetup(setupName)
+
+        try:
+            self.acqm.AddSetup(setupName)
+        except:
+            print('COM error')
 
     def CurrentSetup(self):
         return self.acqm.CurrentSetup
