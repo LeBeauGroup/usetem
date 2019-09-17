@@ -12,6 +12,7 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 
         self.detectorInfo = {'dwellTime': self.dwellTime, 'binning':self.binning, 'numFrames':self.numFrames,'names':['DF2','BF']}
 
+
     def setInterfaces(self, interfaces):
         self.interfaces = interfaces
 

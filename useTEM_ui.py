@@ -9,7 +9,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QObject
 from extensions.revSTEM import revSTEM
-
+import copy
 import useTEM.pluginManagement as plugm
 
 
@@ -110,13 +110,12 @@ class UseTEMUI(object):
 
         selected = self.availablePlugins.selectedItems()
 
-
         for obj in selected:
             item = QtWidgets.QTreeWidgetItem(self.workflow)
 
             label = self.availablePlugins.itemWidget(obj,0)
 
-            ext = self.plugins[label.text()]
+            ext = copy.copy(self.plugins[label.text()])
             item_widget = ext.ui()
 
             self.workflow.addTopLevelItem(item)
