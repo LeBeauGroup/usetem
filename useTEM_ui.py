@@ -82,12 +82,12 @@ class UseTEMUI(object):
         # setup plugin views
 
         # TODO: Switch to extensions
-        for plugin in plugins:
+        for key in plugins:
 
             new_item = QtWidgets.QTreeWidgetItem(self.availablePlugins)
 
             pluginItem = QtWidgets.QLabel()
-            pluginItem.setText('blah')
+            pluginItem.setText(key)
 
             self.availablePlugins.addTopLevelItem(new_item)
             self.availablePlugins.setItemWidget(new_item, 0, pluginItem)
@@ -110,13 +110,17 @@ class UseTEMUI(object):
 
         selected = self.availablePlugins.selectedItems()
 
-        item = QtWidgets.QTreeWidgetItem(self.workflow)
 
-        ext = revSTEM()
-        item_widget = ext.ui()
+        for obj in selected:
+            item = QtWidgets.QTreeWidgetItem(self.workflow)
 
-        self.workflow.addTopLevelItem(item)
-        self.workflow.setItemWidget(item,0,item_widget)
+            label = self.availablePlugins.itemWidget(obj,0)
+
+            ext = self.plugins[label.text()]
+            item_widget = ext.ui()
+
+            self.workflow.addTopLevelItem(item)
+            self.workflow.setItemWidget(item,0,item_widget)
 
         # self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
 

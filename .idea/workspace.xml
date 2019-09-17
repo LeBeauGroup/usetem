@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.yapsy-plugin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/techniques/temscript/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/techniques/tiascript/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/ITIAscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/ITemscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMImage.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMImage.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMImage.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plugins/tiaPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/tiaPlugin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/useTEM_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/useTEM_ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -166,13 +146,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/useTEM_ui.py</url>
-          <line>136</line>
+          <line>140</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pluginManagement.py</url>
           <line>70</line>
           <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/useTEM_ui.py</url>
+          <line>118</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/useTEM_ui.py</url>
+          <line>114</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
