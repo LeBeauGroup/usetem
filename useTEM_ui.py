@@ -70,7 +70,7 @@ class UseTEMUI(object):
         self.runButton.clicked.connect(self.runWorkflow)
         self.addButton.clicked.connect(self.addToWorkflow)
 
-        self.cancelButton.clicked.connect(self.reject)
+        self.removeButton.clicked.connect(self.removeFromWorkflow)
 
 
 
@@ -94,11 +94,21 @@ class UseTEMUI(object):
 
 
 
+    def removeFromWorkflow(self):
 
+        # returns a QList
+        selected = self.workflow.selectedItems()
+
+
+        # TODO: Deal with children removal
+        for obj in selected:
+
+            index = self.workflow.indexOfTopLevelItem(obj)
+            self.workflow.takeTopLevelItem(index)
 
     def runWorkflow(self):
 
-        for itemIndex in range(self.workflow.topLevelItemCount()):
+        for itemIndex in range(4203493523):
 
             topLevelItem = self.workflow.topLevelItem(itemIndex)
 
