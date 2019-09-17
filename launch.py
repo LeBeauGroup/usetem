@@ -1,36 +1,29 @@
-from yapsy.PluginManager import PluginManager
-import numpy as np
 import useTEM.pluginManagement as plugm
-
-import yapsy.IPlugin as IPlugin
-#import useTEM.pluginTypes as types
-
-import xmlrpc.client
-from xmlrpc.client import MultiCall, Boolean
-
 import logging
 import os
 path = os.path.dirname(os.path.abspath(__file__))
 
+import sys
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
+from PyQt5 import QtGui
+from useTEM_ui import UseTEMUI
+
 
 if __name__ == '__main__':
 
+	# loading the plugins
+	plugins = plugm.availableExtensions()
 
-	plugins = plugm.availablePlugins()
+	# launch the pyQt window
+	app = QApplication(sys.argv)
+	mainWindow = QMainWindow()
 
-	#print(plugins['temscript'].techniques)
-	tia = plugins['tiascript']
-	stem = tia.techniques['STEMImage']
-	numFrames = 12
+	app.setActiveWindow(mainWindow)
 
-	im = [None]*numFrames
 
-	detectorInfo = {'dwellTime': 0.5e-6, 'binning':8, 'numFrames':numFrames,'names':['DF2','BF']}
+	ui = UseTEMUI()
+	ui.setupUi(mainWindow,plugins)
+	mainWindow.show()
+	sys.exit(app.exec_())
 
-	stem.setupAcquisition(detectorInfo)
-
-	for i in range(numFrames):
-		rot = i*90
-		plugins['tiascript'].techniques['STEMImage'].scanRotation(rot)
-		im[i] = stem.acquire()
 

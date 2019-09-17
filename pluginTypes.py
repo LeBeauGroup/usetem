@@ -5,12 +5,17 @@ from yapsy.PluginManager import PluginManager
 class ITechniquePlugin(plugin.IPlugin):
 	pass
 
-class IControlPlugin(plugin.IPlugin):
+class IExtensionPlugin(plugin.IPlugin):
+	pass
+
+# categories = {'Control' : IInterfacePlugin,
+#    		'Technique' : ITechniquePlugin, 'Extension':IExtensionPlugin}
+
+class IInterfacePlugin(plugin.IPlugin):
 
 	def loadTechniques(self,techniquesPath, controls=None):
 
-		categories = {'Control' : IControlPlugin,
-   		'Technique' : ITechniquePlugin}
+
 		# Build the manager, set load location, and then collect them
 
 		pm = PluginManager()

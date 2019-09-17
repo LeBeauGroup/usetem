@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_Form(QtWidgets.QWidget):
+
     def __init__(self, name, parent=None):
         super(QtWidgets.QWidget, self).__init__(parent)
 

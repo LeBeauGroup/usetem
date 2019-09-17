@@ -1,0 +1,11 @@
+[Core]
+Name = revSTEM
+Module = revSTEM
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Acquires RevSTEM image series
+Type = STEM Image
+Techniques = STEMImage
