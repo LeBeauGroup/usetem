@@ -64,7 +64,16 @@ class UseTEMUI(object):
         #self.listWidget.setExpanded(0,True);
 
         # setup plugin views
-        #for plugin in plugins:
+
+        # TODO: Switch to extensions
+        for plugin in plugins:
+
+            new_item = QtWidgets.QTreeWidgetItem(self.availablePlugins)
+
+            pluginItem = QtWidgets.QLabel()
+            pluginItem.setText('blah')
+            self.availablePlugins.addTopLevelItem(new_item)
+            self.availablePlugins.setItemWidget(new_item, 0, pluginItem)
 
 
         self.runButton.clicked.connect(self.runWorkflow)
