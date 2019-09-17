@@ -2,14 +2,30 @@
 from yapsy.PluginManager import PluginManager
 import pluginTypes
 import os
+
 path = os.path.dirname(os.path.abspath(__file__))
 
-
-def startupPlugins(pluginManager):
+def startupExtensions(pluginManager):
 
 	plugins = dict()
 
-	for pluginInfo in pluginManager.getPluginsOfCategory('Control'):
+	for pluginInfo in pluginManager.getPluginsOfCategory('Extension'):
+
+		pluginManager.activatePluginByName(pluginInfo.name)
+
+		plugin = pluginInfo.plugin_object
+		plugin.name = pluginInfo.name
+
+		print('finished loading:' + pluginInfo.name)
+		plugins[pluginInfo.name] = plugin
+
+	return plugins
+
+def startupInterfaces(pluginManager):
+
+	plugins = dict()
+
+	for pluginInfo in pluginManager.getPluginsOfCategory('Interface'):
 
 		pluginManager.activatePluginByName(pluginInfo.name)
 
@@ -26,7 +42,7 @@ def startupPlugins(pluginManager):
 		else:
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
 
-		techniquesPath = path+'\\plugins\\techniques\\'+pluginInfo.name
+		techniquesPath = path+'\\techniques\\'+pluginInfo.name
 
 		plugin.loadTechniques(techniquesPath, plugins)
 		plugin.start_connection(connectionAddress)
@@ -36,28 +52,48 @@ def startupPlugins(pluginManager):
 
 	return plugins
 
-def availablePlugins():
+def availableInterfaces():
+	# setup the categories
+
+	categories = {'Interface': pluginTypes.IInterfacePlugin, 'Techniques':pluginTypes.ITechniquePlugin}
+
+	# Build the manager, set load location, and then collect them
+
+	interfaceManager = PluginManager(categories_filter=categories)
+	# pluginManager.setPluginPlaces()
+
+	loc = interfaceManager.getPluginLocator()
+	loc.setPluginPlaces([path + '\\interfaces'])
+
+	interfaceManager.locatePlugins()
+	interfaceManager.loadPlugins()
+
+	interfaces = startupInterfaces(interfaceManager)
+
+	return interfaces
+
+
+def availableExtensions():
 
 	# setup the categories
 
-	categories = {'Control' : pluginTypes.IControlPlugin,
-   		'Technique' : pluginTypes.ITechniquePlugin}
+	categories = {'Extension': pluginTypes.IExtensionPlugin}
 
 
 	# Build the manager, set load location, and then collect them
 
-	pluginManager = PluginManager(categories_filter=categories)
+	extManager = PluginManager(categories_filter=categories)
 	#pluginManager.setPluginPlaces()
 
-	loc = pluginManager.getPluginLocator()
-	loc.setPluginPlaces([path+'\\plugins'])
+	loc = extManager.getPluginLocator()
+	loc.setPluginPlaces([path+'\\extensions'])
 
-	pluginManager.locatePlugins()
-	pluginManager.loadPlugins()
-
-
-	plugins = startupPlugins(pluginManager)
+	extManager.locatePlugins()
+	extManager.loadPlugins()
 
 
+	extensions = startupExtensions(extManager)
 
-	return plugins
+
+
+	return extensions

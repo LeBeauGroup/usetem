@@ -2,7 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.yapsy-plugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/techniques/temscript/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/techniques/tiascript/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/ITIAscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/ITemscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/STEMImage.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMImage.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/temscript/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/techniques/tiascript/STEMImage.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/tiaPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/tiaPlugin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/useTEM_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/useTEM_ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -11,13 +31,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -38,6 +65,15 @@
   </component>
   <component name="PyDebuggerOptionsProvider">
     <option name="mySupportQtDebugging" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\interfaces" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -124,9 +160,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/extensions/revSTEM.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/pluginManagement.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/useTEM_ui.py</url>
+          <line>136</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pluginManagement.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

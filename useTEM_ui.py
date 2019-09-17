@@ -10,6 +10,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QObject
 from extensions.revSTEM import revSTEM
 
+import useTEM.pluginManagement as plugm
+
 
 class UseTEMUI(object):
 
@@ -18,8 +20,11 @@ class UseTEMUI(object):
         self.plugins = plugins
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(809, 609)
+
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+
+
         self.availablePlugins = QtWidgets.QTreeWidget(self.centralwidget)
         self.availablePlugins.setGeometry(QtCore.QRect(0, 0, 221, 561))
         self.availablePlugins.setObjectName("availablePlugins")
@@ -83,6 +88,7 @@ class UseTEMUI(object):
 
             pluginItem = QtWidgets.QLabel()
             pluginItem.setText('blah')
+
             self.availablePlugins.addTopLevelItem(new_item)
             self.availablePlugins.setItemWidget(new_item, 0, pluginItem)
 
@@ -91,8 +97,6 @@ class UseTEMUI(object):
         self.addButton.clicked.connect(self.addToWorkflow)
         self.cancelButton.clicked.connect(self.reject)
         self.removeButton.clicked.connect(self.removeFromWorkflow)
-
-
 
 
        #  print('setup widget')
@@ -108,14 +112,13 @@ class UseTEMUI(object):
 
         item = QtWidgets.QTreeWidgetItem(self.workflow)
 
-        item_widget = revSTEM('blash',self.plugins)
+        ext = revSTEM()
+        item_widget = ext.ui()
+
         self.workflow.addTopLevelItem(item)
         self.workflow.setItemWidget(item,0,item_widget)
 
         # self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
-
-
-
 
     def removeFromWorkflow(self):
 
@@ -131,7 +134,10 @@ class UseTEMUI(object):
 
     def runWorkflow(self):
 
-        for itemIndex in range(4203493523):
+        self.interfaces = plugm.availableInterfaces()
+
+
+        for itemIndex in range(self.workflow.topLevelItemCount()):
 
             topLevelItem = self.workflow.topLevelItem(itemIndex)
 
@@ -139,7 +145,8 @@ class UseTEMUI(object):
                 print('Children to run!')
             else:
                 print('trying to run')
-                self.workflow.itemWidget(topLevelItem,0).run()
+                self.workflow.itemWidget(topLevelItem, 0).extension.setInterfaces(self.interfaces)
+                self.workflow.itemWidget(topLevelItem,0).extension.run()
 
 
 

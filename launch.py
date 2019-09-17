@@ -12,7 +12,7 @@ from useTEM_ui import UseTEMUI
 if __name__ == '__main__':
 
 	# loading the plugins
-	plugins = plugm.availablePlugins()
+	plugins = plugm.availableExtensions()
 
 	# launch the pyQt window
 	app = QApplication(sys.argv)

@@ -5,33 +5,34 @@ import os
 from yapsy.PluginManager import PluginManager
 
 
-class ITIAscriptPlugin(pluginTypes.IControlPlugin):
+class ITEMscriptPlugin(pluginTypes.IInterfacePlugin):
 
 	client = None # server proxy or direct local comtypes
 	name = None
-	moduleName = 'useTEM.modules.tiascript.application'
+	moduleName = 'useTEM.modules.temscript.instrument'
 
+#	techniques = dict()
 
 	def activate(self):
 		print('activating')
 
 	def	start_connection(self, address):
+
 		techniques_path = os.path.dirname(os.path.abspath(__file__))+'\\techniques\\'+self.name
 
 		if address == 'local':
 			import importlib
 
 			module = importlib.import_module(self.moduleName)
-			client = module.Application()
+			self.client = module.Instrument()
 
 		else:
 			print(address)
-			client = xmlrpc.client.ServerProxy(address)
+			self.client = xmlrpc.client.ServerProxy(address)
 
-		self.client = client
 
 		for key, value in self.techniques.items():
-
+		 	#print(technique)
 			updated = self.techniques[key]
 			updated.client = self.client
 			value.client = self.client
