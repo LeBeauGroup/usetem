@@ -24,26 +24,37 @@ class UseTEMUI(object):
         self.availablePlugins.setGeometry(QtCore.QRect(0, 0, 221, 561))
         self.availablePlugins.setObjectName("availablePlugins")
         self.availablePlugins.headerItem().setText(0, "1")
+
         self.workflow = QtWidgets.QTreeWidget(self.centralwidget)
         self.workflow.setGeometry(QtCore.QRect(220, 0, 591, 561))
         self.workflow.setObjectName("workflow")
         self.workflow.headerItem().setText(0, "1")
+        p = self.workflow.palette()
+        p.setColor(QtGui.QPalette.Highlight, QtGui.QColor('gray'))
+        self.workflow.setPalette(p)
+
         self.statusLabel = QtWidgets.QLabel(self.centralwidget)
         self.statusLabel.setGeometry(QtCore.QRect(440, 570, 46, 13))
         self.statusLabel.setObjectName("statusLabel")
+
+
         self.addButton = QtWidgets.QPushButton(self.centralwidget)
         self.addButton.setGeometry(QtCore.QRect(200, 560, 21, 23))
         self.addButton.setObjectName("addButton")
         self.removeButton = QtWidgets.QPushButton(self.centralwidget)
         self.removeButton.setGeometry(QtCore.QRect(220, 560, 21, 23))
         self.removeButton.setObjectName("removeButton")
+
+
         self.runButton = QtWidgets.QPushButton(self.centralwidget)
         self.runButton.setGeometry(QtCore.QRect(600, 560, 75, 23))
         self.runButton.setObjectName("runButton")
+
         self.cancelButton = QtWidgets.QPushButton(self.centralwidget)
         self.cancelButton.setGeometry(QtCore.QRect(730, 560, 75, 23))
         self.cancelButton.setObjectName("cancelButton")
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 809, 18))
         self.menubar.setObjectName("menubar")
@@ -100,7 +111,8 @@ class UseTEMUI(object):
         item_widget = revSTEM('blash',self.plugins)
         self.workflow.addTopLevelItem(item)
         self.workflow.setItemWidget(item,0,item_widget)
-        self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
+
+        # self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
 
 
 
