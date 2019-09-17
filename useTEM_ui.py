@@ -78,7 +78,7 @@ class UseTEMUI(object):
 
         self.runButton.clicked.connect(self.runWorkflow)
         self.addButton.clicked.connect(self.addToWorkflow)
-
+        self.cancelButton.clicked.connect(self.reject)
         self.removeButton.clicked.connect(self.removeFromWorkflow)
 
 
@@ -100,6 +100,8 @@ class UseTEMUI(object):
         item_widget = revSTEM('blash',self.plugins)
         self.workflow.addTopLevelItem(item)
         self.workflow.setItemWidget(item,0,item_widget)
+        self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
+
 
 
 
@@ -131,6 +133,7 @@ class UseTEMUI(object):
 
     def reject(self):
         print('rejected!')
+        sys.exit(app.exec_())
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

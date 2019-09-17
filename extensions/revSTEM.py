@@ -8,8 +8,10 @@ class revSTEM(QtWidgets.QWidget):
         super(QtWidgets.QWidget, self).__init__(parent)
 
         self.numFrames = 12
+        self.binning = 8
+        self.dwellTime = 0.5e-6
 
-        self.detectorInfo = {'dwellTime': 0.5e-6, 'binning':8, 'numFrames':self.numFrames,'names':['DF2','BF']}
+        self.detectorInfo = {'dwellTime': self.dwellTime, 'binning':self.binning, 'numFrames':self.numFrames,'names':['DF2','BF']}
         self.plugins = plugins
 
         self.widget = QtWidgets.QWidget()
@@ -21,20 +23,30 @@ class revSTEM(QtWidgets.QWidget):
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
 
-        self.label = QtWidgets.QLabel(self.widget)
-        self.label.setObjectName("label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+        self.dwellTimeLabel = QtWidgets.QLabel(self.widget)
+        self.dwellTimeLabel.setObjectName("dwellTimeLabel")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.dwellTimeLabel)
+        self.dwellTimelineEdit = QtWidgets.QLineEdit(self.widget)
+        self.dwellTimelineEdit.setText(f'{self.dwellTime}')
+        self.dwellTimelineEdit.setObjectName("dwellTimelineEdit")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.dwellTimelineEdit)
 
-        self.lineEdit = QtWidgets.QLineEdit(self.widget)
-        self.lineEdit.setObjectName("lineEdit")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)
+        self.binningLabel = QtWidgets.QLabel(self.widget)
+        self.binningLabel.setObjectName("binningLabel")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.binningLabel)
+        self.binningLineEdit = QtWidgets.QLineEdit(self.widget)
+        self.binningLineEdit.setText(f'{self.binning}')
+        self.binningLineEdit.setObjectName("binningLineEdit")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.binningLineEdit)
+
         self.numberOfFramesLabel = QtWidgets.QLabel(self.widget)
         self.numberOfFramesLabel.setObjectName("numberOfFramesLabel")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.numberOfFramesLabel)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.numberOfFramesLabel)
         self.numberOfFramesLineEdit = QtWidgets.QLineEdit(self.widget)
         self.numberOfFramesLineEdit.setText(f'{self.numFrames}')
         self.numberOfFramesLineEdit.setObjectName("numberOfFramesLineEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.numberOfFramesLineEdit)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.numberOfFramesLineEdit)
+
         self.gridLayout.addLayout(self.formLayout, 0, 0, 1, 1)
 
         self.retranslateUi(self.widget)
@@ -45,7 +57,8 @@ class revSTEM(QtWidgets.QWidget):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Dwell time"))
+        self.dwellTimeLabel.setText(_translate("Dialog", "Dwell time"))
+        self.binningLabel.setText(_translate("Dialog", "Binning"))
         self.numberOfFramesLabel.setText(_translate("Dialog", "Number of Frames"))
 
     def run(self):
