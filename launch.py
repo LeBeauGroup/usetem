@@ -4,16 +4,9 @@ import os
 path = os.path.dirname(os.path.abspath(__file__))
 
 import sys
-from PyQt5.QtWidgets import QDialog, QApplication
-from useTEM_ui import useTEMdialog
-
-class AppWindow(QDialog):
-
-    def __init__(self):
-        super().__init__()
-        self.ui = useTEMdialog()
-        self.ui.setupUi(self, plugins)
-        self.show()
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
+from PyQt5 import QtGui
+from useTEM_ui import UseTEMUI
 
 
 if __name__ == '__main__':
@@ -23,8 +16,14 @@ if __name__ == '__main__':
 
 	# launch the pyQt window
 	app = QApplication(sys.argv)
-	window = AppWindow()
-	window.show()
+	mainWindow = QMainWindow()
+
+	app.setActiveWindow(mainWindow)
+
+
+	ui = UseTEMUI()
+	ui.setupUi(mainWindow,plugins)
+	mainWindow.show()
 	sys.exit(app.exec_())
 
 

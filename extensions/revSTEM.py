@@ -3,6 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class revSTEM(QtWidgets.QWidget):
+
     def __init__(self, name, plugins, parent=None):
         super(QtWidgets.QWidget, self).__init__(parent)
 
@@ -19,9 +20,11 @@ class revSTEM(QtWidgets.QWidget):
         self.gridLayout.setObjectName("gridLayout")
         self.formLayout = QtWidgets.QFormLayout()
         self.formLayout.setObjectName("formLayout")
+
         self.label = QtWidgets.QLabel(self.widget)
         self.label.setObjectName("label")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
+
         self.lineEdit = QtWidgets.QLineEdit(self.widget)
         self.lineEdit.setObjectName("lineEdit")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit)

@@ -7,44 +7,71 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QObject
 from extensions.revSTEM import revSTEM
 
 
-class useTEMdialog(object):
+class UseTEMUI(object):
 
-    def setupUi(self, Dialog, plugins):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 300)
-        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox.setGeometry(QtCore.QRect(30, 240, 341, 32))
-        self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
 
-        #runButton = QtWidgets.QDialogButtonBox.Open
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Open)
-        self.buttonBox.setObjectName("buttonBox")
-        self.listWidget = QtWidgets.QTreeWidget(Dialog)
-        self.listWidget.setColumnCount(1)
-        self.listWidget.setGeometry(QtCore.QRect(10, 10, 371, 211))
-        self.listWidget.setObjectName("listWidget")
+    def setupUi(self, MainWindow, plugins):
+        self.plugins = plugins
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(809, 609)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.availablePlugins = QtWidgets.QTreeWidget(self.centralwidget)
+        self.availablePlugins.setGeometry(QtCore.QRect(0, 0, 221, 561))
+        self.availablePlugins.setObjectName("availablePlugins")
+        self.availablePlugins.headerItem().setText(0, "1")
+        self.workflow = QtWidgets.QTreeWidget(self.centralwidget)
+        self.workflow.setGeometry(QtCore.QRect(220, 0, 591, 561))
+        self.workflow.setObjectName("workflow")
+        self.workflow.headerItem().setText(0, "1")
+        self.statusLabel = QtWidgets.QLabel(self.centralwidget)
+        self.statusLabel.setGeometry(QtCore.QRect(440, 570, 46, 13))
+        self.statusLabel.setObjectName("statusLabel")
+        self.addButton = QtWidgets.QPushButton(self.centralwidget)
+        self.addButton.setGeometry(QtCore.QRect(200, 560, 21, 23))
+        self.addButton.setObjectName("addButton")
+        self.removeButton = QtWidgets.QPushButton(self.centralwidget)
+        self.removeButton.setGeometry(QtCore.QRect(220, 560, 21, 23))
+        self.removeButton.setObjectName("removeButton")
+        self.runButton = QtWidgets.QPushButton(self.centralwidget)
+        self.runButton.setGeometry(QtCore.QRect(600, 560, 75, 23))
+        self.runButton.setObjectName("runButton")
+        self.cancelButton = QtWidgets.QPushButton(self.centralwidget)
+        self.cancelButton.setGeometry(QtCore.QRect(730, 560, 75, 23))
+        self.cancelButton.setObjectName("cancelButton")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 809, 18))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        MainWindow.setMenuBar(self.menubar)
+        self.menubar.addAction(self.menuFile.menuAction())
 
-        self.retranslateUi(Dialog)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+        #self.workflow = QtWidgets.QTreeWidget(MainWindow)
+        self.workflow.setColumnCount(1)
+        # self.listWidget.setGeometry(QtCore.QRect(10, 10, 371, 211))
+        # self.listWidget.setObjectName("listWidget")
+
         #self.listWidget.setExpanded(0,True);
 
         # setup plugin views
         #for plugin in plugins:
 
-        print('setup widget')
-        item = QtWidgets.QTreeWidgetItem(self.listWidget)
 
-        item_widget = revSTEM('blash',plugins)
-            #item.setSizeHint(QtCore.QSize(100,50))
-        self.listWidget.addTopLevelItem(item)
-        self.listWidget.setItemWidget(item,0,item_widget)
+        self.runButton.clicked.connect(self.runWorkflow)
+        self.addButton.clicked.connect(self.addToWorkflow)
 
-        self.buttonBox.accepted.connect(item_widget.run)
-        self.buttonBox.rejected.connect(item_widget.reject)
+        self.cancelButton.clicked.connect(self.reject)
 
-        #QtCore.QMetaObject.connectSlotsByName(revSTEM)
 
 
 
@@ -55,10 +82,44 @@ class useTEMdialog(object):
        #  self.listWidget.addTopLevelItem(item)
        #  self.listWidget.setItemWidget(item,0,item_widget2)
 
+    def addToWorkflow(self):
+
+        selected = self.availablePlugins.selectedItems()
+
+        item = QtWidgets.QTreeWidgetItem(self.workflow)
+
+        item_widget = revSTEM('blash',self.plugins)
+        self.workflow.addTopLevelItem(item)
+        self.workflow.setItemWidget(item,0,item_widget)
+
+
+
+
+
+    def runWorkflow(self):
+
+        for itemIndex in range(self.workflow.topLevelItemCount()):
+
+            topLevelItem = self.workflow.topLevelItem(itemIndex)
+
+            if topLevelItem.childCount() > 0:
+                print('Children to run!')
+            else:
+                print('trying to run')
+                self.workflow.itemWidget(topLevelItem,0).run()
+
+
+
     def reject(self):
         print('rejected!')
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.statusLabel.setText(_translate("MainWindow", "Status"))
+        self.addButton.setText(_translate("MainWindow", "+"))
+        self.removeButton.setText(_translate("MainWindow", "-"))
+        self.runButton.setText(_translate("MainWindow", "Run"))
+        self.cancelButton.setText(_translate("MainWindow", "Cancel"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
 

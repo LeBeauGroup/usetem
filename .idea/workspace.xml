@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extensions/revSTEM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/temscript/instrument.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/temscript/instrument.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/acquistionManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/acquistionManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dialog.py" beforeDir="false" afterPath="$PROJECT_DIR$/useTEM_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_plugin_ui2.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_plugin_ui2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/useTEM_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/useTEM_ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
@@ -98,7 +95,36 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/useTEM_ui.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="pluginManager.categories_interfaces" />
