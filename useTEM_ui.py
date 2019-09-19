@@ -11,6 +11,7 @@ from PyQt5.QtCore import QObject
 from extensions.revSTEM import revSTEM
 import copy
 import useTEM.pluginManagement as plugm
+import threading
 
 
 class UseTEMUI(object):
@@ -37,6 +38,11 @@ class UseTEMUI(object):
         p = self.workflow.palette()
         p.setColor(QtGui.QPalette.Highlight, QtGui.QColor('gray'))
         self.workflow.setPalette(p)
+
+        # TODO: Use the following to enable drag/drop capabilities
+
+        self.workflow.setAcceptDrops(True)
+        self.workflow.setDragEnabled(True)
 
         self.statusLabel = QtWidgets.QLabel(self.centralwidget)
         self.statusLabel.setGeometry(QtCore.QRect(440, 570, 46, 13))
@@ -140,6 +146,7 @@ class UseTEMUI(object):
         self.interfaces = plugm.availableInterfaces()
 
 
+
         for itemIndex in range(self.workflow.topLevelItemCount()):
 
             topLevelItem = self.workflow.topLevelItem(itemIndex)
@@ -149,7 +156,10 @@ class UseTEMUI(object):
             else:
                 print('trying to run')
                 self.workflow.itemWidget(topLevelItem, 0).extension.setInterfaces(self.interfaces)
-                self.workflow.itemWidget(topLevelItem,0).extension.run()
+               # runFunc = self.workflow.itemWidget(topLevelItem,0).extension.run
+
+                x = threading.Thread(target=self.workflow.itemWidget(topLevelItem,0).extension.run)
+                x.start()
 
 
 

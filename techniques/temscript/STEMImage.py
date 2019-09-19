@@ -10,7 +10,7 @@ class ISTEMImage(ITechniquePlugin):
 
 
 	def setupAcquisition(self, detectorInfo):
-
+		self.client.resetApplicaton()
 		acq = self.client.acquisition
 		stem = acq.stemDetectors
 	

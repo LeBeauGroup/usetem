@@ -16,6 +16,7 @@ class revSTEM(pluginTypes.IExtensionPlugin):
     def setInterfaces(self, interfaces):
         self.interfaces = interfaces
 
+
     def ui(self):
 
         widget = QtWidgets.QWidget()
@@ -87,6 +88,7 @@ class revSTEM(pluginTypes.IExtensionPlugin):
         tia = self.interfaces['tiascript']
         stem = tia.techniques['STEMImage']
 
+        
         stem.setupAcquisition(self.detectorInfo)
 
         for i in range(frames):

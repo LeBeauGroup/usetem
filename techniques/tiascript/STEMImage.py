@@ -34,6 +34,8 @@ class ISTEMImage(ITechniquePlugin):
 
 		sizeX = maxSizeX/1
 
+		self.client.resetApplication()
+
 		acq = self.client.acquisitionManager
 		scanning = self.client.scanningServer
 

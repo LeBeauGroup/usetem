@@ -42,6 +42,17 @@ class Application():
 
     _activeDisplayWindow = None
 
+    def resetApplication(self):
+        self.app = CreateObject("ESVision.Application")
+
+        self.imageDisplay = ImageDisplay(self.app)
+
+        self.acquisitionManager = AcquisitionManager(self.app)
+        self.scanningServer = ScanningServer(self.app)
+        self.beamControl = BeamControl(self.app)
+        self.microscope = Microscope(self.app)
+        self.ccdServer = CcdServer(self.app)
+
     def _timeStampName(self):
         return datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
@@ -67,7 +78,7 @@ class Application():
         return newDisp.Path#+f'/{imageName}'
 
     def activateDisplayWindow(self, name):
-        app.ActivateDisplayWindow(name)
+        self.app.ActivateDisplayWindow(name)
 
     def activeDisplayWindow(self):
 
