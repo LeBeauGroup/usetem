@@ -88,6 +88,11 @@ class USETEMGuiManager():
 		workflowTree = self.ui.workflowTree
 		workflowTree.plugins = plugs
 
+		if isinstance(workflowTree, QtWidgets.QTreeWidget):
+
+			workflowTree.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+			workflowTree.customContextMenuRequested.connect(self.prepareMenu)
+
 		workflowTree.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
 		# plugsTree.setSelectionMode(QtCore.Qt.QAbstractItemView::ExtendedSelection);
 		workflowTree.setDragEnabled(True)
@@ -104,6 +109,26 @@ class USETEMGuiManager():
 	# 		print(ind.row())
 	# 		# item = model.itemFromIndex(ind)
 	# 		# self.ui.usetem_widget.setWidget(item.data())
+
+	def prepareMenu(self, point):
+
+		newMenu = QtWidgets.QMenu(self.ui)
+
+		removeAct = QtWidgets.QAction(QtGui.QIcon(), '&Remove Workflow Item', self.ui)
+
+		removeAct.triggered.connect(self.removeWorkflowItem)
+		newMenu.addAction(removeAct)
+
+
+
+		newMenu.exec(self.ui.workflowTree.mapToGlobal(point))
+
+	def removeWorkflowItem(self):
+
+		currentItem = self.ui.workflowTree.currentItem()
+		currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
+		self.ui.workflowTree.takeTopLevelItem(currentIndex)
+
 	def addToWorkflow(self):
 
 		selected = self.ui.availablePlugins.selectedItems()

@@ -6,12 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1180</width>
-    <height>664</height>
+    <width>1182</width>
+    <height>646</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="addButton">
@@ -60,7 +63,7 @@
    <widget class="QPushButton" name="runButton">
     <property name="geometry">
      <rect>
-      <x>930</x>
+      <x>950</x>
       <y>560</y>
       <width>112</width>
       <height>34</height>
@@ -73,7 +76,7 @@
    <widget class="QPushButton" name="abortButton">
     <property name="geometry">
      <rect>
-      <x>1040</x>
+      <x>1060</x>
       <y>560</y>
       <width>112</width>
       <height>34</height>
@@ -89,10 +92,16 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1180</width>
+     <width>1182</width>
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
