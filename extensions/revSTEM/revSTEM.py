@@ -27,7 +27,7 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 		stem = tia.techniques['STEMImage']
 
 		stem.setupAcquisition(input)
-		rotAngle = input['rotation']
+		rotAngle = float(input['rotation'])
 
 		for i in range(frames):
 			print(f'acqiuring {i}')

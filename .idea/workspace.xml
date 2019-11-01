@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forLoop.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflowtreewidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflowtreewidget.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -200,23 +196,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>66</line>
+          <line>63</line>
           <option name="timeStamp" value="137" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>125</line>
+          <line>122</line>
           <option name="timeStamp" value="148" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/workflowtreewidget.py</url>
-          <line>16</line>
-          <option name="timeStamp" value="183" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/workflowtreewidget.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="185" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

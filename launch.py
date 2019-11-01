@@ -45,8 +45,6 @@ class WorkflowThread(QtCore.QThread):
 		self.workflow = workflow
 		self.plugins = plugins
 
-
-
 	def __del__(self):
 		self.wait()
 
@@ -60,7 +58,6 @@ class WorkflowThread(QtCore.QThread):
 			if topLevelItem.childCount() > 0:
 				print('Children to run!')
 			else:
-				print('got here')
 				itemData = topLevelItem.data
 				plugin = self.plugins[itemData['name']]
 
