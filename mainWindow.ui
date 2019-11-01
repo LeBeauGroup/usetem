@@ -60,7 +60,7 @@
    <widget class="QPushButton" name="runButton">
     <property name="geometry">
      <rect>
-      <x>990</x>
+      <x>930</x>
       <y>560</y>
       <width>112</width>
       <height>34</height>
@@ -68,6 +68,19 @@
     </property>
     <property name="text">
      <string>Run</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="abortButton">
+    <property name="geometry">
+     <rect>
+      <x>1040</x>
+      <y>560</y>
+      <width>112</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Abort</string>
     </property>
    </widget>
   </widget>

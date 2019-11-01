@@ -83,6 +83,7 @@ class USETEMGuiManager():
 		self.plugins = plugs
 
 		self.ui.addButton.clicked.connect(self.addToWorkflow)
+		self.ui.abortButton.clicked.connect(self.killWorkflow)
 
 		workflowTree = self.ui.workflowTree
 		workflowTree.plugins = plugs
@@ -94,6 +95,7 @@ class USETEMGuiManager():
 		workflowTree.setDropIndicatorShown(True)
 		workflowTree.setAnimated(True)
 		workflowTree.doubleClicked.connect(self.addToWorkflow)
+
 	# def selectionChanged(self):
 	#
 	# 	model = self.ui.pluginsTree.model()
@@ -149,6 +151,11 @@ class USETEMGuiManager():
 		self.interfaces = plugm.availableInterfaces()
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
 		self.runThread.start()
+
+	def killWorkflow(self):
+
+		if isinstance(self.runThread, WorkflowThread):
+			self.runThread.terminate()
 
 
 if __name__ == '__main__':
