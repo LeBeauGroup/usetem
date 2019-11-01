@@ -152,6 +152,7 @@ class ScanningServer(ImageServer):
 
     def scanRange(self, value=None):
 
+        print('testing')
         if value is None:
             range = self.server.scanRange
 

@@ -1,4 +1,6 @@
 from useTEM.pluginTypes import ITechniquePlugin
+import comtypes
+
 import abc
 #import matplotlib.pyplot as plt
 import numpy as np
@@ -23,27 +25,49 @@ class ISTEMImage(ITechniquePlugin):
 		"""
 
 		:param detectorInfo: dictionary with following information:
-		detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'numFrames':1,'names':['HAADF','BF']}
+		detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'numFrames':1,'detectors':['HAADF','BF']}
 
 		:return:
 		"""
 
+		print('got to this point')
+
 		binning = detectorInfo['binning']
+
+
 		pixelSkipping = 1
 		maxSizeX = 4096
 
 		sizeX = maxSizeX/1
 
+		if isinstance(binning,str):
+
+			splitBinSize = binning.split('x')
+			frameWidth = int(splitBinSize[0])
+			frameHeight = int(splitBinSize[1])
+		elif isinstance(binning, int):
+			frameWidth = maxSizeX / binning  # detectorInfo['frameWidth']
+			frameHeight = maxSizeX / binning  # detectorInfo['frameHeight']
+
+		print(frameWidth, frameHeight)
+
+
+		t = self.controlPlugins['temscript'].client.illumination
+		t.stemRotation(45)
+
 		acq = self.client.acquisitionManager
 		scanning = self.client.scanningServer
 
+
+
 		newWindow = self.client.addDisplayWindow()
+
 		self.client.activateDisplayWindow(newWindow)
 
 		imagePaths = []
 
-		frameWidth = maxSizeX/binning # detectorInfo['frameWidth']
-		frameHeight = maxSizeX/binning #detectorInfo['frameHeight']
+		# frameWidth = maxSizeX/binning # detectorInfo['frameWidth']
+		# frameHeight = maxSizeX/binning #detectorInfo['frameHeight']
 
 		acq.unlinkAllSignals()
 
@@ -57,7 +81,7 @@ class ISTEMImage(ITechniquePlugin):
 		acq.addSetup('Acquire')
 		acq.selectSetup('Acquire')
 
-		for name in detectorInfo['names']:
+		for name in detectorInfo['detectors']:
 
 			path = self.client.addDisplay(newWindow, name)
 			cal = (0, 0, 1, 1, frameWidth/2, frameHeight/2)
@@ -104,7 +128,6 @@ class ISTEMImage(ITechniquePlugin):
 			acq.acquire()
 		except:
 			print('could not acquire')
-
 
 		#capturedImage = pickle.loads(acq.acquireImages().data)[0]
 		return None

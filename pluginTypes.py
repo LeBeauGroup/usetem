@@ -22,9 +22,6 @@ class IInterfacePlugin(plugin.IPlugin):
 		pm.updatePluginPlaces([techniquesPath])
 		pm.collectPlugins()
 
-		#print(pm.getAllPlugins())
-		#getPluginsOfCategory('Technique')
-
 		self.techniques = dict()
 
 		for pluginInfo in pm.getAllPlugins():

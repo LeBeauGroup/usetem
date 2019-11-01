@@ -32,6 +32,8 @@ class Instrument():
 
     buttons  = instrument.UserButtons
 
+
+
     def isSTEMAvailable(self):
         return self.instrument.InstrumentModeControl.StemAvailable
 

@@ -1,8 +1,4 @@
-from comtypes.client import CreateObject, Constants
-#from comtypes.gen import ESVision as
-
-from instrument import Instrument
-
+from useTEM.modules.temscript.instrument import Instrument
 import logging
 from xmlrpc.server import SimpleXMLRPCServer
 from xmlrpc.server import SimpleXMLRPCRequestHandler
@@ -36,7 +32,7 @@ class RequestHandler(SimpleXMLRPCRequestHandler):
 
 if __name__ == "__main__":
 
-    with SimpleXMLRPCServer((get_Host_name_IP(), 8001),
+    with SimpleXMLRPCServer(('127.0.0.1', 8001),
                             requestHandler=RequestHandler, allow_none=True) as server:
         server.register_introspection_functions()
 

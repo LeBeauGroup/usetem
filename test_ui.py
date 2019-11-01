@@ -9,8 +9,6 @@ class AppWindow(QDialog):
         self.ui.setupUi(self)
         self.show()
 
-
-
 if __name__ == '__main__':
 
     print('this')

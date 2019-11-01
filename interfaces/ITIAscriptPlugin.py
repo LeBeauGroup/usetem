@@ -3,7 +3,7 @@ import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
 import os
 from yapsy.PluginManager import PluginManager
-
+from PyQt5.QtCore import QThreadPool
 
 class ITIAscriptPlugin(pluginTypes.IInterfacePlugin):
 
@@ -11,24 +11,19 @@ class ITIAscriptPlugin(pluginTypes.IInterfacePlugin):
 	name = None
 	moduleName = 'useTEM.modules.tiascript.application'
 
-
 	def activate(self):
 		print('activating')
 
 	def	start_connection(self, address):
-		techniques_path = os.path.dirname(os.path.abspath(__file__))+'\\techniques\\'+self.name
 
 		if address == 'local':
 			import importlib
 
 			module = importlib.import_module(self.moduleName)
-			client = module.Application()
+			self.client = module.Application()
 
 		else:
-			print(address)
-			client = xmlrpc.client.ServerProxy(address)
-
-		self.client = client
+			self.client = xmlrpc.client.ServerProxy(address)
 
 		for key, value in self.techniques.items():
 

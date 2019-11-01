@@ -3,7 +3,7 @@ from comtypes.client import CreateObject, Constants
 
 from xmlrpc.client import Binary
 import xmlrpc.client
-
+from _ctypes import COMError
 from .acquisitionservers import *
 from .beamcontrol import *
 from .guiobjects import *
@@ -42,6 +42,22 @@ class Application():
 
     _activeDisplayWindow = None
 
+    # def resetApplication(self):
+    #
+    #     try:
+    #         self.app = CreateObject("ESVision.Application")
+    #     except COMError as e:
+    #         print(e)
+    #
+    #
+    #     self.imageDisplay = ImageDisplay(self.app)
+    #
+    #     self.acquisitionManager = AcquisitionManager(self.app)
+    #     self.scanningServer = ScanningServer(self.app)
+    #     self.beamControl = BeamControl(self.app)
+    #     self.microscope = Microscope(self.app)
+    #     self.ccdServer = CcdServer(self.app)
+
     def _timeStampName(self):
         return datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
@@ -67,7 +83,7 @@ class Application():
         return newDisp.Path#+f'/{imageName}'
 
     def activateDisplayWindow(self, name):
-        app.ActivateDisplayWindow(name)
+        self.app.ActivateDisplayWindow(name)
 
     def activeDisplayWindow(self):
 

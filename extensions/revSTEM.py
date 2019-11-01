@@ -1,100 +1,121 @@
 import pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import uic
+import os
 
 
 class revSTEM(pluginTypes.IExtensionPlugin):
 
-    def __init__(self):
+	def __init__(self):
 
-        self.numFrames = 12
-        self.binning = 8
-        self.dwellTime = 0.5e-6
+		self.uiFile = QtCore.QFile('revSTEM.ui')
+		self.uiFile.open(QtCore.QFile.ReadOnly)
 
-        self.detectorInfo = {'dwellTime': self.dwellTime, 'binning':self.binning, 'numFrames':self.numFrames,'names':['DF2','BF']}
+		self.numFrames = 12
+		self.binning = '512x512'
+		self.dwellTime = 0.5e-6
 
+		# self.detectorInfo = {'dwellTime': self.dwellTime, 'binning': self.binning, 'numFrames': self.numFrames,
+		# 					 'detectors': ['DF2', 'BF']}
 
-    def setInterfaces(self, interfaces):
-        self.interfaces = interfaces
+		self.defaultParameters = {'name': 'revSTEM', 'rotation':90 , 'dwellTime': self.dwellTime, 'binning': self.binning,
+						   'numFrames': self.numFrames, 'detectors': ['HAADF']}
 
-    def ui(self):
+	def setInterfaces(self, interfaces):
+		self.interfaces = interfaces
 
-        widget = QtWidgets.QWidget()
-        widget.setObjectName("widget")
-        widget.setGeometry(QtCore.QRect(10,1,150, 58))
+	def ui(self, item, parent=None):
 
-        gridLayout = QtWidgets.QGridLayout(widget)
-        gridLayout.setObjectName("gridLayout")
-        formLayout = QtWidgets.QFormLayout()
-        formLayout.setObjectName("formLayout")
+		def updateItemData():
 
-        self.dwellTimeLabel = QtWidgets.QLabel(widget)
-        self.dwellTimeLabel.setObjectName("dwellTimeLabel")
+			sender = widget.sender()
+			senderName = sender.objectName()
 
-        formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.dwellTimeLabel)
+			if "Edit" in senderName:
+				key = senderName.replace('Edit', '')
 
-        self.dwellTimelineEdit = QtWidgets.QLineEdit(widget)
-        self.dwellTimelineEdit.setText(f'{self.dwellTime}')
-        self.dwellTimelineEdit.setObjectName("dwellTimelineEdit")
+				if isinstance(sender,QtWidgets.QLineEdit):
+					widget.item.data[key] = sender.text()
 
-        formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.dwellTimelineEdit)
+				elif isinstance(sender, QtWidgets.QListWidget):
+					newSelection = list()
 
-        self.binningLabel = QtWidgets.QLabel(widget)
-        self.binningLabel.setObjectName("binningLabel")
+					for selectedItem in sender.selectedItems():
+						label = selectedItem.text()
+						newSelection.append(label)
 
-        formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.binningLabel)
+					widget.item.data[key] = newSelection
+					print(widget.item.data[key])
 
-        self.binningLineEdit = QtWidgets.QLineEdit(widget)
-        self.binningLineEdit.setText(f'{self.binning}')
-        self.binningLineEdit.setObjectName("binningLineEdit")
+				elif isinstance(sender, QtWidgets.QComboBox):
+					widget.item.data[key] = sender.currentText()
 
-        formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.binningLineEdit)
+		path = os.getcwd()+'\\extensions\\revSTEM.ui'
+		widget = uic.loadUi(path, parent)
+		item.setSizeHint(0, widget.size())
+		widget.item = item
 
-        self.numberOfFramesLabel = QtWidgets.QLabel(widget)
-        self.numberOfFramesLabel.setObjectName("numberOfFramesLabel")
-
-        formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.numberOfFramesLabel)
-
-        self.numberOfFramesLineEdit = QtWidgets.QLineEdit(widget)
-        self.numberOfFramesLineEdit.setText(f'{self.numFrames}')
-        self.numberOfFramesLineEdit.setObjectName("numberOfFramesLineEdit")
-
-        formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.numberOfFramesLineEdit)
-
-        gridLayout.addLayout(formLayout, 0, 0, 1, 1)
-
-        # QtCore.QMetaObject.connectSlotsByName(self)
-
-        widget.setLayout(gridLayout)
-        self.retranslateUi(widget)
-        widget.extension = self
-        self.ui = widget
+		for child in widget.children():
+			name = child.objectName()
 
 
-        return self.ui
+			if "Edit" in name:
+
+				parameterName = name.replace('Edit', '')
+				print(parameterName)
+
+				if isinstance(child, QtWidgets.QListWidget):
+
+					for it in range(0, child.count()):
+
+						rowItem = child.item(it)
+						label = rowItem.text()
+
+						if label in item.data[parameterName]:
+							rowItem.setSelected(True)
+						else:
+							rowItem.setSelected(False)
+
+					child.itemSelectionChanged.connect(updateItemData)
+
+				elif isinstance(child, QtWidgets.QLineEdit):
+					child.setText(f'{item.data[parameterName]}')
+					child.editingFinished.connect(updateItemData)
+
+				elif isinstance(child, QtWidgets.QComboBox):
+					paramValue = item.data[parameterName]
+					for ind in range(0, child.count()):
+
+						if child.itemText(ind) == str(paramValue):
+							child.setCurrentIndex(ind)
+							break
+					child.currentIndexChanged.connect(updateItemData)
 
 
-    def retranslateUi(self,widget):
-        _translate = QtCore.QCoreApplication.translate
-        widget.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.dwellTimeLabel.setText(_translate("Dialog", "Dwell time"))
-        self.binningLabel.setText(_translate("Dialog", "Binning"))
-        self.numberOfFramesLabel.setText(_translate("Dialog", "Number of Frames"))
+		return widget
 
-    def run(self):
+	def retranslateUi(self, widget):
+		_translate = QtCore.QCoreApplication.translate
+		widget.setWindowTitle(_translate("Dialog", "Dialog"))
+		self.dwellTimeLabel.setText(_translate("Dialog", "Dwell time"))
+		self.binningLabel.setText(_translate("Dialog", "Binning"))
+		self.numberOfFramesLabel.setText(_translate("Dialog", "Number of Frames"))
 
-        frames = int(self.numberOfFramesLineEdit.text())
-        print(frames)
-        tia = self.interfaces['tiascript']
-        stem = tia.techniques['STEMImage']
+	def run(self, input):
 
-        stem.setupAcquisition(self.detectorInfo)
+		frames = int(input['numFrames'])
+		print(frames)
+		tia = self.interfaces['tiascript']
+		stem = tia.techniques['STEMImage']
 
-        for i in range(frames):
-            print(f'acqiuring {i}')
-            rot = i*90
-            stem.scanRotation(rot)
-            stem.acquire()
+		stem.setupAcquisition(input)
+		rotAngle = input['rotation']
 
+		for i in range(frames):
+			print(f'acqiuring {i}')
+			rot = i * rotAngle
+			stem.scanRotation(rot)
+			stem.acquire()
 
-    def reject(self):
-        print('rejected')
+	def reject(self):
+		print('rejected')
