@@ -1,6 +1,6 @@
-from yapsy.PluginManager import PluginManager
+from yapsy.MultiprocessPluginManager import MultiprocessPluginManager
 import numpy as np
-import pluginManagement as plugm
+#import pluginManagement as plugm
 
 import yapsy.IPlugin as IPlugin
 import pluginTypes as types
@@ -49,11 +49,10 @@ if __name__ == '__main__':
 	# categories = {'Control' : types.IControlPlugin,
  #   		'Technique' : types.ITechniquePlugin}
 
-
 	# # Build the manager, set load location, and then collect them
 
-	# pluginManager = PluginManager(categories_filter=categories)
-	# pluginManager.setPluginPlaces([path+'/plugins'])
+	pluginManager = MultiprocessPluginManager()
+	pluginManager.setPluginPlaces([path+'/interfaces'])
 
 
 	# #ip = 'http://172.16.181.144:8001/'
@@ -63,26 +62,30 @@ if __name__ == '__main__':
 
 
 	# # Activate all loaded plugins
-	# #pluginManager.locatePlugins()
-	# #print(pluginManager.getPluginCandidates())
-
-	# pluginManager.locatePlugins()
-	# pluginManager.loadPlugins()
-
-	# plugins = startupPlugins(pluginManager)
-
-	plugins = plugm.availablePlugins()
-
-	#print(plugins['temscript'].techniques)
-	detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'imageSize':0,'names':['HAADF']}
-	plugins['temscript'].techniques['STEMImage'].setupAcquisition(detectorInfo)
+	pluginManager.locatePlugins()
 
 
-	im = [None]*10
-	for i in range(10):
+	 # pluginManager.locatePlugins()
+	pluginManager.loadPlugins()
 
-		rot = i*90
-		plugins['temscript'].techniques['STEMImage'].scanRotation(rot)
-		im[i] = plugins['temscript'].techniques['STEMImage'].acquire()
+	print(pluginManager)
+
+	for pluginInfo in pluginManager.getAllPlugins():
+		plugin = pluginInfo.plugin_object
+		plugin.name = pluginInfo.name
+		print(plugin.child_pipe)
+
+		print(plugin.child_pipe.recv())
+
+	# plugins = pluginManager.availablePlugins()
+
+	#
+	#
+	# im = [None]*10
+	# for i in range(10):
+	#
+	# 	rot = i*90
+	# 	plugins['temscript'].techniques['STEMImage'].scanRotation(rot)
+	# 	im[i] = plugins['temscript'].techniques['STEMImage'].acquire()
 
 	# save file here

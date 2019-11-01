@@ -10,12 +10,126 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QObject
 from extensions.revSTEM import revSTEM
 import copy
+import PyQt5.Qt as Qt
+from PyQt5.QtCore import QThread
 import useTEM.pluginManagement as plugm
 import threading
 
 
-class UseTEMUI(object):
+class MyTreeWidget(QtWidgets.QTreeWidget):
 
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.setObjectName("workflow")
+        self.headerItem().setText(0, "1")
+
+        p = self.palette()
+        p.setColor(QtGui.QPalette.Highlight, QtGui.QColor('gray'))
+        self.setPalette(p)
+
+        # TODO: Use the following to enable drag/drop capabilities
+        self.setColumnCount(1)
+        self.setAcceptDrops(True)
+        # self.setDragEnabled(True)
+        # self.setDropIndicatorShown(True)
+        self.setDragDropMode(QtWidgets.QAbstractItemView.InternalMove)
+        self.setDefaultDropAction(QtCore.Qt.MoveAction)
+    # def dropMimeData(self, QTreeWidgetItem, p_int, QMimeData, Qt_DropAction):
+    #     print('dropped')
+    #
+    def dropEvent(self, event):
+
+        mimeData = event.mimeData()
+
+        target = self.itemAt(event.pos())
+        dropPos = self.dropIndicatorPosition()
+
+        if dropPos == QtWidgets.QAbstractItemView.BelowItem:
+            target = self.itemBelow(target)
+
+        model = self.model()
+        model.index()
+        model.insertRow(0)
+
+
+        # dragItem = self.selectedItems()[0]
+        # dragWidget = self.itemWidget(dragItem, 0)
+        # print(dragWidget)
+        #
+        # index = self.indexOfTopLevelItem(dragItem)
+        #
+        # self.takeTopLevelItem(index)
+        #
+        # self.addTopLevelItem(dragItem)
+        # self.setItemWidget(dragItem, 0, dragWidget)
+
+        # model.moveRow(draggedIndex, targetIndex, 0)
+
+        #
+        # model.setItemData(draggedIndex, targetData)
+        # model.setItemData(targetIndex, draggedData)
+
+
+
+        #
+        # print(target)
+        #
+        # widget = self.itemWidget(dragItem ,0)
+        # twidget = self.itemWidget(target, 0)
+        #
+        # print(widget)
+        # print(twidget)
+        #
+        # self.setItemWidget(target, 0, twidget)
+        # self.setItemWidget(dragItem, 0, twidget)
+
+
+        # self.insertTopLevelItem(ind, dragItems[0])
+
+        # QtWidgets.QTreeWidget.dropEvent(event)
+
+
+    #
+    #     event.acceptProposedAction()
+    #     # data = event.mimeData().data("application/x-icon-and-text")
+    #     print( event.mimeData().text())
+    #     event.accept()
+
+
+class runWorkflowThread(QThread):
+    def __init__(self, interfaces, workflow):
+        """
+        Make a new thread instance with the specified
+       workflow from UI.
+
+
+
+        :param subreddits: A list of subreddit names
+        :type subreddits: list
+        """
+        QThread.__init__(self)
+
+        self.interfaces = interfaces
+        self.workflow = workflow
+
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+
+        for itemIndex in range(self.workflow.topLevelItemCount()):
+
+            topLevelItem = self.workflow.topLevelItem(itemIndex)
+
+            if topLevelItem.childCount() > 0:
+                print('Children to run!')
+            else:
+                self.workflow.itemWidget(topLevelItem, 0).extension.setInterfaces(self.interfaces)
+                self.workflow.itemWidget(topLevelItem, 0).extension.run()
+
+
+class UseTEMUI(object):
 
     def setupUi(self, MainWindow, plugins):
         self.plugins = plugins
@@ -31,18 +145,9 @@ class UseTEMUI(object):
         self.availablePlugins.setObjectName("availablePlugins")
         self.availablePlugins.headerItem().setText(0, "1")
 
-        self.workflow = QtWidgets.QTreeWidget(self.centralwidget)
+        self.workflow = MyTreeWidget(self.centralwidget)
         self.workflow.setGeometry(QtCore.QRect(220, 0, 591, 561))
-        self.workflow.setObjectName("workflow")
-        self.workflow.headerItem().setText(0, "1")
-        p = self.workflow.palette()
-        p.setColor(QtGui.QPalette.Highlight, QtGui.QColor('gray'))
-        self.workflow.setPalette(p)
 
-        # TODO: Use the following to enable drag/drop capabilities
-
-        self.workflow.setAcceptDrops(True)
-        self.workflow.setDragEnabled(True)
 
         self.statusLabel = QtWidgets.QLabel(self.centralwidget)
         self.statusLabel.setGeometry(QtCore.QRect(440, 570, 46, 13))
@@ -79,7 +184,6 @@ class UseTEMUI(object):
 
 
         #self.workflow = QtWidgets.QTreeWidget(MainWindow)
-        self.workflow.setColumnCount(1)
         # self.listWidget.setGeometry(QtCore.QRect(10, 10, 371, 211))
         # self.listWidget.setObjectName("listWidget")
 
@@ -104,6 +208,7 @@ class UseTEMUI(object):
         self.cancelButton.clicked.connect(self.reject)
         self.removeButton.clicked.connect(self.removeFromWorkflow)
 
+        self.addItem('revSTEM')
 
        #  print('setup widget')
        #  item = QtWidgets.QTreeWidgetItem(self.listWidget)
@@ -117,17 +222,24 @@ class UseTEMUI(object):
         selected = self.availablePlugins.selectedItems()
 
         for obj in selected:
-            item = QtWidgets.QTreeWidgetItem(self.workflow)
+            label = self.availablePlugins.itemWidget(obj, 0)
+            self.addItem(label.text())
 
-            label = self.availablePlugins.itemWidget(obj,0)
-
-            ext = copy.copy(self.plugins[label.text()])
-            item_widget = ext.ui()
-
-            self.workflow.addTopLevelItem(item)
-            self.workflow.setItemWidget(item,0,item_widget)
 
         # self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
+    def addItem(self, name):
+
+        item = QtWidgets.QTreeWidgetItem(self.workflow)
+
+        # use for iterable items | QtCore.Qt.ItemIsDropEnabled
+        union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
+
+        item.setFlags(union)
+        item.data = name
+        item_widget = self.plugins[name].ui()
+
+        self.workflow.addTopLevelItem(item)
+        self.workflow.setItemWidget(item, 0, item_widget)
 
     def removeFromWorkflow(self):
 
@@ -145,21 +257,24 @@ class UseTEMUI(object):
 
         self.interfaces = plugm.availableInterfaces()
 
+        self.runThread = runWorkflowThread(self.interfaces,self.workflow)
+        self.runThread.start()
 
 
-        for itemIndex in range(self.workflow.topLevelItemCount()):
-
-            topLevelItem = self.workflow.topLevelItem(itemIndex)
-
-            if topLevelItem.childCount() > 0:
-                print('Children to run!')
-            else:
-                print('trying to run')
-                self.workflow.itemWidget(topLevelItem, 0).extension.setInterfaces(self.interfaces)
-               # runFunc = self.workflow.itemWidget(topLevelItem,0).extension.run
-
-                x = threading.Thread(target=self.workflow.itemWidget(topLevelItem,0).extension.run)
-                x.start()
+        # for itemIndex in range(self.workflow.topLevelItemCount()):
+        #
+        #     topLevelItem = self.workflow.topLevelItem(itemIndex)
+        #
+        #     if topLevelItem.childCount() > 0:
+        #         print('Children to run!')
+        #     else:
+        #         print('trying to run')
+        #         print('trying to run')
+        #         self.workflow.itemWidget(topLevelItem, 0).extension.setInterfaces(self.interfaces)
+        #        # runFunc = self.workflow.itemWidget(topLevelItem,0).extension.run
+        #
+        #         x = threading.Thread(target=self.workflow.itemWidget(topLevelItem,0).extension.run)
+        #         x.start()
 
 
 

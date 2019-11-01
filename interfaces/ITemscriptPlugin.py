@@ -11,14 +11,10 @@ class ITEMscriptPlugin(pluginTypes.IInterfacePlugin):
 	name = None
 	moduleName = 'useTEM.modules.temscript.instrument'
 
-#	techniques = dict()
-
 	def activate(self):
 		print('activating')
 
 	def	start_connection(self, address):
-
-		techniques_path = os.path.dirname(os.path.abspath(__file__))+'\\techniques\\'+self.name
 
 		if address == 'local':
 			import importlib
@@ -27,12 +23,9 @@ class ITEMscriptPlugin(pluginTypes.IInterfacePlugin):
 			self.client = module.Instrument()
 
 		else:
-			print(address)
 			self.client = xmlrpc.client.ServerProxy(address)
 
-
 		for key, value in self.techniques.items():
-		 	#print(technique)
 			updated = self.techniques[key]
 			updated.client = self.client
 			value.client = self.client

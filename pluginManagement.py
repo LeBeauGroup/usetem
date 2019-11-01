@@ -1,5 +1,6 @@
 
 from yapsy.PluginManager import PluginManager
+
 import pluginTypes
 import os
 
@@ -41,6 +42,7 @@ def startupInterfaces(pluginManager):
 
 		else:
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
+			print(connectionAddress)
 
 		techniquesPath = path+'\\techniques\\'+pluginInfo.name
 
