@@ -7,13 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QObject
-from extensions.revSTEM import revSTEM
-import copy
-import PyQt5.Qt as Qt
 from PyQt5.QtCore import QThread
 import useTEM.pluginManagement as plugm
-import threading
 
 
 class MyTreeWidget(QtWidgets.QTreeWidget):

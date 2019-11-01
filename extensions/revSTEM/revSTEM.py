@@ -8,6 +8,7 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 
 	def __init__(self):
 
+		self.uiPath = os.path.dirname(os.path.realpath(__file__))
 		self.uiFile = QtCore.QFile('revSTEM.ui')
 		self.uiFile.open(QtCore.QFile.ReadOnly)
 
@@ -18,8 +19,9 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 		# self.detectorInfo = {'dwellTime': self.dwellTime, 'binning': self.binning, 'numFrames': self.numFrames,
 		# 					 'detectors': ['DF2', 'BF']}
 
-		self.defaultParameters = {'name': 'revSTEM', 'rotation':90 , 'dwellTime': self.dwellTime, 'binning': self.binning,
-						   'numFrames': self.numFrames, 'detectors': ['HAADF']}
+		self.defaultParameters = {'name': 'revSTEM', 'rotation': 90, 'dwellTime': self.dwellTime,
+		                          'binning': self.binning,
+		                          'numFrames': self.numFrames, 'detectors': ['HAADF']}
 
 	def setInterfaces(self, interfaces):
 		self.interfaces = interfaces
@@ -34,35 +36,32 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 			if "Edit" in senderName:
 				key = senderName.replace('Edit', '')
 
-				if isinstance(sender,QtWidgets.QLineEdit):
+				if isinstance(sender, QtWidgets.QLineEdit):
 					widget.item.data[key] = sender.text()
 
 				elif isinstance(sender, QtWidgets.QListWidget):
 					newSelection = list()
 
 					for selectedItem in sender.selectedItems():
-						label = selectedItem.text()
-						newSelection.append(label)
+						text = selectedItem.text()
+						newSelection.append(text)
 
 					widget.item.data[key] = newSelection
-					print(widget.item.data[key])
 
 				elif isinstance(sender, QtWidgets.QComboBox):
 					widget.item.data[key] = sender.currentText()
 
-		path = os.getcwd()+'\\extensions\\revSTEM.ui'
-		widget = uic.loadUi(path, parent)
+		path = self.uiPath + '\\revSTEM.ui'
+		widget: QtWidgets = uic.loadUi(path, parent)
 		item.setSizeHint(0, widget.size())
 		widget.item = item
 
 		for child in widget.children():
 			name = child.objectName()
 
-
 			if "Edit" in name:
 
 				parameterName = name.replace('Edit', '')
-				print(parameterName)
 
 				if isinstance(child, QtWidgets.QListWidget):
 
@@ -90,7 +89,6 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 							child.setCurrentIndex(ind)
 							break
 					child.currentIndexChanged.connect(updateItemData)
-
 
 		return widget
 

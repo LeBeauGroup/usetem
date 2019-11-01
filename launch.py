@@ -1,7 +1,7 @@
 import useTEM.pluginManagement as plugm
 import logging
 import os
-path = os.path.dirname(os.path.abspath(__file__))
+path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
@@ -55,6 +55,7 @@ class WorkflowThread(QtCore.QThread):
 
 	def run(self):
 
+		result = None
 		for itemIndex in range(self.workflow.topLevelItemCount()):
 
 			topLevelItem = self.workflow.topLevelItem(itemIndex)
@@ -114,16 +115,28 @@ class USETEMGuiManager():
 
 		newMenu = QtWidgets.QMenu(self.ui)
 
+		# setup menu items
+		duplicateAct = QtWidgets.QAction(QtGui.QIcon(), '&Duplicate Workflow Item', self.ui)
 		removeAct = QtWidgets.QAction(QtGui.QIcon(), '&Remove Workflow Item', self.ui)
 
+		# Connect them up to methods
+		duplicateAct.triggered.connect(self.duplicateWorkflowItem)
 		removeAct.triggered.connect(self.removeWorkflowItem)
+
+		newMenu.addAction(duplicateAct)
 		newMenu.addAction(removeAct)
 
-
-
+		point.setY(point.y() + 30)
 		newMenu.exec(self.ui.workflowTree.mapToGlobal(point))
 
+	def duplicateWorkflowItem(self):
+		print('Implement duplicating items')
+
+		# TODO: Duplicate below current item
+
 	def removeWorkflowItem(self):
+		# TODO: Implement dealing with selected child items
+
 
 		currentItem = self.ui.workflowTree.currentItem()
 		currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
