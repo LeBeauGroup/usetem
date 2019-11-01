@@ -7,24 +7,21 @@ import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from PyQt5 import QtCore, QtGui, Qt, QtWidgets
 
-from PyQt5.QtCore import pyqtSlot
-
-from useTEM_ui import UseTEMUI
 from PyQt5.Qt import QFile
 from PyQt5 import uic
 import copy
 
 class WorkflowItem(QtWidgets.QTreeWidgetItem):
-
-	@pyqtSlot(str, str)
-	def updateItemData(self, key, value):
-		# print(self.sender())
-		test = self.sender()
-
-		# key = objectName.replace('Edit', '')
-		# self.data[key] = value
-		# print(key,value)
-		# print(self.data)
+	pass
+	# @pyqtSlot(str, str)
+	# def updateItemData(self, key, value):
+	# 	# print(self.sender())
+	# 	test = self.sender()
+	#
+	# 	# key = objectName.replace('Edit', '')
+	# 	# self.data[key] = value
+	# 	# print(key,value)
+	# 	# print(self.data)
 
 
 class WorkflowThread(QtCore.QThread):
@@ -73,9 +70,7 @@ class WorkflowThread(QtCore.QThread):
 
 				# result = self.workflow.itemWidget(topLevelItem, 0).extension.run()
 
-
-
-class USETEMGuiManager():
+class USETEMGuiManager:
 	ui = None
 
 	def __init__(self, ui, plugs):
@@ -100,16 +95,6 @@ class USETEMGuiManager():
 		workflowTree.setAcceptDrops(True)
 		workflowTree.setDropIndicatorShown(True)
 		workflowTree.setAnimated(True)
-		workflowTree.doubleClicked.connect(self.addToWorkflow)
-
-	# def selectionChanged(self):
-	#
-	# 	model = self.ui.pluginsTree.model()
-	#
-	# 	for ind in self.ui.pluginsTree.selectedIndexes():
-	# 		print(ind.row())
-	# 		# item = model.itemFromIndex(ind)
-	# 		# self.ui.usetem_widget.setWidget(item.data())
 
 	def prepareMenu(self, point):
 
@@ -158,21 +143,23 @@ class USETEMGuiManager():
 		# use for iterable items | QtCore.Qt.ItemIsDropEnabled
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
-		item.setFlags(union)
-
 		item.data = copy.copy(self.plugins[name].defaultParameters)
 		item_widget = self.plugins[name].ui(item)
 
-		workflowTree.addTopLevelItem(item)
+		if self.plugins[name].acceptsChildren is True:
+			union = union | QtCore.Qt.ItemIsDropEnabled
 
+		item.setFlags(union)
+
+		workflowTree.addTopLevelItem(item)
 		workflowTree.setItemWidget(item, 0, item_widget)
 
 	def setupPlugins(self):
 
 		plugsTree = self.ui.availablePlugins
 
-
 		for key in self.plugins:
+
 			new_item = QtWidgets.QTreeWidgetItem(plugsTree)
 
 			pluginItem = QtWidgets.QLabel()

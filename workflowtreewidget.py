@@ -19,13 +19,28 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 		print(self.indexFromItem(dragItem).row())
 		Widgets.QTreeWidget.dropEvent(self, event)
 
+		# Todo: update to handel children redraw
+
+		def resetItem(theItem):
+
+			if theItem.childCount() > 0:
+
+				for childIndex in range(0, theItem.childCount()):
+
+					resetItem(theItem.child(childIndex))
+
+			name = theItem.data['name']
+
+			uiWidget = self.plugins[name].ui(theItem)
+
+			self.setItemWidget(theItem, 0, uiWidget)
+
 		for i in range(0, self.topLevelItemCount()):
 			item =self.topLevelItem(i)
-			name = item.data['name']
 
-			uiWidget = self.plugins[name].ui(item)
+			resetItem(item)
 
-			self.setItemWidget(item, 0, uiWidget)
+
 
 			# self.viewport().update()
 		# self.updateGeometry()
