@@ -70,7 +70,7 @@ class WorkflowThread(QtCore.QThread):
 
 						if not loopParameters['variableName'] == 'None':
 							variableName = loopParameters['variableName']
-							childToRun.data[variableName] = value
+							childToRun.data[variableName] = str(value)
 
 						execute(childToRun)
 			else:
