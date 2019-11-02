@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/extensions/forList/forList.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/forList/forList.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/techniques/temscript/OpticsControl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +34,7 @@
   <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
@@ -48,15 +58,16 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forLoop" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\revSTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
     </key>
   </component>
@@ -195,7 +206,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>160</line>
+          <line>169</line>
           <option name="timeStamp" value="148" />
         </line-breakpoint>
       </breakpoints>

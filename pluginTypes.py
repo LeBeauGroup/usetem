@@ -47,6 +47,21 @@ class IExtensionPlugin(plugin.IPlugin):
 
 				elif isinstance(sender, QtWidgets.QComboBox):
 					widget.item.data[key] = sender.currentText()
+			if "Add" in senderName:
+				key = senderName.replace('Add', '')
+
+				if isinstance(sender, QtWidgets.QLineEdit):
+					text = sender.text()
+
+					theItem = widget.item
+					currentList = theItem.data[key]
+					currentList.append(text)
+
+					tree = theItem.treeWidget()
+
+					tempWidget = tree.itemWidget(theItem, 0)
+					widget.item.data[key] = currentList
+					tree.setItemWidget(theItem,0, self.ui(theItem))
 
 		# Make sure we are at the start of the file and then load
 
@@ -71,6 +86,8 @@ class IExtensionPlugin(plugin.IPlugin):
 						rowItem = child.item(it)
 						label = rowItem.text()
 
+						print(item.data[parameterName])
+
 						if label in item.data[parameterName]:
 							rowItem.setSelected(True)
 						else:
@@ -90,6 +107,27 @@ class IExtensionPlugin(plugin.IPlugin):
 							child.setCurrentIndex(ind)
 							break
 					child.currentIndexChanged.connect(updateItemData)
+
+			if "Add" in name:
+
+
+				key = name.replace('Add', '')
+
+				if isinstance(child, QtWidgets.QLineEdit):
+					child.editingFinished.connect(updateItemData)
+
+
+			if "View" in name:
+
+				parameterName = name.replace('View', '')
+				if isinstance(child, QtWidgets.QListWidget):
+					print('yay')
+
+					for label in item.data[parameterName]:
+
+						child.addItem(QtWidgets.QListWidgetItem(label))
+
+
 
 		return widget
 

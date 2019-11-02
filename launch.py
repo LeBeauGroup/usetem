@@ -53,35 +53,48 @@ class WorkflowThread(QtCore.QThread):
 
 		def execute(runItem):
 
+			itemData = runItem.data
+			plugin = self.plugins[itemData['name']]
+			pluginName = itemData['name']
+
+			plugin.setInterfaces(self.interfaces)
+
 			if runItem.childCount() > 0:
 
 				loopParameters = runItem.data
+				loopValues = plugin.run(loopParameters)
 
-				start = float(loopParameters['start'])
-				step = float(loopParameters['step'])
-				stop = float(loopParameters['stop'])
-
-				loopValues = np.arange(start, stop, step)
-
-				for value in np.nditer(loopValues):
-
+				for value in loopValues:
 					for ind in range(runItem.childCount()):
 						childToRun = runItem.child(ind)
 
 						if not loopParameters['variableName'] == 'None':
 							variableName = loopParameters['variableName']
-							childToRun.data[variableName] = str(value)
+
+							if variableName in list(childToRun.data.keys()):
+
+								# get type
+
+								oldData = childToRun.data[variableName]
+
+								print(oldData)
+
+								if isinstance(oldData, str):
+									print('testing value')
+									childToRun.data[variableName] = str(value)
+								elif isinstance(oldData, list):
+									print('it is a list')
+									childToRun.data[variableName] = [value]
+							else:
+								print('item does not contain this variable')
+
+							print(childToRun.data[variableName])
 
 						execute(childToRun)
 			else:
 
-				itemData = runItem.data
-				plugin = self.plugins[itemData['name']]
-				pluginName = itemData['name']
-
-				plugin.setInterfaces(self.interfaces)
-
 				result = plugin.run(itemData)
+			return
 
 		result = None
 
@@ -95,15 +108,11 @@ class WorkflowThread(QtCore.QThread):
 				itemToRun = topLevelItem
 				result = execute(itemToRun)
 
-
-				# test current chid
-
 			else:
 				itemToRun = topLevelItem
 				result = execute(itemToRun)
 
 
-				# result = self.workflow.itemWidget(topLevelItem, 0).extension.run()
 
 class USETEMGuiManager:
 	ui = None
@@ -113,7 +122,7 @@ class USETEMGuiManager:
 		self.ui = ui
 		self.plugins = plugs
 
-		self.ui.addButton.clicked.connect(self.addToWorkflow)
+#		self.ui.addButton.clicked.connect(self.addToWorkflow)
 		self.ui.abortButton.clicked.connect(self.killWorkflow)
 
 		workflowTree = self.ui.workflowTree

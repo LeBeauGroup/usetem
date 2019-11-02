@@ -1,5 +1,7 @@
 import pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
+import numpy as np
+
 
 
 class ForLoop(pluginTypes.IExtensionPlugin):
@@ -10,20 +12,15 @@ class ForLoop(pluginTypes.IExtensionPlugin):
         self.defaultParameters.update({'start': '1', 'step': '1', 'stop': '10', 'variableName': 'None'})
         self.acceptsChildren = True
 
+
+
     def run(self, input=None):
 
-        # itemToRun : QtWidgets.QTreeWidgetItem = input
-        #
-        # if itemToRun.childCount() > 0:
-        #     print('more children to run')
-        #
-        #     for ind in range(itemToRun.childCount()):
-        #
-        #         childToRun = itemToRun.child(ind)
-        #         self.run(childToRun)
-        # else:
+        print('trying to run ')
+        start = float(input['start'])
+        step = float(input['step'])
+        stop = float(input['stop'])
 
+        values = np.arange(start, stop, step)
 
-        print('running loop')
-
-        return
+        return values.tolist()
