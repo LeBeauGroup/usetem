@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>725</width>
-    <height>50</height>
+    <width>1035</width>
+    <height>54</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>10</x>
      <y>10</y>
-     <width>521</width>
+     <width>661</width>
      <height>31</height>
     </rect>
    </property>
@@ -52,6 +52,16 @@
     </item>
     <item>
      <widget class="QLineEdit" name="stopEdit"/>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Variable Name</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="variableNameEdit"/>
     </item>
    </layout>
   </widget>

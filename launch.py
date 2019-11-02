@@ -1,6 +1,7 @@
 import useTEM.pluginManagement as plugm
 import logging
 import os
+import numpy as np
 path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
@@ -50,19 +51,56 @@ class WorkflowThread(QtCore.QThread):
 
 	def run(self):
 
+		def execute(runItem):
+
+			if runItem.childCount() > 0:
+
+				loopParameters = runItem.data
+
+				start = float(loopParameters['start'])
+				step = float(loopParameters['step'])
+				stop = float(loopParameters['stop'])
+
+				loopValues = np.arange(start, stop, step)
+
+				for value in np.nditer(loopValues):
+
+					for ind in range(runItem.childCount()):
+						childToRun = runItem.child(ind)
+
+						if not loopParameters['variableName'] == 'None':
+							variableName = loopParameters['variableName']
+							childToRun.data[variableName] = value
+
+						execute(childToRun)
+			else:
+
+				itemData = runItem.data
+				plugin = self.plugins[itemData['name']]
+				pluginName = itemData['name']
+
+				plugin.setInterfaces(self.interfaces)
+
+				result = plugin.run(itemData)
+
 		result = None
+
+
 		for itemIndex in range(self.workflow.topLevelItemCount()):
 
 			topLevelItem = self.workflow.topLevelItem(itemIndex)
 
 			if topLevelItem.childCount() > 0:
-				print('Children to run!')
-			else:
-				itemData = topLevelItem.data
-				plugin = self.plugins[itemData['name']]
 
-				plugin.setInterfaces(self.interfaces)
-				result = plugin.run(itemData)
+				itemToRun = topLevelItem
+				result = execute(itemToRun)
+
+
+				# test current chid
+
+			else:
+				itemToRun = topLevelItem
+				result = execute(itemToRun)
 
 
 				# result = self.workflow.itemWidget(topLevelItem, 0).extension.run()

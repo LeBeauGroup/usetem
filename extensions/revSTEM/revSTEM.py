@@ -35,3 +35,5 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 			stem.scanRotation(rot)
 			stem.acquire()
 
+		return None
+
