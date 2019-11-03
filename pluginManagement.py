@@ -15,10 +15,12 @@ def startupExtensions(pluginManager):
 		pluginManager.activatePluginByName(pluginInfo.name)
 
 		plugin = pluginInfo.plugin_object
-		plugin.name = pluginInfo.name
+		plugin.name = plugin.defaultParameters['name']
+		plugin.displayName = pluginInfo.name
 
-		print('finished loading:' + pluginInfo.name)
-		plugins[pluginInfo.name] = plugin
+
+		print('finished loading:' + plugin.name)
+		plugins[plugin.name] = plugin
 
 	return plugins
 

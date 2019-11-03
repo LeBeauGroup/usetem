@@ -1,0 +1,9 @@
+[Core]
+Name = OpticsControl
+Module = OpticsControl
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = STEM Image Acquisition with TEM Script

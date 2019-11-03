@@ -2,33 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extensions/forLoop.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/forLoop.yapsy-plugin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/revSTEM.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/servers/server.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tabletest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uiElements.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/workflowtreewidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/temscript/instrument.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/temscript/instrument.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/temscript/temscript_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/servers/temscript_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/acquisitionservers.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/acquisitionservers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/tia_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/servers/tiascript_server.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/useTEM_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/useTEM_ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +30,7 @@
   <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
@@ -73,16 +54,18 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\interfaces" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\tests" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forLoop" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\revSTEM" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -133,7 +116,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tabletest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -215,28 +198,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test.py</url>
-          <line>73</line>
-          <option name="timeStamp" value="61" />
+          <line>60</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/extensions/revSTEM.py</url>
-          <line>113</line>
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>68</line>
-          <option name="timeStamp" value="137" />
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>149</line>
-          <option name="timeStamp" value="139" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/extensions/revSTEM.py</url>
-          <line>89</line>
-          <option name="timeStamp" value="141" />
+          <line>236</line>
+          <option name="timeStamp" value="171" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

@@ -1,0 +1,11 @@
+[Core]
+Name = STEM Image Settings
+Module = stemImageSettings
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Creates a for loop
+Type = Function
+Techniques = Operation

@@ -1,6 +1,6 @@
 [Core]
-Name = forLoop
-Module = forLoop
+Name = Change Magnification
+Module = changeMagnification
 
 [Documentation]
 Author = James LeBeau
