@@ -1,5 +1,5 @@
 [Core]
-Name = forList
+Name = For Loop (list)
 Module = forList
 
 [Documentation]

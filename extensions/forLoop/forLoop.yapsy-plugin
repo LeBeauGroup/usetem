@@ -1,5 +1,5 @@
 [Core]
-Name = forLoop
+Name = For Loop (iter)
 Module = forLoop
 
 [Documentation]

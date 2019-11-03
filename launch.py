@@ -168,8 +168,8 @@ class USETEMGuiManager:
 		selected = self.ui.availablePlugins.selectedItems()
 
 		for obj in selected:
-			label = self.ui.availablePlugins.itemWidget(obj, 0)
-			self.addItem(label.text())
+			nameOfPlugin = obj.data
+			self.addItem(nameOfPlugin)
 
 	# self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
 	def addItem(self, name):
@@ -196,10 +196,13 @@ class USETEMGuiManager:
 
 		for key in self.plugins:
 
+			displayName = self.plugins[key].displayName
+
 			new_item = QtWidgets.QTreeWidgetItem(plugsTree)
 
 			pluginItem = QtWidgets.QLabel()
-			pluginItem.setText(key)
+			pluginItem.setText(displayName)
+			new_item.data = key
 
 			plugsTree.addTopLevelItem(new_item)
 			plugsTree.setItemWidget(new_item, 0, pluginItem)
