@@ -9,7 +9,7 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super().__init__()
-        self.defaultParameters.update({'magnification': ''})
+        self.defaultParameters.update({'magnification': '10000'})
 
 
     def run(self, input=None):

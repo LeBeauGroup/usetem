@@ -27,6 +27,9 @@ class WorkflowItem(QtWidgets.QTreeWidgetItem):
 
 class WorkflowThread(QtCore.QThread):
 
+	currentWorkflowItemDidChange = QtCore.pyqtSignal(WorkflowItem)
+	workflowItemNeedsUpdate = QtCore.pyqtSignal(WorkflowItem)
+
 	def __init__(self, interfaces, workflow, plugins):
 		"""
 		Make a new thread instance with the specified
@@ -37,11 +40,7 @@ class WorkflowThread(QtCore.QThread):
 		:param subreddits: A list of subreddit names
 		:type subreddits: list
 		"""
-
 		super().__init__()
-		print('launched')
-
-
 		self.interfaces = interfaces
 		self.workflow = workflow
 		self.plugins = plugins
@@ -80,15 +79,12 @@ class WorkflowThread(QtCore.QThread):
 								elif isinstance(oldData, list):
 									childToRun.data[variableName] = [value]
 
-								# TODO: properly redraw widgets, pass message back to main thread needed :(
+								self.workflowItemNeedsUpdate.emit(childToRun)
 
-								# tree = childToRun.treeWidget()
-								# print(plugin.ui(childToRun))
-								#
-								# tree.setItemWidget(childToRun, 0, plugin.ui(childToRun))
 							else:
 								pass
 
+							self.currentWorkflowItemDidChange.emit(childToRun)
 							execute(childToRun)
 			else:
 
@@ -102,16 +98,12 @@ class WorkflowThread(QtCore.QThread):
 
 			topLevelItem = self.workflow.topLevelItem(itemIndex)
 
-			if topLevelItem.childCount() > 0:
+			itemToRun = topLevelItem
+			self.currentWorkflowItemDidChange.emit(itemToRun)
+			result = execute(itemToRun)
 
-				itemToRun = topLevelItem
-				result = execute(itemToRun)
-
-			else:
-				itemToRun = topLevelItem
-				result = execute(itemToRun)
-
-
+def updateWorkflow(item):
+	print(item)
 
 class USETEMGuiManager:
 	ui = None
@@ -167,7 +159,6 @@ class USETEMGuiManager:
 	def removeWorkflowItem(self):
 		# TODO: Implement dealing with selected child items
 
-
 		currentItem = self.ui.workflowTree.currentItem()
 		currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
 		self.ui.workflowTree.takeTopLevelItem(currentIndex)
@@ -216,10 +207,26 @@ class USETEMGuiManager:
 		plugsTree.doubleClicked.connect(self.addToWorkflow)
 
 
+	def selectWorkflowItem(self,item):
+		workflowTree:QtWidgets.QTreeWidget = self.ui.workflowTree
+		workflowTree.setCurrentItem(item)
+
+	def updateWorkflowItem(self, item):
+		workflowTree: QtWidgets.QTreeWidget = self.ui.workflowTree
+
+		itemData = item.data
+		updatedWidget = self.plugins[itemData['name']].ui(item)
+
+		workflowTree.setItemWidget(item, 0, updatedWidget)
+
 	def runWorkflow(self):
 
 		self.interfaces = plugm.availableInterfaces()
+
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
+
+		self.runThread.currentWorkflowItemDidChange.connect(self.selectWorkflowItem)
+		self.runThread.workflowItemNeedsUpdate.connect(self.updateWorkflowItem)
 		self.runThread.start()
 
 	def killWorkflow(self):
