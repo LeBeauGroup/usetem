@@ -91,10 +91,12 @@ class Illumination():
             self._illum.StemRotation = value * np.pi/180
 
     def stemMagnification(self, value=None):
-        print(value)
-        if value is None:
+
+        if value is None or value is '':
             return self._illum.StemMagnification
         else:
+            if isinstance(value, str):
+                value = float(value)
             self._illum.StemMagnification = value
 
     def tilt(self):

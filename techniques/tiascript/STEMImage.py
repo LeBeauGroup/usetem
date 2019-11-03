@@ -1,10 +1,5 @@
 from useTEM.pluginTypes import ITechniquePlugin
-import comtypes
 
-import abc
-#import matplotlib.pyplot as plt
-import numpy as np
-import pickle
 
 class ISTEMImage(ITechniquePlugin):
 
@@ -30,10 +25,7 @@ class ISTEMImage(ITechniquePlugin):
 		:return:
 		"""
 
-		print('got to this point')
-
 		binning = detectorInfo['binning']
-
 
 		pixelSkipping = 1
 		maxSizeX = 4096
@@ -81,20 +73,25 @@ class ISTEMImage(ITechniquePlugin):
 		acq.addSetup('Acquire')
 		acq.selectSetup('Acquire')
 
+
 		for name in detectorInfo['detectors']:
 
 			path = self.client.addDisplay(newWindow, name)
 			cal = (0, 0, 1, 1, frameWidth/2, frameHeight/2)
 			imagePath = self.client.imageDisplay.addImage(path, name, frameWidth, frameHeight, cal)
-			acq.linkSignal(self.signalTable[name], imagePath)
+
+			try:
+				acq.linkSignal(self.signalTable[name], imagePath)
+			except:
+				print(f'could not set detector named {self.signalTable[name]}')
+				continue
 
 		scanning.dwellTime(detectorInfo['dwellTime'])
 		scanRange = scanning.getTotalScanRange()
 
-		print(scanRange)
 		resolution = (scanRange[2]-scanRange[0])/(frameWidth)
 
-		print(resolution)
+
 
 		scanning.scanResolution(pixelSkipping*resolution)
 
@@ -106,11 +103,10 @@ class ISTEMImage(ITechniquePlugin):
 		yrange = rangeY * ((pixelSkipping * (scanRange[3]-scanRange[1]) / maxSizeX) / 2)
 
 		range = (-xrange, -yrange, xrange, yrange)
-		print(range)
+
 
 		scanning.scanRange(range)
 
-		print(scanning.scanResolution())
 		scanning.scanRange(scanRange)
 		scanning.seriesSize(detectorInfo['numFrames'])
 

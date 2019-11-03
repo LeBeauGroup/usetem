@@ -73,24 +73,23 @@ class WorkflowThread(QtCore.QThread):
 
 							if variableName in list(childToRun.data.keys()):
 
-								# get type
-
 								oldData = childToRun.data[variableName]
 
-								print(oldData)
-
 								if isinstance(oldData, str):
-									print('testing value')
 									childToRun.data[variableName] = str(value)
 								elif isinstance(oldData, list):
-									print('it is a list')
 									childToRun.data[variableName] = [value]
+
+								# TODO: properly redraw widgets, pass message back to main thread needed :(
+
+								# tree = childToRun.treeWidget()
+								# print(plugin.ui(childToRun))
+								#
+								# tree.setItemWidget(childToRun, 0, plugin.ui(childToRun))
 							else:
-								print('item does not contain this variable')
+								pass
 
-							print(childToRun.data[variableName])
-
-						execute(childToRun)
+							execute(childToRun)
 			else:
 
 				result = plugin.run(itemData)
@@ -139,6 +138,8 @@ class USETEMGuiManager:
 		workflowTree.setAcceptDrops(True)
 		workflowTree.setDropIndicatorShown(True)
 		workflowTree.setAnimated(True)
+
+
 
 	def prepareMenu(self, point):
 
@@ -239,6 +240,10 @@ if __name__ == '__main__':
 	ui_file.open(QFile.ReadOnly)
 
 	window = uic.loadUi(ui_file)
+
+	p = window.palette()
+	p.setColor(QtGui.QPalette.Highlight, QtGui.QColor('gray'))
+	window.setPalette(p)
 
 	guiManager = USETEMGuiManager(window,plugins)
 	guiManager.setupPlugins()

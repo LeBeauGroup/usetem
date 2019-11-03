@@ -10,5 +10,5 @@ class ISTEMControl(ITechniquePlugin):
 
 	def scanRotation(self,angle=0):
 
-		print('TIA script cannot change rotation scan, use tiascript ')
+		print('TIA script cannot change rotation scan, use temscript ')
 		pass

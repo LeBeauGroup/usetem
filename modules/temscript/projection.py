@@ -37,9 +37,12 @@ class Projection():
             self._proj.LensProgram = value
 
     def magnification(self, value=None):
+
         return self._proj.Magnification
 
     def magnificationIndex(self, value=None):
+        logging.warning(value)
+
         if value is None:
 
             return self._proj.MagnificationIndex

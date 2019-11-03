@@ -1,4 +1,6 @@
-from yapsy.MultiprocessPluginManager import MultiprocessPluginManager
+from yapsy.PluginManager import PluginManager
+from useTEM.pluginManagement import availableInterfaces
+
 import numpy as np
 #import pluginManagement as plugm
 
@@ -51,31 +53,18 @@ if __name__ == '__main__':
 
 	# # Build the manager, set load location, and then collect them
 
-	pluginManager = MultiprocessPluginManager()
-	pluginManager.setPluginPlaces([path+'/interfaces'])
+	interfaces = availableInterfaces()
 
 
-	# #ip = 'http://172.16.181.144:8001/'
-	# ip = 'http://localhost:8001/'
+	print(interfaces)
 
-	# # setup for later calling from
+	interfaces['temscript'].client.projection.magnification(10)
 
-
-	# # Activate all loaded plugins
-	pluginManager.locatePlugins()
+		# .projection.magnfication(2)
 
 
-	 # pluginManager.locatePlugins()
-	pluginManager.loadPlugins()
 
-	print(pluginManager)
 
-	for pluginInfo in pluginManager.getAllPlugins():
-		plugin = pluginInfo.plugin_object
-		plugin.name = pluginInfo.name
-		print(plugin.child_pipe)
-
-		print(plugin.child_pipe.recv())
 
 	# plugins = pluginManager.availablePlugins()
 
