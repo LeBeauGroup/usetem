@@ -35,7 +35,7 @@
      <widget class="WorkflowTreeWidget" name="workflowTree">
       <column>
        <property name="text">
-        <string notr="true">1</string>
+        <string notr="true">Workflow</string>
        </property>
       </column>
      </widget>
@@ -63,7 +63,7 @@
       </property>
       <column>
        <property name="text">
-        <string notr="true">1</string>
+        <string notr="true">Available Extensions</string>
        </property>
       </column>
      </widget>

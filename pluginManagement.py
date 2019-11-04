@@ -18,6 +18,11 @@ def startupExtensions(pluginManager):
 		plugin.name = plugin.defaultParameters['name']
 		plugin.displayName = pluginInfo.name
 
+		try:
+			plugin.category = pluginInfo.details['Documentation']['Category']
+		except:
+			plugin.category = None
+
 
 		print('finished loading:' + plugin.name)
 		plugins[plugin.name] = plugin

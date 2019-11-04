@@ -3,6 +3,7 @@ Name = STEM Image Settings
 Module = stemImageSettings
 
 [Documentation]
+Category = STEM
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu

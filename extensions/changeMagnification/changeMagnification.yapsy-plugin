@@ -3,6 +3,7 @@ Name = Change Magnification
 Module = changeMagnification
 
 [Documentation]
+Category = Microscope
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
