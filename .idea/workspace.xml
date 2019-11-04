@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.bib" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
