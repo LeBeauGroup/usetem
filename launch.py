@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, Qt, QtWidgets
 from PyQt5.Qt import QFile
 from PyQt5 import uic
 import copy
+import json
 
 class WorkflowItem(QtWidgets.QTreeWidgetItem):
 	pass
@@ -115,6 +116,8 @@ class USETEMGuiManager:
 
 #		self.ui.addButton.clicked.connect(self.addToWorkflow)
 		self.ui.abortButton.clicked.connect(self.killWorkflow)
+		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
+		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 
 		workflowTree = self.ui.workflowTree
 		workflowTree.plugins = plugs
@@ -272,6 +275,68 @@ class USETEMGuiManager:
 		if isinstance(self.runThread, WorkflowThread):
 			self.runThread.terminate()
 
+	def saveWorkflow(self):
+
+		workflowTree:QtWidgets.QTreeWidget =  self.ui.workflowTree
+
+		workflow = {}
+		workflow['items'] = []
+
+		# TODO: save children
+
+		for ind in range(workflowTree.topLevelItemCount()):
+
+			item = workflowTree.topLevelItem(ind)
+
+			workflow['items'].append(item.data)
+
+		with open('saved.usetem', 'w') as outfile:
+			json.dump(workflow, outfile,indent=4)
+
+	def loadWorkflow(self):
+
+		workflowTree:QtWidgets.QTreeWidget =  self.ui.workflowTree
+
+		# TODO: process children, combine with addItem method
+		with open('saved.usetem') as json_file:
+			workflow = json.load(json_file)
+
+			for item in workflow['items']:
+
+				treeItem = WorkflowItem()
+				# treeItem.setText(0, item['name'])
+				treeItem.data = item
+
+				itemUI = self.plugins[item['name']].ui(treeItem)
+
+				workflowTree.addTopLevelItem(treeItem)
+				workflowTree.setItemWidget(treeItem ,0, itemUI)
+
+
+
+			# QFile
+			# saveFile(saveFormat == Json
+			# ? QStringLiteral("save.json")
+			# : QStringLiteral("save.dat"));
+			#
+			# if (!saveFile.open(QIODevice::WriteOnly)) {
+			# qWarning("Couldn't open save file.");
+			# return false;
+			# }
+			#
+			# QJsonObject
+			# gameObject;
+			# write(gameObject);
+			# QJsonDocument
+			# saveDoc(gameObject);
+			# saveFile.write(saveFormat == Json
+			# ? saveDoc.toJson()
+			# : saveDoc.toBinaryData());
+			#
+			# return true;
+			#
+
+
 
 if __name__ == '__main__':
 
@@ -294,6 +359,7 @@ if __name__ == '__main__':
 	guiManager.setupPlugins()
 
 	window.runButton.clicked.connect(guiManager.runWorkflow)
+
 
 	# window.pluginsTree.selectionChanged()
 
