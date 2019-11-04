@@ -3,9 +3,10 @@ Name = Revolving STEM
 Module = revSTEM
 
 [Documentation]
+Category = STEM
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
 Description = Acquires RevSTEM image series
 Type = STEM Image
-Techniques = STEMImage
+Techniques = STEMImagex

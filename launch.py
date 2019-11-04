@@ -165,11 +165,16 @@ class USETEMGuiManager:
 
 	def addToWorkflow(self):
 
+
 		selected = self.ui.availablePlugins.selectedItems()
 
-		for obj in selected:
-			nameOfPlugin = obj.data
-			self.addItem(nameOfPlugin)
+		for item in selected:
+
+			if callable(item.data):
+				continue
+			else:
+				nameOfPlugin = item.data
+				self.addItem(nameOfPlugin)
 
 	# self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
 	def addItem(self, name):
@@ -192,22 +197,52 @@ class USETEMGuiManager:
 
 	def setupPlugins(self):
 
-		plugsTree = self.ui.availablePlugins
+		plugsTree :QtWidgets.QTreeWidget = self.ui.availablePlugins
 
 		for key in self.plugins:
 
 			displayName = self.plugins[key].displayName
+			category = self.plugins[key].category
 
-			new_item = QtWidgets.QTreeWidgetItem(plugsTree)
+			categoryItem = None
 
-			pluginItem = QtWidgets.QLabel()
-			pluginItem.setText(displayName)
-			new_item.data = key
+			if category is not None:
+				topLevelCount = plugsTree.topLevelItemCount()
 
-			plugsTree.addTopLevelItem(new_item)
-			plugsTree.setItemWidget(new_item, 0, pluginItem)
+				if topLevelCount == 0:
+					categoryItem = QtWidgets.QTreeWidgetItem(0)
+					categoryItem.setText(0, category)
+					plugsTree.addTopLevelItem(categoryItem)
+
+				else:
+
+					for ind in range(topLevelCount):
+						topLevelItem = plugsTree.topLevelItem(ind)
+
+						if topLevelItem.text(0) == category:
+							categoryItem = topLevelItem
+							break
+
+					if categoryItem is None:
+						categoryItem = QtWidgets.QTreeWidgetItem(0)
+						categoryItem.setText(0, category)
+						plugsTree.addTopLevelItem(categoryItem)
+
+
+			pluginItem = QtWidgets.QTreeWidgetItem(0)
+
+			pluginItem.setText(0, displayName)
+			pluginItem.data = key
+
+			if category is not None:
+				categoryItem.addChild(pluginItem)
+				# plugsTree.setItemWidget(new_item, 0, pluginItem)
+			else:
+				plugsTree.addTopLevelItem(pluginItem)
+				# plugsTree.setItemWidget(new_item, 0, pluginItem)
 
 		plugsTree.doubleClicked.connect(self.addToWorkflow)
+		plugsTree.expandAll()
 
 
 	def selectWorkflowItem(self,item):

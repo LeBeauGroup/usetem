@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -208,8 +209,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>236</line>
+          <line>271</line>
           <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/launch.py</url>
+          <line>172</line>
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

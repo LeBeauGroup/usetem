@@ -3,6 +3,7 @@ Name = For Loop (iter)
 Module = forLoop
 
 [Documentation]
+Category = Operation
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
