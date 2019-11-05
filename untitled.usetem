@@ -1,0 +1,28 @@
+{
+    "items": [
+        {
+            "name": "forList",
+            "listItems": [
+                "10000",
+                "100000",
+                "1000000"
+            ],
+            "variableName": "magnification",
+            "children": [
+                {
+                    "name": "forLoop",
+                    "start": "1",
+                    "step": "1",
+                    "stop": "10",
+                    "variableName": "None",
+                    "children": [
+                        {
+                            "name": "changeMagnification",
+                            "magnification": "10000"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -86,6 +86,7 @@
     <addaction name="actionOpen_Workflow"/>
     <addaction name="actionSave_Workflow"/>
     <addaction name="separator"/>
+    <addaction name="actionRun_Workflow"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -98,6 +99,11 @@
   <action name="actionOpen_Workflow">
    <property name="text">
     <string>Open Workflow</string>
+   </property>
+  </action>
+  <action name="actionRun_Workflow">
+   <property name="text">
+    <string>Run Workflow</string>
    </property>
   </action>
  </widget>

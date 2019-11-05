@@ -26,18 +26,14 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 			if theItem.childCount() > 0:
 
 				for childIndex in range(0, theItem.childCount()):
-
 					resetItem(theItem.child(childIndex))
 
 			name = theItem.data['name']
-
 			uiWidget = self.plugins[name].ui(theItem)
-
 			self.setItemWidget(theItem, 0, uiWidget)
 
 		for i in range(0, self.topLevelItemCount()):
 			item =self.topLevelItem(i)
-
 			resetItem(item)
 
 
