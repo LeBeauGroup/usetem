@@ -83,10 +83,29 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionOpen_Workflow"/>
+    <addaction name="actionSave_Workflow"/>
+    <addaction name="separator"/>
+    <addaction name="actionRun_Workflow"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSave_Workflow">
+   <property name="text">
+    <string>Save Workflow</string>
+   </property>
+  </action>
+  <action name="actionOpen_Workflow">
+   <property name="text">
+    <string>Open Workflow</string>
+   </property>
+  </action>
+  <action name="actionRun_Workflow">
+   <property name="text">
+    <string>Run Workflow</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>

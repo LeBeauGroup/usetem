@@ -11,6 +11,7 @@ from PyQt5 import QtCore, QtGui, Qt, QtWidgets
 from PyQt5.Qt import QFile
 from PyQt5 import uic
 import copy
+import json
 
 class WorkflowItem(QtWidgets.QTreeWidgetItem):
 	pass
@@ -115,6 +116,12 @@ class USETEMGuiManager:
 
 #		self.ui.addButton.clicked.connect(self.addToWorkflow)
 		self.ui.abortButton.clicked.connect(self.killWorkflow)
+		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
+		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
+		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
+		self.ui.actionSave_Workflow.setShortcut('Ctrl+S')
+		self.ui.actionOpen_Workflow.setShortcut('Ctrl+O')
+		self.ui.actionRun_Workflow.setShortcut('Ctrl+R')
 
 		workflowTree = self.ui.workflowTree
 		workflowTree.plugins = plugs
@@ -177,14 +184,18 @@ class USETEMGuiManager:
 				self.addItem(nameOfPlugin)
 
 	# self.workflow.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
-	def addItem(self, name):
+	def addItem(self, name, parent:QtWidgets.QTreeWidgetItem=None, data=None):
 
 		workflowTree = self.ui.workflowTree
-		item = WorkflowItem(workflowTree)
+		item = WorkflowItem(parent)
 		# use for iterable items | QtCore.Qt.ItemIsDropEnabled
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
-		item.data = copy.copy(self.plugins[name].defaultParameters)
+		if data is None:
+			item.data = copy.copy(self.plugins[name].defaultParameters)
+		else:
+			item.data = copy.copy(data)
+
 		item_widget = self.plugins[name].ui(item)
 
 		if self.plugins[name].acceptsChildren is True:
@@ -192,8 +203,21 @@ class USETEMGuiManager:
 
 		item.setFlags(union)
 
-		workflowTree.addTopLevelItem(item)
+		# cleanup children from item, do not need to use this from loading
+		# try:
+		# 	del item.data["children"]
+		# except KeyError:
+		# 	print("Key 'children' not found")
+
+		if parent is None:
+			workflowTree.addTopLevelItem(item)
+		else:
+			parent.addChild(item)
+			parent.setExpanded(True)
+
 		workflowTree.setItemWidget(item, 0, item_widget)
+
+		return item
 
 	def setupPlugins(self):
 
@@ -272,6 +296,117 @@ class USETEMGuiManager:
 		if isinstance(self.runThread, WorkflowThread):
 			self.runThread.terminate()
 
+	def saveWorkflow(self):
+
+		name = QtWidgets.QFileDialog.getSaveFileName(self.ui, 'Save File','untitled.usetem')[0]
+
+		if name is '':
+			return
+
+		workflowTree:QtWidgets.QTreeWidget =  self.ui.workflowTree
+
+		workflow = {}
+		workflow['items'] = []
+
+		# function to save items recursively
+
+		def prepareJSONChild(itemToPrepare):
+
+			itemDict = itemToPrepare.data
+
+			if itemToPrepare.childCount() > 0:
+
+				dictWithChildren = itemDict
+				dictWithChildren.update({'children': []})
+
+				for ind in range(itemToPrepare.childCount()):
+
+					childToPrepare = itemToPrepare.child(ind)
+					itemDict['children'].append(childToPrepare.data)
+
+					prepareJSONChild(childToPrepare)
+
+			return itemDict
+
+		# for each item in the tree, test if it has children and prepare data accordingly
+		for ind in range(workflowTree.topLevelItemCount()):
+
+			item = workflowTree.topLevelItem(ind)
+
+			if item.childCount() > 0:
+
+				workflow['items'].append(prepareJSONChild(item))
+			else:
+				workflow['items'].append(item.data)
+
+
+		with open(name, 'w') as outfile:
+			json.dump(workflow, outfile,indent=4)
+
+	def loadWorkflow(self):
+
+
+		name = QtWidgets.QFileDialog.getOpenFileName(self.ui, 'Open File')[0]
+
+		if name is '':
+			return
+
+		workflowTree:QtWidgets.QTreeWidget =  self.ui.workflowTree
+
+		with open(name) as json_file:
+			workflow = json.load(json_file)
+
+
+			def restoreItem(itemToAdd, parent=None):
+
+				if parent is None:
+					newParent = self.addItem(itemToAdd['name'], data=itemToAdd)
+
+					if 'children' in itemToAdd.keys():
+						for child in item['children']:
+							restoreItem(child, newParent)
+
+				elif parent is not None:
+
+					newParent = self.addItem(itemToAdd['name'], parent=parent, data=itemToAdd)
+
+					if 'children' in itemToAdd.keys():
+
+						for child in itemToAdd['children']:
+							restoreItem(child, newParent)
+
+
+
+			for item in workflow['items']:
+				restoreItem(item)
+				# treeItem.setText(0, item['name'])
+
+
+
+
+			# QFile
+			# saveFile(saveFormat == Json
+			# ? QStringLiteral("save.json")
+			# : QStringLiteral("save.dat"));
+			#
+			# if (!saveFile.open(QIODevice::WriteOnly)) {
+			# qWarning("Couldn't open save file.");
+			# return false;
+			# }
+			#
+			# QJsonObject
+			# gameObject;
+			# write(gameObject);
+			# QJsonDocument
+			# saveDoc(gameObject);
+			# saveFile.write(saveFormat == Json
+			# ? saveDoc.toJson()
+			# : saveDoc.toBinaryData());
+			#
+			# return true;
+			#
+
+
 
 if __name__ == '__main__':
 
@@ -294,6 +429,7 @@ if __name__ == '__main__':
 	guiManager.setupPlugins()
 
 	window.runButton.clicked.connect(guiManager.runWorkflow)
+
 
 	# window.pluginsTree.selectionChanged()
 
