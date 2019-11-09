@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.yapsy-plugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -217,6 +215,11 @@
           <url>file://$PROJECT_DIR$/launch.py</url>
           <line>434</line>
           <option name="timeStamp" value="186" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="190" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
