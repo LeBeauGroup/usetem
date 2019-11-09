@@ -67,9 +67,24 @@ class IExtensionPlugin(plugin.IPlugin):
 
 		self.uiFile.seek(0)
 
+		topWidget = QtWidgets.QWidget()
+
+		frame = QtWidgets.QFrame(topWidget)
+		frame.setFrameStyle(QtWidgets.QFrame.Box| QtWidgets.QStyleOptionFrame.Rounded)
+		frame.setLineWidth(2)
+
+		layout = QtWidgets.QVBoxLayout()
+
+
+		label = QtWidgets.QLabel(item.data['name'])
+		label.setFixedHeight(25)
+		layout.addWidget(label)
+
 		widget: QtWidgets = uic.loadUi(self.uiFile)
-		item.setSizeHint(0, widget.size())
+
 		widget.item = item
+		# layout.addWidget(widget)
+
 
 		for child in widget.findChildren(QtWidgets.QWidget):
 
@@ -109,8 +124,6 @@ class IExtensionPlugin(plugin.IPlugin):
 					child.currentIndexChanged.connect(updateItemData)
 
 			if "Add" in name:
-
-
 				key = name.replace('Add', '')
 
 				if isinstance(child, QtWidgets.QLineEdit):
@@ -121,13 +134,19 @@ class IExtensionPlugin(plugin.IPlugin):
 
 				parameterName = name.replace('View', '')
 				if isinstance(child, QtWidgets.QListWidget):
-					print('yay')
 
 					for label in item.data[parameterName]:
 
 						child.addItem(QtWidgets.QListWidgetItem(label))
 
+		widgetSize:QtCore.QSize = widget.size()
 
+		# TODO: Finish setting up
+		# frame.setFixedHeight(widgetSize.height()+60)
+		# frame.setFixedWidth(800)
+		# frame.setLayout(layout)
+
+		item.setSizeHint(0, widget.size())
 
 		return widget
 
