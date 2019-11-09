@@ -12,11 +12,11 @@ class ChangeCameraLength(pluginTypes.IExtensionPlugin):
         self.defaultParameters.update({'cameraLength': '100'})
 
 
-    def run(self, input=None):
+    def run(self, params=None, result=None):
 
         tem = self.interfaces['temscript']
         optics = tem.techniques['OpticsControl']
-        optics.cameraLength(input['cameraLength'])
+        optics.cameraLength(params['cameraLength'])
 
         return None
 

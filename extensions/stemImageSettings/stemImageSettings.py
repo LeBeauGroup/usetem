@@ -12,15 +12,13 @@ class StemImageSettings(pluginTypes.IExtensionPlugin):
 
         self.defaultParameters.update({'rotation': '90', 'dwellTime': '5e-6',
                                   'binning': '512x512',
-                                  'numFrames': '12', 'detectors': ['HAADF']})
+                                  'numFrames': '1', 'detectors': ['HAADF']})
 
-    def run(self, input=None):
+    def run(self, params, result=None):
 
         tia = self.interfaces['tiascript']
         stem = tia.techniques['STEMImage']
 
-        stem.setupAcquisition(input)
-        rotAngle = float(input['rotation'])
-        stem.scanRotation(rotAngle)
+        stem.setupAcquisition(params)
 
-        return input
+        return params

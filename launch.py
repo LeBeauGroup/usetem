@@ -52,7 +52,7 @@ class WorkflowThread(QtCore.QThread):
 
 	def run(self):
 
-		def execute(runItem):
+		def execute(runItem, lastResult):
 
 			itemData = runItem.data
 			plugin = self.plugins[itemData['name']]
@@ -90,8 +90,9 @@ class WorkflowThread(QtCore.QThread):
 							execute(childToRun)
 			else:
 
-				result = plugin.run(itemData)
-			return
+				newResult = plugin.run(params=itemData, result=lastResult)
+
+			return newResult
 
 		result = None
 
@@ -102,7 +103,7 @@ class WorkflowThread(QtCore.QThread):
 
 			itemToRun = topLevelItem
 			self.currentWorkflowItemDidChange.emit(itemToRun)
-			result = execute(itemToRun)
+			result = execute(itemToRun, result)
 
 		self.workflowFinished.emit()
 

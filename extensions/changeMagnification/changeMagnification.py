@@ -12,11 +12,11 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
         self.defaultParameters.update({'magnification': '10000'})
 
 
-    def run(self, input=None):
+    def run(self, params=None, result=None):
 
         tem = self.interfaces['temscript']
         optics = tem.techniques['OpticsControl']
-        optics.magnification(input['magnification'])
+        optics.magnification(params['magnification'])
 
         return None
 
