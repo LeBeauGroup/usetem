@@ -11,6 +11,7 @@ from PyQt5.Qt import QFile
 from PyQt5 import uic
 import copy
 import json
+import bibtexparser
 
 class WorkflowItem(QtWidgets.QTreeWidgetItem):
 	pass
@@ -124,6 +125,8 @@ class USETEMGuiManager:
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
 
+		self.ui.actionCitations.triggered.connect(self.generate_citations)
+
 		self.ui.actionSave_Workflow.setShortcut('Ctrl+S')
 		self.ui.actionOpen_Workflow.setShortcut('Ctrl+O')
 		self.ui.actionRun_Workflow.setShortcut('Ctrl+R')
@@ -223,6 +226,7 @@ class USETEMGuiManager:
 		workflowTree.setItemWidget(item, 0, item_widget)
 
 		return item
+
 
 	def setupPlugins(self):
 
@@ -415,29 +419,50 @@ class USETEMGuiManager:
 				# treeItem.setText(0, item['name'])
 
 
+	def generate_citations(self):
+
+		saveLocation = QtWidgets.QFileDialog.getSaveFileName(self.ui, 'Save Bibtex file', 'untitled.bib')[0]
+
+		if saveLocation is '':
+			return
+
+		def grab_childCitation(checkItem):
+			name = checkItem.data['name']
+			thePlugin = self.plugins[name]
+			itemBib = thePlugin.citations()
+
+			if itemBib is not None:
+				for bibItem in itemBib.entries:
+					theBib.entries.append(bibItem)
+
+			if checkItem.childCount() > 0:
+
+				for ind in range(checkItem.childCount()):
+					childToCheck = checkItem.child(ind)
+					grab_childCitation(childToCheck)
 
 
-			# QFile
-			# saveFile(saveFormat == Json
-			# ? QStringLiteral("save.json")
-			# : QStringLiteral("save.dat"));
-			#
-			# if (!saveFile.open(QIODevice::WriteOnly)) {
-			# qWarning("Couldn't open save file.");
-			# return false;
-			# }
-			#
-			# QJsonObject
-			# gameObject;
-			# write(gameObject);
-			# QJsonDocument
-			# saveDoc(gameObject);
-			# saveFile.write(saveFormat == Json
-			# ? saveDoc.toJson()
-			# : saveDoc.toBinaryData());
-			#
-			# return true;
-			#
+		theBib = bibtexparser.bibdatabase.BibDatabase()
+		workflow = self.ui.workflowTree
+
+		for itemIndex in range(workflow.topLevelItemCount()):
+			itemToCheck = workflow.topLevelItem(itemIndex)
+
+			grab_childCitation(itemToCheck)
+
+		writer = bibtexparser.bwriter.BibTexWriter()
+
+		# to clean duplicates, use dict
+		dupFreeBib = bibtexparser.bibdatabase.BibDatabase()
+		entriesDict = theBib.entries_dict
+		for key in entriesDict:
+			dupFreeBib.entries.append(entriesDict[key])
+
+		with open(saveLocation, 'w') as bibfile:
+			bibfile.write(writer.write(dupFreeBib))
+
+
+
 
 
 
