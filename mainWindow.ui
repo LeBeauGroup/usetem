@@ -73,9 +73,16 @@
     <addaction name="actionOpen_Workflow"/>
     <addaction name="actionSave_Workflow"/>
     <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuWorkflow">
+    <property name="title">
+     <string>Workflow</string>
+    </property>
     <addaction name="actionRun_Workflow"/>
+    <addaction name="actionCitations"/>
    </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuWorkflow"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSave_Workflow">
@@ -91,6 +98,11 @@
   <action name="actionRun_Workflow">
    <property name="text">
     <string>Run Workflow</string>
+   </property>
+  </action>
+  <action name="actionCitations">
+   <property name="text">
+    <string>Export Bibtex...</string>
    </property>
   </action>
  </widget>
