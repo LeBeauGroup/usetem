@@ -1,0 +1,12 @@
+[Core]
+Name = Change Camera Length
+Module = changeCameraLength
+
+[Documentation]
+Category = Microscope
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Creates a for loop
+Type = Function
+Techniques = Operation

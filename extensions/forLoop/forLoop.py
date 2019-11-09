@@ -14,12 +14,12 @@ class ForLoop(pluginTypes.IExtensionPlugin):
 
 
 
-    def run(self, input=None):
+    def run(self, params=None, result=None):
 
         print('trying to run ')
-        start = float(input['start'])
-        step = float(input['step'])
-        stop = float(input['stop'])
+        start = float(params['start'])
+        step = float(params['step'])
+        stop = float(params['stop'])
 
         values = np.arange(start, stop, step)
 

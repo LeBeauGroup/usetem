@@ -4,19 +4,19 @@ import numpy as np
 
 
 
-class ChangeMagnfication(pluginTypes.IExtensionPlugin):
+class ChangeCameraLength(pluginTypes.IExtensionPlugin):
 
     def __init__(self):
 
         super().__init__()
-        self.defaultParameters.update({'magnification': '10000'})
+        self.defaultParameters.update({'cameraLength': '100'})
 
 
     def run(self, params=None, result=None):
 
         tem = self.interfaces['temscript']
         optics = tem.techniques['OpticsControl']
-        optics.magnification(params['magnification'])
+        optics.cameraLength(params['cameraLength'])
 
         return None
 

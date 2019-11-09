@@ -6,64 +6,157 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
-    <height>54</height>
+    <width>603</width>
+    <height>108</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QLineEdit" name="numFramesEdit">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>40</y>
+     <width>141</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>66</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Frames</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dwellTimeLabel">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>661</width>
-     <height>31</height>
+     <width>80</width>
+     <height>19</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Start</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="startEdit"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Step</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="stepEdit"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Stop</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="stopEdit"/>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Variable Name</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="variableNameEdit"/>
-    </item>
-   </layout>
+   <property name="text">
+    <string>Dwell Time</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>81</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Image Size</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="binningEdit">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>70</y>
+     <width>141</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string extracomment="16">128x128</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string extracomment="8">256x256</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string extracomment="4">512x512</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string extracomment="2">1024x1024</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>2048x2048</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string/>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="detectorLabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>10</y>
+     <width>66</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Detectors</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="dwellTimeEdit">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>10</y>
+     <width>144</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="detectorsEdit">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>10</y>
+     <width>256</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::MultiSelection</enum>
+   </property>
+   <item>
+    <property name="text">
+     <string>HAADF</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>DF2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>DF4</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>BF</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

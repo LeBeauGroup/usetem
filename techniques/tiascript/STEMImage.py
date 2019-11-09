@@ -24,7 +24,6 @@ class ISTEMImage(ITechniquePlugin):
 
 		:return:
 		"""
-
 		binning = detectorInfo['binning']
 
 		pixelSkipping = 1
@@ -41,43 +40,26 @@ class ISTEMImage(ITechniquePlugin):
 			frameWidth = maxSizeX / binning  # detectorInfo['frameWidth']
 			frameHeight = maxSizeX / binning  # detectorInfo['frameHeight']
 
-		print(frameWidth, frameHeight)
-
-
-		t = self.controlPlugins['temscript'].client.illumination
-		t.stemRotation(45)
-
 		acq = self.client.acquisitionManager
 		scanning = self.client.scanningServer
 
-
+		if acq.isAcquiring():
+			acq.stop()
 
 		newWindow = self.client.addDisplayWindow()
-
 		self.client.activateDisplayWindow(newWindow)
 
-		imagePaths = []
+		if not acq.doesSetupExist('Acquire'):
+			acq.addSetup('Acquire')
 
-		# frameWidth = maxSizeX/binning # detectorInfo['frameWidth']
-		# frameHeight = maxSizeX/binning #detectorInfo['frameHeight']
-
-		acq.unlinkAllSignals()
-
-		scanning.acquireMode(1) # Need to set into single mode if going to use acquire()
-		scanning.scanMode(2) # Set to frame mode
-
-		if acq.doesSetupExist('Acquire'):
-			acq.deleteSetup('Acquire')
-			print('deleted acquire')
-
-		acq.addSetup('Acquire')
 		acq.selectSetup('Acquire')
+		acq.unlinkAllSignals()
 
 
 		for name in detectorInfo['detectors']:
 
 			path = self.client.addDisplay(newWindow, name)
-			cal = (0, 0, 1, 1, frameWidth/2, frameHeight/2)
+			cal = (0, 0, 2, 2, frameWidth/2, frameHeight/2)
 			imagePath = self.client.imageDisplay.addImage(path, name, frameWidth, frameHeight, cal)
 
 			try:
@@ -86,29 +68,19 @@ class ISTEMImage(ITechniquePlugin):
 				print(f'could not set detector named {self.signalTable[name]}')
 				continue
 
-		scanning.dwellTime(detectorInfo['dwellTime'])
 		scanRange = scanning.getTotalScanRange()
-
 		resolution = (scanRange[2]-scanRange[0])/(frameWidth)
-
-
 
 		scanning.scanResolution(pixelSkipping*resolution)
 
-		rangeX = maxSizeX/1
-		rangeY = maxSizeX/1
-
-
-		xrange = rangeX * ((pixelSkipping * (scanRange[2]-scanRange[0]) / maxSizeX) / 2)
-		yrange = rangeY * ((pixelSkipping * (scanRange[3]-scanRange[1]) / maxSizeX) / 2)
-
-		range = (-xrange, -yrange, xrange, yrange)
-
-
-		scanning.scanRange(range)
 
 		scanning.scanRange(scanRange)
+		scanning.dwellTime(detectorInfo['dwellTime'])
+		scanning.scanMode(2) # Set to frame mode
+		scanning.acquireMode(1) # Need to set into single mode if going to use acquire()
+
 		scanning.seriesSize(detectorInfo['numFrames'])
+
 
 	def subscan(self,rect):
 		pass
@@ -120,6 +92,7 @@ class ISTEMImage(ITechniquePlugin):
 	def acquire(self):
 
 		acq = self.client.acquisitionManager
+
 		try:
 			acq.acquire()
 		except:

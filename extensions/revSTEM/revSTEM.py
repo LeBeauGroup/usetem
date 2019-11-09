@@ -13,17 +13,17 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 		# 					 'detectors': ['DF2', 'BF']}
 
 		self.defaultParameters = {'name': 'revSTEM', 'rotation': '90', 'dwellTime': '5e-6',
-									'binning': '512x512',
-									'numFrames': '12', 'detectors': ['HAADF']}
+		                          'binning': '512x512',
+		                          'numFrames': '12', 'detectors': ['HAADF']}
 
-	def run(self, input):
-		frames = int(input['numFrames'])
+	def run(self, params, result=None):
+		frames = int(params['numFrames'])
 		print(frames)
 		tia = self.interfaces['tiascript']
 		stem = tia.techniques['STEMImage']
 
-		stem.setupAcquisition(input)
-		rotAngle = float(input['rotation'])
+		stem.setupAcquisition(params)
+		rotAngle = float(params['rotation'])
 
 		for i in range(frames):
 			print(f'acqiuring {i}')
@@ -31,4 +31,4 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 			stem.scanRotation(rot)
 			stem.acquire()
 
-		return None
+		return result

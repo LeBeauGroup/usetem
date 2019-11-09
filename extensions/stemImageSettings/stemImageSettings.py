@@ -9,11 +9,16 @@ class StemImageSettings(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super(StemImageSettings, self).__init__()
-        self.defaultParameters.update()
-        self.acceptsChildren = True
 
-    def run(self, input=None):
+        self.defaultParameters.update({'rotation': '90', 'dwellTime': '5e-6',
+                                  'binning': '512x512',
+                                  'numFrames': '1', 'detectors': ['HAADF']})
 
+    def run(self, params, result=None):
 
+        tia = self.interfaces['tiascript']
+        stem = tia.techniques['STEMImage']
 
-        return input
+        stem.setupAcquisition(params)
+
+        return params
