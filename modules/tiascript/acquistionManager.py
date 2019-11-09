@@ -28,16 +28,16 @@ class AcquisitionManager():
         except:
             print('COM error')
 
-    def CurrentSetup(self):
+    def currentSetup(self):
         return self.acqm.CurrentSetup
 
-    def CanReset(self):
+    def canReset(self):
         return self.acqm.CanReset
 
-    def CanStop(self):
+    def canStop(self):
         return self.acqm.CanStop
 
-    def CanStart(self):
+    def canStart(self):
         return self.acqm.CanStart
 
     def ClearAcquireAnnotation(self):
@@ -64,11 +64,14 @@ class AcquisitionManager():
         return self.acqm.IsAcquisitionHardware(type)
 
     def isCurrentSetup(self):
-        return self.acqm.IsCurrentSetup()
+        testing = self.acqm.IsCurrentSetup
+
+
+        return testing
 
 
     # TODO: Implement an approach for this
-    def IsSignalLinked(self,signalName, displayObject):
+    def isSignalLinked(self,signalName, displayObject):
         pass
         #return self.acqm.IsSignalLinked(signalName,displayObject)
 
@@ -79,11 +82,14 @@ class AcquisitionManager():
 
         self.acqm.LinkSignal(signalName, displayObject)
 
+    def reset(self):
+        self.acqm.Reset()
+
     def selectSetup(self, setupName):
         self.acqm.SelectSetup(setupName)
 
 
-    def SetAcquireAnnotation(self, start, end=None):
+    def setAcquireAnnotation(self, start, end=None):
 
         startLength = len(start)
 
@@ -99,7 +105,7 @@ class AcquisitionManager():
             self.acqm.SetAcquireAnnotation(start,end)
 
 
-    def SetAnnotationDisplay(self, windowName, displayName):
+    def setAnnotationDisplay(self, windowName, displayName):
 
         #displayWindow = self.app.FindDisplayWindow(displayName)
         self.app.ActivateDisplayWindow(windowName)
@@ -108,7 +114,7 @@ class AcquisitionManager():
 
         self.acqm.SetAnnotationDisplay(display)
 
-    def SetAutoStart(self, setupName, state=True):
+    def setAutoStart(self, setupName, state=True):
         self.acqm.SetAutoStart(setupName, state)
 
     def signalNames(self):
