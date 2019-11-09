@@ -121,10 +121,10 @@ class USETEMGuiManager:
 		self.plugins = plugs
 
 		self.ui.runButton.setStyleSheet("background-color: green")
+
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
-
 		self.ui.actionCitations.triggered.connect(self.generate_citations)
 
 		self.ui.actionSave_Workflow.setShortcut('Ctrl+S')
