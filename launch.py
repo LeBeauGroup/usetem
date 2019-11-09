@@ -120,7 +120,7 @@ class USETEMGuiManager:
 		self.ui = ui
 		self.plugins = plugs
 
-#		self.ui.addButton.clicked.connect(self.addToWorkflow)
+		self.ui.runButton.setStyleSheet("background-color: green")
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
@@ -295,7 +295,8 @@ class USETEMGuiManager:
 		runButton:QtWidgets.QPushButton = self.ui.runButton
 
 		runButton.setText('Run')
-		runButton.clicked.disconnect(self.killWorkflow)
+		self.ui.runButton.setStyleSheet("background-color: green")
+		runButton.clicked.disconnect()
 		runButton.clicked.connect(self.runWorkflow)
 
 
@@ -317,6 +318,7 @@ class USETEMGuiManager:
 			pass
 
 		self.ui.runButton.clicked.connect(self.killWorkflow)
+		self.ui.runButton.setStyleSheet("background-color: red")
 		self.runThread.start()
 
 	def killWorkflow(self):
@@ -327,6 +329,7 @@ class USETEMGuiManager:
 				self.ui.runButton.clicked.disconnect()
 				self.ui.runButton.clicked.connect(self.runWorkflow)
 				self.ui.runButton.setText('Run')
+				self.ui.runButton.setStyleSheet("background-color: green")
 			except Exception:
 				pass
 
