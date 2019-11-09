@@ -2,6 +2,7 @@ import yapsy.IPlugin as plugin
 import os, sys
 from PyQt5 import QtCore, QtWidgets, uic
 from yapsy.PluginManager import PluginManager
+import bibtexparser
 
 class ITechniquePlugin(plugin.IPlugin):
 	pass
@@ -152,6 +153,22 @@ class IExtensionPlugin(plugin.IPlugin):
 
 	def setInterfaces(self, interfaces):
 		self.interfaces = interfaces
+
+	def citations(self):
+		filePath = sys.modules[self.__module__].__file__.split(os.extsep)[0]
+		bibPath = filePath + '.bib'
+
+		try:
+			with open(bibPath) as bibfile:
+				pluginBib = bibtexparser.load(bibfile)
+		except Exception:
+			pluginBib = None
+
+
+		return pluginBib
+
+
+
 
 
 

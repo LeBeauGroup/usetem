@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.bib" afterDir="false" />
+    <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,18 +50,18 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\tests" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forLoop" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\revSTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -162,7 +154,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="dce82da1-9e08-479a-8ea5-d57e4e1969d1" name="Default Changelist" comment="" />
+      <changelist id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="" />
       <created>1563299302469</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -212,23 +204,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>274</line>
-          <option name="timeStamp" value="171" />
+          <line>428</line>
+          <option name="timeStamp" value="183" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>290</line>
-          <option name="timeStamp" value="180" />
+          <line>453</line>
+          <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>288</line>
-          <option name="timeStamp" value="181" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>305</line>
-          <option name="timeStamp" value="182" />
+          <line>431</line>
+          <option name="timeStamp" value="186" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
