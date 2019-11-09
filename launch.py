@@ -1,7 +1,6 @@
 import useTEM.pluginManagement as plugm
 import logging
 import os
-import numpy as np
 path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
@@ -29,7 +28,9 @@ class WorkflowItem(QtWidgets.QTreeWidgetItem):
 class WorkflowThread(QtCore.QThread):
 
 	currentWorkflowItemDidChange = QtCore.pyqtSignal(WorkflowItem)
+	workflowFinished = QtCore.pyqtSignal()
 	workflowItemNeedsUpdate = QtCore.pyqtSignal(WorkflowItem)
+
 
 	def __init__(self, interfaces, workflow, plugins):
 		"""
@@ -103,6 +104,9 @@ class WorkflowThread(QtCore.QThread):
 			self.currentWorkflowItemDidChange.emit(itemToRun)
 			result = execute(itemToRun)
 
+		self.workflowFinished.emit()
+
+
 def updateWorkflow(item):
 	print(item)
 
@@ -115,10 +119,10 @@ class USETEMGuiManager:
 		self.plugins = plugs
 
 #		self.ui.addButton.clicked.connect(self.addToWorkflow)
-		self.ui.abortButton.clicked.connect(self.killWorkflow)
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
+
 		self.ui.actionSave_Workflow.setShortcut('Ctrl+S')
 		self.ui.actionOpen_Workflow.setShortcut('Ctrl+O')
 		self.ui.actionRun_Workflow.setShortcut('Ctrl+R')
@@ -281,6 +285,15 @@ class USETEMGuiManager:
 
 		workflowTree.setItemWidget(item, 0, updatedWidget)
 
+	def workflowFinished(self):
+
+		runButton:QtWidgets.QPushButton = self.ui.runButton
+
+		runButton.setText('Run')
+		runButton.clicked.disconnect(self.killWorkflow)
+		runButton.clicked.connect(self.runWorkflow)
+
+
 	def runWorkflow(self):
 
 		self.interfaces = plugm.availableInterfaces()
@@ -289,12 +302,31 @@ class USETEMGuiManager:
 
 		self.runThread.currentWorkflowItemDidChange.connect(self.selectWorkflowItem)
 		self.runThread.workflowItemNeedsUpdate.connect(self.updateWorkflowItem)
+		self.runThread.workflowFinished.connect(self.workflowFinished)
+
+		self.ui.runButton.setText('Abort')
+
+		try:
+			self.ui.runButton.clicked.disconnect()
+		except Exception:
+			pass
+
+		self.ui.runButton.clicked.connect(self.killWorkflow)
 		self.runThread.start()
 
 	def killWorkflow(self):
 
 		if isinstance(self.runThread, WorkflowThread):
 			self.runThread.terminate()
+			try:
+				self.ui.runButton.clicked.disconnect()
+				self.ui.runButton.clicked.connect(self.runWorkflow)
+				self.ui.runButton.setText('Run')
+			except Exception:
+				pass
+
+
+
 
 	def saveWorkflow(self):
 

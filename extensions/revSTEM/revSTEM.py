@@ -13,8 +13,8 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 		# 					 'detectors': ['DF2', 'BF']}
 
 		self.defaultParameters = {'name': 'revSTEM', 'rotation': '90', 'dwellTime': '5e-6',
-									'binning': '512x512',
-									'numFrames': '12', 'detectors': ['HAADF']}
+		                          'binning': '512x512',
+		                          'numFrames': '12', 'detectors': ['HAADF']}
 
 	def run(self, input):
 		frames = int(input['numFrames'])

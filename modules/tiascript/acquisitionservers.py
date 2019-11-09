@@ -126,6 +126,14 @@ class ScanningServer(ImageServer):
 
         return (range.StartX, range.StartY, range.EndX, range.EndY)
 
+    def forceExternalScan(self, value=None):
+
+        if value is None:
+            return self.server.ForceExternalScan
+
+        else:
+            self.server.ForceExternalScan = value
+
     def frameWidth(self, value=None):
 
         if value is None:
