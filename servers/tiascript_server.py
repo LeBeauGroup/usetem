@@ -42,6 +42,7 @@ if __name__ == "__main__":
 
         server.register_instance(Application(), allow_dotted_names=True)
         server.register_multicall_functions()
+        server.allow_none = True
 
         logging.info('Server registered')
         logging.info('Use Control-C to exit')

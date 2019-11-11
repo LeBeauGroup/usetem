@@ -18,7 +18,6 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 
 	def run(self, params, result=None):
 		frames = int(params['numFrames'])
-		print(frames)
 		tia = self.interfaces['tiascript']
 		stem = tia.techniques['STEMImage']
 

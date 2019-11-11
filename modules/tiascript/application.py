@@ -61,6 +61,13 @@ class Application():
     def _timeStampName(self):
         return datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
+    def _findDisplayWindow(self,name):
+
+        return self.app.FindDisplayWindow(name)
+
+
+
+
     def addDisplayWindow(self, name=None):
         window = self.app.AddDisplayWindow()
 #        window  = self.app.ActiveDisplayWindow()
@@ -98,8 +105,15 @@ class Application():
     #     print(self._activeDisplayWindow)
     #     return self._activeDisplayWindow.path
 
+    def containsDisplayObject(self, path):
 
-    def findDisplayObject(self, path):
+        containsObject = False
+        if self.app.FindDisplayObject(path):
+            containsObject = True
+
+        return containsObject
+
+    def _findDisplayObject(self, path):
 
         comps = path.split('/')
 
@@ -176,6 +190,8 @@ class Application():
 
         return win.name
 
+
+
     def displayWindowNames(self):
         displayWindows = self.app.DisplayWindowNames()
         displayNames = list()
@@ -184,6 +200,11 @@ class Application():
             displayNames.append(display)
 
         return displayNames
+
+    def enableEvents(self,windowName):
+        displayObject = self._findDisplayWindow(windowName)
+        self.app.EnableEvents(displayObject)
+
 
     def closeDisplayWindow(self, windowName):
         self.app.CloseDisplayWindow(windowName)
@@ -207,8 +228,8 @@ def position2D(pos):
 
     return app.Position2D(pos[0], pos[1])
 
-def findDisplayObject(self, path):
-    return  self.app.FindDisplayObject(path)
+def findDisplayObject(app, path):
+    return  app.FindDisplayObject(path)
 
 
 def _findDisplayInWindow(app, windowName, displayName):

@@ -47,17 +47,17 @@ class ImageServer(AcquisitionServer):
             self.server.AcquireMode = mode
             logging.info(f'Acquire mode is now {AcquireModes(mode).name}')
 
-    def CreateMagnification(self, mag, imageRange, modeString):
+    def createMagnification(self, mag, imageRange, modeString):
 
         mMode = MicroscopeModes[modeString].value
         self.server.CreateMagnification(mag, esvision.Range2D(imageRange),mMode)
 
-    def DeleteMagnification(self, name, modeString):
+    def deleteMagnification(self, name, modeString):
         mMode = MicroscopeModes[modeString].value
         self.server.DeleteMagnification(name, mMode)
 
 
-    def DriftRateX(self, value=None):
+    def driftRateX(self, value=None):
 
         if value is None:
             return self.server.DriftRateX
@@ -65,7 +65,7 @@ class ImageServer(AcquisitionServer):
             self.server.DriftRateX = value
             logging.debug(f'DwellTime set as {value}')
 
-    def DriftRateY(self, value=None):
+    def driftRateY(self, value=None):
 
         if value is None:
             return self.server.DriftRateY

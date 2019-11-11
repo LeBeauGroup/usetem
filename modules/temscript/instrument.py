@@ -29,7 +29,6 @@ class Instrument():
     stage = Stage(instrument)
     temperatureControl = TemperatureControl(instrument)
     vacuum = Vacuum(instrument)
-
     buttons  = instrument.UserButtons
 
 

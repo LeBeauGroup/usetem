@@ -3,7 +3,7 @@ Name = Change Camera Length
 Module = changeCameraLength
 
 [Documentation]
-Category = Microscope
+Category = Optics
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu

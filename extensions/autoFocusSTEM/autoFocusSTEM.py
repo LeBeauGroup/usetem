@@ -2,6 +2,8 @@ import pluginTypes as pluginTypes
 import numpy as np
 from skimage import io
 from scipy.ndimage import gaussian_filter
+import matplotlib.pyplot as plt
+from skimage.util import noise
 
 import skimage
 import sys, os
@@ -12,42 +14,52 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super(AutoFocusSTEM, self).__init__()
-        self.defaultParameters.update()
+        self.defaultParameters.update({'rate':0.01, 'precision':0.000001, 'max_iters':10000})
 
-        # self.defaultParameters.update({'rotation': '90', 'dwellTime': '5e-6',
-        #                           'binning': '512x512',
-        #                           'numFrames': '12', 'detectors': ['HAADF']})
+        self.defaultParameters.update({'dwellTime': '5e-6',
+                                  'binning': '100x100',
+                                  'numFrames': '1', 'detectors': ['HAADF']})
 
-    def measure(self,image, x=None):
+
+    def stdevContrast(self,image, x=None):
 
         if x is not None:
             test = gaussian_filter(image, abs(x))
-
+        # plt.imshow(test)
+        # plt.draw()
+        # plt.pause(0.001)
         value = -np.std(test)
-        # print(value)
         return value
 
 
     def run(self, params=None, result=None):
+        tem = self.interfaces['temscript']
+        tia = self.interfaces['tiascript']
+        stem = tia.techniques['STEMImage']
+        optics = tem.techniques['OpticsControl']
 
-        filePath = sys.modules[self.__module__].__file__.split(os.extsep)[0]
-        imagePath = filePath + '.png'
-        theImage = io.imread(imagePath)
+        optics.defocus(6e-9)
 
-        cur_x = 5 # The algorithm starts at x=3
+        stem.setupFocus(params)
+        cur_x = 6 # The algorithm starts at x=3
         rate = 0.01  # Learning rate
-        precision = 0.0000001  # This tells us when to stop the algorithm
-        previous_step_size = 5  #
-        max_iters = 10000  # maximum number of iterations
+        precision = 0.0001  # This tells us when to stop the algorithm
+        previous_step_size = 1  #
+        max_iters = 1000  # maximum number of iterations
         iters = 0  # iteration counter
 
-        df = lambda x: self.measure(theImage, x) # Gradient of our function
+        df = lambda im, x: self.stdevContrast(im, x) # Gradient of our function
+        theImage = stem.acquire(returnsImage=True)
 
-        prev_y = df(4.0)
-        prev_x = 4.0
+        # plt.ion()
+        # self.im = plt.imshow(theImage)
+        # plt.show()
 
-        cur_x = 3.0
-        cur_y = df(cur_x)
+        prev_y = df(theImage, 5.0)
+        prev_x = 5.0
+
+        cur_x = cur_x
+        cur_y = df(theImage,cur_x)
 
         while previous_step_size > precision and iters < max_iters:
 
@@ -55,13 +67,20 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
                 grad = (cur_y-prev_y)/(cur_x-prev_x)
             else:
                 # Store current x value in prev_x
+                theImage = stem.acquire(returnsImage=True)
 
-                cur_y = df(cur_x)
+                cur_y = df(theImage, cur_x)
                 grad = (cur_y - prev_y) / (cur_x - prev_x)
                 prev_x = cur_x
 
             print(grad, cur_x,cur_y)
             cur_x = cur_x - rate * grad  # Grad descent
+
+            if cur_x <= 1:
+                cur_x = 1
+
+            optics.defocus(float(cur_x)*1e-9)
+
             previous_step_size = abs(cur_x - prev_x)  # Change in x
             iters = iters + 1  # iteration count
             prev_y = cur_y

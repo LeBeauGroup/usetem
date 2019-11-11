@@ -90,7 +90,7 @@ class WorkflowThread(QtCore.QThread):
 							self.currentWorkflowItemDidChange.emit(childToRun)
 							execute(childToRun)
 			else:
-
+				print(itemData)
 				newResult = plugin.run(params=itemData, result=lastResult)
 
 			return newResult
@@ -200,6 +200,7 @@ class USETEMGuiManager:
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
 		if data is None:
+
 			item.data = copy.copy(self.plugins[name].defaultParameters)
 		else:
 			item.data = copy.copy(data)
