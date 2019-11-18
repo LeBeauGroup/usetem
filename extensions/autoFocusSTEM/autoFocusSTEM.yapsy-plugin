@@ -1,12 +1,12 @@
 [Core]
-Name = Change Camera Length
-Module = changeCameraLength
+Name = Autofocus Image
+Module = autoFocusSTEM
 
 [Documentation]
-Category = Optics
+Category = STEM
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
-Description = Creates a for loop
+Description = Acquires a single STEM image
 Type = Function
 Techniques = Operation

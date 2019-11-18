@@ -1,17 +1,55 @@
 from .application import *
-from comtypes.gen import ESVision
+from comtypes.gen.ESVision import IImage, IData2D
 
+from comtypes.safearray import safearray_as_ndarray
+import logging
+import pickle
+import xmlrpc
+import numpy as np
+logging.basicConfig(level=logging.INFO)
 class AcquisitionManager():
 
-    def __init__(self,app):
+    def __init__(self, app):
         self.acqm = app.AcquisitionManager()
         self.app = app
 
-    def acquire(self):
-        self.acqm.Acquire()
+    def acquire(self, returnsImage=False, imagePath=None):
+
+
+        # returnsImage = False, imagePath = self.imagePaths[0]
+
+        logging.info('Acquiring an image')
+
+        if returnsImage is True and imagePath is not None:
+
+            comps = imagePath.split('/')
+
+            self.acqm.Acquire()
+
+
+            # window = self.app.FindDisplayWindow(comps[0])
+            # display = window.FindDisplay(comps[1])
+            # image = display.FindObject(comps[2])
+
+            image = self.app.FindDisplayObject(imagePath).QueryInterface(IImage)
+
+            imageData = image.Data
+
+            with safearray_as_ndarray:
+                imageArray = imageData.Array
+            a = pickle.dumps(imageArray)
+
+
+
+
+            return xmlrpc.client.Binary(a)
+
+        else:
+            self.acqm.Acquire()
+
 
     # acquires a set of points, positions in m, and time in s
-    def acquireSet(self,positions,dwelltime):
+    def acquireSet(self, positions, dwelltime):
 
         posCollection = self.app.PositionCollection()
 
@@ -40,7 +78,7 @@ class AcquisitionManager():
     def canStart(self):
         return self.acqm.CanStart
 
-    def ClearAcquireAnnotation(self):
+    def clearAcquireAnnotation(self):
         self.acqm.ClearAcquireAnnotation()
 
     def deleteSetup(self, name):

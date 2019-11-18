@@ -1,6 +1,6 @@
 import yapsy.IPlugin as plugin
 import os, sys
-from PyQt5 import QtCore, QtWidgets, uic
+from PyQt5 import QtCore, QtWidgets, uic, QtGui
 from yapsy.PluginManager import PluginManager
 import bibtexparser
 
@@ -35,7 +35,15 @@ class IExtensionPlugin(plugin.IPlugin):
 
 				if isinstance(sender, QtWidgets.QLineEdit):
 					text = sender.text()
-					widget.item.data[key] = text
+
+					if isinstance(sender.validator(), QtGui.QIntValidator):
+						value = int(text)
+					elif isinstance(sender.validator(), QtGui.QDoubleValidator):
+						value = float(text)
+					else:
+						value = text
+
+					widget.item.data[key] = value
 
 				elif isinstance(sender, QtWidgets.QListWidget):
 					newSelection = list()
@@ -48,6 +56,7 @@ class IExtensionPlugin(plugin.IPlugin):
 
 				elif isinstance(sender, QtWidgets.QComboBox):
 					widget.item.data[key] = sender.currentText()
+
 			if "Add" in senderName:
 				key = senderName.replace('Add', '')
 

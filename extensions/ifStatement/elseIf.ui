@@ -6,34 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>44</height>
+    <width>766</width>
+    <height>52</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QLineEdit" name="elseIfEdit">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>10</y>
+     <width>661</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="placeholderText">
+    <string>If Statement</string>
+   </property>
+  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>131</width>
+     <width>66</width>
      <height>19</height>
     </rect>
    </property>
    <property name="text">
-    <string>Magnification</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="magnificationEdit">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>10</y>
-     <width>161</width>
-     <height>25</height>
-    </rect>
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>

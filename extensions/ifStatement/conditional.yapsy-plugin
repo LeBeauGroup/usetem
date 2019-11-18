@@ -1,9 +1,9 @@
 [Core]
-Name = Change Camera Length
-Module = changeCameraLength
+Name = Conditional
+Module = conditional
 
 [Documentation]
-Category = Optics
+Category = Operation
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu

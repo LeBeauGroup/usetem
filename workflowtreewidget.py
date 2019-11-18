@@ -16,21 +16,33 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 
 		dragItem = self.currentItem()
 
-		print(self.indexFromItem(dragItem).row())
+		if dragItem.data['name'] is 'elseIf':
+			return
+
 		Widgets.QTreeWidget.dropEvent(self, event)
 
 		# Todo: update to handel children redraw
 
 		def resetItem(theItem):
+			name = theItem.data['name']
+
+			if name in ['if', 'elseIf', 'else']:
+				parentConditional = theItem.parent()
+				parentWidget = self.itemWidget(parentConditional,0)
+
+				uiWidget = self.plugins['conditional'].ui(theItem)
+				self.setItemWidget(theItem, 0, uiWidget)
+				# parentWidget.addElseIf.click()
+
+			else:
+				uiWidget = self.plugins[name].ui(theItem)
+				self.setItemWidget(theItem, 0, uiWidget)
 
 			if theItem.childCount() > 0:
 
 				for childIndex in range(0, theItem.childCount()):
 					resetItem(theItem.child(childIndex))
 
-			name = theItem.data['name']
-			uiWidget = self.plugins[name].ui(theItem)
-			self.setItemWidget(theItem, 0, uiWidget)
 
 		for i in range(0, self.topLevelItemCount()):
 			item =self.topLevelItem(i)

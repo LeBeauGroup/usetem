@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>825</width>
-    <height>44</height>
+    <width>861</width>
+    <height>46</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,24 +16,14 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>10</y>
-     <width>131</width>
+     <width>191</width>
      <height>19</height>
     </rect>
    </property>
    <property name="text">
-    <string>Magnification</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="magnificationEdit">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>10</y>
-     <width>161</width>
-     <height>25</height>
-    </rect>
+    <string>Autofocus STEM Image</string>
    </property>
   </widget>
  </widget>
