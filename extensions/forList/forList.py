@@ -61,7 +61,7 @@ class ForList(pluginTypes.IExtensionPlugin):
 
         return superUi
 
-    def run(self, input=None):
+    def run(self, params=None, result=None):
 
 
-        return input['listItems']
+        return params['listItems']

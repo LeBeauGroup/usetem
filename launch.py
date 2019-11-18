@@ -12,6 +12,8 @@ from PyQt5 import uic
 import copy
 import json
 import bibtexparser
+import re
+
 
 class WorkflowItem(QtWidgets.QTreeWidgetItem):
 	pass
@@ -51,51 +53,89 @@ class WorkflowThread(QtCore.QThread):
 	def __del__(self):
 		self.wait()
 
+	def processIfStatement(self, statement):
+
+
+		# match all variable names and replace with params[varName]
+		insertedParams = re.sub('(?!and|or|not|is|in)(?![\'\"])(\\b[a-zA-Z_][a-zA-Z0-9]+\\b)(?![\'\"])', 'params[\'\\1\']', statement)
+
+		return insertedParams
+
+
+
 	def run(self):
 
 		def execute(runItem, lastResult):
 
+			params.update(runItem.data)
 			itemData = runItem.data
-			plugin = self.plugins[itemData['name']]
 			pluginName = itemData['name']
 
+			if pluginName in ['elseIf']:
+				print('it is an elseIf')
+				pluginName = 'conditional'
+
+			plugin = self.plugins[pluginName]
 			plugin.setInterfaces(self.interfaces)
+			newResult = None
 
 			if runItem.childCount() > 0:
 
-				loopParameters = runItem.data
-				loopValues = plugin.run(loopParameters)
+				if itemData['name'] ==  'conditional':
 
-				for value in loopValues:
-					for ind in range(runItem.childCount()):
-						childToRun = runItem.child(ind)
+					for key in itemData['conditions']:
+						testCriterion = itemData['conditions'][key]
 
-						if not loopParameters['variableName'] == 'None':
-							variableName = loopParameters['variableName']
+						testString = self.processIfStatement(testCriterion)
 
-							if variableName in list(childToRun.data.keys()):
+						# params['dwellTime'] = 1e-6
+						print(testString)
 
-								oldData = childToRun.data[variableName]
+						try:
+							evalResult = eval(testString)
+						except Exception as e:
+							print(e)
 
-								if isinstance(oldData, str):
-									childToRun.data[variableName] = str(value)
-								elif isinstance(oldData, list):
-									childToRun.data[variableName] = [value]
+						if evalResult:
+							testIndex = int(re.search('\d+',key).group(0))
+							conditionChild = runItem.child(testIndex)
+							print(testIndex)
 
-								self.workflowItemNeedsUpdate.emit(childToRun)
+							for ind in range(conditionChild.childCount()):
 
-							else:
-								pass
+								childToRun = conditionChild.child(ind)
+								execute(childToRun, lastResult)
+
+							break
+
+				elif pluginName in ['forLoop', 'forList']:
+
+					loopParameters = runItem.data
+					loopValues = plugin.run(loopParameters)
+
+					for value in loopValues:
+						for ind in range(runItem.childCount()):
+							childToRun = runItem.child(ind)
+
+							if not loopParameters['variableName'] == 'None':
+								variableName = loopParameters['variableName']
+
+								if variableName in list(childToRun.data.keys()):
+
+									childToRun.data.update({variableName:value})
+									self.workflowItemNeedsUpdate.emit(childToRun)
 
 							self.currentWorkflowItemDidChange.emit(childToRun)
-							execute(childToRun)
+							execute(childToRun, lastResult)
 			else:
-				print(itemData)
-				newResult = plugin.run(params=itemData, result=lastResult)
 
+				newResult = plugin.run(params, result=lastResult)
+
+			print(params)
 			return newResult
 
 		result = None
+		params = {}
 
 
 		for itemIndex in range(self.workflow.topLevelItemCount()):
@@ -104,6 +144,7 @@ class WorkflowThread(QtCore.QThread):
 
 			itemToRun = topLevelItem
 			self.currentWorkflowItemDidChange.emit(itemToRun)
+			# parameters.update(itemToRun.data)
 			result = execute(itemToRun, result)
 
 		self.workflowFinished.emit()
@@ -169,14 +210,30 @@ class USETEMGuiManager:
 	def duplicateWorkflowItem(self):
 		print('Implement duplicating items')
 
-		# TODO: Duplicate below current item
+		currentItem = self.ui.workflowTree.currentItem()
+		parent = currentItem.parent()
+
+		# if parent is None:
+		self.addItem(currentItem.data['name'],parent, copy.deepcopy(currentItem.data))
+		# else:
+		# 	parent.removeChild(currentItem)
 
 	def removeWorkflowItem(self):
-		# TODO: Implement dealing with selected child items
 
 		currentItem = self.ui.workflowTree.currentItem()
-		currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
-		self.ui.workflowTree.takeTopLevelItem(currentIndex)
+
+		parent = currentItem.parent()
+		if parent is None:
+			currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
+			self.ui.workflowTree.takeTopLevelItem(currentIndex)
+		else:
+			parent.removeChild(currentItem)
+
+
+
+		# topLevelItem.removeChild(currentItem)
+
+		#
 
 	def addToWorkflow(self):
 
@@ -200,7 +257,6 @@ class USETEMGuiManager:
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
 		if data is None:
-
 			item.data = copy.copy(self.plugins[name].defaultParameters)
 		else:
 			item.data = copy.copy(data)
@@ -209,6 +265,7 @@ class USETEMGuiManager:
 
 		if self.plugins[name].acceptsChildren is True:
 			union = union | QtCore.Qt.ItemIsDropEnabled
+
 
 		item.setFlags(union)
 
@@ -224,7 +281,13 @@ class USETEMGuiManager:
 			parent.addChild(item)
 			parent.setExpanded(True)
 
+
+
 		workflowTree.setItemWidget(item, 0, item_widget)
+
+		if name == 'conditional':
+			print('click')
+			item_widget.addElseIf.click()
 
 		return item
 

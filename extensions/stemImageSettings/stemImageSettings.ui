@@ -22,6 +22,9 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="text">
+    <string extracomment="int"/>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">

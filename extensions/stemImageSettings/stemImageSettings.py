@@ -14,6 +14,15 @@ class StemImageSettings(pluginTypes.IExtensionPlugin):
                                   'binning': '512x512',
                                   'numFrames': '1', 'detectors': ['HAADF']})
 
+    def ui(self, item, parent=None):
+
+        theUi = super(StemImageSettings, self).ui(item, parent)
+        doubleVal = QtGui.QDoubleValidator()
+        intVal = QtGui.QIntValidator()
+        theUi.dwellTimeEdit.setValidator(doubleVal)
+        theUi.numFramesEdit.setValidator(intVal)
+        return theUi
+
     def run(self, params, result=None):
 
         tia = self.interfaces['tiascript']

@@ -9,6 +9,7 @@ from .beamcontrol import *
 from .guiobjects import *
 from .acquistionManager import *
 from .microscope import *
+from .processingSystem import *
 from comtypes.safearray import safearray_as_ndarray
 
 import logging
@@ -38,6 +39,7 @@ class Application():
     beamControl = BeamControl(app)
     microscope = Microscope(app)
     ccdServer = CcdServer(app)
+    processingSystem = ProcessingSystem(app)
     objectDisplays = dict()
 
     _activeDisplayWindow = None
@@ -121,7 +123,7 @@ class Application():
         display = window.FindDisplay(comps[1])
         object = display.FindObject(comps[2])
 
-        return DisplayObject(object).sendable
+        return object
 
     def _convertComplexData(self, data):
         """

@@ -74,7 +74,7 @@ class ISTEMImage(ITechniquePlugin):
 		scanning.scanRange(scanRange)
 		scanning.dwellTime(parameters['dwellTime'])
 		scanning.scanMode(2)  # Set to frame mode
-		scanning.acquireMode(1)  # Need to set into single mode if going to use acquire()
+		scanning.acquireMode(0)  # Need to set into single mode if going to use acquire()
 
 
 		# newWindow = self.client.addDisplayWindow('Focus')
@@ -181,6 +181,12 @@ class ISTEMImage(ITechniquePlugin):
 	def preview(self):
 		pass
 
+	def start(self):
+
+		self.client.acquisitionManager.start()
+
+	def stop(self):
+		self.client.acquisitionManager.stop()
 
 	def acquire(self, returnsImage=False):
 
@@ -201,6 +207,12 @@ class ISTEMImage(ITechniquePlugin):
 
 		#capturedImage = pickle.loads(acq.acquireImages().data)[0]
 		return None
+
+	def stdev(self):
+
+		procsys = self.client.processingSystem
+
+		return np.sqrt(procsys.variance(self.imagePaths[0]))
 
 	# def acquireSeries(self, numFrames):
 	#
