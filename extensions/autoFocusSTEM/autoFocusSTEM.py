@@ -17,9 +17,11 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         super(AutoFocusSTEM, self).__init__()
         self.defaultParameters.update({'rate':0.01, 'precision':0.000001, 'max_iters':10000})
 
-        self.defaultParameters.update({'dwellTime': '5e-6',
+        self.defaultParameters.update({'dwellTime': 5e-6,
                                   'binning': '256x256',
-                                  'numFrames': '1', 'detectors': ['HAADF']})
+                                  'numFrames': 1, 'detectors': ['HAADF']})
+
+        self.parameterTypes = {'dwellTime': float, 'binning': str, 'numFrames': int, 'rate':float, 'precision':float, 'max_iters':int}
 
 
     def stdevContrast(self,stemInterface, x=None):
@@ -39,7 +41,8 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         stem = tia.techniques['STEMImage']
         optics = tem.techniques['OpticsControl']
 
-        optics.defocus(6e-9)
+        startDefocus = optics.defocus()
+        print(startDefocus)
         stem.setupFocus(params)
 
         cur_x = 6 # The algorithm starts at x=3

@@ -11,7 +11,7 @@ class Conditional(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super(Conditional, self).__init__()
-        self.defaultParameters.update({'conditions':{}})
+        self.defaultParameters.update({'conditions':list()})
         self.acceptsChildren = False
 
 
@@ -20,61 +20,112 @@ class Conditional(pluginTypes.IExtensionPlugin):
         filePath = os.path.dirname(os.path.realpath(__file__)) #sys.modules[self.__module__].__file__.split(os.extsep)[0]
 
         def updateConditional():
+
             sender = theUI.sender()
 
-            conditionName = sender.parent().objectName()
-            condition = sender.text()
-            conditionalItem.data['conditions'].update({conditionName:condition})
+            for childIndex in range(0, conditionalItem.childCount()):
+                tree = conditionalItem.treeWidget()
+                testChild = conditionalItem.child(childIndex)
+                testChildWidget = tree.itemWidget(testChild,0)
 
-            print(conditionalItem.data)
+                if testChildWidget is sender.parent():
+                    condition = sender.text()
+                    conditionalItem.data['conditions'][childIndex] = condition
 
-        def elseIfUi(elseIfItem):
+        def elseIfUi(elseIfItem, type):
             elseIfFile = QtCore.QFile(filePath + '\elseIf.ui')
             elseIfFile.open(QtCore.QFile.ReadOnly)
 
             elseIfUi = uic.loadUi(elseIfFile)
+
             childIndex = conditionalItem.indexOfChild(elseIfItem)
 
-            if childIndex == 0:
+            if type == 'elseIf' and childIndex == 0:
                 elseIfUi.label.setText('If')
-            else:
+
+            elif type == 'elseIf':
                 elseIfUi.label.setText('Else If')
 
+            else:
+                elseIfUi.label.setText('Else')
+                elseIfUi.elseIfEdit.hide()
+
             elseIfUi.elseIfEdit.editingFinished.connect(updateConditional)
-            dictKey = 'ifCondition' + str(childIndex)
-            elseIfUi.setObjectName(dictKey)
 
             try:
-                elseIfUi.elseIfEdit.setText(conditionalItem.data['conditions'][dictKey])
+                elseIfUi.elseIfEdit.setText(conditionalItem.data['conditions'][childIndex])
             except Exception as e:
-                pass
+                print('error' + str(e))
 
             return elseIfUi
 
         def addElseIf():
 
             tree = conditionalItem.treeWidget()
+            containsElse = False
 
-            newElseIf = QtWidgets.QTreeWidgetItem(conditionalItem,0)
-            newElseIf.data = {'name': 'elseIf'}
+            addName = theUI.sender().objectName()
 
-            ui = elseIfUi(newElseIf)
+            # Check if there is an else statement, and make sure there isn't already
+            if conditionalItem.childCount() > 0:
+                lastChild = conditionalItem.child(conditionalItem.childCount()-1)
+                if lastChild.data['name'] == 'else':
+                    containsElse = True
+
+                    if containsElse and addName == 'addElse':
+                        return
+
+            newElseIf = QtWidgets.QTreeWidgetItem(0)
+            QtWidgets.QTreeWidgetItem()
+
+            condName = 'elseIf'
+
+            if addName == 'addElse':
+                condName = 'else'
+
+
+            newElseIf.data = {'name': condName}
+
+            print(conditionalItem.data)
+
+
+            # Find the right index to insert at depending on if there is already an else statement
+            insertIndex = conditionalItem.childCount()
+
+            if containsElse:
+                insertIndex -= 1
+                conditionalItem.data['conditions'].insert(insertIndex, '')
+            elif not containsElse and condName == 'else':
+                conditionalItem.data['conditions'].append('True')
+            else:
+                conditionalItem.data['conditions'].append('')
+
+            conditionalItem.insertChild(insertIndex, newElseIf)
+
+            ui = elseIfUi(newElseIf, condName)
 
             union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDropEnabled
             newElseIf.setFlags(union)
-
             newElseIf.setSizeHint(0,ui.size())
 
             tree.setItemWidget(newElseIf, 0, ui)
+
+            tree.resetItem(conditionalItem)
             conditionalItem.setExpanded(True)
+
+        print(item.data)
 
         if item.data['name'] == 'elseIf':
             conditionalItem = item.parent()
-            theUI = elseIfUi(item)
+            theUI = elseIfUi(item, 'elseIf')
+        elif item.data['name'] == 'else':
+            conditionalItem = item.parent()
+            theUI = elseIfUi(item, 'else')
         else:
             theUI = super(Conditional, self).ui(item, parent)
             conditionalItem = item
             theUI.addElseIf.clicked.connect(addElseIf)
+            theUI.addElse.clicked.connect(addElseIf)
 
         return theUI
 

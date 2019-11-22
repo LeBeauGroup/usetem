@@ -10,18 +10,13 @@ class StemImageSettings(pluginTypes.IExtensionPlugin):
 
         super(StemImageSettings, self).__init__()
 
-        self.defaultParameters.update({'rotation': '90', 'dwellTime': '5e-6',
+        self.defaultParameters.update({'rotation': 90, 'dwellTime': 5e-6,
                                   'binning': '512x512',
-                                  'numFrames': '1', 'detectors': ['HAADF']})
+                                  'numFrames': 1, 'detectors': ['HAADF']})
 
-    def ui(self, item, parent=None):
+        self.parameterTypes = {'rotation':float,'dwellTime':float, 'binning':str, 'numFrames':int}
 
-        theUi = super(StemImageSettings, self).ui(item, parent)
-        doubleVal = QtGui.QDoubleValidator()
-        intVal = QtGui.QIntValidator()
-        theUi.dwellTimeEdit.setValidator(doubleVal)
-        theUi.numFramesEdit.setValidator(intVal)
-        return theUi
+
 
     def run(self, params, result=None):
 

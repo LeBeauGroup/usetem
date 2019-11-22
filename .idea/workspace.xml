@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.yapsy-plugin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/extensions/ifStatement/elseIf.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modules/tiascript/processingSystem.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/elseIf.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/elseIf.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/application.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techniques/temscript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workflowtreewidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflowtreewidget.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -217,24 +211,14 @@
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>495</line>
-          <option name="timeStamp" value="183" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>520</line>
-          <option name="timeStamp" value="185" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>498</line>
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py</url>
-          <line>77</line>
+          <line>80</line>
           <option name="timeStamp" value="190" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/launch.py</url>
+          <line>253</line>
+          <option name="timeStamp" value="191" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
