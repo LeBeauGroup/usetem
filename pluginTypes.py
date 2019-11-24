@@ -20,7 +20,7 @@ class IExtensionPlugin(plugin.IPlugin):
 		self.uiFile = QtCore.QFile(uiPath)
 		self.uiFile.open(QtCore.QFile.ReadOnly)
 
-		self.defaultParameters = {'name':name}
+		self.defaultParameters = {'name':name, 'displayName':''}
 		self.acceptsChildren = False
 		self.parameterTypes = {}
 
@@ -70,7 +70,6 @@ class IExtensionPlugin(plugin.IPlugin):
 
 					tree = theItem.treeWidget()
 
-					tempWidget = tree.itemWidget(theItem, 0)
 					widget.item.data[key] = currentList
 					tree.setItemWidget(theItem,0, self.ui(theItem))
 
@@ -79,22 +78,28 @@ class IExtensionPlugin(plugin.IPlugin):
 		self.uiFile.seek(0)
 
 		topWidget = QtWidgets.QWidget()
-
-		frame = QtWidgets.QFrame(topWidget)
-		frame.setFrameStyle(QtWidgets.QFrame.Box| QtWidgets.QStyleOptionFrame.Rounded)
-		frame.setLineWidth(2)
-
 		layout = QtWidgets.QVBoxLayout()
 
+		hline = QtWidgets.QFrame()
 
-		label = QtWidgets.QLabel(item.data['name'])
-		label.setFixedHeight(25)
+		hline.setFrameShape(QtWidgets.QFrame.HLine)
+
+
+		label = QtWidgets.QLabel(item.data['displayName'])
+		font = QtGui.QFont()
+		font.setPointSize(7)
+		font.setBold(True)
+		label.setFont(font)
+		label.setFixedHeight(20)
 		layout.addWidget(label)
+		layout.setObjectName('layout')
+		layout.addWidget(hline)
 
 		widget: QtWidgets = uic.loadUi(self.uiFile)
-
 		widget.item = item
-		# layout.addWidget(widget)
+		widget.setObjectName('widget')
+
+		layout.addWidget(widget)
 
 
 		for child in widget.findChildren(QtWidgets.QWidget):
@@ -160,14 +165,13 @@ class IExtensionPlugin(plugin.IPlugin):
 
 		widgetSize:QtCore.QSize = widget.size()
 
-		# TODO: Finish setting up
-		# frame.setFixedHeight(widgetSize.height()+60)
-		# frame.setFixedWidth(800)
-		# frame.setLayout(layout)
+		topWidget.setFixedHeight(widgetSize.height()+60)
+		topWidget.setLayout(layout)
 
-		item.setSizeHint(0, widget.size())
+		item.setSizeHint(0, topWidget.size())
 
-		return widget
+
+		return topWidget
 
 	def setInterfaces(self, interfaces):
 		self.interfaces = interfaces

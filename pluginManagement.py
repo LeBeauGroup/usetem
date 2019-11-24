@@ -16,7 +16,8 @@ def startupExtensions(pluginManager):
 
 		plugin = pluginInfo.plugin_object
 		plugin.name = plugin.defaultParameters['name']
-		plugin.displayName = pluginInfo.name
+		plugin.displayName =  pluginInfo.details['Core']['Name']
+		plugin.defaultParameters['displayName'] = pluginInfo.details['Core']['Name']
 
 		try:
 			plugin.category = pluginInfo.details['Documentation']['Category']
