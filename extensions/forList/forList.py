@@ -22,10 +22,10 @@ class ForList(pluginTypes.IExtensionPlugin):
 
                 loopList.append(listWidget.item(ind).text())
 
-            superUi.item.data['listItems'] = loopList
+            widget.item.data['listItems'] = loopList
 
         def moveUp():
-            listWidget:QtWidgets.QListWidget = superUi.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
+            listWidget:QtWidgets.QListWidget = widget.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
 
             currentRow = listWidget.currentRow()
             holder = listWidget.takeItem(currentRow)
@@ -33,7 +33,7 @@ class ForList(pluginTypes.IExtensionPlugin):
             updateListData(listWidget)
 
         def moveDown():
-            listWidget: QtWidgets.QListWidget = superUi.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
+            listWidget: QtWidgets.QListWidget = widget.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
 
             currentRow = listWidget.currentRow()
             holder = listWidget.takeItem(currentRow)
@@ -42,7 +42,7 @@ class ForList(pluginTypes.IExtensionPlugin):
             updateListData(listWidget)
 
         def remove():
-            listWidget: QtWidgets.QListWidget = superUi.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
+            listWidget: QtWidgets.QListWidget = widget.findChildren(QtWidgets.QListWidget, 'listItemsView')[0]
 
             currentRow = listWidget.currentRow()
             holder = listWidget.takeItem(currentRow)
@@ -50,13 +50,14 @@ class ForList(pluginTypes.IExtensionPlugin):
             updateListData(listWidget)
 
 
+        widget = superUi.findChild(QtWidgets.QWidget, 'widget')
 
-        moveUpButton = superUi.findChildren(QtWidgets.QPushButton, 'moveListItemUpButton')[0]
-        moveDownButton = superUi.findChildren(QtWidgets.QPushButton, 'moveListItemDownButton')[0]
+        moveUpButton = widget.findChildren(QtWidgets.QPushButton, 'moveListItemUpButton')[0]
+        moveDownButton = widget.findChildren(QtWidgets.QPushButton, 'moveListItemDownButton')[0]
         moveUpButton.clicked.connect(moveUp)
         moveDownButton.clicked.connect(moveDown)
 
-        removeButton = superUi.findChildren(QtWidgets.QPushButton, 'removeListItemUpButton')[0]
+        removeButton = widget.findChildren(QtWidgets.QPushButton, 'removeListItemUpButton')[0]
         removeButton.clicked.connect(remove)
 
         return superUi
