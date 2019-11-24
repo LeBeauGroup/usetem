@@ -36,6 +36,11 @@ class ISTEMImage(ITechniquePlugin):
 
 		return (frameWidth, frameHeight)
 
+	def isScanning(self):
+		acq = self.client.acquisitionManager
+
+		return acq.isAcquiring()
+
 	def setupFocus(self, parameters):
 
 		frame = self._frameSize(parameters['binning'])

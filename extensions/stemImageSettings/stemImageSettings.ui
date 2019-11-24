@@ -22,8 +22,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="inputMask">
+    <string>d; </string>
+   </property>
    <property name="text">
-    <string extracomment="int"/>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -126,6 +129,9 @@
      <width>144</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="inputMask">
+    <string/>
    </property>
   </widget>
   <widget class="QListWidget" name="detectorsEdit">
