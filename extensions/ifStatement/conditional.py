@@ -123,9 +123,10 @@ class Conditional(pluginTypes.IExtensionPlugin):
             theUI = elseIfUi(item, 'else')
         else:
             theUI = super(Conditional, self).ui(item, parent)
+            widget = theUI.findChild(QtWidgets.QWidget,'widget')
             conditionalItem = item
-            theUI.addElseIf.clicked.connect(addElseIf)
-            theUI.addElse.clicked.connect(addElseIf)
+            widget.addElseIf.clicked.connect(addElseIf)
+            widget.addElse.clicked.connect(addElseIf)
 
         return theUI
 

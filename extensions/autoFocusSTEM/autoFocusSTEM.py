@@ -5,6 +5,7 @@ from scipy.ndimage import gaussian_filter
 import time
 import matplotlib.pyplot as plt
 from skimage.util import noise
+from PyQt5 import QtWidgets
 
 import skimage
 import sys, os
@@ -27,8 +28,8 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
     def ui(self, item, parent=None):
         theUi = super(AutoFocusSTEM, self).ui(item,parent)
 
-        theUi.stopButton.clicked.connect(self.stopScan)
-        #theUi.stopButton.setDisabled(True)
+        widget = theUi.findChild(QtWidgets.QWidget, 'widget')
+        widget.stopButton.clicked.connect(self.stopScan)        #theUi.stopButton.setDisabled(True)
         return theUi
 
     def stopScan(self):

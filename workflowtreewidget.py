@@ -1,7 +1,18 @@
 import PyQt5.QtWidgets as Widgets
 import PyQt5.QtCore as Core
 
+class WorkflowItem(Widgets.QTreeWidgetItem):
+	pass
+
+
+
+
 class WorkflowTreeWidget(Widgets.QTreeWidget):
+
+	def __init__(self, parent):
+		super().__init__(parent)
+	#
+		# self.setStyleSheet("QTreeWidget::item {border: 1px solid black; margin-top: 2px}")
 
 	# def __init__(self):
 	#
