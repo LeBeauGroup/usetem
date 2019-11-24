@@ -22,8 +22,11 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="inputMask">
+    <string/>
+   </property>
    <property name="placeholderText">
-    <string>If Statement</string>
+    <string>Logical Statement (python format)</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

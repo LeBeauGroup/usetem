@@ -9,18 +9,8 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super().__init__()
-        self.defaultParameters.update({'magnification': '10000'})
-
-    def ui(self, item, parent=None):
-
-        theUi = super(ChangeMagnfication, self).ui(item, parent)
-        doubleVal = QtGui.QDoubleValidator()
-        intVal = QtGui.QIntValidator()
-
-        theUi.magnificationEdit.setValidator(intVal)
-        return theUi
-
-
+        self.defaultParameters.update({'magnification': 10000})
+        self.parameterTypes = {'magnification': int}
 
 
     def run(self, params=None, result=None):

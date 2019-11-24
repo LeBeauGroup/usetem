@@ -22,6 +22,7 @@ class IExtensionPlugin(plugin.IPlugin):
 
 		self.defaultParameters = {'name':name}
 		self.acceptsChildren = False
+		self.parameterTypes = {}
 
 	def ui(self, item, parent=None):
 
@@ -123,6 +124,14 @@ class IExtensionPlugin(plugin.IPlugin):
 				elif isinstance(child, QtWidgets.QLineEdit):
 					child.setText(f'{item.data[parameterName]}')
 					child.editingFinished.connect(updateItemData)
+
+					try:
+						if self.parameterTypes[parameterName] is int:
+							child.setValidator(QtGui.QIntValidator())
+						if self.parameterTypes[parameterName] is float:
+							child.setValidator(QtGui.QDoubleValidator())
+					except Exception as e:
+						print('validator could not be set')
 
 				elif isinstance(child, QtWidgets.QComboBox):
 					paramValue = item.data[parameterName]

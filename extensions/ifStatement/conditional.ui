@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="addElse">
    <property name="geometry">
     <rect>
      <x>130</x>

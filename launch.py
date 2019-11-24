@@ -33,6 +33,7 @@ class WorkflowThread(QtCore.QThread):
 	currentWorkflowItemDidChange = QtCore.pyqtSignal(WorkflowItem)
 	workflowFinished = QtCore.pyqtSignal()
 	workflowItemNeedsUpdate = QtCore.pyqtSignal(WorkflowItem)
+	workflowConditionalFailed = QtCore.pyqtSignal(str, str)
 
 
 	def __init__(self, interfaces, workflow, plugins):
@@ -55,12 +56,12 @@ class WorkflowThread(QtCore.QThread):
 
 	def processIfStatement(self, statement):
 
-
 		# match all variable names and replace with params[varName]
-		insertedParams = re.sub('(?!and|or|not|is|in)(?![\'\"])(\\b[a-zA-Z_][a-zA-Z0-9]+\\b)(?![\'\"])', 'params[\'\\1\']', statement)
+		insertedParams = re.sub('(?!and|or|not|is|in|True|False)(?![\'\"])(\\b[a-zA-Z_][a-zA-Z0-9]+\\b)(?![\'\"])',
+		                        'params[\'\\1\']',
+		                        statement)
 
 		return insertedParams
-
 
 
 	def run(self):
@@ -81,25 +82,27 @@ class WorkflowThread(QtCore.QThread):
 
 			if runItem.childCount() > 0:
 
-				if itemData['name'] ==  'conditional':
+				if itemData['name'] == 'conditional':
 
-					for key in itemData['conditions']:
-						testCriterion = itemData['conditions'][key]
-
+					for condIndex, condition in enumerate(itemData['conditions']):
+						testCriterion = condition
 						testString = self.processIfStatement(testCriterion)
 
-						# params['dwellTime'] = 1e-6
-						print(testString)
+						if testString == '':
+							continue
+						evalResult = None
 
 						try:
+							print(params)
 							evalResult = eval(testString)
 						except Exception as e:
-							print(e)
+							self.workflowConditionalFailed.emit('Conditional Failed', 'Invalid if statement: '+ testString)
+							self.exit(False)
 
 						if evalResult:
-							testIndex = int(re.search('\d+',key).group(0))
-							conditionChild = runItem.child(testIndex)
-							print(testIndex)
+
+							conditionChild = runItem.child(condIndex)
+							print(condIndex)
 
 							for ind in range(conditionChild.childCount()):
 
@@ -129,7 +132,11 @@ class WorkflowThread(QtCore.QThread):
 							execute(childToRun, lastResult)
 			else:
 
-				newResult = plugin.run(params, result=lastResult)
+				try:
+					newResult = plugin.run(params, result=lastResult)
+				except Exception as e:
+					print(e)
+					self.exit()
 
 			print(params)
 			return newResult
@@ -223,17 +230,28 @@ class USETEMGuiManager:
 		currentItem = self.ui.workflowTree.currentItem()
 
 		parent = currentItem.parent()
+
 		if parent is None:
 			currentIndex = self.ui.workflowTree.indexOfTopLevelItem(currentItem)
 			self.ui.workflowTree.takeTopLevelItem(currentIndex)
 		else:
+
+			if currentItem.data['name'] in ['elseIf', 'else']:
+				currentIndex = parent.indexOfChild(currentItem)
+				parent.data['conditions'].pop(currentIndex)
+				print(parent.data)
+
 			parent.removeChild(currentItem)
+
+
 
 
 
 		# topLevelItem.removeChild(currentItem)
 
 		#
+	def alert(self, title, message):
+		QtWidgets.QMessageBox.about(window, title, message)
 
 	def addToWorkflow(self):
 
@@ -359,7 +377,7 @@ class USETEMGuiManager:
 		runButton:QtWidgets.QPushButton = self.ui.runButton
 
 		runButton.setText('Run')
-		self.ui.runButton.setStyleSheet("background-color: green")
+		self.ui.runButton.setStyleSheet("background-color: grey")
 		runButton.clicked.disconnect()
 		runButton.clicked.connect(self.runWorkflow)
 
@@ -373,6 +391,7 @@ class USETEMGuiManager:
 		self.runThread.currentWorkflowItemDidChange.connect(self.selectWorkflowItem)
 		self.runThread.workflowItemNeedsUpdate.connect(self.updateWorkflowItem)
 		self.runThread.workflowFinished.connect(self.workflowFinished)
+		self.runThread.workflowConditionalFailed.connect(self.alert)
 
 		self.ui.runButton.setText('Abort')
 
@@ -389,11 +408,13 @@ class USETEMGuiManager:
 
 		if isinstance(self.runThread, WorkflowThread):
 			self.runThread.terminate()
+
 			try:
 				self.ui.runButton.clicked.disconnect()
 				self.ui.runButton.clicked.connect(self.runWorkflow)
 				self.ui.runButton.setText('Run')
-				self.ui.runButton.setStyleSheet("background-color: green")
+				self.ui.runButton.setStyleSheet("background-color: grey")
+
 			except Exception:
 				pass
 
