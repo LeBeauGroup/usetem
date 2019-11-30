@@ -1,12 +1,12 @@
 [Core]
-Name = Conditional
-Module = conditional
+Name = Defocus Control
+Module = defocus
 
 [Documentation]
-Category = Operation
+Category = Optics
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
-Description = Setup a series of conditional statements
+Description = Gets or sets the defocus
 Type = Function
 Techniques = Operation

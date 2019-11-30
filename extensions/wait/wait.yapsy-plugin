@@ -1,12 +1,12 @@
 [Core]
-Name = Conditional
-Module = conditional
+Name = Time Delay
+Module = wait
 
 [Documentation]
 Category = Operation
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
-Description = Setup a series of conditional statements
+Description = Inserts a delay between steps
 Type = Function
 Techniques = Operation

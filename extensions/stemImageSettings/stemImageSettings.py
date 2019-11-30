@@ -14,7 +14,7 @@ class StemImageSettings(pluginTypes.IExtensionPlugin):
                                   'binning': '512x512',
                                   'numFrames': 1, 'detectors': ['HAADF']})
 
-        self.parameterTypes = {'rotation':float,'dwellTime':float, 'binning':str, 'numFrames':int}
+        self.parameterTypes = {'rotation':float,'dwellTime': float, 'binning':str, 'numFrames':int}
 
 
 

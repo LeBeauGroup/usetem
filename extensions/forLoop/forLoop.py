@@ -22,5 +22,8 @@ class ForLoop(pluginTypes.IExtensionPlugin):
         stop = float(params['stop'])
 
         values = np.arange(start, stop, step)
+        listOfValues = values.tolist()
 
-        return values.tolist()
+        listOfValues.append(stop)
+
+        return  listOfValues

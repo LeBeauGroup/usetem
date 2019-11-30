@@ -55,18 +55,23 @@ class HightensionState(Enum):
 
 class IllumNormalization(Enum):
 
-    Spotsize = 1
-    Intensity = 2
-    Condenser = 3
-    MiniCondenser = 4
-    ObjectivePole = 5
-    All = 6
+    spotsize = 1
+    intensity = 2
+    condenser = 3
+    miniCondenser = 4
+    objectivePole = 5
+    all = 6
+
+class InstrumentMode(Enum):
+
+    tem = 0
+    stem = 1
 
 
 class IllumMode(Enum):
 
-    NanoProbe = 0
-    MicroProbe = 1
+    nanoProbe = 0
+    microProbe = 1
 
 
 

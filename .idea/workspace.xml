@@ -2,12 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/extensions/defocus/defocus.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/defocus/defocus.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/defocus/defocus.yapsy-plugin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/wait/wait.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/wait/wait.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/extensions/wait/wait.yapsy-plugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.yapsy-plugin" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.yapsy-plugin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/enums.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/temscript/enums.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/instrumentModeControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/temscript/instrumentModeControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginTypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/OpticsControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/temscript/OpticsControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflowThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflowThread.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,18 +69,18 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\tests" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forLoop" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\revSTEM" />
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -205,14 +222,14 @@
           <option name="timeStamp" value="168" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/launch.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="191" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/Desktop/opensesame-plugin-media_player_mpy-master/setup.py</url>
           <line>20</line>
           <option name="timeStamp" value="192" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/modules/temscript/instrument.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="193" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
