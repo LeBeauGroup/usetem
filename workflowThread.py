@@ -1,6 +1,7 @@
 
 from PyQt5 import QtCore
 from workflowtreewidget import WorkflowItem
+import re
 
 class WorkflowThread(QtCore.QThread):
 
@@ -88,7 +89,7 @@ class WorkflowThread(QtCore.QThread):
 
 					loopParameters = runItem.data
 					loopValues = plugin.run(loopParameters)
-
+					print(loopValues)
 					for value in loopValues:
 						for ind in range(runItem.childCount()):
 							childToRun = runItem.child(ind)

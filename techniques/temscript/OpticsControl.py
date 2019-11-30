@@ -23,26 +23,21 @@ class IOpticsControl(ITechniquePlugin):
 			print('calibrations not loaded, need to run init')
 
 
-	def defocus(self, value=None):
+	def defocus(self, *kwargs):
 
 		instrument = self.client
 		projection = instrument.projection
 
-		if value is None:
-			return projection.defocus()
-		else:
-			projection.defocus(value)
+		return projection.defocus(*kwargs)
 
 
-	# load up camera lengths and magnifications
-
-
-	def magnification(self, value=None):
+	def magnification(self, *kwargs):
 
 		instrument = self.client
 		illumination = instrument.illumination
 
-		return illumination.stemMagnification(value)
+		return illumination.stemMagnification(*kwargs)
+
 
 	def cameraLength(self, value=None):
 

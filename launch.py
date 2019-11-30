@@ -5,7 +5,7 @@ path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
-from PyQt5 import QtCore, QtGui, Qt, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 from PyQt5.Qt import QFile
 from PyQt5 import uic
@@ -103,12 +103,6 @@ class USETEMGuiManager:
 			parent.removeChild(currentItem)
 
 
-
-
-
-		# topLevelItem.removeChild(currentItem)
-
-		#
 	def alert(self, title, message):
 		QtWidgets.QMessageBox.about(window, title, message)
 
@@ -137,6 +131,8 @@ class USETEMGuiManager:
 			item.data = copy.copy(self.plugins[name].defaultParameters)
 		else:
 			item.data = copy.copy(data)
+
+
 
 		item_widget = self.plugins[name].ui(item)
 
@@ -177,6 +173,7 @@ class USETEMGuiManager:
 
 			displayName = self.plugins[key].displayName
 			category = self.plugins[key].category
+			toolTip = self.plugins[key].description
 
 			categoryItem = None
 
@@ -207,6 +204,7 @@ class USETEMGuiManager:
 
 			pluginItem.setText(0, displayName)
 			pluginItem.data = key
+			pluginItem.setToolTip(0,toolTip)
 
 			if category is not None:
 				categoryItem.addChild(pluginItem)
@@ -338,23 +336,46 @@ class USETEMGuiManager:
 			workflow = json.load(json_file)
 
 
-			def restoreItem(itemToAdd, parent=None):
+			def restoreItem(itemToAdd, parent=None,childIndex=0):
 
 				if parent is None:
 					newParent = self.addItem(itemToAdd['name'], data=itemToAdd)
 
 					if 'children' in itemToAdd.keys():
-						for child in item['children']:
-							restoreItem(child, newParent)
+						for index, child in enumerate(item['children']):
+							restoreItem(child, newParent,index)
 
 				elif parent is not None:
 
-					newParent = self.addItem(itemToAdd['name'], parent=parent, data=itemToAdd)
+					parentWidget = workflowTree.itemWidget(parent, 0).findChild(QtWidgets.QWidget, 'widget')
 
-					if 'children' in itemToAdd.keys():
+					if itemToAdd['name'] == 'elseIf':
 
-						for child in itemToAdd['children']:
-							restoreItem(child, newParent)
+						if childIndex > 0:
+							parentWidget.addElseIf.click()
+
+						if 'children' in itemToAdd.keys():
+
+							for index, child in enumerate(itemToAdd['children']):
+								restoreItem(child, parent.child(childIndex),index)
+
+					elif itemToAdd['name'] =='else':
+						parentWidget.addElse.click()
+
+						if 'children' in itemToAdd.keys():
+
+							for index, child in enumerate(itemToAdd['children']):
+								restoreItem(child, parent.child(childIndex),index)
+
+					else:
+						newParent = self.addItem(itemToAdd['name'], parent=parent, data=itemToAdd)
+
+						if 'children' in itemToAdd.keys():
+							print(itemToAdd.keys())
+
+							for indx, child in enumerate(itemToAdd['children']):
+								print(indx)
+								restoreItem(child, newParent, indx)
 
 
 

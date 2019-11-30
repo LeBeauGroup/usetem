@@ -118,9 +118,11 @@ class Conditional(pluginTypes.IExtensionPlugin):
         if item.data['name'] == 'elseIf':
             conditionalItem = item.parent()
             theUI = elseIfUi(item, 'elseIf')
+
         elif item.data['name'] == 'else':
             conditionalItem = item.parent()
             theUI = elseIfUi(item, 'else')
+
         else:
             theUI = super(Conditional, self).ui(item, parent)
             widget = theUI.findChild(QtWidgets.QWidget,'widget')

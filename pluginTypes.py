@@ -58,6 +58,10 @@ class IExtensionPlugin(plugin.IPlugin):
 				elif isinstance(sender, QtWidgets.QComboBox):
 					widget.item.data[key] = sender.currentText()
 
+				elif isinstance(sender, QtWidgets.QCheckBox):
+
+					widget.item.data[key] = sender.isChecked()
+
 			if "Add" in senderName:
 				key = senderName.replace('Add', '')
 
@@ -133,10 +137,15 @@ class IExtensionPlugin(plugin.IPlugin):
 					try:
 						if self.parameterTypes[parameterName] is int:
 							child.setValidator(QtGui.QIntValidator())
-						if self.parameterTypes[parameterName] is float:
+						elif self.parameterTypes[parameterName] is float:
 							child.setValidator(QtGui.QDoubleValidator())
 					except Exception as e:
 						print('validator could not be set')
+				elif isinstance(child, QtWidgets.QCheckBox):
+					paramValue = item.data[parameterName]
+
+					child.setChecked(paramValue)
+					child.stateChanged.connect(updateItemData)
 
 				elif isinstance(child, QtWidgets.QComboBox):
 					paramValue = item.data[parameterName]
@@ -147,14 +156,13 @@ class IExtensionPlugin(plugin.IPlugin):
 							break
 					child.currentIndexChanged.connect(updateItemData)
 
-			if "Add" in name:
+			elif "Add" in name:
 				key = name.replace('Add', '')
 
 				if isinstance(child, QtWidgets.QLineEdit):
 					child.editingFinished.connect(updateItemData)
 
-
-			if "View" in name:
+			elif "View" in name:
 
 				parameterName = name.replace('View', '')
 				if isinstance(child, QtWidgets.QListWidget):

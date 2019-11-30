@@ -23,10 +23,13 @@
     </rect>
    </property>
    <property name="inputMask">
-    <string>d; </string>
+    <string/>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="maxLength">
+    <number>32767</number>
    </property>
   </widget>
   <widget class="QLabel" name="label">

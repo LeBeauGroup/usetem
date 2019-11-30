@@ -23,10 +23,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Magnification</string>
+    <string>Defocus (nm)</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="magnificationEdit">
+  <widget class="QLineEdit" name="defocusEdit">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QCheckBox" name="useCurrentMagEdit">
+  <widget class="QCheckBox" name="useCurrentDefocusEdit">
    <property name="geometry">
     <rect>
      <x>310</x>
