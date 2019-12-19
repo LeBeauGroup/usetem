@@ -13,7 +13,9 @@ import copy
 import json
 import bibtexparser
 import re
-from workflowThread import WorkflowThread, WorkflowItem
+from useTEM.workflowThread import WorkflowThread, WorkflowItem
+
+
 
 
 
@@ -439,7 +441,7 @@ if __name__ == '__main__':
 	# launch the pyQt window
 	app = QApplication(sys.argv)
 
-	ui_file = QFile("mainWindow.ui")
+	ui_file = QFile(path+"\mainWindow.ui")
 	ui_file.open(QFile.ReadOnly)
 
 	window = uic.loadUi(ui_file)

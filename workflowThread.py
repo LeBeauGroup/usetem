@@ -1,6 +1,6 @@
 
 from PyQt5 import QtCore
-from workflowtreewidget import WorkflowItem
+from .workflowtreewidget import WorkflowItem
 import re
 
 class WorkflowThread(QtCore.QThread):

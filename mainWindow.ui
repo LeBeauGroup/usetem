@@ -160,7 +160,7 @@ QTreeWidget::item:selected:active {
   <customwidget>
    <class>WorkflowTreeWidget</class>
    <extends>QTreeWidget</extends>
-   <header>workflowtreewidget.h</header>
+   <header location="global">useTEM.workflowtreewidget</header>
   </customwidget>
  </customwidgets>
  <resources/>

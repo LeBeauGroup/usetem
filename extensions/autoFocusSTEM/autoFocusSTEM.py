@@ -1,4 +1,4 @@
-import pluginTypes as pluginTypes
+import useTEM.pluginTypes as pluginTypes
 import numpy as np
 from skimage import io
 from scipy.ndimage import gaussian_filter
