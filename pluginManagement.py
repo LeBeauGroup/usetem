@@ -1,7 +1,7 @@
 
 from yapsy.PluginManager import PluginManager
 
-import pluginTypes
+from .pluginTypes import *
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -66,7 +66,7 @@ def startupInterfaces(pluginManager):
 def availableInterfaces():
 	# setup the categories
 
-	categories = {'Interface': pluginTypes.IInterfacePlugin, 'Techniques':pluginTypes.ITechniquePlugin}
+	categories = {'Interface': IInterfacePlugin, 'Techniques': ITechniquePlugin}
 
 	# Build the manager, set load location, and then collect them
 
@@ -88,7 +88,7 @@ def availableExtensions():
 
 	# setup the categories
 
-	categories = {'Extension': pluginTypes.IExtensionPlugin}
+	categories = {'Extension': IExtensionPlugin}
 
 
 	# Build the manager, set load location, and then collect them
