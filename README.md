@@ -27,7 +27,7 @@ Variable Value: path to directory containing the usetem folder
 
 open an anaconda terminal and run:
 
-  python -m useTEM.servers
+	python -m useTEM.servers
 
 Click TEM Scripting and TIA scripting (buttons should turn green)
 
