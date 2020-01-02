@@ -3,14 +3,14 @@
 This is the useTEM framework.  The goal of this python package is to build a single use point for interacting with all control point and software.  
 
 
-#USETEM Install
+# USETEM Install
 
-##Packages
+## Packages
 
 comtypes, pyqt5, comtypes, yapsy, bibtexparser, numpy
 
 
-##Python setup
+## Python setup
 
 Start->  Computer (right click) -> Properties -> Advanced System Settings -> Advanced Tab -> Environmental variables button
 
@@ -20,10 +20,10 @@ Variable Name: PYTHONPATH (all caps)
 Variable Value: path to directory containing the usetem folder
 
 
-##Configure servers
+## Configure servers
 
 
-##To start
+## To start
 
 open an anaconda terminal and run:
 
