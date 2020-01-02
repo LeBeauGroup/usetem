@@ -1,4 +1,4 @@
-import useTEM.pluginManagement as plugm
+from useTEM import pluginManagement as plugm
 import logging
 import os
 path = os.path.dirname(os.path.realpath(__file__))
@@ -14,9 +14,6 @@ import json
 import bibtexparser
 import re
 from useTEM.workflowThread import WorkflowThread, WorkflowItem
-
-
-
 
 
 def updateWorkflow(item):
@@ -243,6 +240,7 @@ class USETEMGuiManager:
 	def runWorkflow(self):
 
 		self.interfaces = plugm.availableInterfaces()
+		print(self.interfaces)
 
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
 
@@ -259,7 +257,11 @@ class USETEMGuiManager:
 			pass
 
 		self.ui.runButton.clicked.connect(self.killWorkflow)
-		self.runThread.start()
+
+		try:
+			self.runThread.start()
+		except Exception as e:
+			print(e)
 
 	def killWorkflow(self):
 

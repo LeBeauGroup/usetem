@@ -19,10 +19,10 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         self.defaultParameters.update({'rate':0.01, 'precision':0.000001, 'max_iters':10000, 'start_step_size':10})
 
         self.defaultParameters.update({'dwellTime': 5e-6,
-                                  'binning': '256x256',
+                                  'binning': '100x100',
                                   'numFrames': 1, 'detectors': ['HAADF']})
 
-        self.parameterTypes = {'dwellTime': float, 'binning': str, 'numFrames': int, 'rate':float, 'precision':float, 'max_iters':int}
+        self.parameterTypes = {'rate':float, 'precision':float, 'max_iters':int, 'start_step_size':float}
 
 
     def ui(self, item, parent=None):
@@ -65,36 +65,49 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         stem.start()
 
         prev_x = startDefocus*1e9  # The algorithm starts at x=3
-        prev_y = -stem.stdev()
+        prev_y = -stem.variance()
 
         cur_x = prev_x + previous_step_size
+        print('got here')
+
 
         while previous_step_size > precision and iters < max_iters:
 
-            optics.defocus(float(cur_x*1e-9))
 
-            if -stem.stdev() == prev_y:
+            cur_y = -stem.variance()
+
+            if abs(cur_y - prev_y) < 1e-3:
                 continue
 
             if iters == 0:
-                cur_y = -stem.stdev()
                 print(cur_y, prev_y, cur_x, prev_x)
-
                 grad = (cur_y-prev_y)/(cur_x-prev_x)
 
             else:
-                # Store current x value in prev_x
-
-                cur_y = -stem.stdev()
                 grad = (cur_y - prev_y) / (cur_x - prev_x)
                 prev_x = cur_x
 
-            cur_x = cur_x - rate * grad  # Grad descent
+
+            #plt.scatter(cur_x, cur_y)
+            #plt.pause(0.005)
+
+            step = rate*grad
+            print(np.sign(grad))
+
+            if abs(step) > 5:
+                cur_x -= np.sign(step)*5
+            else:
+                cur_x -= step
+
+            optics.defocus(float(cur_x * 1e-9))
+
+            # Grad descent
 
             previous_step_size = abs(cur_x - prev_x)  # Change in x
             iters = iters + 1  # iteration count
             prev_y = cur_y
 
+        #plt.show()
         stem.stop()
         print("The local minimum occurs at", cur_x)
 

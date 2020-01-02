@@ -1,7 +1,6 @@
 
 from yapsy.PluginManager import PluginManager
-
-from .pluginTypes import *
+from useTEM import pluginTypes
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -28,7 +27,6 @@ def startupExtensions(pluginManager):
 
 		print('finished loading:' + plugin.name)
 		plugins[plugin.name] = plugin
-
 	return plugins
 
 def startupInterfaces(pluginManager):
@@ -51,33 +49,38 @@ def startupInterfaces(pluginManager):
 
 		else:
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
-			print(connectionAddress)
 
 		techniquesPath = path+'\\techniques\\'+pluginInfo.name
 
 		plugin.loadTechniques(techniquesPath, plugins)
 		plugin.start_connection(connectionAddress)
 
+
 		print('finished loading:' + pluginInfo.name)
 		plugins[pluginInfo.name] = plugin
+
+
 
 	return plugins
 
 def availableInterfaces():
 	# setup the categories
 
-	categories = {'Interface': IInterfacePlugin, 'Techniques': ITechniquePlugin}
+	categories = {'Interface': pluginTypes.IInterfacePlugin, 'Techniques': pluginTypes.ITechniquePlugin}
 
 	# Build the manager, set load location, and then collect them
 
 	interfaceManager = PluginManager(categories_filter=categories)
 	# pluginManager.setPluginPlaces()
 
+
 	loc = interfaceManager.getPluginLocator()
 	loc.setPluginPlaces([path + '\\interfaces'])
 
+
 	interfaceManager.locatePlugins()
 	interfaceManager.loadPlugins()
+
 
 	interfaces = startupInterfaces(interfaceManager)
 
@@ -88,7 +91,7 @@ def availableExtensions():
 
 	# setup the categories
 
-	categories = {'Extension': IExtensionPlugin}
+	categories = {'Extension': pluginTypes.IExtensionPlugin}
 
 
 	# Build the manager, set load location, and then collect them

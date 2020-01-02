@@ -1,6 +1,12 @@
 
 from comtypes.client import CreateObject, Constants
-from comtypes.gen import TEMScripting
+try:
+    from comtypes.gen import TEMScripting
+except:
+    CreateObject("TEMScripting.Instrument")
+    from comtypes.gen import TEMScripting
+
+
 from comtypes.client import GetModule
 
 from .acquisition import Acquisition
