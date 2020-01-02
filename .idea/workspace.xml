@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/keycontrol.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/defocus/defocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/defocus/defocus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/temscript/instrument.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/temscript/instrument.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/tiascript/processingSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/tiascript/processingSystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflowThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflowThread.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,21 +223,25 @@
       <screen x="0" y="0" width="3840" height="2098" />
     </state>
     <state x="945" y="393" key="FileChooserDialogImpl/0.0.3840.2098@0.0.3840.2098" timestamp="1577927038433" />
-    <state width="2524" height="494" key="GridCell.Tab.0.bottom" timestamp="1577946357829">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state width="2848" height="417" key="GridCell.Tab.0.bottom" timestamp="1578003975054">
+      <screen x="0" y="0" width="2880" height="1738" />
     </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.bottom/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975054" />
     <state width="2524" height="494" key="GridCell.Tab.0.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
-    <state width="2524" height="494" key="GridCell.Tab.0.center" timestamp="1577946357829">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state width="2848" height="417" key="GridCell.Tab.0.center" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
     </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.center/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2524" height="494" key="GridCell.Tab.0.center/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
-    <state width="2524" height="494" key="GridCell.Tab.0.left" timestamp="1577946357829">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state width="2848" height="417" key="GridCell.Tab.0.left" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
     </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.left/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2524" height="494" key="GridCell.Tab.0.left/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
-    <state width="2524" height="494" key="GridCell.Tab.0.right" timestamp="1577946357829">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state width="2848" height="417" key="GridCell.Tab.0.right" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
     </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.right/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2524" height="494" key="GridCell.Tab.0.right/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
     <state width="2524" height="489" key="GridCell.Tab.1.bottom" timestamp="1577942013413">
       <screen x="0" y="0" width="3840" height="2098" />
