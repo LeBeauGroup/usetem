@@ -106,6 +106,7 @@ class WorkflowThread(QtCore.QThread):
 							execute(childToRun, lastResult)
 			else:
 
+
 				try:
 					newResult = plugin.run(params, result=lastResult)
 				except Exception as e:

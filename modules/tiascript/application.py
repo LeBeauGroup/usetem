@@ -1,4 +1,15 @@
-from comtypes.gen import ESVision
+
+
+
+
+
+try:
+    from comtypes.gen import ESVision
+except:
+    from comtypes.client import GetModule
+    GetModule("C:\Program Files (x86)\FEI\TIA\Bin\ESVision.tlb")
+    from comtypes.gen import ESVision
+
 from comtypes.client import CreateObject, Constants
 
 from xmlrpc.client import Binary

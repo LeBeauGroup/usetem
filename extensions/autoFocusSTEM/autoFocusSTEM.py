@@ -1,11 +1,12 @@
 import useTEM.pluginTypes as pluginTypes
 import numpy as np
 from skimage import io
-from scipy.ndimage import gaussian_filter
+from scipy import ndimage
 import time
 import matplotlib.pyplot as plt
 from skimage.util import noise
 from PyQt5 import QtWidgets
+import math
 
 import skimage
 import sys, os
@@ -18,11 +19,11 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         super(AutoFocusSTEM, self).__init__()
         self.defaultParameters.update({'rate':0.01, 'precision':0.000001, 'max_iters':10000, 'start_step_size':10})
 
-        self.defaultParameters.update({'dwellTime': 5e-6,
-                                  'binning': '256x256',
+        self.defaultParameters.update({'dwellTime': 1e-6,
+                                  'binning': '100x100',
                                   'numFrames': 1, 'detectors': ['HAADF']})
 
-        self.parameterTypes = {'dwellTime': float, 'binning': str, 'numFrames': int, 'rate':float, 'precision':float, 'max_iters':int}
+        self.parameterTypes = {'rate':float, 'precision':float, 'max_iters':int, 'start_step_size':float}
 
 
     def ui(self, item, parent=None):
@@ -45,6 +46,86 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         except:
             pass
 
+    # def gradientDescent():
+    #     while previous_step_size > precision and iters < max_iters:
+    #
+    #
+    #         cur_y = -stem.variance()
+    #
+    #         if abs(cur_y - prev_y) < 1e-3:
+    #             continue
+    #
+    #         if iters == 0:
+    #             print(cur_y, prev_y, cur_x, prev_x)
+    #             grad = (cur_y-prev_y)/(cur_x-prev_x)
+    #
+    #         else:
+    #             grad = (cur_y - prev_y) / (cur_x - prev_x)
+    #             prev_x = cur_x
+    #
+    #
+    #         #plt.scatter(cur_x, cur_y)
+    #         #plt.pause(0.005)
+    #
+    #         step = rate*grad
+    #         print(np.sign(grad))
+    #
+    #         if abs(step) > 5:
+    #             cur_x -= np.sign(step)*5
+    #         else:
+    #             cur_x -= step
+    #
+    #         optics.defocus(float(cur_x * 1e-9))
+    #
+    #         # Grad descent
+    #
+    #         previous_step_size = abs(cur_x - prev_x)  # Change in x
+    #         iters = iters + 1  # iteration count
+    #         prev_y = cur_y
+
+    def divideAndConquer(self, focus_range, optics=None, stem=None):
+
+        # focus_range = 100.0
+        precision = 1
+
+        iterations = math.floor(math.log2(focus_range / precision)) + 1
+
+        currentDefocus = optics.defocus()/1e-9 # seed the defocus
+
+        for i in range(0, iterations):
+
+            midPoint = currentDefocus
+
+            startPoint = midPoint - focus_range / 2.0
+            endPoint = midPoint + focus_range / 2.0
+
+            foci = np.linspace(start=startPoint, stop=endPoint, num=3)
+            vars = []
+            #print(foci)
+
+            seedVar = stem.variance()
+
+            for focus in foci:
+                optics.defocus(float(focus)*1e-9)
+                var = seedVar
+
+                while(seedVar == var):
+                    var = stem.variance()
+                    continue
+
+
+                vars.append(var)
+
+            vars = np.array(vars) ** 1
+            print(vars)
+            vars = (vars) / vars.sum()
+
+            updateDefocus = float((vars * foci).sum())
+            optics.defocus(updateDefocus*1e-9)
+            focus_range /= 2
+
+            #print(updateDefocus)
+
     def run(self, params=None, result=None):
 
         tem = self.interfaces['temscript']
@@ -58,44 +139,24 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         max_iters = params['max_iters']  # maximum number of iterations
         iters = 0  # iteration counter
 
-        startDefocus = optics.defocus()
+        # startDefocus = optics.defocus()
 
         # start stem scanning
         stem.setupFocus(params)
         stem.start()
 
-        prev_x = startDefocus*1e9  # The algorithm starts at x=3
-        prev_y = -stem.stdev()
 
-        cur_x = prev_x + previous_step_size
+        self.divideAndConquer(50, optics=optics, stem=stem)
+       # self.divideAndConquer(25, optics=optics, stem=stem)
+        # prev_x = startDefocus*1e9  # The algorithm starts at x=3
+        # prev_y = -stem.variance()
+        #
+        # cur_x = prev_x + previous_step_size
+        # print('got here')
 
-        while previous_step_size > precision and iters < max_iters:
 
-            optics.defocus(float(cur_x*1e-9))
-
-            if -stem.stdev() == prev_y:
-                continue
-
-            if iters == 0:
-                cur_y = -stem.stdev()
-                print(cur_y, prev_y, cur_x, prev_x)
-
-                grad = (cur_y-prev_y)/(cur_x-prev_x)
-
-            else:
-                # Store current x value in prev_x
-
-                cur_y = -stem.stdev()
-                grad = (cur_y - prev_y) / (cur_x - prev_x)
-                prev_x = cur_x
-
-            cur_x = cur_x - rate * grad  # Grad descent
-
-            previous_step_size = abs(cur_x - prev_x)  # Change in x
-            iters = iters + 1  # iteration count
-            prev_y = cur_y
-
+        #plt.show()
         stem.stop()
-        print("The local minimum occurs at", cur_x)
+        print("The local minimum occurs at", optics.defocus()/1e-9)
 
         return True

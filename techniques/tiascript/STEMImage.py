@@ -213,6 +213,12 @@ class ISTEMImage(ITechniquePlugin):
 		#capturedImage = pickle.loads(acq.acquireImages().data)[0]
 		return None
 
+	def variance(self):
+
+		procsys = self.client.processingSystem
+
+		return procsys.variance(self.imagePaths[0])
+
 	def stdev(self):
 
 		procsys = self.client.processingSystem

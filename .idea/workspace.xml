@@ -3,23 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/defocus/defocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/defocus/defocus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forList/forList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/wait/wait.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/wait/wait.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workflowThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/workflowThread.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,9 +21,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/launch.py" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
@@ -76,18 +66,6 @@
       <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Python.useTEM">
     <configuration name="Servers" type="PythonConfigurationType" factoryName="Python">
       <module name="useTEM" />
@@ -103,6 +81,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\supervisor\Documents\GitHub\useTEM\servers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="keyboardControl" type="PythonConfigurationType" factoryName="Python">
+      <module name="useTEM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PYTHONPATH" value="C:\Users\supervisor\Documents\GitHub" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/keycontrol.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,9 +157,22 @@
     </configuration>
     <list>
       <item itemvalue="Python.Servers" />
-      <item itemvalue="Python.useTEM" />
+      <item itemvalue="Python.keyboardControl" />
       <item itemvalue="Python.useTEM (1)" />
+      <item itemvalue="Python.useTEM" />
     </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -201,6 +214,56 @@
       </map>
     </option>
   </component>
+  <component name="WindowStateProjectService">
+    <state x="719" y="364" width="1099" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577927040783">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state x="719" y="364" width="1099" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3840.2098@0.0.3840.2098" timestamp="1577927040783" />
+    <state x="945" y="393" key="FileChooserDialogImpl" timestamp="1577927038433">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state x="945" y="393" key="FileChooserDialogImpl/0.0.3840.2098@0.0.3840.2098" timestamp="1577927038433" />
+    <state width="2848" height="417" key="GridCell.Tab.0.bottom" timestamp="1578003975054">
+      <screen x="0" y="0" width="2880" height="1738" />
+    </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.bottom/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975054" />
+    <state width="2524" height="494" key="GridCell.Tab.0.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
+    <state width="2848" height="417" key="GridCell.Tab.0.center" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
+    </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.center/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
+    <state width="2524" height="494" key="GridCell.Tab.0.center/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
+    <state width="2848" height="417" key="GridCell.Tab.0.left" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
+    </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.left/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
+    <state width="2524" height="494" key="GridCell.Tab.0.left/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
+    <state width="2848" height="417" key="GridCell.Tab.0.right" timestamp="1578003975053">
+      <screen x="0" y="0" width="2880" height="1738" />
+    </state>
+    <state width="2848" height="417" key="GridCell.Tab.0.right/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
+    <state width="2524" height="494" key="GridCell.Tab.0.right/0.0.3840.2098@0.0.3840.2098" timestamp="1577946357829" />
+    <state width="2524" height="489" key="GridCell.Tab.1.bottom" timestamp="1577942013413">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state width="2524" height="489" key="GridCell.Tab.1.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1577942013413" />
+    <state width="2524" height="489" key="GridCell.Tab.1.center" timestamp="1577942013413">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state width="2524" height="489" key="GridCell.Tab.1.center/0.0.3840.2098@0.0.3840.2098" timestamp="1577942013413" />
+    <state width="2524" height="489" key="GridCell.Tab.1.left" timestamp="1577942013413">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state width="2524" height="489" key="GridCell.Tab.1.left/0.0.3840.2098@0.0.3840.2098" timestamp="1577942013413" />
+    <state width="2524" height="489" key="GridCell.Tab.1.right" timestamp="1577942013413">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state width="2524" height="489" key="GridCell.Tab.1.right/0.0.3840.2098@0.0.3840.2098" timestamp="1577942013413" />
+    <state x="2208" y="169" width="1005" height="1466" key="search.everywhere.popup" timestamp="1577943172370">
+      <screen x="0" y="0" width="3840" height="2098" />
+    </state>
+    <state x="2208" y="169" width="1005" height="1466" key="search.everywhere.popup/0.0.3840.2098@0.0.3840.2098" timestamp="1577943172370" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -226,12 +289,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/Desktop/testGatan.py</url>
-          <line>19</line>
+          <line>18</line>
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/Desktop/testGatan.py</url>
-          <line>61</line>
+          <line>60</line>
           <option name="timeStamp" value="195" />
         </line-breakpoint>
       </breakpoints>
