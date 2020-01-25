@@ -13,19 +13,23 @@ import copy
 import json
 import bibtexparser
 import re
+import types
 from useTEM.workflowThread import WorkflowThread, WorkflowItem
 
 
 def updateWorkflow(item):
 	print(item)
 
-class USETEMGuiManager:
+class USETEMGuiManager(QtCore.QObject):
 	ui = None
 
-	def __init__(self, ui, plugs):
+	keyArrowPressed = QtCore.pyqtSignal()
 
+	def __init__(self, ui, plugs):
+		super(USETEMGuiManager, self).__init__()
 		self.ui = ui
 		self.plugins = plugs
+
 
 
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
@@ -217,8 +221,13 @@ class USETEMGuiManager:
 
 
 	def selectWorkflowItem(self,item):
+
 		workflowTree:QtWidgets.QTreeWidget = self.ui.workflowTree
+
 		workflowTree.setCurrentItem(item)
+		workflowTree.itemWidget(item, 0).setFocus()
+
+
 
 	def updateWorkflowItem(self, item):
 		workflowTree: QtWidgets.QTreeWidget = self.ui.workflowTree
@@ -449,6 +458,15 @@ if __name__ == '__main__':
 	window = uic.loadUi(ui_file)
 
 
+	# def patch(target):
+	# 	def keyPressEvent(target, event):
+	# 		guiManager.keyArrowPressed.emit()
+	# 		print('a')
+	#
+	# 	target.keyPressEvent = types.MethodType(keyPressEvent, target)
+
+
+
 
 	guiManager = USETEMGuiManager(window,plugins)
 	guiManager.setupPlugins()
@@ -471,6 +489,7 @@ if __name__ == '__main__':
 	# ui.setupUi(mainWindow,plugins)
 
 	window.show()
+
 	sys.exit(app.exec_())
 
 

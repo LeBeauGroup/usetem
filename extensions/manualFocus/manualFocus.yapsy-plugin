@@ -1,0 +1,12 @@
+[Core]
+Name = Focus
+Module = manualFocus
+
+[Documentation]
+Category = Manual
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Pauses for an autofocus even with the keyboard
+Type = Function
+Techniques = Manual

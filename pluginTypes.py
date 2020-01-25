@@ -178,7 +178,6 @@ class IExtensionPlugin(plugin.IPlugin):
 
 		item.setSizeHint(0, topWidget.size())
 
-
 		return topWidget
 
 	def setInterfaces(self, interfaces):
