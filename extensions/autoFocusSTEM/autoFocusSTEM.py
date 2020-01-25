@@ -31,6 +31,7 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
 
         widget = theUi.findChild(QtWidgets.QWidget, 'widget')
         widget.stopButton.clicked.connect(self.stopScan)        #theUi.stopButton.setDisabled(True)
+
         return theUi
 
     def stopScan(self):
