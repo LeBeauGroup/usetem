@@ -123,13 +123,14 @@ QTreeWidget::item:selected:active {
     <addaction name="actionOpen_Workflow"/>
     <addaction name="actionSave_Workflow"/>
     <addaction name="separator"/>
+    <addaction name="actionCitations"/>
    </widget>
    <widget class="QMenu" name="menuWorkflow">
     <property name="title">
      <string>Workflow</string>
     </property>
     <addaction name="actionRun_Workflow"/>
-    <addaction name="actionCitations"/>
+    <addaction name="actionClearWorkflow"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuWorkflow"/>
@@ -153,6 +154,11 @@ QTreeWidget::item:selected:active {
   <action name="actionCitations">
    <property name="text">
     <string>Export Bibtex...</string>
+   </property>
+  </action>
+  <action name="actionClearWorkflow">
+   <property name="text">
+    <string>Clear Workflow</string>
    </property>
   </action>
  </widget>
