@@ -23,6 +23,23 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 	# 	self.setAcceptDrops(True)
 	# 	self.setDropIndicatorShown(True)
 
+	def keyPressEvent(self, event):
+		currentItem = self.currentItem()
+		pluginName = currentItem.data['name']
+		print(f'sending {pluginName} an event')
+
+		try:
+			plugin = self.plugins[pluginName]
+			if plugin.isRunning:
+				plugin.updateEvent(event)
+			else:
+				super(WorkflowTreeWidget, self).keyPressEvent(event)
+		except AttributeError:
+			super(WorkflowTreeWidget, self).keyPressEvent(event)
+		#selectedItem.event = event
+
+
+
 	def resetItem(self, theItem):
 		name = theItem.data['name']
 
