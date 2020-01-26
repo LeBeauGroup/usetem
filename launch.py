@@ -365,6 +365,8 @@ class USETEMGuiManager(QtCore.QObject):
 
 		workflowTree:QtWidgets.QTreeWidget =  self.ui.workflowTree
 
+		workflowTree.clear()
+
 		with open(name) as json_file:
 			workflow = json.load(json_file)
 
