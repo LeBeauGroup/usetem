@@ -61,6 +61,9 @@ class USETEMGuiManager(QtCore.QObject):
 		workflowTree = self.ui.workflowTree
 		workflowTree.plugins = plugs
 
+		self.ui.actionClearWorkflow.triggered.connect(workflowTree.clear)
+
+
 		if isinstance(workflowTree, QtWidgets.QTreeWidget):
 
 			workflowTree.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
