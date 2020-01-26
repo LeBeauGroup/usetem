@@ -13,17 +13,43 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="continueButton">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>112</width>
-     <height>34</height>
+     <x>10</x>
+     <y>10</y>
+     <width>631</width>
+     <height>19</height>
     </rect>
    </property>
    <property name="text">
-    <string>Continue</string>
+    <string>Use left,right arrow keys to adjust defocus</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>631</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use up,down arrow keys to adjust step size</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>151</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Return to continue</string>
    </property>
   </widget>
  </widget>
