@@ -1,0 +1,12 @@
+[Core]
+Name = Move Stage
+Module = moveStage
+
+[Documentation]
+Category = Control
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Moves the microscope stage
+Type = Function
+Techniques = Operation

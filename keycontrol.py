@@ -3,7 +3,18 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import  Qt
 import sys
 import comtypes.client as ct
-from comtypes.gen.IOMLib import _99A162A6_3022_4B64_88C3_A62A6BE22239_0_1_0 as iom
+
+try:
+	from comtypes.gen.IOMLib import _99A162A6_3022_4B64_88C3_A62A6BE22239_0_1_0 as iom
+	from comtypes.gen.MdlOpticsLib import _40476B09_1A3D_4078_8438_5A5BAC94DD9A_0_1_0 as mdl
+	from comtypes.gen.OpticsItfLib import _51F26DBA_4C1A_45F9_BF47_17D602D3318F_0_1_0 as optics
+
+
+except:
+	ct.CreateObject('LibMdlOptics')
+	ct.CreateObject('Fei.Tem.Instrument2Connection.1')
+	from comtypes.gen.IOMLib import _99A162A6_3022_4B64_88C3_A62A6BE22239_0_1_0 as iom
+#	from comtypes.gen.
 
 class Example(QtWidgets.QWidget):
 
@@ -12,13 +23,20 @@ class Example(QtWidgets.QWidget):
 
 		self.isXMoving = False
 		self.stageVelocity = 10e-9
-
-
-		tem2 = ct.CreateObject('Fei.Tem.Instrument2Connection.1')
+q		tem2 = ct.CreateObject('Fei.Tem.Instrument2Connection.1')
 		tem2.Connect()
+
 
 		tem3 = ct.CreateObject('Fei.Tem.Instrument3Connection.1')
 		tem3.Connect()
+
+
+
+
+
+
+
+
 
 		self.instr2 = tem2.Instrument
 		self.instr3 = tem3.Instrument
@@ -32,8 +50,21 @@ class Example(QtWidgets.QWidget):
 		self.currentMode = 'defocus'
 
 	def changeDefocus(self, step:float):
-		self.instr3.Column.Optics.defocus += step
-		print(self.instr3.Column.Optics.defocus)
+
+		C1strip = self.instr3.Column.ApertureMechanisms.Item(0)
+		c12000 = C1strip.Apertures.Item(0)
+
+		offset = c12000.offset
+		print(offset.x, offset.y)
+		offset.x += 1e-6
+		c12000.offset = offset
+
+		C1strip.c12000 = C1strip.SelectAperture(c12000)
+
+
+
+		#self.instr3.Column.Optics.defocus += step
+		#print(self.instr3.Column.Optics.defocus)
 
 	def startJogStage(self, axis, direction):
 		#self.instr2.Column.Stage.Enable()
