@@ -30,6 +30,10 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
 #
         #self.parameterTypes = {'rate':float, 'precision':float, 'max_iters':int, 'start_step_size':float}
         self.stepSize = 1.0
+        self.defaultParameters.update({'dwellTime': 2e-6,
+                                  'binning': '512x512',
+                                  'numFrames': 1, 'detectors': ['HAADF']})
+
 
 
     def ui(self, item, parent=None):
@@ -60,6 +64,13 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
 
         self.isRunning = True
         stepSize = 1
+        tia = self.interfaces['tiascript']
+        stem = tia.techniques['STEMImage']
+
+
+        # start stem scanning
+        stem.setupFocus(params)
+        stem.start()
 
 
         while True:
@@ -79,11 +90,12 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
             elif self.event.key() == QtCore.Qt.Key_Down:
                 stepSize /= 1.5
             elif self.event.key() == QtCore.Qt.Key_Return :
+
                 break
             else:
                 continue
             self.event = None
-
+        stem.stop()
         self.isRunning = False
 
         return True
