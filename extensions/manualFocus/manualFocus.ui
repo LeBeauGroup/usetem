@@ -18,7 +18,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>631</width>
+     <width>261</width>
      <height>19</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@
     <rect>
      <x>10</x>
      <y>30</y>
-     <width>631</width>
+     <width>271</width>
      <height>19</height>
     </rect>
    </property>
@@ -51,6 +51,57 @@
    <property name="text">
     <string>Return to continue</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>10</y>
+     <width>149</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="dwellTimeEdit"/>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="binningEdit">
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>256x256</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>512x512</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>1024x1024</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Frame Size</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Dwell TIme</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
