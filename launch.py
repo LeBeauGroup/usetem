@@ -256,6 +256,8 @@ class USETEMGuiManager(QtCore.QObject):
 		updatedWidget = self.plugins[itemData['name']].ui(item)
 
 		workflowTree.setItemWidget(item, 0, updatedWidget)
+		self.selectWorkflowItem(item)
+
 
 	def workflowFinished(self):
 

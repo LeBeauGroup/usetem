@@ -92,12 +92,14 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
                 print(thread)
                 self.item.data['stepSize'] = stepSize
                 thread.workflowItemNeedsUpdate.emit(self.item)
+              #  thread.currentWorkflowItemDidChange.emit(self.item)
 
             elif self.event.key() == QtCore.Qt.Key_Down:
                 stepSize /= 1.5
                 self.item.data['stepSize'] = stepSize
                 thread.workflowItemNeedsUpdate.emit(self.item)
-                
+               # thread.currentWorkflowItemDidChange.emit(self.item)
+
             elif self.event.key() == QtCore.Qt.Key_Return :
 
                 break
