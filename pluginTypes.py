@@ -170,6 +170,12 @@ class IExtensionPlugin(plugin.IPlugin):
 					for label in item.data[parameterName]:
 
 						child.addItem(QtWidgets.QListWidgetItem(label))
+			elif "Label" in name:
+				parameterName = name.replace('Label', '')
+
+				if isinstance(child, QtWidgets.QLabel):
+					child.setText(str(item.data[parameterName]))
+
 
 		widgetSize:QtCore.QSize = widget.size()
 

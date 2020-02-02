@@ -32,13 +32,14 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
         self.stepSize = 1.0
         self.defaultParameters.update({'dwellTime': 2e-6,
                                   'binning': '512x512',
-                                  'numFrames': 1, 'detectors': ['HAADF']})
-
+                                  'numFrames': 1, 'detectors': ['HAADF'], 'stepSize':1.0})
 
 
     def ui(self, item, parent=None):
 
         theUi = super(ManualFocus, self).ui(item, parent)
+
+        self.item = item
         # widget = theUi.findChild(QtWidgets.QWidget, 'widget')
 
         # widget.continueButton.clicked.connect(self.continueWorkflow)
@@ -72,6 +73,7 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
         stem.setupFocus(params)
         stem.start()
 
+        thread = QtCore.QThread.currentThread()
 
         while True:
             if self.event is None:
@@ -87,8 +89,15 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
             elif self.event.key() == QtCore.Qt.Key_Up:
                 stepSize *=1.5
 
+                print(thread)
+                self.item.data['stepSize'] = stepSize
+                thread.workflowItemNeedsUpdate.emit(self.item)
+
             elif self.event.key() == QtCore.Qt.Key_Down:
                 stepSize /= 1.5
+                self.item.data['stepSize'] = stepSize
+                thread.workflowItemNeedsUpdate.emit(self.item)
+                
             elif self.event.key() == QtCore.Qt.Key_Return :
 
                 break
