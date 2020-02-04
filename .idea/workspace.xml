@@ -3,8 +3,199 @@
   <component name="ChangeListManager">
     <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions/manualFocus/manualFocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions/manualFocus/manualFocus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/useHandPanels.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/useProtochips.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/useTemInterface.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/control/useVelox.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/acquireSTEMImage/acquireSTEMImage.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/autoFocusSTEM/autoFocusSTEM.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeCameraLength/changeCameraLength.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/changeMagnification/changeMagnification.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/defocus/defocus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/defocus/defocus.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/defocus/defocus.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forList/forList.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/forLoop/forLoop.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/conditional.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/ifStatement/elseIf.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/manualFocus/manualFocus.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/manualFocus/manualFocus.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/manualFocus/manualFocus.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/revSTEM/revSTEM.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/stemImageSettings/stemImageSettings.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/wait/wait.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/wait/wait.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/extensions/wait/wait.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/handpanels.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/workspace_folder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/workspace_minus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/workspace_minus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/workspace_plus.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/workspace_plus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/ITIAscriptPlugin.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/ITemscriptPlugin.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/tiaPlugin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/keycontrol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainWindow.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/empad/empadgui_cu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/acquisition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/autoloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/blankershutter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/camera.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/ccdCamera.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/ccdCameras.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/configuration.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/gun.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/illumination.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/instrument.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/instrumentModeControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/projection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/stage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/stemDetector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/stemDetectors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/temperatureControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/userButton.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/utilities.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/temscript/vacuum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/acquisitionservers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/acquistionManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/application.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/beamcontrol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/guiobjects.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/microscope.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/CHANGELOG.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/MANIFEST.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/ESVision.tlb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/application.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/defines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/module.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/acqimage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/acquisition.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/blankershutter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/ccdacqparams.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/ccdcamera.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/ccdcamerainfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/configuration.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/defines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/gauge.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/gun.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/illumination.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/instrumentmodecontrol.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/module.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/projection.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/stage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/stemacqparams.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/stemdetector.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/stemdetectorinfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/old/vacuum.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/acquisition_manager.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/application_events.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/audo_id_table.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/beam_control.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/beam_position_marker.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/calibration_1D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/calibration_2D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/ccd_server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/complex.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/controlbar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/count_dialog.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/data1D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/data2D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/digitalio_server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/display_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/temp/image.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/tiascript.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/_tiascript_module/types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/instrument.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/make.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/docs/microscope.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/application.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/null_microscope.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/remote_tia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/tia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/pyTiascript/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/old/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/processingSystem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modules/tiascript/tia_client.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginManagement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pluginTypes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_autostem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servers/server.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servers/temscript_server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/servers/tiascript_server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabletest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/OpticsControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/OpticsControl.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/STEMControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/STEMImage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/STEMImage.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/temscript/calibrations/cameraLengths.cal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMImage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/tiascript/STEMImage.yapsy-plugin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techniques/tiascript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/ocr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testInterface.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/testVelox.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/workspace_folder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/uiElements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflowThread.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/workflowtreewidget.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +219,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -224,48 +416,56 @@
       <screen x="0" y="0" width="3840" height="2098" />
     </state>
     <state x="945" y="393" key="FileChooserDialogImpl/0.0.3840.2098@0.0.3840.2098" timestamp="1577927038433" />
-    <state width="2241" height="341" key="GridCell.Tab.0.bottom" timestamp="1580686389816">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.0.bottom" timestamp="1580846828045">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.0.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
     <state width="2848" height="417" key="GridCell.Tab.0.bottom/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975054" />
     <state width="2226" height="417" key="GridCell.Tab.0.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841449" />
     <state width="2241" height="341" key="GridCell.Tab.0.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="341" key="GridCell.Tab.0.center" timestamp="1580686389816">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.0.center" timestamp="1580846828044">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.0.center/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828044" />
     <state width="2848" height="417" key="GridCell.Tab.0.center/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2226" height="417" key="GridCell.Tab.0.center/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
     <state width="2241" height="341" key="GridCell.Tab.0.center/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="341" key="GridCell.Tab.0.left" timestamp="1580686389815">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.0.left" timestamp="1580846828044">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.0.left/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828044" />
     <state width="2848" height="417" key="GridCell.Tab.0.left/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2226" height="417" key="GridCell.Tab.0.left/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
     <state width="2241" height="341" key="GridCell.Tab.0.left/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389815" />
-    <state width="2241" height="341" key="GridCell.Tab.0.right" timestamp="1580686389816">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.0.right" timestamp="1580846828045">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.0.right/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
     <state width="2848" height="417" key="GridCell.Tab.0.right/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
     <state width="2226" height="417" key="GridCell.Tab.0.right/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
     <state width="2241" height="341" key="GridCell.Tab.0.right/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="534" key="GridCell.Tab.1.bottom" timestamp="1580684197432">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.1.bottom" timestamp="1580846828046">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.1.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828046" />
     <state width="2226" height="537" key="GridCell.Tab.1.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
     <state width="2241" height="534" key="GridCell.Tab.1.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.center" timestamp="1580684197432">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.1.center" timestamp="1580846828045">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.1.center/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
     <state width="2226" height="537" key="GridCell.Tab.1.center/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
     <state width="2241" height="534" key="GridCell.Tab.1.center/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.left" timestamp="1580684197432">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.1.left" timestamp="1580846828045">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.1.left/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
     <state width="2226" height="537" key="GridCell.Tab.1.left/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
     <state width="2241" height="534" key="GridCell.Tab.1.left/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.right" timestamp="1580684197432">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2241" height="534" key="GridCell.Tab.1.right" timestamp="1580846828046">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2241" height="534" key="GridCell.Tab.1.right/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828046" />
     <state width="2226" height="537" key="GridCell.Tab.1.right/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
     <state width="2241" height="534" key="GridCell.Tab.1.right/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
     <state x="2208" y="169" width="1009" height="1466" key="search.everywhere.popup" timestamp="1580038568902">
@@ -277,16 +477,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="167" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="168" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$USER_HOME$/Desktop/opensesame-plugin-media_player_mpy-master/setup.py</url>
           <line>20</line>

@@ -87,7 +87,7 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
                 self.changeDefocus(1, stepSize)
 
             elif self.event.key() == QtCore.Qt.Key_Up:
-                stepSize *=1.5
+                stepSize *= 1.5
 
                 print(thread)
                 self.item.data['stepSize'] = stepSize
@@ -106,6 +106,7 @@ class ManualFocus(pluginTypes.IExtensionPlugin):
             else:
                 continue
             self.event = None
+
         stem.stop()
         self.isRunning = False
 
