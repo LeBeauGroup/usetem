@@ -12,10 +12,14 @@ class IExtensionPlugin(plugin.IPlugin):
 	def __init__(self):
 		super(IExtensionPlugin, self).__init__()
 
-		filePath = sys.modules[self.__module__].__file__.split(os.extsep)[0]
-		name = os.path.basename(filePath)
+		filePath = sys.modules[self.__module__].__file__
 
-		uiPath = filePath + '.ui'
+		test = os.path.splitext(filePath)[0]
+		name = os.path.basename(test)
+
+		print(name)
+
+		uiPath = os.path.splitext(filePath)[0] + '.ui'
 
 		self.uiFile = QtCore.QFile(uiPath)
 		self.uiFile.open(QtCore.QFile.ReadOnly)
@@ -190,8 +194,10 @@ class IExtensionPlugin(plugin.IPlugin):
 		self.interfaces = interfaces
 
 	def citations(self):
-		filePath = sys.modules[self.__module__].__file__.split(os.extsep)[0]
-		bibPath = filePath + '.bib'
+
+
+		filePath = sys.modules[self.__module__].__file__
+		bibPath = os.path.splitext(filePath)[0] + '.bib'
 
 		try:
 			with open(bibPath) as bibfile:
@@ -201,10 +207,6 @@ class IExtensionPlugin(plugin.IPlugin):
 
 
 		return pluginBib
-
-
-
-
 
 
 # categories = {'Control' : IInterfacePlugin,

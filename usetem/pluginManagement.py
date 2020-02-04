@@ -1,6 +1,6 @@
 
 from yapsy.PluginManager import PluginManager
-from useTEM import pluginTypes
+from . import pluginTypes
 import os
 
 path = os.path.dirname(os.path.abspath(__file__))
@@ -44,6 +44,8 @@ def startupInterfaces(pluginManager):
 		plugin = pluginInfo.plugin_object
 		plugin.name = pluginInfo.name
 
+		print(pluginManager.getPluginsOfCategory('Interface'))
+
 		if address == 'local':
 			connectionAddress = 'local'
 
@@ -58,8 +60,6 @@ def startupInterfaces(pluginManager):
 
 		print('finished loading:' + pluginInfo.name)
 		plugins[pluginInfo.name] = plugin
-
-
 
 	return plugins
 
@@ -100,6 +100,7 @@ def availableExtensions():
 	#pluginManager.setPluginPlaces()
 
 	loc = extManager.getPluginLocator()
+	print([path+'\\extensions'])
 	loc.setPluginPlaces([path+'\\extensions'])
 
 	extManager.locatePlugins()

@@ -97,7 +97,6 @@ class USETEMGuiManager(QtCore.QObject):
 		newMenu.exec(self.ui.workflowTree.mapToGlobal(point))
 
 	def duplicateWorkflowItem(self):
-		print('Implement duplicating items')
 
 		currentItem = self.ui.workflowTree.currentItem()
 		parent = currentItem.parent()
@@ -121,7 +120,6 @@ class USETEMGuiManager(QtCore.QObject):
 			if currentItem.data['name'] in ['elseIf', 'else']:
 				currentIndex = parent.indexOfChild(currentItem)
 				parent.data['conditions'].pop(currentIndex)
-				print(parent.data)
 
 			parent.removeChild(currentItem)
 
@@ -271,7 +269,6 @@ class USETEMGuiManager(QtCore.QObject):
 	def runWorkflow(self):
 
 		self.interfaces = plugm.availableInterfaces()
-		print(self.interfaces)
 
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
 
@@ -482,35 +479,13 @@ if __name__ == '__main__':
 	window = uic.loadUi(ui_file)
 
 
-	# def patch(target):
-	# 	def keyPressEvent(target, event):
-	# 		guiManager.keyArrowPressed.emit()
-	# 		print('a')
-	#
-	# 	target.keyPressEvent = types.MethodType(keyPressEvent, target)
-
-
-
-
 	guiManager = USETEMGuiManager(window,plugins)
 	guiManager.setupPlugins()
 
 	window.runButton.clicked.connect(guiManager.runWorkflow)
 
 
-	# window.pluginsTree.selectionChanged()
-
 	window.setWindowTitle('USETEM Workflow')
-	# mainWindow = QMainWindow()
-	# mainWindow.setWindowTitle('USE-TEM')
-
-
-
-
-	# app.setActiveWindow(mainWindow)
-
-	# ui = UseTEMUI()
-	# ui.setupUi(mainWindow,plugins)
 
 	window.show()
 
