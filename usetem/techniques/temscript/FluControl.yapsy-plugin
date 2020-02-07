@@ -1,0 +1,9 @@
+[Core]
+Name = FluControl
+Module = FluControl
+
+[Documentation]
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Controls a flu camera and gets screen current
