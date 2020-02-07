@@ -1,24 +1,12 @@
-from launch.pluginTypes import ITechniquePlugin
+import usetem.pluginTypes as pluginTypes
 import abc
 import numpy as np
 import pickle
 
-class ISTEMControl(ITechniquePlugin):
+class ISTEMControl(pluginTypes.ITechniquePlugin):
 
     client = None
     instrument = None
-
-    def cameraLength(self, cl=None):
-        """
-
-        :param cl: camera length in mm
-        :return: camera length in mm if cl not none
-        """
-        if cl is None:
-            return client.projection.cameraLength()
-        else:
-            client.projection.cameraLength(angle)
-
 
     def scanRotation(self, angle=None):
         """

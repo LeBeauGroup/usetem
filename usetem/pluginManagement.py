@@ -53,6 +53,7 @@ def startupInterfaces(pluginManager):
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
 
 		techniquesPath = path+'\\techniques\\'+pluginInfo.name
+		print(techniquesPath)
 
 		plugin.loadTechniques(techniquesPath, plugins)
 		plugin.start_connection(connectionAddress)
@@ -61,6 +62,7 @@ def startupInterfaces(pluginManager):
 		print('finished loading:' + pluginInfo.name)
 		plugins[pluginInfo.name] = plugin
 
+		print(plugins)
 	return plugins
 
 def availableInterfaces():
@@ -76,6 +78,8 @@ def availableInterfaces():
 
 	loc = interfaceManager.getPluginLocator()
 	loc.setPluginPlaces([path + '\\interfaces'])
+
+
 
 
 	interfaceManager.locatePlugins()
@@ -100,7 +104,6 @@ def availableExtensions():
 	#pluginManager.setPluginPlaces()
 
 	loc = extManager.getPluginLocator()
-	print([path+'\\extensions'])
 	loc.setPluginPlaces([path+'\\extensions'])
 
 	extManager.locatePlugins()

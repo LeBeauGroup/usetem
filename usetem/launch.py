@@ -15,7 +15,6 @@
 # You should have received a copy of the GNU General Public License 
 # a long with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-from useTEM import pluginManagement as plugm
 import logging
 import os
 path = os.path.dirname(os.path.realpath(__file__))
@@ -29,10 +28,9 @@ from PyQt5 import uic
 import copy
 import json
 import bibtexparser
-import re
-import types
-from useTEM.workflowThread import WorkflowThread, WorkflowItem
-
+from .workflowThread import WorkflowThread
+from .workflowThread import WorkflowItem
+from . import pluginManagement as plugm
 
 def updateWorkflow(item):
 	print(item)
@@ -46,9 +44,6 @@ class USETEMGuiManager(QtCore.QObject):
 		super(USETEMGuiManager, self).__init__()
 		self.ui = ui
 		self.plugins = plugs
-
-
-
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
@@ -459,9 +454,6 @@ class USETEMGuiManager(QtCore.QObject):
 
 		with open(saveLocation, 'w') as bibfile:
 			bibfile.write(writer.write(dupFreeBib))
-
-
-
 
 
 

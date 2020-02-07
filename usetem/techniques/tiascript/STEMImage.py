@@ -1,4 +1,4 @@
-from useTEM.pluginTypes import ITechniquePlugin
+from usetem.pluginTypes import ITechniquePlugin
 import pickle
 import numpy as np
 
@@ -13,11 +13,15 @@ class ISTEMImage(ITechniquePlugin):
 		super(ISTEMImage, self).__init__()
 		self.imagePaths = []
 
-	def scanRotation(self, angle):
+	def scanRotation(self, angle=None):
 
 		try:
 			t = self.controlPlugins['temscript'].client
-			t.illumination.stemRotation(angle)
+
+			if angle is None:
+				return t.illumination.stemRotation()
+			else:
+				t.illumination.stemRotation(angle)
 		except:
 			print('TIA script cannot change rotation scan, temscript must be available')
 

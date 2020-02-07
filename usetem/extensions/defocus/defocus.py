@@ -1,6 +1,5 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
-import numpy as np
 
 class Defocus(pluginTypes.IExtensionPlugin):
 

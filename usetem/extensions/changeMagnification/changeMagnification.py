@@ -1,4 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
 import numpy as np
 
@@ -9,7 +9,7 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super().__init__()
-        self.defaultParameters.update({'magnification': 10000, 'useCurrentMag':False})
+        self.defaultParameters.update({'magnification': 100000, 'useCurrentMag':False})
         self.parameterTypes = {'magnification': int, 'useCurrentMag': bool}
 
     def ui(self, item, parent=None):

@@ -1,17 +1,5 @@
-import useTEM.pluginTypes as pluginTypes
-import numpy as np
-from skimage import io
-from scipy import ndimage
-import time
-import matplotlib.pyplot as plt
-from skimage.util import noise
-from PyQt5 import QtWidgets
-from PyQt5 import Qt, QtCore
-import types
-import math
-
-import skimage
-import sys, os
+import usetem.pluginTypes as pluginTypes
+from PyQt5 import  QtCore
 
 
 class ManualFocus(pluginTypes.IExtensionPlugin):

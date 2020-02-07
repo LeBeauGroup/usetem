@@ -1,4 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 import xmlrpc.client
 from xmlrpc.client import MultiCall, Boolean
 import os

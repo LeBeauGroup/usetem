@@ -1,32 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/usetem/start_servers.py" afterDir="false" />
+    <list default="true" id="cbc3826d-5aae-4492-bc84-6b25583167ef" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/useTEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/useTEM.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.ui" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/useTEM/servers/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/acquireSTEMImage/acquireSTEMImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/changeCameraLength/changeCameraLength.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/changeCameraLength/changeCameraLength.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/changeMagnification/changeMagnification.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/changeMagnification/changeMagnification.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/defocus/defocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/defocus/defocus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/forList/forList.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/forList/forList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/forLoop/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/forLoop/forLoop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/ifStatement/conditional.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/ifStatement/conditional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/manualFocus/manualFocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/manualFocus/manualFocus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/extensions/wait/wait.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/wait/wait.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/interfaces/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/interfaces/ITIAscriptPlugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/interfaces/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/interfaces/ITemscriptPlugin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/launch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/mainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/empad/empadgui_cu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/acquisition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/autoloader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/blankershutter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/camera.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/ccdCamera.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/ccdCameras.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/configuration.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/gun.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/illumination.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/instrument.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/instrumentModeControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/projection.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stemDetector.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stemDetectors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/temperatureControl.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/userButton.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/utilities.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/vacuum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/acquisitionservers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/acquistionManager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/application.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/beamcontrol.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/guiobjects.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/microscope.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/CHANGELOG.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/MANIFEST.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/ESVision.tlb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/application.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/defines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/module.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/acqimage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/acquisition.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/blankershutter.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdacqparams.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdcamera.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdcamerainfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/configuration.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/defines.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/gauge.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/gun.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/illumination.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/instrumentmodecontrol.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/module.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/projection.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stage.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemacqparams.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemdetector.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemdetectorinfo.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/vacuum.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/acquisition_manager.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/application_events.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/audo_id_table.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/beam_control.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/beam_position_marker.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/calibration_1D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/calibration_2D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/ccd_server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/complex.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/controlbar.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/count_dialog.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/data1D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/data2D.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/digitalio_server.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/display_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/image.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/tiascript.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/types.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/instrument.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/make.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/microscope.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/application.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/enums.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/null_microscope.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/remote_tia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/tia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/processingSystem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/tia_client.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/usetem/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/pluginTypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/pluginTypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/servers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/servers/server.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/servers/temscript_server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/servers/tiascript_server.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/start_servers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/techniques/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/OpticsControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/OpticsControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/STEMControl.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/STEMImage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usetem/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/tiascript/STEMImage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1QTfLRHNUQzd6yds3hhBSA3gjAL" />
+  <component name="ProjectId" id="1XSRKoXZysx4bF3zNXdVM0ab2Wu" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -34,60 +152,28 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/extensions" />
-    <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
-  </component>
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings module-name="useTEM" is-module-sdk="true">
-        <envs>
-          <env key="PYTHONPATH" value="&quot;C:\Users\supervisor\Documents\GitHub&quot;" />
-        </envs>
-        <option name="myUseModuleSdk" value="true" />
-        <option name="myModuleName" value="useTEM" />
-        <option name="myEnvs">
-          <map>
-            <entry key="PYTHONPATH" value="&quot;C:\Users\supervisor\Documents\GitHub&quot;" />
-          </map>
-        </option>
-      </console-settings>
-    </option>
-  </component>
-  <component name="PyDebuggerOptionsProvider">
-    <option name="mySupportQtDebugging" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/usetem/extensions/blankBeam" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\tests" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forLoop" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\revSTEM" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\servers" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\techniques\temscript" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\extensions\forList" />
-      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM" />
+      <recent name="C:\Users\supervisor\Documents\GitHub\useTEM\usetem\extensions\blankBeam" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.useTEM">
-    <configuration name="Servers" type="PythonConfigurationType" factoryName="Python">
+  <component name="RunManager">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="useTEM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_OPTIONS" value="-m" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="C:\Users\supervisor\Documents\GitHub" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\supervisor\Documents\GitHub\useTEM\servers.py" />
+      <option name="SCRIPT_NAME" value="usetem.launch" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -96,20 +182,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="keyboardControl" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="usetem.launch" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="useTEM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_OPTIONS" value="-m" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="C:\Users\supervisor\Documents\GitHub" />
       </envs>
-      <option name="SDK_HOME" value="" />
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\envs\py3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/keycontrol.py" />
+      <option name="SCRIPT_NAME" value="usetem.launch" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,211 +203,76 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="useTEM (1)" type="PythonConfigurationType" factoryName="Python">
-      <module name="useTEM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="C:\Users\supervisor\Documents\GitHub" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="useTEM" type="PythonConfigurationType" factoryName="Python">
-      <module name="useTEM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PYTHONPATH" value="C:\Users\supervisor\Documents\GitHub" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/launch.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.Servers" />
-      <item itemvalue="Python.keyboardControl" />
-      <item itemvalue="Python.useTEM (1)" />
-      <item itemvalue="Python.useTEM" />
-    </list>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1f3af337-3214-4a77-a8e9-675232840c03" name="Default Changelist" comment="" />
-      <created>1563299302469</created>
+      <changelist id="cbc3826d-5aae-4492-bc84-6b25583167ef" name="Default Changelist" comment="" />
+      <created>1581037447872</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1563299302469</updated>
+      <updated>1581037447872</updated>
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="719" y="364" width="1099" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577927040783">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state x="1253" y="1259" width="1081" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581037539941">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state x="719" y="364" width="1099" height="787" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3840.2098@0.0.3840.2098" timestamp="1577927040783" />
-    <state x="1052" y="504" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580849033210">
+    <state x="1253" y="1259" width="1081" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3840.2116@0.0.3840.2116" timestamp="1581037539941" />
+    <state x="1617" y="814" key="#usetem.launch" timestamp="1581037553879">
+      <screen x="0" y="0" width="3840" height="2116" />
+    </state>
+    <state x="1617" y="814" key="#usetem.launch/0.0.3840.2116@0.0.3840.2116" timestamp="1581037553879" />
+    <state x="1577" y="1368" key="FileChooserDialogImpl" timestamp="1581037517565">
+      <screen x="0" y="0" width="3840" height="2116" />
+    </state>
+    <state x="1577" y="1368" key="FileChooserDialogImpl/0.0.3840.2116@0.0.3840.2116" timestamp="1581037517565" />
+    <state width="2393" height="630" key="GridCell.Tab.0.bottom" timestamp="1581086151854">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state x="1052" y="504" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1396@0.0.2560.1396" timestamp="1580849033210" />
-    <state x="945" y="393" key="FileChooserDialogImpl" timestamp="1577927038433">
-      <screen x="0" y="0" width="3840" height="2098" />
-    </state>
-    <state x="945" y="393" key="FileChooserDialogImpl/0.0.3840.2098@0.0.3840.2098" timestamp="1577927038433" />
-    <state width="2241" height="534" key="GridCell.Tab.0.bottom" timestamp="1580846828045">
+    <state width="2393" height="630" key="GridCell.Tab.0.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151854" />
+    <state width="2393" height="630" key="GridCell.Tab.0.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713801" />
+    <state width="2393" height="630" key="GridCell.Tab.0.center" timestamp="1581086151853">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.0.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
-    <state width="2848" height="417" key="GridCell.Tab.0.bottom/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975054" />
-    <state width="2226" height="417" key="GridCell.Tab.0.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841449" />
-    <state width="2241" height="341" key="GridCell.Tab.0.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="534" key="GridCell.Tab.0.center" timestamp="1580846828044">
+    <state width="2393" height="630" key="GridCell.Tab.0.center/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151853" />
+    <state width="2393" height="630" key="GridCell.Tab.0.center/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713796" />
+    <state width="2393" height="630" key="GridCell.Tab.0.left" timestamp="1581086151853">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.0.center/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828044" />
-    <state width="2848" height="417" key="GridCell.Tab.0.center/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
-    <state width="2226" height="417" key="GridCell.Tab.0.center/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
-    <state width="2241" height="341" key="GridCell.Tab.0.center/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="534" key="GridCell.Tab.0.left" timestamp="1580846828044">
+    <state width="2393" height="630" key="GridCell.Tab.0.left/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151853" />
+    <state width="2393" height="630" key="GridCell.Tab.0.left/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713796" />
+    <state width="2393" height="630" key="GridCell.Tab.0.right" timestamp="1581086151854">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.0.left/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828044" />
-    <state width="2848" height="417" key="GridCell.Tab.0.left/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
-    <state width="2226" height="417" key="GridCell.Tab.0.left/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
-    <state width="2241" height="341" key="GridCell.Tab.0.left/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389815" />
-    <state width="2241" height="534" key="GridCell.Tab.0.right" timestamp="1580846828045">
-      <screen x="0" y="0" width="2560" height="1396" />
+    <state width="2393" height="630" key="GridCell.Tab.0.right/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151854" />
+    <state width="2393" height="630" key="GridCell.Tab.0.right/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713801" />
+    <state width="2393" height="695" key="GridCell.Tab.1.bottom" timestamp="1581042788752">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.0.right/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
-    <state width="2848" height="417" key="GridCell.Tab.0.right/0.0.2880.1738@0.0.2880.1738" timestamp="1578003975053" />
-    <state width="2226" height="417" key="GridCell.Tab.0.right/0.0.3840.2098@0.0.3840.2098" timestamp="1580059841448" />
-    <state width="2241" height="341" key="GridCell.Tab.0.right/0.0.3840.2116@0.0.3840.2116" timestamp="1580686389816" />
-    <state width="2241" height="534" key="GridCell.Tab.1.bottom" timestamp="1580846828046">
-      <screen x="0" y="0" width="2560" height="1396" />
+    <state width="2393" height="695" key="GridCell.Tab.1.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
+    <state width="2393" height="695" key="GridCell.Tab.1.center" timestamp="1581042788752">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.1.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828046" />
-    <state width="2226" height="537" key="GridCell.Tab.1.bottom/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
-    <state width="2241" height="534" key="GridCell.Tab.1.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.center" timestamp="1580846828045">
-      <screen x="0" y="0" width="2560" height="1396" />
+    <state width="2393" height="695" key="GridCell.Tab.1.center/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
+    <state width="2393" height="695" key="GridCell.Tab.1.left" timestamp="1581042788752">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.1.center/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
-    <state width="2226" height="537" key="GridCell.Tab.1.center/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
-    <state width="2241" height="534" key="GridCell.Tab.1.center/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.left" timestamp="1580846828045">
-      <screen x="0" y="0" width="2560" height="1396" />
+    <state width="2393" height="695" key="GridCell.Tab.1.left/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
+    <state width="2393" height="695" key="GridCell.Tab.1.right" timestamp="1581042788752">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.1.left/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828045" />
-    <state width="2226" height="537" key="GridCell.Tab.1.left/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
-    <state width="2241" height="534" key="GridCell.Tab.1.left/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state width="2241" height="534" key="GridCell.Tab.1.right" timestamp="1580846828046">
-      <screen x="0" y="0" width="2560" height="1396" />
+    <state width="2393" height="695" key="GridCell.Tab.1.right/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
+    <state x="1455" y="643" key="SettingsEditor" timestamp="1581037951610">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state width="2241" height="534" key="GridCell.Tab.1.right/0.0.2560.1396@0.0.2560.1396" timestamp="1580846828046" />
-    <state width="2226" height="537" key="GridCell.Tab.1.right/0.0.3840.2098@0.0.3840.2098" timestamp="1580055437044" />
-    <state width="2241" height="534" key="GridCell.Tab.1.right/0.0.3840.2116@0.0.3840.2116" timestamp="1580684197432" />
-    <state x="2208" y="169" width="1009" height="1466" key="search.everywhere.popup" timestamp="1580038568902">
-      <screen x="0" y="0" width="3840" height="2098" />
+    <state x="1455" y="643" key="SettingsEditor/0.0.3840.2116@0.0.3840.2116" timestamp="1581037951610" />
+    <state x="2533" y="623" width="672" height="678" key="search.everywhere.popup" timestamp="1581042437179">
+      <screen x="0" y="0" width="3840" height="2116" />
     </state>
-    <state x="2087" y="151" width="1009" height="1307" key="search.everywhere.popup/0.0.3630.1870@0.0.3630.1870" timestamp="1579988288278" />
-    <state x="2208" y="169" width="1009" height="1466" key="search.everywhere.popup/0.0.3840.2098@0.0.3840.2098" timestamp="1580038568902" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/opensesame-plugin-media_player_mpy-master/setup.py</url>
-          <line>20</line>
-          <option name="timeStamp" value="192" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/modules/temscript/instrument.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="193" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/testGatan.py</url>
-          <line>18</line>
-          <option name="timeStamp" value="194" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/Desktop/testGatan.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="195" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
+    <state x="2533" y="623" width="672" height="678" key="search.everywhere.popup/0.0.3840.2116@0.0.3840.2116" timestamp="1581042437179" />
   </component>
 </project>

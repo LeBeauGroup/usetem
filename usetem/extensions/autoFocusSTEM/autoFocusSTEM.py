@@ -1,4 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 import numpy as np
 from skimage import io
 from scipy import ndimage

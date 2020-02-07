@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1091</width>
+    <width>1080</width>
     <height>1032</height>
    </rect>
   </property>
@@ -112,8 +112,8 @@ QTreeWidget::item:selected:active {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1091</width>
-     <height>26</height>
+     <width>1080</width>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -166,7 +166,7 @@ QTreeWidget::item:selected:active {
   <customwidget>
    <class>WorkflowTreeWidget</class>
    <extends>QTreeWidget</extends>
-   <header location="global">useTEM.workflowtreewidget</header>
+   <header location="global">usetem.workflowtreewidget</header>
   </customwidget>
  </customwidgets>
  <resources/>

@@ -1,4 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5 import uic
 import os
@@ -21,13 +21,18 @@ class revSTEM(pluginTypes.IExtensionPlugin):
 		tia = self.interfaces['tiascript']
 		stem = tia.techniques['STEMImage']
 
+		startingRotation = stem.scanRotation()
+		print(f'starting rotation {startingRotation}')
+
 		stem.setupAcquisition(params)
 		rotAngle = float(params['rotation'])
 
 		for i in range(frames):
 			print(f'acqiuring {i}')
-			rot = i * rotAngle
+			rot = i * (rotAngle)+startingRotation
 			stem.scanRotation(rot)
 			stem.acquire()
+
+		stem.scanRotation(startingRotation)
 
 		return result

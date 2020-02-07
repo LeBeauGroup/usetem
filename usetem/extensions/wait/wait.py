@@ -1,6 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
-from PyQt5 import QtCore, QtGui, QtWidgets
-import numpy as np
+import usetem.pluginTypes as pluginTypes
 import time
 
 

@@ -1,10 +1,10 @@
-from useTEM.pluginTypes import ITechniquePlugin
+import usetem.pluginTypes as pluginTypes
 import abc
 #import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
-class ISTEMImage(ITechniquePlugin):
+class ISTEMImage(pluginTypes.ITechniquePlugin):
 
 	client = None
 

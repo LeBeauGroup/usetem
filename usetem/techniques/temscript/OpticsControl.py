@@ -1,4 +1,4 @@
-from useTEM.pluginTypes import ITechniquePlugin
+import usetem.pluginTypes as pluginTypes
 import logging
 
 import os
@@ -6,7 +6,7 @@ import json
 path = os.path.dirname(os.path.realpath(__file__))
 
 
-class IOpticsControl(ITechniquePlugin):
+class IOpticsControl(pluginTypes.ITechniquePlugin):
 
 	client = None
 	controlPlugins = None
@@ -21,6 +21,13 @@ class IOpticsControl(ITechniquePlugin):
 				self.cameraLengths = json.load(filehandle)
 		except:
 			print('calibrations not loaded, need to run init')
+
+	def isBeamBlanked(self, *kwargs):
+		instrument = self.client
+		illum = instrument.illumination
+
+		return illum.isBeamBlanked(*kwargs)
+
 
 
 	def defocus(self, *kwargs):

@@ -1,4 +1,4 @@
-import useTEM.pluginTypes as pluginTypes
+import usetem.pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys, os
 import numpy as np
