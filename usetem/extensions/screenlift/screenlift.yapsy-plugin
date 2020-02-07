@@ -1,0 +1,11 @@
+[Core]
+Name = Flu Screen Position
+Module = screenlift
+
+[Documentation]
+Category = Other
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Lifts or Lowers the Flu Screen
+Type = Function

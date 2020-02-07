@@ -2,139 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbc3826d-5aae-4492-bc84-6b25583167ef" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/useTEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/useTEM.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/useTEM/servers/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/acquireSTEMImage/acquireSTEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/acquireSTEMImage/acquireSTEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/autoFocusSTEM/autoFocusSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/autoFocusSTEM/autoFocusSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/changeCameraLength/changeCameraLength.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/changeCameraLength/changeCameraLength.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/changeMagnification/changeMagnification.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/changeMagnification/changeMagnification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/defocus/defocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/defocus/defocus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/forList/forList.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/forList/forList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/forLoop/forLoop.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/forLoop/forLoop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/ifStatement/conditional.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/ifStatement/conditional.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/manualFocus/manualFocus.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/manualFocus/manualFocus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/revSTEM/revSTEM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/stemImageSettings/stemImageSettings.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/stemImageSettings/stemImageSettings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/extensions/wait/wait.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/extensions/wait/wait.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/interfaces/ITIAscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/interfaces/ITIAscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/interfaces/ITemscriptPlugin.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/interfaces/ITemscriptPlugin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/launch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/mainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/mainWindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/empad/empadgui_cu.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/acquisition.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/autoloader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/blankershutter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/camera.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/ccdCamera.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/ccdCameras.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/configuration.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/gun.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/illumination.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/instrument.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/instrumentModeControl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/projection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stemDetector.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/stemDetectors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/temperatureControl.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/userButton.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/utilities.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/temscript/vacuum.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/acquisitionservers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/acquistionManager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/application.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/beamcontrol.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/guiobjects.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/microscope.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/CHANGELOG.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/MANIFEST.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/ESVision.tlb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/application.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/defines.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/module.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/acqimage.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/acquisition.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/blankershutter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdacqparams.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdcamera.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/ccdcamerainfo.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/configuration.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/defines.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/gauge.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/gun.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/illumination.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/instrumentmodecontrol.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/module.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/projection.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stage.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemacqparams.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemdetector.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/stemdetectorinfo.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/types.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/old/vacuum.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/acquisition_manager.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/application_events.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/audo_id_table.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/beam_control.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/beam_position_marker.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/calibration_1D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/calibration_2D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/ccd_server.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/complex.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/controlbar.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/count_dialog.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/data1D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/data2D.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/digitalio_server.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/display_window.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/temp/image.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/tiascript.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/_tiascript_module/types.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/index.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/instrument.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/make.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/docs/microscope.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/application.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/enums.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/null_microscope.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/remote_tia.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/tia.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/pyTiascript/version.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/old/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/processingSystem.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/modules/tiascript/tia_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/pluginManagement.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/pluginManagement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/servers/server.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/servers/temscript_server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/servers/tiascript_server.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/start_servers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/techniques/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/OpticsControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/OpticsControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/STEMControl.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/STEMControl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/techniques/temscript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/temscript/STEMImage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usetem/techniques/tiascript/STEMImage.py" beforeDir="false" afterPath="$PROJECT_DIR$/usetem/techniques/tiascript/STEMImage.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,9 +54,6 @@
       <module name="useTEM" />
       <option name="INTERPRETER_OPTIONS" value="-m" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\envs\py3\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -218,53 +83,59 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1253" y="1259" width="1081" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581037539941">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state x="1092" y="445" width="721" height="529" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581087059697">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state x="1092" y="445" width="721" height="529" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1396@0.0.2560.1396" timestamp="1581087059697" />
     <state x="1253" y="1259" width="1081" height="704" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3840.2116@0.0.3840.2116" timestamp="1581037539941" />
     <state x="1617" y="814" key="#usetem.launch" timestamp="1581037553879">
       <screen x="0" y="0" width="3840" height="2116" />
     </state>
     <state x="1617" y="814" key="#usetem.launch/0.0.3840.2116@0.0.3840.2116" timestamp="1581037553879" />
-    <state x="1577" y="1368" key="FileChooserDialogImpl" timestamp="1581037517565">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state x="1051" y="903" key="FileChooserDialogImpl" timestamp="1581087047990">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state x="1051" y="903" key="FileChooserDialogImpl/0.0.2560.1396@0.0.2560.1396" timestamp="1581087047990" />
     <state x="1577" y="1368" key="FileChooserDialogImpl/0.0.3840.2116@0.0.3840.2116" timestamp="1581037517565" />
-    <state width="2393" height="630" key="GridCell.Tab.0.bottom" timestamp="1581086151854">
+    <state width="2539" height="484" key="GridCell.Tab.0.bottom" timestamp="1581089027223">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2393" height="630" key="GridCell.Tab.0.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151854" />
+    <state width="2539" height="484" key="GridCell.Tab.0.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="630" key="GridCell.Tab.0.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713801" />
-    <state width="2393" height="630" key="GridCell.Tab.0.center" timestamp="1581086151853">
+    <state width="2539" height="484" key="GridCell.Tab.0.center" timestamp="1581089027223">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2393" height="630" key="GridCell.Tab.0.center/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151853" />
+    <state width="2539" height="484" key="GridCell.Tab.0.center/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="630" key="GridCell.Tab.0.center/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713796" />
-    <state width="2393" height="630" key="GridCell.Tab.0.left" timestamp="1581086151853">
+    <state width="2539" height="484" key="GridCell.Tab.0.left" timestamp="1581089027223">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2393" height="630" key="GridCell.Tab.0.left/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151853" />
+    <state width="2539" height="484" key="GridCell.Tab.0.left/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="630" key="GridCell.Tab.0.left/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713796" />
-    <state width="2393" height="630" key="GridCell.Tab.0.right" timestamp="1581086151854">
+    <state width="2539" height="484" key="GridCell.Tab.0.right" timestamp="1581089027223">
       <screen x="0" y="0" width="2560" height="1396" />
     </state>
-    <state width="2393" height="630" key="GridCell.Tab.0.right/0.0.2560.1396@0.0.2560.1396" timestamp="1581086151854" />
+    <state width="2539" height="484" key="GridCell.Tab.0.right/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="630" key="GridCell.Tab.0.right/0.0.3840.2116@0.0.3840.2116" timestamp="1581043713801" />
-    <state width="2393" height="695" key="GridCell.Tab.1.bottom" timestamp="1581042788752">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2539" height="484" key="GridCell.Tab.1.bottom" timestamp="1581089027223">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2539" height="484" key="GridCell.Tab.1.bottom/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="695" key="GridCell.Tab.1.bottom/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
-    <state width="2393" height="695" key="GridCell.Tab.1.center" timestamp="1581042788752">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2539" height="484" key="GridCell.Tab.1.center" timestamp="1581089027223">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2539" height="484" key="GridCell.Tab.1.center/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="695" key="GridCell.Tab.1.center/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
-    <state width="2393" height="695" key="GridCell.Tab.1.left" timestamp="1581042788752">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2539" height="484" key="GridCell.Tab.1.left" timestamp="1581089027223">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2539" height="484" key="GridCell.Tab.1.left/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="695" key="GridCell.Tab.1.left/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
-    <state width="2393" height="695" key="GridCell.Tab.1.right" timestamp="1581042788752">
-      <screen x="0" y="0" width="3840" height="2116" />
+    <state width="2539" height="484" key="GridCell.Tab.1.right" timestamp="1581089027223">
+      <screen x="0" y="0" width="2560" height="1396" />
     </state>
+    <state width="2539" height="484" key="GridCell.Tab.1.right/0.0.2560.1396@0.0.2560.1396" timestamp="1581089027223" />
     <state width="2393" height="695" key="GridCell.Tab.1.right/0.0.3840.2116@0.0.3840.2116" timestamp="1581042788752" />
     <state x="1455" y="643" key="SettingsEditor" timestamp="1581037951610">
       <screen x="0" y="0" width="3840" height="2116" />
