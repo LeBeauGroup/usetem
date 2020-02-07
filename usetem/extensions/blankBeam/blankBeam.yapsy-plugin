@@ -1,0 +1,12 @@
+[Core]
+Name = Blank Beam
+Module = blankBeam
+
+[Documentation]
+Category = Optics
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Blanks or unblanks beam
+Type = Function
+Techniques = Operation
