@@ -12,7 +12,11 @@ pyqt5, comtypes, yapsy, bibtexparser, numpy
 
 ### Python setup
 
-run '''python setup.py install''' from the distribution folder
+run 
+
+'''python setup.py install''' 
+
+from the distribution folder
 
 ### Configure servers
 
