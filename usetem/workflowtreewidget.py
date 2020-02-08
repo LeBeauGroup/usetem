@@ -25,17 +25,26 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 
 	def keyPressEvent(self, event):
 		currentItem = self.currentItem()
+
 		pluginName = currentItem.data['name']
+
+		if pluginName in ['elseIf', 'else']:
+			super(WorkflowTreeWidget, self).keyPressEvent(event)
+			return
+
 		print(f'sending {pluginName} an event')
 
 		try:
+
 			plugin = self.plugins[pluginName]
 			if plugin.isRunning:
 				plugin.updateEvent(event)
 			else:
 				super(WorkflowTreeWidget, self).keyPressEvent(event)
+
 		except AttributeError:
 			super(WorkflowTreeWidget, self).keyPressEvent(event)
+
 		#selectedItem.event = event
 
 
@@ -66,9 +75,6 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 		Widgets.QTreeWidget.dropEvent(self, event)
 
 		# Todo: update to handel children redraw
-
-
-
 
 		for i in range(0, self.topLevelItemCount()):
 			item =self.topLevelItem(i)

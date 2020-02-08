@@ -7,6 +7,6 @@ Category = Optics
 Author = James LeBeau
 Version = 0.1
 Website = angstrom.mit.edu
-Description = Gets or sets the defocus
+Description = Gets or sets the defocus>
 Type = Function
 Techniques = Operation
