@@ -1,10 +1,7 @@
 import usetem.pluginTypes as pluginTypes
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
-
-
-class ChangeMagnfication(pluginTypes.IExtensionPlugin):
+class ScreenLift(pluginTypes.IExtensionPlugin):
 
     def __init__(self):
 
@@ -13,7 +10,7 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
         self.parameterTypes = {'screenLifted': bool}
 
     def ui(self, item, parent=None):
-        theUi = super(ChangeMagnfication, self).ui(item, parent)
+        theUi = super(ScreenLift, self).ui(item, parent)
 
         def raiseScreen():
 
@@ -39,19 +36,15 @@ class ChangeMagnfication(pluginTypes.IExtensionPlugin):
         return theUi
 
 
-
-
     def run(self, params=None, result=None):
 
         tem = self.interfaces['temscript']
-        optics = tem.techniques['OpticsControl']
+        flu = tem.techniques['FluControl']
 
-        print(params['screenLifted'])
-
-        #optics.isBeamBlanked(params['screenLifted'])
-
-
-
+        if params['screenLifted']:
+            flu.raiseScreen()
+        else:
+            flu.lowerScreen()
 
 
         return None

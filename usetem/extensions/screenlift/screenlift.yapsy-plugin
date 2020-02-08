@@ -1,5 +1,5 @@
 [Core]
-Name = Flu Screen Position
+Name = Flu Screen Control
 Module = screenlift
 
 [Documentation]

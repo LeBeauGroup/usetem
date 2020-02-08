@@ -7,34 +7,33 @@
     <x>0</x>
     <y>0</y>
     <width>825</width>
-    <height>44</height>
+    <height>24</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>131</width>
-     <height>19</height>
+     <x>0</x>
+     <y>0</y>
+     <width>191</width>
+     <height>22</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Camera Length</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="cameraLengthEdit">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>10</y>
-     <width>113</width>
-     <height>25</height>
-    </rect>
-   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Camera Length</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="cameraLengthEdit"/>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

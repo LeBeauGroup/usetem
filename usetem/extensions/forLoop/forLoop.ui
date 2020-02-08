@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1035</width>
-    <height>54</height>
+    <width>525</width>
+    <height>36</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,49 +18,49 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>661</width>
-     <height>31</height>
+     <width>501</width>
+     <height>22</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
        <string>Start</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="1">
      <widget class="QLineEdit" name="startEdit"/>
     </item>
-    <item>
+    <item row="0" column="2">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>Step</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="3">
      <widget class="QLineEdit" name="stepEdit"/>
     </item>
-    <item>
+    <item row="0" column="4">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Stop</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="5">
      <widget class="QLineEdit" name="stopEdit"/>
     </item>
-    <item>
+    <item row="0" column="6">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>Variable Name</string>
       </property>
      </widget>
     </item>
-    <item>
+    <item row="0" column="7">
      <widget class="QLineEdit" name="variableNameEdit"/>
     </item>
    </layout>

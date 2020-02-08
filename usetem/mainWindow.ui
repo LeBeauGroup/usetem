@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1080</width>
+    <width>880</width>
     <height>1032</height>
    </rect>
   </property>
@@ -59,13 +59,13 @@
      <widget class="WorkflowTreeWidget" name="workflowTree">
       <property name="minimumSize">
        <size>
-        <width>800</width>
+        <width>600</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>800</width>
+        <width>600</width>
         <height>16777215</height>
        </size>
       </property>
@@ -112,7 +112,7 @@ QTreeWidget::item:selected:active {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1080</width>
+     <width>880</width>
      <height>18</height>
     </rect>
    </property>

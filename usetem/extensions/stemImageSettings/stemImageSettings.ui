@@ -6,115 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>108</height>
+    <width>596</width>
+    <height>92</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="numFramesEdit">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>40</y>
-     <width>141</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="inputMask">
-    <string/>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="maxLength">
-    <number>32767</number>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>40</y>
-     <width>66</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Frames</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>80</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Dwell Time</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>70</y>
-     <width>81</width>
-     <height>19</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Image Size</string>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="binningEdit">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>70</y>
-     <width>141</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <item>
-    <property name="text">
-     <string extracomment="16">128x128</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string extracomment="8">256x256</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string extracomment="4">512x512</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string extracomment="2">1024x1024</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>2048x2048</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string/>
-    </property>
-   </item>
-  </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>190</x>
      <y>10</y>
      <width>66</width>
      <height>19</height>
@@ -124,26 +26,13 @@
     <string>Detectors</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="dwellTimeEdit">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>10</y>
-     <width>144</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <property name="inputMask">
-    <string/>
-   </property>
-  </widget>
   <widget class="QListWidget" name="detectorsEdit">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>250</x>
      <y>10</y>
-     <width>256</width>
-     <height>91</height>
+     <width>131</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="selectionMode">
@@ -169,6 +58,93 @@
      <string>BF</string>
     </property>
    </item>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>170</width>
+     <height>74</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Dwell Time</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="dwellTimeEdit">
+      <property name="inputMask">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Frames</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="numFramesEdit">
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Image Size</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="binningEdit">
+      <item>
+       <property name="text">
+        <string extracomment="16">128x128</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string extracomment="8">256x256</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string extracomment="4">512x512</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string extracomment="2">1024x1024</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>2048x2048</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string/>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
