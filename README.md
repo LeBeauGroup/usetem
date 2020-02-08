@@ -7,18 +7,12 @@ This is the useTEM framework.  The goal of this python package is to build a sin
 
 ### Packages
 
-comtypes, pyqt5, comtypes, yapsy, bibtexparser, numpy
+pyqt5, comtypes, yapsy, bibtexparser, numpy
 
 
 ### Python setup
 
-Start->  Computer (right click) -> Properties -> Advanced System Settings -> Advanced Tab -> Environmental variables button
-
-Click new (user variables for supervisor)
-
-Variable Name: PYTHONPATH (all caps)
-Variable Value: path to directory containing the usetem folder
-
+run '''python setup.py install''' from the distribution folder
 
 ### Configure servers
 
