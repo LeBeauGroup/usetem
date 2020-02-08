@@ -3,6 +3,7 @@ import os, sys
 from PyQt5 import QtCore, QtWidgets, uic, QtGui
 from yapsy.PluginManager import PluginManager
 import bibtexparser
+import logging
 
 class ITechniquePlugin(plugin.IPlugin):
 	pass
@@ -195,18 +196,24 @@ class IExtensionPlugin(plugin.IPlugin):
 
 	def citations(self):
 
-
 		filePath = sys.modules[self.__module__].__file__
-		bibPath = os.path.splitext(filePath)[0] + '.bib'
+		directory = os.path.dirname(filePath)
+		for file in os.listdir(directory):
 
-		try:
-			with open(bibPath) as bibfile:
-				pluginBib = bibtexparser.load(bibfile)
-		except Exception:
-			pluginBib = None
+			if file.endswith(".bib"):
+
+				bibFile = open(directory+'\\'+file)
+
+				try:
+
+					pluginBib = bibtexparser.load(bibFile)
+
+				except Exception:
+					pluginBib = None
+					logging.info('something when wrong when loading the bibfile')
 
 
-		return pluginBib
+				return pluginBib
 
 
 # categories = {'Control' : IInterfacePlugin,
