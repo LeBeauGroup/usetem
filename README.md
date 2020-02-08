@@ -19,13 +19,13 @@ run `python setup.py install` from the distribution folder
 
 ## To start
 
-open an anaconda terminal and run:
+open a python terminal and run the background servers (download the source [here](https://github.com/subangstrom/usetemServers):
 
-	python -m useTEM.servers
+	python -m usetemServers.start
 
 Click TEM Scripting and TIA scripting (buttons should turn green)
 
-back to the anaconda terminal and run:
+back to the python terminal and run:
 
-	python -m useTEM.launch
+	python -m ustem.start
 
