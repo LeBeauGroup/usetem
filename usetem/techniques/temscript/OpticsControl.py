@@ -33,9 +33,17 @@ class IOpticsControl(pluginTypes.ITechniquePlugin):
 	def defocus(self, *kwargs):
 
 		instrument = self.client
-		projection = instrument.projection
 
-		return projection.defocus(*kwargs)
+		if instrument.mode() == 0:#TEM mode
+
+			projection = instrument.projection
+			return projection.defocus(*kwargs)
+		elif instrument.mode() == 1: #STEM mode
+
+			illumination = instrument.illumination
+
+			return illumination.STEMDefocus(*kwargs)
+
 
 
 	def magnification(self, *kwargs):
