@@ -43,7 +43,14 @@ class USETEMGuiManager(QtCore.QObject):
 	def __init__(self, ui, plugs):
 		super(USETEMGuiManager, self).__init__()
 		self.ui = ui
+		self.interfaces = plugm.availableInterfaces()
 		self.plugins = plugs
+
+		for plugName in self.plugins:
+			self.plugins[plugName].setInterfaces(self.interfaces)
+
+
+
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
@@ -124,7 +131,6 @@ class USETEMGuiManager(QtCore.QObject):
 
 	def addToWorkflow(self):
 
-
 		selected = self.ui.availablePlugins.selectedItems()
 
 		for item in selected:
@@ -140,6 +146,7 @@ class USETEMGuiManager(QtCore.QObject):
 
 		workflowTree = self.ui.workflowTree
 		item = WorkflowItem(parent)
+
 		# use for iterable items | QtCore.Qt.ItemIsDropEnabled
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
@@ -190,6 +197,7 @@ class USETEMGuiManager(QtCore.QObject):
 			displayName = self.plugins[key].displayName
 			category = self.plugins[key].category
 			toolTip = self.plugins[key].description
+
 
 			categoryItem = None
 
@@ -263,7 +271,7 @@ class USETEMGuiManager(QtCore.QObject):
 
 	def runWorkflow(self):
 
-		self.interfaces = plugm.availableInterfaces()
+
 
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
 
@@ -461,6 +469,7 @@ if __name__ == '__main__':
 
 	# loading the plugins
 	plugins = plugm.availableExtensions()
+
 
 	# launch the pyQt window
 	app = QApplication(sys.argv)

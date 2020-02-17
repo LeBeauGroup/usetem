@@ -2,28 +2,28 @@ from usetem.pluginTypes import ITechniquePlugin
 import pickle
 import numpy as np
 
-class ISTEMImage(ITechniquePlugin):
+class ICCDImage(ITechniquePlugin):
 
 	client = None
 	controlPlugins = None
 
-	signalTable = {'HAADF': 'Analog3', 'BF': 'Analog1', 'DF2': 'Analog4', 'DF4': 'Analog2'}
+	#signalTable = {'HAADF': 'Analog3', 'BF': 'Analog1', 'DF2': 'Analog4', 'DF4': 'Analog2'}
 
 	def __init__(self):
-		super(ISTEMImage, self).__init__()
+		super(ICCDImage, self).__init__()
 		self.imagePaths = []
 
-	# def scanRotation(self, angle=None):
-	#
-	# 	try:
-	# 		t = self.controlPlugins['temscript'].client
-	#
-	# 		if angle is None:
-	# 			return t.illumination.stemRotation()
-	# 		else:
-	# 			t.illumination.stemRotation(angle)
-	# 	except:
-	# 		print('TIA script cannot change rotation scan, temscript must be available')
+	def availableCameras(self):
+
+		try:
+			ccds = self.client.ccdServer.cameraNames()
+			print(ccds)
+		except Exception as e:
+			print(e)
+			ccds = ['None']
+
+		return ccds
+
 
 	def _frameSize(self,binning):
 
@@ -40,7 +40,7 @@ class ISTEMImage(ITechniquePlugin):
 
 		return (frameWidth, frameHeight)
 
-	def isScanning(self):
+	def isAcquiring(self):
 		acq = self.client.acquisitionManager
 
 		return acq.isAcquiring()
@@ -111,36 +111,27 @@ class ISTEMImage(ITechniquePlugin):
 				continue
 
 
-
-
-
-
 	def setupAcquisition(self, detectorInfo):
 		"""
 
 		:param detectorInfo: dictionary with following information:
-		detectorInfo = {'dwellTime': 2e-6, 'binning':4, 'numFrames':1,'detectors':['HAADF','BF']}
+		detectorInfo = {'integrationTime': 2e-6, 'binning':4, 'numFrames':1,'detectors':['HAADF','BF']}
 
 		:return:
 		"""
+
 		binning = detectorInfo['binning']
 
-		pixelSkipping = 1
-		maxSizeX = 4096
+		maxSizeX = 40961
 
-		sizeX = maxSizeX/1
+		frameWidth = maxSizeX / binning  # detectorInfo['frameWidth']
+		frameHeight = maxSizeX / binning  # detectorInfo['frameHeight']
 
-		if isinstance(binning,str):
-
-			splitBinSize = binning.split('x')
-			frameWidth = int(splitBinSize[0])
-			frameHeight = int(splitBinSize[1])
-		elif isinstance(binning, int):
-			frameWidth = maxSizeX / binning  # detectorInfo['frameWidth']
-			frameHeight = maxSizeX / binning  # detectorInfo['frameHeight']
 
 		acq = self.client.acquisitionManager
-		scanning = self.client.scanningServer
+		ccd = self.client.ccdServer
+
+		ccd.integrationTime(detectorInfo['integrationTime'])
 
 		if acq.isAcquiring():
 			acq.stop()
@@ -157,31 +148,66 @@ class ISTEMImage(ITechniquePlugin):
 
 		self.imagePaths = []
 
-		for name in detectorInfo['detectors']:
+		path = self.client.addDisplay(newWindow, name)
+		cal = (0, 0, 2, 2, frameWidth / 2, frameHeight / 2)
+		imagePath = self.client.imageDisplay.addImage(path, name, frameWidth, frameHeight, cal)
+		acq.linkSignal('CCD', imagePath)
 
-			path = self.client.addDisplay(newWindow, name)
-			cal = (0, 0, 2, 2, frameWidth/2, frameHeight/2)
-			imagePath = self.client.imageDisplay.addImage(path, name, frameWidth, frameHeight, cal)
-			self.imagePaths.append(imagePath)
-
-			try:
-				acq.linkSignal(self.signalTable[name], imagePath)
-			except:
-				print(f'could not set detector named {self.signalTable[name]}')
-				continue
-
-		scanRange = scanning.getTotalScanRange()
-		resolution = (scanRange[2]-scanRange[0])/(frameWidth)
-
-		scanning.scanResolution(pixelSkipping*resolution)
-
-
-		scanning.scanRange(scanRange)
-		scanning.dwellTime(detectorInfo['dwellTime'])
-		scanning.scanMode(2) # Set to frame mode
-		scanning.acquireMode(1) # Need to set into single mode if going to use acquire()
-
-		scanning.seriesSize(detectorInfo['numFrames'])
+# 	// Declarations
+# 	are
+# 	skipped
+# 	here
+# 	FDisplayWindow := FTia.AddDisplayWindow;
+# 	FDisplayWindow.Name := 'My displaywindow';
+# 	FDisplay := FDisplayWindow.AddDisplay('Acquire CCD Image Display', esImageDisplay, esImageDisplayType,
+# 	                                      esSplitRight,
+# 	                                      1); // for diffraction patterns use esRecImageDisplayType instead of esImageDisplayType ! ImageSizeX := EndX-StartX; // Make sure all parameters fit, get from CcdServer.GetTotalPixelReadoutRange ImageSizeY := EndY-StartY;
+# 	FImage := FDisplay.AddImage('Acquire CCD Image', ImageSizeX, ImageSizeY, FTia.Calibration2D(0, 0, 2, 2, 256, 256));
+# 	if FTia.AcquisitionManager.IsAcquiring then FTia.AcquisitionManager.Stop; // should check that stop worked ! if not FTia.AcquisitionManager.DoesSetupExist('MySetupName') then // this setup stuff is necessary
+# 	FTia.AcquisitionManager.AddSetup('MySetupName');
+# 	FTia.AcquisitionManager.SelectSetup('MySetupName');
+# 	FTia.AcquisitionManager.UnlinkAllSignals;
+# 	FTia.AcquisitionManager.LinkSignal('CCD', FImage); // "CCD" is generic, independent
+# 	of
+# 	the
+# 	actual
+# 	CCD
+# 	name FTia.CcdServer.IntegrationTime := Time;
+# 	FTia.CcdServer.Binning := Binning;
+# 	FTia.CcdServer.PixelReadOutRange := FTia.Range2D(StartX * Bin, StartY * Bin, EndX * Bin,
+# 	                                                 EndY * Bin); if FTia.CcdServer.IsCameraRetractable then
+# 	begin
+# 	if not FTia.CcdServer.CameraInserted then begin
+# 	FTia.CcdServer.CameraInserted := true;
+# 	Sleep(5000); // have
+# 	to
+# 	wait
+# 	until
+# 	it is in
+#
+#
+# end;
+# end;
+# FTia.CcdServer.AcquireMode := esSingleAcquire;
+# if not VarIsEmpty(FTia.ScanningServer) then FTia.ScanningServer.ScanMode := esSpotMode;
+# // important: check
+# on
+# ScanningServer.If
+# the
+# system is not a
+# STEM, Scanningserver
+# does
+# not exist // also
+# for CCD must be in SpotMode
+# FTia.AcquisitionManager.Start; // now
+# wait
+# until
+# image is in.
+# // Either
+# monitor
+# AcquisitionManager.IsAcquiring or use
+# acquisition
+# events
 
 
 	def subscan(self,rect):

@@ -1,0 +1,12 @@
+[Core]
+Name = Acquire CCD Image
+Module = acquireCCDImage
+
+[Documentation]
+Category = CCD
+Author = James LeBeau
+Version = 0.1
+Website = angstrom.mit.edu
+Description = Acquires a single STEM image
+Type = Function
+Techniques = Operation
