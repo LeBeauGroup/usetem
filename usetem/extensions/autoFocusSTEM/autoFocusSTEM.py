@@ -17,13 +17,13 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
     def __init__(self):
 
         super(AutoFocusSTEM, self).__init__()
-        self.defaultParameters.update({'rate':0.01, 'precision':0.000001, 'max_iters':10000, 'start_step_size':10})
 
+        self.defaultParameters.update({'focus_range':200, 'precision':1.0, 'sensitivity':4})
         self.defaultParameters.update({'dwellTime': 1e-6,
-                                  'binning': '100x100',
+                                  'binning': '200x200',
                                   'numFrames': 1, 'detectors': ['HAADF']})
 
-        self.parameterTypes = {'rate':float, 'precision':float, 'max_iters':int, 'start_step_size':float}
+        self.parameterTypes = {'focus_range':float, 'precision':float, 'sensitivity':float,'binning':str,'dwellTime':float}
 
 
     def ui(self, item, parent=None):
@@ -84,48 +84,46 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
     #         iters = iters + 1  # iteration count
     #         prev_y = cur_y
 
-    def divideAndConquer(self, focus_range, optics=None, stem=None):
-
-        # focus_range = 100.0
-        precision = 1
+    def divideAndConquer(self, focus_range:float, precision:float, timeDelay:float, optics=None, stem=None,exponent=4):
 
         iterations = math.floor(math.log2(focus_range / precision)) + 1
-
-        currentDefocus = optics.defocus()/1e-9 # seed the defocus
+        midPoint = optics.defocus()/1e-9 # seed starting defocus
 
         for i in range(0, iterations):
-
-            midPoint = currentDefocus
 
             startPoint = midPoint - focus_range / 2.0
             endPoint = midPoint + focus_range / 2.0
 
             foci = np.linspace(start=startPoint, stop=endPoint, num=3)
             vars = []
-            #print(foci)
 
             seedVar = stem.variance()
 
             for focus in foci:
                 optics.defocus(float(focus)*1e-9)
+                time.sleep(timeDelay)
                 var = seedVar
 
                 while(seedVar == var):
                     var = stem.variance()
                     continue
 
+                seedVar =var 
 
                 vars.append(var)
 
-            vars = np.array(vars) ** 1
-            print(vars)
+            vars = np.array(vars) ** exponent
+            vars -= np.min(vars) # remove the min
+
+           # vars = vars ** 4 # Empirical exponent
             vars = (vars) / vars.sum()
 
             updateDefocus = float((vars * foci).sum())
             optics.defocus(updateDefocus*1e-9)
+            midPoint = updateDefocus
+
             focus_range /= 2
 
-            #print(updateDefocus)
 
     def run(self, params=None, result=None):
 
@@ -134,21 +132,27 @@ class AutoFocusSTEM(pluginTypes.IExtensionPlugin):
         stem = tia.techniques['STEMImage']
         optics = tem.techniques['OpticsControl']
 
-        rate = params['rate']  # Learning rate
         precision = params['precision']  # This tells us when to stop the algorithm
-        previous_step_size = params['start_step_size']  #
-        max_iters = params['max_iters']  # maximum number of iterations
-        iters = 0  # iteration counter
+        sensitivity = params['sensitivity']
+        focus_range = params['focus_range']
+        dwellTime = params['dwellTime']
 
-        # startDefocus = optics.defocus()
+        splitFrameSize = params['binning'].split('x')
+
+        frameWidth = int(splitFrameSize[0])
+        frameHeight = int(splitFrameSize[1])
+
+        timeDelay = frameHeight*frameHeight*dwellTime
+        print(timeDelay)
+
 
         # start stem scanning
         stem.setupFocus(params)
         stem.start()
 
 
-        self.divideAndConquer(50, optics=optics, stem=stem)
-       # self.divideAndConquer(25, optics=optics, stem=stem)
+        self.divideAndConquer(focus_range, precision,timeDelay, optics=optics, stem=stem,exponent=sensitivity)
+
         # prev_x = startDefocus*1e9  # The algorithm starts at x=3
         # prev_y = -stem.variance()
         #
