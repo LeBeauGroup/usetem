@@ -26,7 +26,13 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 	def keyPressEvent(self, event):
 		currentItem = self.currentItem()
 
-		pluginName = currentItem.data['name']
+		try:
+			pluginName = currentItem.data['name']
+		except Exception as e:
+			print('Plugin not selected')
+			super(WorkflowTreeWidget, self).keyPressEvent(event)
+			return
+
 
 		if pluginName in ['elseIf', 'else']:
 			super(WorkflowTreeWidget, self).keyPressEvent(event)
@@ -45,7 +51,6 @@ class WorkflowTreeWidget(Widgets.QTreeWidget):
 		except AttributeError:
 			super(WorkflowTreeWidget, self).keyPressEvent(event)
 
-		#selectedItem.event = event
 
 
 
