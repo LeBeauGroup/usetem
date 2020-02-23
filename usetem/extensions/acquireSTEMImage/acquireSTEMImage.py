@@ -11,6 +11,8 @@ class AcquireSTEMImage(pluginTypes.IExtensionPlugin):
         super(AcquireSTEMImage, self).__init__()
         self.defaultParameters.update({'currentFrame':0})
 
+        self.parameterTypes = {'currentFrame':int}
+
 
     def run(self, params, result=None):
 
