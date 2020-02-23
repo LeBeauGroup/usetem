@@ -13,17 +13,17 @@ class ISTEMImage(ITechniquePlugin):
 		super(ISTEMImage, self).__init__()
 		self.imagePaths = []
 
-	# def scanRotation(self, angle=None):
-	#
-	# 	try:
-	# 		t = self.controlPlugins['temscript'].client
-	#
-	# 		if angle is None:
-	# 			return t.illumination.stemRotation()
-	# 		else:
-	# 			t.illumination.stemRotation(angle)
-	# 	except:
-	# 		print('TIA script cannot change rotation scan, temscript must be available')
+	def scanRotation(self, angle=None):
+
+		try:
+			t = self.controlPlugins['temscript'].client
+
+			if angle is None:
+				return t.illumination.stemRotation()
+			else:
+				t.illumination.stemRotation(angle)
+		except:
+			print('TIA script cannot change rotation scan, temscript must be available')
 
 	def _frameSize(self,binning):
 

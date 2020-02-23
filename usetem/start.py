@@ -17,7 +17,6 @@
 
 import logging
 import os
-path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
@@ -31,6 +30,11 @@ import bibtexparser
 from .workflowThread import WorkflowThread
 from .workflowThread import WorkflowItem
 from . import pluginManagement as plugm
+from pathlib import Path
+path = Path(__file__).resolve().parent
+
+#path = os.path.dirname(os.path.realpath(__file__))
+
 
 def updateWorkflow(item):
 	print(item)
@@ -473,8 +477,8 @@ if __name__ == '__main__':
 
 	# launch the pyQt window
 	app = QApplication(sys.argv)
-
-	ui_file = QFile(path+"\mainWindow.ui")
+	ui_path = path/'mainWindow.ui'
+	ui_file = QFile(str(ui_path))
 	ui_file.open(QFile.ReadOnly)
 
 	window = uic.loadUi(ui_file)

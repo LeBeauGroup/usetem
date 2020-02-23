@@ -17,12 +17,31 @@ class ICCDImage(ITechniquePlugin):
 
 		try:
 			ccds = self.client.ccdServer.cameraNames()
-			print(ccds)
 		except Exception as e:
 			print(e)
 			ccds = ['None']
 
 		return ccds
+
+	def availableBinnings(self):
+
+		try:
+			bins = self.client.ccdServer.binningValues()
+		except Exception as e:
+			print(e)
+			bins = ['1']
+
+		return bins
+
+	def integrationTimeRange(self):
+
+		try:
+			intRange = self.client.ccdServer.integrationTimeRange()
+		except Exception as e:
+			print(e)
+			intRange = (0, 0)
+
+		return intRange
 
 
 	def _frameSize(self,binning):
@@ -121,8 +140,7 @@ class ICCDImage(ITechniquePlugin):
 		"""
 
 		binning = detectorInfo['binning']
-
-		maxSizeX = 40961
+		maxSizeX = 4096
 
 		frameWidth = maxSizeX / binning  # detectorInfo['frameWidth']
 		frameHeight = maxSizeX / binning  # detectorInfo['frameHeight']
@@ -131,7 +149,7 @@ class ICCDImage(ITechniquePlugin):
 		acq = self.client.acquisitionManager
 		ccd = self.client.ccdServer
 
-		ccd.integrationTime(detectorInfo['integrationTime'])
+
 
 		if acq.isAcquiring():
 			acq.stop()
@@ -140,18 +158,30 @@ class ICCDImage(ITechniquePlugin):
 		self.client.activateDisplayWindow(newWindow)
 		self.client.enableEvents(newWindow)
 
+
+		self.imagePaths = []
+
+		path = self.client.addDisplay(newWindow, 'Acquire CCD Image')
+		self.imagePaths.append(path)
+		cal = (0, 0, 2, 2, frameWidth / 2, frameHeight / 2)
+		imagePath = self.client.imageDisplay.addImage(path, 'Acquire CCD Image', frameWidth, frameHeight, cal)
+
 		if not acq.doesSetupExist('Acquire'):
 			acq.addSetup('Acquire')
 
 		acq.selectSetup('Acquire')
 		acq.unlinkAllSignals()
 
-		self.imagePaths = []
-
-		path = self.client.addDisplay(newWindow, name)
-		cal = (0, 0, 2, 2, frameWidth / 2, frameHeight / 2)
-		imagePath = self.client.imageDisplay.addImage(path, name, frameWidth, frameHeight, cal)
 		acq.linkSignal('CCD', imagePath)
+
+
+		print(ccd.totalPixelReadoutRange())
+
+		ccd.integrationTime(detectorInfo['integrationTime'])
+		ccd.binning(1)
+		ccd.pixelReadoutRange((0, 0, 4096, 4096))
+		print(ccd.isCameraRetractable())
+		ccd.acquireMode(1) 
 
 # 	// Declarations
 # 	are
@@ -161,7 +191,9 @@ class ICCDImage(ITechniquePlugin):
 # 	FDisplayWindow.Name := 'My displaywindow';
 # 	FDisplay := FDisplayWindow.AddDisplay('Acquire CCD Image Display', esImageDisplay, esImageDisplayType,
 # 	                                      esSplitRight,
-# 	                                      1); // for diffraction patterns use esRecImageDisplayType instead of esImageDisplayType ! ImageSizeX := EndX-StartX; // Make sure all parameters fit, get from CcdServer.GetTotalPixelReadoutRange ImageSizeY := EndY-StartY;
+# 	                                      1); // for diffraction patterns use esRecImageDisplayType instead of esImageDisplayType ! 
+#ImageSizeX := EndX-StartX; // Make sure all parameters fit, get from CcdServer.GetTotalPixelReadoutRange 
+#ImageSizeY := EndY-StartY;
 # 	FImage := FDisplay.AddImage('Acquire CCD Image', ImageSizeX, ImageSizeY, FTia.Calibration2D(0, 0, 2, 2, 256, 256));
 # 	if FTia.AcquisitionManager.IsAcquiring then FTia.AcquisitionManager.Stop; // should check that stop worked ! if not FTia.AcquisitionManager.DoesSetupExist('MySetupName') then // this setup stuff is necessary
 # 	FTia.AcquisitionManager.AddSetup('MySetupName');
