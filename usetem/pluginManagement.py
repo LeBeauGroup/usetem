@@ -3,7 +3,8 @@ from yapsy.PluginManager import PluginManager
 from . import pluginTypes
 import os
 
-path = os.path.dirname(os.path.abspath(__file__))
+from pathlib import Path
+path = Path(__file__).resolve().parent
 
 def startupExtensions(pluginManager):
 
@@ -52,10 +53,9 @@ def startupInterfaces(pluginManager):
 		else:
 			connectionAddress = 'http://'+address+':'+port+'/'+prefix
 
-		techniquesPath = path+'\\techniques\\'+pluginInfo.name
-		print(techniquesPath)
+		techniquesPath = path/'techniques'/pluginInfo.name
 
-		plugin.loadTechniques(techniquesPath, plugins)
+		plugin.loadTechniques(str(techniquesPath), plugins)
 		plugin.start_connection(connectionAddress)
 
 
@@ -77,7 +77,7 @@ def availableInterfaces():
 
 
 	loc = interfaceManager.getPluginLocator()
-	loc.setPluginPlaces([path + '\\interfaces'])
+	loc.setPluginPlaces([str(path/'interfaces')])
 
 
 
@@ -104,7 +104,7 @@ def availableExtensions():
 	#pluginManager.setPluginPlaces()
 
 	loc = extManager.getPluginLocator()
-	loc.setPluginPlaces([path+'\\extensions'])
+	loc.setPluginPlaces([str(path/'extensions')])
 
 	extManager.locatePlugins()
 	extManager.loadPlugins()

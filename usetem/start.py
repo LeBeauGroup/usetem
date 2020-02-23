@@ -17,7 +17,6 @@
 
 import logging
 import os
-path = os.path.dirname(os.path.realpath(__file__))
 
 import sys
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
@@ -31,6 +30,11 @@ import bibtexparser
 from .workflowThread import WorkflowThread
 from .workflowThread import WorkflowItem
 from . import pluginManagement as plugm
+from pathlib import Path
+path = Path(__file__).resolve().parent
+
+#path = os.path.dirname(os.path.realpath(__file__))
+
 
 def updateWorkflow(item):
 	print(item)
@@ -43,7 +47,14 @@ class USETEMGuiManager(QtCore.QObject):
 	def __init__(self, ui, plugs):
 		super(USETEMGuiManager, self).__init__()
 		self.ui = ui
+		self.interfaces = plugm.availableInterfaces()
 		self.plugins = plugs
+
+		for plugName in self.plugins:
+			self.plugins[plugName].setInterfaces(self.interfaces)
+
+
+
 		self.ui.actionSave_Workflow.triggered.connect(self.saveWorkflow)
 		self.ui.actionOpen_Workflow.triggered.connect(self.loadWorkflow)
 		self.ui.actionRun_Workflow.triggered.connect(self.runWorkflow)
@@ -124,7 +135,6 @@ class USETEMGuiManager(QtCore.QObject):
 
 	def addToWorkflow(self):
 
-
 		selected = self.ui.availablePlugins.selectedItems()
 
 		for item in selected:
@@ -140,6 +150,7 @@ class USETEMGuiManager(QtCore.QObject):
 
 		workflowTree = self.ui.workflowTree
 		item = WorkflowItem(parent)
+
 		# use for iterable items | QtCore.Qt.ItemIsDropEnabled
 		union = QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsDragEnabled
 
@@ -190,6 +201,7 @@ class USETEMGuiManager(QtCore.QObject):
 			displayName = self.plugins[key].displayName
 			category = self.plugins[key].category
 			toolTip = self.plugins[key].description
+
 
 			categoryItem = None
 
@@ -263,7 +275,7 @@ class USETEMGuiManager(QtCore.QObject):
 
 	def runWorkflow(self):
 
-		self.interfaces = plugm.availableInterfaces()
+
 
 		self.runThread = WorkflowThread(self.interfaces, self.ui.workflowTree, self.plugins)
 
@@ -462,10 +474,11 @@ if __name__ == '__main__':
 	# loading the plugins
 	plugins = plugm.availableExtensions()
 
+
 	# launch the pyQt window
 	app = QApplication(sys.argv)
-
-	ui_file = QFile(path+"\mainWindow.ui")
+	ui_path = path/'mainWindow.ui'
+	ui_file = QFile(str(ui_path))
 	ui_file.open(QFile.ReadOnly)
 
 	window = uic.loadUi(ui_file)
